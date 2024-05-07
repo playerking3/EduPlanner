@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+.container{
+    display: flex;
+
+}
+
+.menu{
+    background-color: #FFD700;
+    width: 100px;
+    height: 100vh;
+    display: grid;
+}
+
+
+.header{
+    background-color:#FFFDF4;
+    width: 300vh;
+}
+.bttCadastro{
+    height: 30px;
+    width: 90px;
+    border: none;
+    border-radius: 7px;
+    background-color: #032759;
+    color: #ffff;
+    transition: background-color 0.3s;
+}
+
+.bttCadastro:hover {
+    background-color: #1e4d7d;
+}
+
+.logo{
+   width: 240px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+.h2Cadastro{
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+.divtudo{
+    border-radius: 30px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
+    height: 500px;
+    width: 800px;
+    margin-top: 45px;
+    margin-left: 200px;
+    background-color: white;
+}
+.nomeInp{
+    display: flex;
+    gap: 15px;
+    margin: 30px;
+
+}
+
+ .imgCaderno, .imgCalen{
+    width: 30px;
+     margin-top: 20px;
+}
+
+ .imgPerfil{
+     width: 50px;
+ }
+
+.imgFoto{
+    width: 60px;
+    margin-top: 20px;
+}
+
+.imgSair{
+    width: 70px;
+}
+input{
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    border: none;
+    margin-right: 555px;
+    height: 25px;
+    width: 196px;
+}
+
+.divSair{
+    align-content: end;
+}
+
+.divIcones{
+    margin-top: 61px;
+    display: grid;
+}
