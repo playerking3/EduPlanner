@@ -46,3 +46,5 @@ CREATE TABLE participantes(
 ALTER TABLE curso ADD COLUMN faixa_etaria varchar(254)
 
 ALTER TABLE curso ADD COLUMN categorias varchar(254)
+
+ALTER TABLE curso ADD COLUMN descricao text
