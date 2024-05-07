@@ -9,7 +9,16 @@ function Cadastro() {
     return(
         <div className={css.container}>
             <div className={css.menu}>
-                    <h2>aaa </h2>
+                <div><img className={css.imgFoto} src='./fotoperfil.png'/></div>
+                <div className={css.divIcones}>
+                    <img className={css.imgCaderno} src='./cadernoo.png'/>
+                    <img className={css.imgCalen} src='./calendario.png'/>
+                    <img className={css.imgPerfil} src='./peerfil.png'/>
+                </div>
+                <div className={css.divSair}>
+                    <img className={css.imgSair} src='./sair.png'/>
+                </div>
+
             </div>
 
             <div className={css.header}>
