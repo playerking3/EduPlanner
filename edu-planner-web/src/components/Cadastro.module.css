@@ -53,14 +53,20 @@
     padding: 20px;
 }
 .divtudo{
-    border-radius: 30px;
-    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    gap: 140px;
+}
+
+.header {
+    border-radius: 10px;
+    box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.4);
     height: 500px;
     width: 800px;
     margin-top: 45px;
     margin-left: 200px;
     background-color: white;
 }
+
 .nomeInp{
     display: flex;
     gap: 15px;
@@ -69,7 +75,7 @@
 }
 
  .imgCaderno, .imgCalen{
-    width: 30px;
+    width: 22px;
      margin-top: 20px;
 }
 
@@ -83,15 +89,23 @@
 }
 
 .imgSair{
-    width: 70px;
+    width: 50px;
 }
 input{
     border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
     border: none;
-    margin-right: 555px;
-    height: 25px;
-    width: 196px;
+    height: 37px;
+    width: 280px;
+    margin-top: 10px;
+}
+.select{
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    border: none;
+    height: 37px;
+    width: 280px;
+    margin-top: 10px;
 }
 
 .divSair{
@@ -99,6 +113,61 @@ input{
 }
 
 .divIcones{
-    margin-top: 61px;
+    margin-top: -30px;
     display: grid;
+}
+
+.ladoEsquerdo{
+}
+
+.imgCaderno, .imgCalen, .imgPerfil{
+    margin: auto;
+}
+
+.asterisco{
+    color: red;
+}
+
+.h2Cadastro, .nomeInp{
+    font-weight: bold;
+}
+.h2Cadastro{
+    font-size: 25px;
+}
+
+.nomeInp{
+    font-size: 13px;
+    margin: 0;
+
+
+}
+.ptdois, .pttres, .ptcinco, .ptseis, .ptsete{
+    margin-top: 15px;
+}
+
+.ptum,.ptdois, .pttres{
+    margin-left: 50px;
+}
+
+.bttBaixar{
+    border: none;
+    background-color: white;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    width: 276px;
+    height: 100px;
+}
+.imgBaixar{
+ width: 70px;
+}
+
+.bttSalvar{
+    color: white;
+    margin-top: 25px;
+    border: none;
+    background-color: #ff6b00;
+    width: 500px;
+    height: 40px;
+    border-radius: 20px;
 }
