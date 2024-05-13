@@ -5,7 +5,7 @@ function Login() {
         <div className={css.tudo}>
             <div className={css.bloco}>
                 <div className={css.logo}>
-                    <img src={"./logoEdu.png"} alt="Logo"/>
+                    <img src={"./logo.png"} alt="Logo"/>
                 </div>
                 <div className={css.form}>
                     <div className={css.infor}>
