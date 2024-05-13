@@ -1,27 +1,18 @@
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from controllers.UserController import *
+
 app = Flask(__name__)
-app.config.from_pyfile('config.py')
+app.config.from_pyfile('configs/config.py')
 db = SQLAlchemy(app)
 
-from User import *
 @app.route('/login')
 def login():
-    #cpf = request.json.get('cpf')
-    #password = request.json.get('password')
-    cpf = 40404044040
-    password = 'Teste123-'
-    user = User(cpf, password)
-    user.login()
-    return jsonify({'voltar': 'fffff'})
+    return UserController().login()
 
 @app.route('/cadastro')
 def cadastro():
-    cpf = 40404044040
-    password = 'Teste123-'
-    user = User(cpf, password)
-    user.login()
-    return jsonify({'voltar': 'fffff'})
+    return UserController().cadastro()
 
 
 if __name__ == '__main__':

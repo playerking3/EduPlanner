@@ -3,7 +3,7 @@ import mysql.connector
 class Conection:
     def add_query (self, query):
         try:
-            conect = mysql.connector.connect(user="root", password="b2AHfBd4g51AD31f25dHFaAC66f22-6d", host="monorail.proxy.rlwy.net", database='railway', port='17217', auth_plugin='mysql_native_password')
+            conect = mysql.connector.connect(user="root", password="", host="127.0.0.1", database='eduplanner', port='3306')
             cursor = conect.cursor()
             inserir = query
             cursor.execute(inserir)
@@ -18,7 +18,7 @@ class Conection:
 
     def get_query(self, query):
         try:
-            conect = mysql.connector.connect(user="root", password="b2AHfBd4g51AD31f25dHFaAC66f22-6d", host="monorail.proxy.rlwy.net", database='railway', port='17217', auth_plugin='mysql_native_password')
+            conect = mysql.connector.connect(user="root", password="", host="127.0.0.1", database='eduplanner', port='3306')
             cursor = conect.cursor()
             inserir = query
             cursor.execute(inserir)
@@ -41,7 +41,7 @@ class Conection:
 
     def get_list (self, query):
         try:
-            conect = mysql.connector.connect(user="root", password="b2AHfBd4g51AD31f25dHFaAC66f22-6d", host="monorail.proxy.rlwy.net", database='railway', port='17217', auth_plugin='mysql_native_password')
+            conect = mysql.connector.connect(user="root", password="", host="127.0.0.1", database='eduplanner', port='3306')
             cursor = conect.cursor()
             inserir = query
             cursor.execute(inserir)
