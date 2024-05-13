@@ -1,21 +1,17 @@
-<<<<<<< Updated upstream
 *{
     margin: 0;
     padding: 0;
 }
-=======
->>>>>>> Stashed changes
 .tudo{
     background-color: #FFDD26;
     text-align: center;
     min-height: 100vh;
-<<<<<<< Updated upstream
     display: flex;
     justify-content: center;
 }
 .logo img{
     margin-top: 30px;
-    width: 160px;
+     width: 160px;
 }
 .bloco{
     align-items: center;
@@ -36,25 +32,10 @@
     border: none;
     border-radius: 15px;
     box-shadow: 1px 1px 1px 1px #A9A9A9;
-=======
-}
-.logo img{
-    width: 300px;
-}
-.form input{
-    margin: 20px;
-    width: 400px;
-    height: 40px;
-    border: none;
-    border-radius: 20px;
-    background-color: #FFEE92;
-    box-shadow: 1px 2px 1px #4F4F4F;
->>>>>>> Stashed changes
 }
 .form button{
     margin: 10px;
     color: white;
-<<<<<<< Updated upstream
     width: 70%;
     height: 40px;
     border: none;
@@ -74,11 +55,4 @@
 
 .infor input {
     margin-top: 5px;
-=======
-    width: 120px;
-    height: 50px;
-    border: none;
-    border-radius: 20px;
-    background-color: #032759;
->>>>>>> Stashed changes
 }
