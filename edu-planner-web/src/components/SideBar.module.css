@@ -1,0 +1,26 @@
+.total{
+    max-height: 100svh;
+    position: sticky;
+    top: 0;
+    background: #FFDD26;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px;
+}
+.perfil{
+    width: 80%;
+    border-radius: 100px;
+    border: solid 2px white;
+}
+
+.iconGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.icon{
+    color: white;
+    margin-top: 2em;
+}

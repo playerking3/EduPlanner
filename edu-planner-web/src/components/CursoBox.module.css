@@ -1,0 +1,12 @@
+.box{
+    height: 85%;
+    width: 70%;
+    border-radius: 1em;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.26);
+}
+
+.formContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+}
