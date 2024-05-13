@@ -14,6 +14,10 @@ def login():
 def cadastro():
     return UserController().cadastro()
 
+@app.route('/esqueciSenha')
+def esqueci():
+    return UserController().esqueciSenha()
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

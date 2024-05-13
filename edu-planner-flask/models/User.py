@@ -1,6 +1,6 @@
 from configs.Conection import *
 class User:
-    def __init__(self, cpf, password):
+    def __init__(self, cpf, password = ''):
         self.cpf = cpf
         self.password = password
 
@@ -21,3 +21,10 @@ class User:
         conexao = Conection()
         response = conexao.add_query(query)
         return response
+
+    def esqueciSenha(self):
+        query = f"SELECT id_usuario, email FROM `usuario` WHERE cpf = '{self.cpf}';"
+        conexao = Conection()
+        exis = conexao.get_query(query)
+        print(exis)
+        return exis

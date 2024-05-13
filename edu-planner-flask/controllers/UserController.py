@@ -1,6 +1,7 @@
 from models.User import *
 from utils.Criptografia import *
-from flask import jsonify
+from flask import jsonify, request
+from utils.Email import *
 import random
 
 class UserController:
@@ -50,3 +51,25 @@ class UserController:
                 response = token
             return jsonify({'status': response})
         return jsonify({'status': 'usuario ja cadastrado'})
+
+    def esqueciSenha(self):
+        # cpf = request.json.get('cpf')
+        cpf = '40404044052'
+        user = User(cpf)
+        infos = user.esqueciSenha()
+        code = random.randint(1000, 100000)
+
+        Email().ConfirmaTrocaSenha('basqueroto.felipe125@gmail.com', code)
+
+        token = Criptografia().gerarTokenEsqueciSenha(code)
+        return jsonify(token)
+
+    def verificaTokenSenha(self):
+        token = request.json.get('token')
+        code = request.json.get('code')
+        payload = Criptografia().decode(token.keys())
+        if payload['key'] == code:
+            return jsonify({'status': True})
+        return jsonify({'satus': False})
+
+
