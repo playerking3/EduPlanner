@@ -23,7 +23,7 @@ function Cadastro() {
 
 
             <div className={css.header}>
-                <h2 className={css.h2Cadastro}>Cadastro de usuário</h2>
+                <h2 className={css.h2Cadastro}>Edição de usuário</h2>
 
                 <div className={css.divtudo}>
                     <div className={css.ladoEsquerdo}>
