@@ -3,15 +3,16 @@ import hashlib
 from datetime import date, timedelta, datetime
 from configs.Conection import *
 from configs.config import SECRET_KEY
+from dateutil import parser as date_parser
 class Criptografia:
-    def gerarToken(self, user_id):
+    def gerarToken(self, user_id, cargo):
         if type(user_id) != int:
             user_id = user_id[0]
 
         to_day = date.today()
         td = timedelta(7)
 
-        encoder = {'user_id': user_id}
+        encoder = {'user_id': user_id, 'cargo': cargo}
         token = jwt.encode(encoder, SECRET_KEY, algorithm='HS256')
 
         query = f"INSERT INTO token (fk_user, codigo, vencimento) VALUES ({user_id}, '{token}', '{to_day + td}');"
@@ -33,10 +34,14 @@ class Criptografia:
         return {'status': True, 'key': token, 'down': to_day + td}
 
     def decode(self, token):
-        return jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+        try:
+            response = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+            return response
+        except:
+            return False
 
     def checktoken(self,code):
-        query = f"SELECT fk_user FROM `token` WHERE codigo = '{code}';"
+        query = f"SELECT fk_user, vencimento FROM `token` WHERE codigo = '{code}';"
         conexao = Conection()
         exis = conexao.get_query(query)
         return exis
@@ -46,6 +51,25 @@ class Criptografia:
         conexao = Conection()
         exis = conexao.add_query(query)
         return exis
+
+    def validaToken(self, descriptado, correspondencia, token):
+        vencimento = token['down']
+
+        if correspondencia[0] == descriptado['user_id'] and datetime.strptime(vencimento, "%a, %d %b %Y %H:%M:%S %Z").strftime('%d/%m/%Y') == correspondencia[1].strftime('%d/%m/%Y'):
+
+            # checando data
+            to_day = datetime.today()
+            vence = date_parser.parse(vencimento)
+            vence = datetime.date(vence)
+            to_day = datetime.date(to_day)
+
+            if to_day > vence:
+                print('token vencido')
+                return 'vencido'
+            return True
+        return 'invalid'
+
+
 
     def hashSenha(self, string):
         hash_object = hashlib.sha256(string.encode())

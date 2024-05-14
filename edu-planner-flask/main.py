@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from controllers.UserController import *
 from controllers.CursoController import *
+from utils.VerificaToken import *
 
 app = Flask(__name__)
 app.config.from_pyfile('configs/config.py')
@@ -22,7 +23,11 @@ def esqueci():
 
 @app.route('/sair')
 def sair():
-    return UserController().sair()
+    status = VerificaToken().validaToken()
+    if status['status'] == 'valid':
+        return UserController().sair()
+    return status
+
 
 #------rotas de curso-------------------
 @app.route('/cadastrarCurso')

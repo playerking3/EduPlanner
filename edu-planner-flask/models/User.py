@@ -5,7 +5,7 @@ class User:
         self.password = password
 
     def login (self):
-        query = f'SELECT id_usuario, senha, salt FROM `usuario` WHERE cpf = "{self.cpf}";'
+        query = f'SELECT id_usuario, senha, salt, cargo FROM `usuario` WHERE cpf = "{self.cpf}";'
         conexao = Conection()
         exis = conexao.get_query(query)
         return exis

@@ -16,7 +16,7 @@ class UserController:
         infos = user.login()
         if infos:
             if infos[1] == Criptografia().hashSenha(password + infos[2]):
-                token = Criptografia().gerarToken(infos[0])
+                token = Criptografia().gerarToken(infos[0], infos[3])
                 return token
             return jsonify({'status': 'usuario ou senha invalido'})
         return jsonify({'status': 'usuario nao encontrado'})
@@ -35,13 +35,14 @@ class UserController:
         password = Criptografia().hashSenha(password + str(salt))
         user = User(cpf, password)
         check = user.checkUser()
+        cargo = 'professor'
         if check == False:
             response = user.cadastro('bia', 'bia@gmail.com', 'professor', '07/06/2005', salt)
             if response:
                 id = user.checkUser()
                 print(id, 'id aqui')
                 if id:
-                    token = Criptografia().gerarToken(id)
+                    token = Criptografia().gerarToken(id, cargo)
                     if token:
                         return token
                     response = token
@@ -59,7 +60,7 @@ class UserController:
 
         fk_user = Criptografia().checktoken(token['key'])
         descripto = Criptografia().decode(token['key'])
-        if fk_user and descripto == fk_user:
+        if fk_user and descripto['user_id'] == fk_user[0]:
             response = Criptografia().excluiToken(token['key'])
             if response:
                 return jsonify({'staus': 'success'})
