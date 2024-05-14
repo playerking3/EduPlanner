@@ -6,11 +6,11 @@ function InputImagem({name, placeholder}){
                 <p>{placeholder}</p>
             </div>
             <div className={css.inputGroup}>
-                <div className={css.input}>
-                    <label htmlFor={name}><i
-                        className="fa-solid fa-arrow-up-from-bracket"></i></label>
+                <div className={css.btnInput}>
+                    <label htmlFor={'img'} className={css.input}>
+                        <i className="fa-solid fa-arrow-up-from-bracket"></i></label>
                 </div>
-                <input type={'file'} name={name} accept="image/png, image/jpeg" style={{display: "none"}}/>
+                <input type={'file'} name={'img'} id={'img'} accept="image/png, image/jpeg" style={{display: "none"}}/>
             </div>
         </div>
     )
