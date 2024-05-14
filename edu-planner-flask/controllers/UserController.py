@@ -14,8 +14,6 @@ class UserController:
 
         user = User(cpf, password)
         infos = user.login()
-        print(infos[1], password + infos[2])
-        print(type(infos[2]))
         if infos:
             if infos[1] == Criptografia().hashSenha(password + infos[2]):
                 token = Criptografia().gerarToken(infos[0])
@@ -34,23 +32,39 @@ class UserController:
         # nascimento = request.json.get('data_nascimento')
 
         salt = random.randint(1000000000, 9999999999999)
-        print(password + str(salt))
         password = Criptografia().hashSenha(password + str(salt))
         user = User(cpf, password)
         check = user.checkUser()
-        print(check, 'check user ')
         if check == False:
             response = user.cadastro('bia', 'bia@gmail.com', 'professor', '07/06/2005', salt)
             if response:
                 id = user.checkUser()
                 print(id, 'id aqui')
-                token = Criptografia().gerarToken(id)
-                print(token)
-                if token:
-                    return token
-                response = token
+                if id:
+                    token = Criptografia().gerarToken(id)
+                    if token:
+                        return token
+                    response = token
+                return jsonify({'status': 'error', 'infos': 'usuario nao cadastrado'})
             return jsonify({'status': response})
         return jsonify({'status': 'usuario ja cadastrado'})
+
+    def sair(self):
+        #token = request.json.get('token')
+        token = {
+            "down": "Tue, 21 May 2024 00:00:00 GMT",
+            "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3fQ.iN4T9GbKu0YPcLVIamzKzcXKzTmsERLNx6-id6lAyIE",
+            "status": True
+        }
+
+        fk_user = Criptografia().checktoken(token['key'])
+        descripto = Criptografia().decode(token['key'])
+        if fk_user and descripto == fk_user:
+            response = Criptografia().excluiToken(token['key'])
+            if response:
+                return jsonify({'staus': 'success'})
+            return jsonify({'status': 'error', 'info': 'erro na exclusão'})
+        return jsonify({'status': 'invalid'})
 
     def esqueciSenha(self):
         # cpf = request.json.get('cpf')
