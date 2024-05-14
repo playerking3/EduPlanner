@@ -1,0 +1,153 @@
+
+.logo {
+    background-color: #FFD700;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo img {
+    width: 10%;
+}
+/*----------------------------------------*/
+
+.banner img {
+    width: 100%;
+}
+/*----------------------------------------*/
+.azul, .amarelo, .laranja,.oferecep {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 300px;
+    margin-top: -1vw;
+}
+.divona{
+    background-color: #EEEBEB;
+}
+
+/*----------------------------------------*/
+.metodo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 150px 10px 150px;
+}
+/*----------------------------------------*/
+.oferecep{
+    padding: 20px;
+}
+.coisas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    margin: 10px;
+}
+.presencial p{
+    text-align: center;
+}
+.oficinas {
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+.oficinas2 {
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    margin: 70px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.divao{
+    margin: 8px;
+}
+/*----------------------------------------*/
+.cargHFaixa img {
+    width: 4%;
+    margin-top: 15px;
+}
+.p{
+    font-weight: bold;
+    font-size: 25px;
+}
+/*----------------------------------------*/
+.butonn, .buton {
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 10px;
+}
+.butonn{
+    background-color: #FFA500;
+}
+.buton{
+    background-color: #FF6B00;
+}
+.buton:hover, .butonn:hover {
+    background-color: #FF8C00;
+}
+.cursos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 50px;
+}
+.presencial{
+    border: 2px solid #FFA500;
+    border-radius: 20px;
+    padding: 0 10px;
+}
+/*----------------------------------------*/
+.gerenciamento{
+    margin: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.texto{
+    font-size: 50px;
+    font-weight: bold;
+}
+.textao{
+    margin-right: 100px;
+}
+.button{
+    background-color: #6495ED;
+    border: 1px solid #6495ED;
+    width: 50%;
+    height: 50px;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 10px;
+}
+.button:hover{
+    background-color: #537fcb;
+}
+/*--------------------------------------------------------*/
+.footer {
+    position: relative;
+}
+
+.logos {
+    position: absolute;
+    bottom: 30px; /* ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,25 @@
+.card{
+    background: #FFDD26;
+    padding: 1vw;
+    color: white;
+    border-radius: 1vw;
+}
+.dias{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    gap: 0.1vw;
+}
+
+.texto{
+    text-align: left;
+    margin-left: 0.5vw;
+}
+
+.dia{
+    border: 2px solid white;
+    border-radius: 50%;
+    padding-bottom: 0.1vw;
+    height: 2vw;
+    width: 2vw;
+}

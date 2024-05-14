@@ -1,0 +1,119 @@
+*{
+    margin: 0
+}
+
+.fotos{
+    background-image: url('/public/foto1.png');
+    height: 18vw;
+    background-position: center;
+    background-size: cover;
+    border-radius: 2vw 2vw 0vw 0vw;
+}
+
+.titulo{
+    font-size: 2.2vw;
+    font-weight: 500;
+    margin-bottom: 0.5vw;
+    margin-top: 0.5vw;
+}
+
+.p{
+    margin-bottom: 0.5vw;
+    margin-top: 0.5vw;
+    font-size: 1.4vw;
+}
+.card{
+    width: 28vw;
+    min-height: 44vw;
+    border-radius: 3vw;
+    -webkit-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+}
+
+.turmas{
+    display: flex;
+    gap: 0.5vw;
+    overflow-x: auto;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+}
+
+.fichaTurma {
+    border: 0.3vw solid #FFD700;
+    padding: 0.2vw;
+    padding-right: 0.9vw;
+    padding-left: 0.9vw;
+    margin-bottom: 1vw;
+    margin-top: 0.7vw;
+    border-radius: 5vw;
+    font-size: 1.3vw;
+    font-weight: 600;
+    height: 2vw;
+
+}
+
+.p2{
+    width: 6vw;
+    text-align: center;
+    height: auto;
+}
+.botao1{
+    display: flex;
+    justify-content: center;
+    background: #FFA500;
+    color: white;
+    border-radius: 5vw;
+    padding-bottom: 0.6vw;
+    padding-top: 0.6vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    font-size: 1.5vw;
+
+}
+.botao2{
+    display: flex;
+    justify-content: center;
+    background: #FF6B00;
+    color: white;
+    border-radius: 5vw;
+    padding-bottom: 0.6vw;
+    padding-top: 0.6vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    font-size: 1.5vw;
+
+}
+.botao3{
+    display: flex;
+    justify-content: center;
+    background: #FFC700;
+    color: white;
+    border-radius: 5vw;
+    padding-bottom: 0.6vw;
+    padding-top: 0.6vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    font-size: 1.5vw;
+
+}
+
+.botao1:hover,
+.botao2:hover,
+.botao3:hover{
+    -webkit-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+}
+
+.escritas{
+    padding: 1vw;
+    text-align: left;
+}
+
+.link{
+    text-decoration: none;
+}
