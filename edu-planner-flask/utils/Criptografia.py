@@ -35,6 +35,17 @@ class Criptografia:
     def decode(self, token):
         return jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
 
+    def checktoken(self,code):
+        query = f"SELECT fk_user FROM `token` WHERE codigo = '{code}';"
+        conexao = Conection()
+        exis = conexao.get_query(query)
+        return exis
+
+    def excluiToken(self, code):
+        query = f"DELETE FROM token WHERE codigo = '{code}';"
+        conexao = Conection()
+        exis = conexao.add_query(query)
+        return exis
 
     def hashSenha(self, string):
         hash_object = hashlib.sha256(string.encode())
