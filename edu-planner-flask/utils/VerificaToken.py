@@ -4,8 +4,8 @@ from flask import jsonify, request
 class VerificaToken:
     def validaToken(self):
         token = {
-          "down": "Tue, 21 May 2024 00:00:00 GMT",
-          "key": "eyJhbGOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJjYXJnbyI6InByb2Zlc3NvciJ9.JZIpykQA2jO-KilM83B8Hd1BynS323kZYxhf_hcZ0Ak",
+          "down": "Sun, 26 May 2024 00:00:00 GMT",
+          "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJjYXJnbyI6InByb2Zlc3NvciJ9.6WWmtrffKve12jCHt3QMG26xZZIB1oWxvOaHz5iYphU",
           "status": True
         }
         # token = request.json.get('token')
@@ -16,5 +16,5 @@ class VerificaToken:
             verify = Criptografia().validaToken(decode, check, token)
             if verify:
                 return {'status': 'valid'}
-            return jsonify({'status': 'erro', 'infos': verify})
-        return jsonify({'status': 'invalid'})
+            return {'status': 'erro', 'infos': verify}
+        return {'status': 'invalid'}

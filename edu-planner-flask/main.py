@@ -24,9 +24,10 @@ def esqueci():
 @app.route('/sair')
 def sair():
     status = VerificaToken().validaToken()
+    print(status)
     if status['status'] == 'valid':
         return UserController().sair()
-    return status
+    return jsonify(status)
 
 
 #------rotas de curso-------------------
