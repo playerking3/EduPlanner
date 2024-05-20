@@ -12,17 +12,11 @@ class Criptografia:
         to_day = date.today()
         td = timedelta(7)
 
-        encoder = {'user_id': user_id, 'cargo': cargo}
+        encoder = {'user_id': user_id, 'cargo': cargo, 'vencimento': str(to_day + td)}
         token = jwt.encode(encoder, SECRET_KEY, algorithm='HS256')
 
-        query = f"INSERT INTO token (fk_user, codigo, vencimento) VALUES ({user_id}, '{token}', '{to_day + td}');"
-        conexao = Conection()
-        response = conexao.add_query(query)
-        print(response, 'insert into token')
-        if response:
-            resposta = {'status': True, 'key': token, 'down': to_day + td}
-            return resposta
-        return response
+
+        return {'key': token, 'down': to_day + td}
 
     def gerarTokenEsqueciSenha(self, code):
         to_day = datetime.now()
@@ -35,22 +29,11 @@ class Criptografia:
 
     def decode(self, token):
         try:
-            response = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+            response = jwt.decode(token['key'], SECRET_KEY, algorithms=['HS256'])
             return response
         except:
             return False
 
-    def checktoken(self,code):
-        query = f"SELECT fk_user, vencimento FROM `token` WHERE codigo = '{code}';"
-        conexao = Conection()
-        exis = conexao.get_query(query)
-        return exis
-
-    def excluiToken(self, code):
-        query = f"DELETE FROM token WHERE codigo = '{code}';"
-        conexao = Conection()
-        exis = conexao.add_query(query)
-        return exis
 
     def validaToken(self, descriptado, correspondencia, token):
         vencimento = token['down']

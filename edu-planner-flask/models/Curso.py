@@ -1,7 +1,7 @@
 from configs.Conection import *
 
 class Curso:
-    def createCurso(self, nome, carga_horaria, faixa_etaria, categorias, descricao, imagem, status):
+    def createCurso(self, nome, carga_horaria, faixa_etaria, categorias, descricao, imagem):
         query = f'INSERT INTO curso (nome, carga_horaria, faixa_etaria, categorias, descricao, image, status) VALUES ("{nome}", {carga_horaria}, "{faixa_etaria}", "{categorias}", "{descricao}", "{imagem}", "ativo");'
         conexao = Conection()
         response = conexao.add_query(query)

@@ -17,13 +17,14 @@ class UserController:
         if infos:
             if infos[1] == Criptografia().hashSenha(password + infos[2]):
                 token = Criptografia().gerarToken(infos[0], infos[3])
-                return token
+                return jsonify({'status': 'success', 'token': token})
             return jsonify({'status': 'usuario ou senha invalido'})
         return jsonify({'status': 'usuario nao encontrado'})
 
     def cadastro(self):
         cpf = 40404044052
         password = 'Teste123-'
+        cargo = 'professor'
         # cpf = request.json.get('cpf')
         # password = request.json.get('password')
         # nome = request.json.get('nome')
@@ -35,7 +36,6 @@ class UserController:
         password = Criptografia().hashSenha(password + str(salt))
         user = User(cpf, password)
         check = user.checkUser()
-        cargo = 'professor'
         if check == False:
             response = user.cadastro('bia', 'bia@gmail.com', 'professor', '07/06/2005', salt)
             if response:
@@ -43,29 +43,10 @@ class UserController:
                 print(id, 'id aqui')
                 if id:
                     token = Criptografia().gerarToken(id, cargo)
-                    if token:
-                        return token
-                    response = token
+                    return jsonify({'status': 'success', 'token': token})
                 return jsonify({'status': 'error', 'infos': 'usuario nao cadastrado'})
-            return jsonify({'status': response})
+            return jsonify({'status': 'error', 'info': response})
         return jsonify({'status': 'usuario ja cadastrado'})
-
-    def sair(self):
-        #token = request.json.get('token')
-        token = {
-            "down": "Tue, 21 May 2024 00:00:00 GMT",
-            "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3fQ.iN4T9GbKu0YPcLVIamzKzcXKzTmsERLNx6-id6lAyIE",
-            "status": True
-        }
-
-        fk_user = Criptografia().checktoken(token['key'])
-        descripto = Criptografia().decode(token['key'])
-        if fk_user and descripto['user_id'] == fk_user[0]:
-            response = Criptografia().excluiToken(token['key'])
-            if response:
-                return jsonify({'staus': 'success'})
-            return jsonify({'status': 'error', 'info': 'erro na exclusão'})
-        return jsonify({'status': 'invalid'})
 
     def esqueciSenha(self):
         # cpf = request.json.get('cpf')
