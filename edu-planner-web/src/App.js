@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
@@ -8,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import VisualizacaoCurso from "./pages/VisualizacaoCurso";
 import Edicao from "./pages/Edicao";
-
+import CadastroTurma from './pages/CadastroTurma'
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +17,7 @@ function App() {
           <Route path={'cadastro-pessoa'} element={<Cadastro/>} />
           <Route path={'/editar-pessoa'} element={<Edicao/>}/>
           <Route path={'dashboard'} element={<Dashboard/>}/>
+          <Route path={'/cadastro-turma'} element={<CadastroTurma/>}/>
           <Route path={'/'} element={<Home/>}/>
           <Route path={'/cursos'} element={<VisualizacaoCurso/>}/>
       </Routes>

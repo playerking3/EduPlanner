@@ -1,9 +1,10 @@
 import css from './InputImagem.module.css'
+import React from "react";
 function InputImagem({name, placeholder}){
     return(
         <div className={css.container}>
             <div>
-                <p>{placeholder}</p>
+                <p className={css.titulop}>{placeholder} <span className={css.asterisco}>*</span></p>
             </div>
             <div className={css.inputGroup}>
                 <div className={css.btnInput}>

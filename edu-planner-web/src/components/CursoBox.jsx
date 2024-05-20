@@ -4,11 +4,12 @@ import InputMultiplo from "./InputMultiplo";
 import InputTextArea from "./InputTextArea";
 import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
+
 function CursoBox (){
     return(
         <div className={css.box}>
             <div>
-                <h1>Cadastro de curso</h1>
+                <h1 className={css.h1}>Cadastro de curso</h1>
             </div>
             <form>
                 <div className={css.formContainer}>
