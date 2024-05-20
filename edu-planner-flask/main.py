@@ -21,19 +21,12 @@ def cadastro():
 def esqueci():
     return UserController().esqueciSenha()
 
-@app.route('/sair')
-def sair():
-    status = VerificaToken().validaToken()
-    print(status)
-    if status['status'] == 'valid':
-        return UserController().sair()
-    return jsonify(status)
-
-
 #------rotas de curso-------------------
 @app.route('/cadastrarCurso')
 def cadastraCurso():
-    return CursoController().CadastroCurso()
+    if VerificaToken().validaToken():
+        return CursoController().CadastroCurso()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
 @app.route('/editaCurso')
 def editaCurso():
     return CursoController().editarCurso()
