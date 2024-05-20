@@ -24,7 +24,15 @@
     margin-bottom: 1em;
 }
 
+.asterisco{
+    color: red ;
+}
+.label p{
+    font-weight: 600;
+}
+
 .inputGroup{
+    gap: 1em;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -45,4 +53,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.select{
+    padding: 4px;
+    border: none;
+    border-radius: .5em;
+    height: 2.5em;
+    width: 90%;
+    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
 }

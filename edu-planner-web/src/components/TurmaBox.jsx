@@ -5,6 +5,7 @@ import InputTextArea from "./InputTextArea";
 import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 import Periodicidade from "./Periodicidade";
+import ComboBoxMultiplo from "./ComboBoxMultiplo";
 
 function TurmaBox (){
     return(
@@ -18,12 +19,13 @@ function TurmaBox (){
                         <CadastroInput placeholder={'Nome da turma'} type={'text'} name={'nomeCurso'}/>
                         <Periodicidade></Periodicidade>
                         <InputMultiplo label={'Alunos/Participantes'}></InputMultiplo>
-
+                        <ComboBoxMultiplo name={'salas'} label={'Salas alocadas'} opcoes={['sala1', 'sala2','sala3']}/>
                     </div>
                     <div>
                         <CadastroInput placeholder={'Data: Início'} type={'date'} name={'cargaHoraria'}/>
                         <CadastroInput placeholder={'Duração da aula'} type={'text'} name={'nomeCurso'}/>
                         <CadastroInput placeholder={'Horário de aula'} type={'text'} name={'nomeCurso'}/>
+                        <ComboBoxMultiplo name={'professor'} label={'Professor/orientador'} opcoes={['Igor Cacerez', 'Laís Sinatra', 'Bruno Torrezan']}/>
 
                     </div>
                 </div>

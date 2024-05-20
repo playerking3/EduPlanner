@@ -1,4 +1,4 @@
-import css from "./InputMultiplo.module.css";
+import css from "./ComboBoxMultiplo.module.css";
 import React, {useState} from "react";
 
 function ComboBoxMultiplo({opcoes, label, name}){
@@ -17,9 +17,9 @@ function ComboBoxMultiplo({opcoes, label, name}){
     return (
         <div className={css.container}>
             <div className={css.label}>
-                <p>{label}</p>
+                <p>{label} <span className={css.asterisco}>*</span></p>
                 <div>
-                    <i className={"fa-solid fa-plus fa-xl " + css.icon} onClick={addInput}></i>
+                <i className={"fa-solid fa-plus fa-xl " + css.icon} onClick={addInput}></i>
                 </div>
             </div>
             <div className={css.inputGroup}>
