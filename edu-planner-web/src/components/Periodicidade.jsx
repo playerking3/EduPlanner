@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import css from './Periodicidade.module.css'
-function Periodicidade() {
-    const [selectedButtons, setSelectedButtons] = useState([])
-    const handleButtonClick = (buttonIndex) => {
+function Periodicidade({selectedButtons, setSelectedButtons}) {
+
+    const handleButtonClick = (buttonIndex, event) => {
+        event.preventDefault()
         if (selectedButtons.includes(buttonIndex)) {
             setSelectedButtons(selectedButtons.filter(index => index !== buttonIndex))
+            event.target.style.background = '#FFD700'
         } else {
             setSelectedButtons([...selectedButtons, buttonIndex])
+            event.target.style.background = '#FF8C00'
         }
     }
     const buttons = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
@@ -20,7 +23,7 @@ function Periodicidade() {
                         <button
                             key={index}
                             className={css.buttons}
-                            onClick={() => handleButtonClick(index)}>
+                            onClick={(event) => handleButtonClick(index, event)}>
                             {buttonLabel}
                         </button>
                     ))}

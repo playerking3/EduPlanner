@@ -1,0 +1,10 @@
+.container{
+    border: .4vw solid #FFD700;
+    border-radius: 20px;
+    padding: 0 10px;
+    width: 8vw;
+}
+
+.titulop{
+    min-width: 7vw;
+}

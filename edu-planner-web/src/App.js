@@ -6,9 +6,12 @@ import CadastroCurso from "./pages/CadastroCurso";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import VisualizacaoCurso from "./pages/VisualizacaoCurso";
+import VisualizacaoSala from "./pages/VisualizacaoSala";
+
 import Edicao from "./pages/Edicao";
 import EditarCurso from "./pages/EditarCurso";
 import CadastroTurma from './pages/CadastroTurma'
+import Erro from "./pages/Erro";
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
           <Route path={'/cadastro-turma'} element={<CadastroTurma/>}/>
           <Route path={'/'} element={<Home/>}/>
           <Route path={'/cursos'} element={<VisualizacaoCurso/>}/>
+          <Route path={'*'} element={<Erro/>}/>
+          <Route path={'/salas'} element={<VisualizacaoSala/>}/>
       </Routes>
     </BrowserRouter>
   );
