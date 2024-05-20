@@ -4,8 +4,15 @@
     align-items: start;
     padding: 1em;
     gap: .5em;
+    font-weight: bold;
 }
 
+.container label{
+    font-weight: 600;
+}
+.asterisco{
+    color: red ;
+}
 .inputGroup{
     width: 100%;
     display: flex;
@@ -19,6 +26,9 @@
     border: none;
     border-radius: .5em;
     height: 2em;
-    width: 90%;
+    padding-left: 1.8vw;
+    padding-right: 1.8vw;
+    width: 85%;
+    font-size: 1.3vw;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
 }

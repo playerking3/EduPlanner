@@ -5,7 +5,13 @@
     padding: 1em;
     gap: .5em;
 }
+.asterisco{
+    color: red ;
+}
 
+.titulop{
+    font-weight: 600;
+}
 .label{
     display: flex;
     flex-direction: row;

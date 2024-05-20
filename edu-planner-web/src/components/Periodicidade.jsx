@@ -13,13 +13,13 @@ function Periodicidade() {
 
     return (
         <div>
-            <div>
+            <div className={css.container}>
                 <p className={css.titulo}>Periodicidade <span className={css.asterisco}>*</span> </p>
-                <div className={css.botao}>
+                <div className={css.tudoPeriodicidade}>
                     {buttons.map((buttonLabel, index) => (
                         <button
                             key={index}
-                            className={selectedButtons.includes(index) ? "button selected" : "button"}
+                            className={css.buttons}
                             onClick={() => handleButtonClick(index)}>
                             {buttonLabel}
                         </button>

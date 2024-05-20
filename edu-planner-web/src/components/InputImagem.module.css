@@ -5,7 +5,9 @@
     padding: 1em;
     gap: .5em;
 }
-
+.asterisco{
+    color: red ;
+}
 .input{
     display: flex;
     flex-direction: row;
@@ -15,10 +17,12 @@
     border: none;
     border-radius: .5em;
     height: 2em;
-    width: 90%;
+    width: 95%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
 }
-
+.titulop{
+    font-weight: 600;
+}
 .inputGroup{
     width: 100%;
     display: flex;

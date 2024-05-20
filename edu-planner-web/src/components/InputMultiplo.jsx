@@ -1,5 +1,5 @@
 import css from './InputMultiplo.module.css'
-import {useState} from "react";
+import React, {useState} from "react";
 function InputMultiplo({label}){
     const [numCats, setNumCats] = useState(0)
     const [list, setList] = useState([])
@@ -17,9 +17,9 @@ function InputMultiplo({label}){
     return(
         <div className={css.container}>
             <div className={css.label}>
-                <p>{label}</p>
+                <p className={css.titulop}>{label} <span className={css.asterisco}>*</span></p>
                 <div>
-                    <i className={"fa-solid fa-plus fa-xl " + css.icon} onClick={addInput}></i>
+                <i className={"fa-solid fa-plus fa-xl " + css.icon} onClick={addInput}></i>
                 </div>
             </div>
             <div className={css.inputGroup}>
