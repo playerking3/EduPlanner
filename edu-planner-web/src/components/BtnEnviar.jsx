@@ -1,8 +1,8 @@
 import css from './BtnEnviar.module.css'
-function BtnEnviar(){
+function BtnEnviar({funcao}){
     return(
         <div>
-            <button className={css.botao}>Salvar</button>
+            <button className={css.botao} onClick={funcao}>Salvar</button>
         </div>
     )
 }

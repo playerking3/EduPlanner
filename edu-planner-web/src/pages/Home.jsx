@@ -1,4 +1,5 @@
 import './Home.css';
+import {Link} from "react-router-dom";
 
 function Home() {
     return (
@@ -70,7 +71,7 @@ function Home() {
                                     </div>
                                     <p className='cargHFaixa'><img src={"./relogio.png"}/> Carga Horária: 10 horas</p>
                                     <button className="butonn">Mostrar mais</button>
-                                    <button className="buton">Gerenciar</button>
+                                    <Link to={'/cursos'}><button className="buton">Gerenciar</button></Link>
                                 </div>
 
                             </div>
@@ -102,7 +103,7 @@ function Home() {
                                     </div>
                                     <p className='cargHFaixa'><img src={"./relogio.png"}/> Carga Horária: 40 horas</p>
                                     <button className="butonn">Mostrar mais</button>
-                                    <button className="buton">Gerenciar</button>
+                                    <Link to={'/cursos'}><button className="buton">Gerenciar</button></Link>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +146,7 @@ function Home() {
                                     Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai te
                                     ajudar.</p>
                                 <button className="butonn">Mostrar mais</button>
-                                <button className="buton">Gerenciar</button>
+                                <Link to={'/cursos'}><button className="buton">Gerenciar</button></Link>
                             </div>
                         </div>
                     </div>
