@@ -2,14 +2,14 @@ import styles from './CardCurso.module.css'
 import React from "react";
 import {Link} from "react-router-dom";
 
-function CardCurso() {
+function CardCurso({placeholder, img}) {
     return(
         <div className={styles.card}>
-            <div className={styles.fotos}>
+            <div style={{ backgroundImage: `url(/${img}.png)`}} className={styles.fotos}>
 
             </div>
             <div className={styles.escritas}>
-                <h4 className={styles.titulo}>Oficina de Bolos</h4>
+                <h4 className={styles.titulo}>{placeholder}</h4>
                 <p className={styles.p}>Turmas inscritas:</p>
                 <div className={styles.turmas}>
                     <div className={styles.fichaTurma}><p className={styles.p2}>Turma 1</p></div>

@@ -1,0 +1,14 @@
+.tudo{
+    display: grid;
+    grid-template-columns: 4em 1fr;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.conteudo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}

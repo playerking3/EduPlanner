@@ -37,11 +37,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px 150px 10px 150px;
 }
 /*----------------------------------------*/
 .oferecep{
-    padding: 20px;
+    padding: 3vw;
+    padding-top: 4vw;
 }
 .coisas{
     display: grid;
@@ -69,9 +69,15 @@
     margin: 8px;
 }
 /*----------------------------------------*/
+
+.cargHFaixa{
+    display: flex;
+    align-content: center;
+    gap: 1vw;
+    align-items: center;
+}
 .cargHFaixa img {
-    width: 4%;
-    margin-top: 15px;
+    width: 7%;
 }
 .p{
     font-weight: bold;
@@ -100,7 +106,6 @@
 .cursos{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 50px;
 }
 .presencial{
     border: 2px solid #FFA500;
@@ -112,10 +117,41 @@
     margin: 100px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.textos{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.metodologia{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
 }
 .texto{
-    font-size: 50px;
+    font-size: 55px;
     font-weight: bold;
+    width: 90%;
+}
+
+.h1metodo{
+    font-size: 2.5vw;
+    font-weight: 600;
+}
+
+.metodologiap{
+    text-align: justify;
+    font-size: 1.4vw;
+    letter-spacing: 0.01vw;
 }
 .textao{
     margin-right: 100px;
@@ -123,16 +159,16 @@
 .button{
     background-color: #6495ED;
     border: 1px solid #6495ED;
-    width: 50%;
+    width: 65%;
     height: 50px;
     color: white;
     border: none;
     padding: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
     border-radius: 15px;
     cursor: pointer;
     margin: 10px;
+    margin-left: 0;
+    font-size: 1.3vw;
 }
 .button:hover{
     background-color: #537fcb;
@@ -150,4 +186,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.todosCard{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 2vw;
 }

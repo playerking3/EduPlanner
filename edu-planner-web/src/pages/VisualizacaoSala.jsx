@@ -12,14 +12,14 @@ function VisualizacaoCurso() {
             <div>
                 <div className={styles.botaoTopo}>
                     <Link to={'/cadastro-curso'} className={styles.link}>
-                        <div className={styles.botaoc}><p>Novo curso</p> <i className="fa-solid fa-plus fa-xl"></i>
+                        <div className={styles.botaoc}><p>Nova sala</p> <i className="fa-solid fa-plus fa-xl"></i>
                         </div>
                     </Link>
                 </div>
                 <div className={styles.mostraCards}>
-                    <CardCurso placeholder='Oficina de bolos' img='img1'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img2'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img3'></CardCurso>
+                    <CardCurso placeholder='Oficina de bolos'></CardCurso>
+                    <CardCurso placeholder='Oficina de bolos'></CardCurso>
+                    <CardCurso placeholder='Oficina de bolos'></CardCurso>
 
                 </div>
             </div>

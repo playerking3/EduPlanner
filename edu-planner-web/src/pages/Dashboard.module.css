@@ -1,12 +1,13 @@
 .body{
     display: grid;
-    grid-template-columns: 4em 1fr 1fr;
+    grid-template-columns: 4em 2fr 0.8fr;
     min-height: 100vh;
     text-align: center;
+    justify-items: center;
 }
 
 .calendario{
-    width: 65vw;
+    width: 60vw;
     padding: 2vw;
     border-radius: 2vw;
     -webkit-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
@@ -34,7 +35,7 @@
     align-items: center;
 }
 .linhaA{
-    width: 65vw;
+    width: 60vw;
     background: #FCFBF5;
     height: 0.7vw;
     margin-top: 2vw;
