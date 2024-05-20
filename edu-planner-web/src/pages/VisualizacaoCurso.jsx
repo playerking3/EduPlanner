@@ -17,9 +17,9 @@ function VisualizacaoCurso() {
                     </Link>
                 </div>
                 <div className={styles.mostraCards}>
-                    <CardCurso placeholder='Oficina de bolos' img='img1'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img2'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img3'></CardCurso>
+                    <CardCurso placeholder='Oficina de bolos' img='img1' descricao='Turmas inscritas:'></CardCurso>
+                    <CardCurso placeholder='Oficina de bolos' img='img2' descricao='Turmas inscritas:'></CardCurso>
+                    <CardCurso placeholder='Oficina de bolos' img='img3' descricao='Turmas inscritas:'></CardCurso>
 
                 </div>
             </div>
