@@ -1,0 +1,103 @@
+.amarelo {
+    background-color: #FCC602;
+    padding: 60px;
+    height: calc(100vh - 120px);
+}
+
+.brancao {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    background-image: url("../../public/cara.png");
+    background-size: contain;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.logo {
+    width: 15%;
+    height: auto;
+}
+
+.textos {
+    margin-top: -1vw;
+}
+
+.num {
+    font-size: 90px;
+    font-weight: bold;
+    margin-bottom: -1vw;
+}
+
+.p {
+    font-size: 15px;
+}
+
+.button {
+    background-color: #FF6B00;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    height: 40px;
+    width: 160px;
+}
+
+.button:hover{
+    background-color: #FFA500;
+}
+
+.informacoes{
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    padding: 0 50px 50px 100px;
+}
+
+.cara{
+    width: 80%;
+    margin-bottom: -1vw;
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .amarelo {
+        background-color: #FCC602;
+        padding: 35px;
+    }
+    .brancao {
+        background-color: white;
+        padding: 30px;
+        border-radius: 20px;
+        background-image: none;
+        background-size: contain;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+    }
+    .logo{
+        width: 38%;
+        height: auto;
+    }
+
+    .num {
+        font-size: 16vw;
+        margin-bottom: -2vw;
+    }
+
+    .p {
+        font-size: 8vw;
+    }
+
+
+    .informacoes {
+        grid-template-columns: 1fr;
+        padding: 0 5vw;
+    }
+
+    .cara {
+        margin-bottom: -13.1vw;
+        width: 87%;
+        display: block;
+    }
+}
+
