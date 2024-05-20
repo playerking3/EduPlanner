@@ -9,6 +9,7 @@ import VisualizacaoCurso from "./pages/VisualizacaoCurso";
 import Edicao from "./pages/Edicao";
 import EditarCurso from "./pages/EditarCurso";
 import CadastroTurma from './pages/CadastroTurma'
+import Erro from "./pages/Erro";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path={'/cadastro-turma'} element={<CadastroTurma/>}/>
           <Route path={'/'} element={<Home/>}/>
           <Route path={'/cursos'} element={<VisualizacaoCurso/>}/>
+          <Route path={'*'} element={<Erro/>}/>
       </Routes>
     </BrowserRouter>
   );
