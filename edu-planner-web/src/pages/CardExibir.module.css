@@ -51,6 +51,11 @@
     padding: 0.6vw;
     text-decoration: none;
 }
+
+.link:hover, .link2:hover{
+    background-color: #6495ED;
+}
+
 .card{
     border-radius: 2vw;
     text-align: center;
