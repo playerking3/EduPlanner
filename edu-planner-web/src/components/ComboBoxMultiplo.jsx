@@ -17,7 +17,7 @@ function ComboBoxMultiplo({opcoes, label, name}){
     return (
         <div className={css.container}>
             <div className={css.label}>
-                <p>{label} <span className={css.asterisco}>*</span></p>
+                <p className={css.titulop}>{label} <span className={css.asterisco}>*</span></p>
                 <div>
                 <i className={"fa-solid fa-plus fa-xl " + css.icon} onClick={addInput}></i>
                 </div>
