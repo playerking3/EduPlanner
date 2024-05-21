@@ -7,9 +7,10 @@ from controllers.TurmaController import *
 from controllers.ParticipanteController import *
 from utils.VerificaToken import *
 
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config.from_pyfile('configs/config.py')
 db = SQLAlchemy(app)
@@ -19,7 +20,7 @@ db = SQLAlchemy(app)
 def login():
     return UserController().login()
 
-@app.route('/cadastro')
+@app.route('/cadastro', methods=['POST'])
 def cadastro():
     return UserController().cadastro()
 
