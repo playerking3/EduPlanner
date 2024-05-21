@@ -1,11 +1,11 @@
 .amarelo {
     background-color: #FCC602;
-    padding: 50px;
+    padding: 80px;
     margin-bottom: -1vw;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 160px);
 }
 
-.logo2{
+.logo{
     width: 15%;
     height: auto;
 }
@@ -37,6 +37,7 @@
 
 .p {
     font-size: 15px;
+    padding: 20px 0 20px 0px;
 }
 
 .botao {
