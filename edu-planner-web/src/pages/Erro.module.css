@@ -1,7 +1,8 @@
 .amarelo {
     background-color: #FCC602;
-    padding: 60px;
-    height: calc(100vh - 120px);
+    padding: 50px;
+    margin-bottom: -1vw;
+    height: calc(100vh - 100px);
 }
 
 .brancao {
@@ -23,7 +24,7 @@
     margin-top: -1vw;
 }
 
-.num {
+.numero {
     font-size: 90px;
     font-weight: bold;
     margin-bottom: -1vw;
@@ -33,14 +34,13 @@
     font-size: 15px;
 }
 
-.button {
+.botao {
     background-color: #FF6B00;
     color: white;
+    padding: 15px 25px;
     border: none;
     cursor: pointer;
     border-radius: 25px;
-    height: 40px;
-    width: 160px;
 }
 
 .button:hover{
@@ -79,15 +79,18 @@
         height: auto;
     }
 
-    .num {
+    .numero {
         font-size: 16vw;
         margin-bottom: -2vw;
     }
 
     .p {
-        font-size: 8vw;
+        font-size: 6vw;
     }
 
+    .botao {
+        font-size: 4vw;
+    }
 
     .informacoes {
         grid-template-columns: 1fr;
