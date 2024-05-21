@@ -18,6 +18,43 @@ function Cadastro() {
         console.log(nome, cpf, nascimento, senha, funcao)
     }
 
+    async function cadastrarUser (){
+            const data = {
+                'nome':nome,
+                'cpf':cpf,
+                'data_nascimento':nascimento,
+                'password': senha,
+                'cargo': funcao,
+                'foto': foto
+            }
+
+            await fetch(props.api + '/cadastro', {
+                method: 'POST',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+                },
+                body: JSON.stringify(data) // Converta o objeto em uma string JSON
+            })
+                .then((resp) => resp.json())
+                .then(function(data) {
+                    let acert = data // saberemos se deu certo
+                    if (acert.status === true) {
+                        console.log('código enviado')
+                        localStorage.setItem('eValidation', JSON.stringify(acert.resp))
+                        setCharger('none')
+                        setConfirma('flex')
+                    }
+                    else {
+                        setStatusCad(acert.status)
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                })
+    }
+
+
     return(
         <div className={css.container}>
             <SideBar/>

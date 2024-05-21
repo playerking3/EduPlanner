@@ -1,0 +1,93 @@
+{
+    "email": "email do usuário",
+    "password": "senha do usuário"
+}
+
+
+{
+    "status": "success",
+    "token": {
+            "code": "código do token contendo id e cpf",
+            "down": "data de vencimento"
+        }
+}
+
+{
+    "status": "error",
+    "info": "informação do erro"
+}
+
+{
+    "email": "email do usuário",
+    "password": "senha do usuário",
+    "cpf": "cpf do usuário",
+    "nome": "nome do usuário",
+    "cargo": "cargo do usuário",
+    "data_nascimento": "data de nascimento"		
+}
+
+{
+    "token": {
+            "code": "código do token contendo id e cpf",
+            "down": "data de vencimento"
+        }		
+}
+
+{
+    "status": "success",
+}
+
+{
+    "cpf": "cpf do usuário"		
+}
+
+{
+    "code": "código preenchido no input, código mandando no email",
+    "token": {
+        "code": "código do token contendo id e cpf",
+        "down": "data de vencimento"
+    }
+}
+
+{
+    "nome": "nome do curso",
+    "carga_horaria": 40,
+    "descricao": "descrição do processo",
+    "faixa_etaria": "13-14",
+    "categorias": ["culinária", "tecnologia"],
+    "imagem": "imagem em string 64"
+}
+
+{
+    "status": "success",
+    "cursos": [[1, "vendas", 40, "12-14", "{\'1\':\'culinário\'}", "muito legal o curso", "imagem", "ativo")]]
+}
+
+{
+    "status": "success",
+    "turmas": [["nome", "inicio", "fim", "lista-dias", "horas_dia", "hora_inicio"]]
+}
+
+{
+    "nome": "nome",
+    "inicio": "inicio",
+    "fim": "fim",
+    "lista_dias": "lista dos dias",
+    "horas_dia": 5,
+    "hora_inicio": "horário de inicio do curso",
+    "id_sala": 4,
+    "id_cursp": 1
+}
+
+{
+    "lista_participantes": [{"id_participante": 1 ,"id_turma": 4, "id_participante": 6}]
+}
+
+{
+    "status": "success",
+    "salas": [{"id_sala": 3, "nome": "sala de TI", "capacidade": 300}]
+}
+
+{
+    
+}

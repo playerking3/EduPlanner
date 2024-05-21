@@ -7,7 +7,10 @@ from controllers.TurmaController import *
 from controllers.ParticipanteController import *
 from utils.VerificaToken import *
 
+
+
 app = Flask(__name__)
+
 app.config.from_pyfile('configs/config.py')
 db = SQLAlchemy(app)
 
@@ -68,7 +71,7 @@ def cadastrarParticipantes():
         return ParticipanteController().Cadastro()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 @app.route('/editarParticipantes')
-def editarTurma():
+def editarParticipantes():
     if VerificaToken().validaToken():
         return ParticipanteController().editar()
     return jsonify({'status': 'error', 'info': 'invalid token'})
