@@ -45,12 +45,14 @@ function Home() {
                 </div>
 
 
-            <div style={{backgroundColor: "white"}} className={css.ofc}>
-                <p className={css.oferecep}>Cursos que oferecemos</p>
-                <div className={css.todosCard}>
-                    <CardExibir placeholder={'Oficina de bolos'}></CardExibir>
-                    <CardExibir placeholder={'Dramaturgia'}></CardExibir>
-                    <CardExibir placeholder={'Iniciação ao inglês'}></CardExibir>
+            <div style={{backgroundColor: "white"}} className="ofc">
+                <p className="oferecep" style={{textAlign: 'center',fontSize: '2.5vw',fontWeight: 600, padding: '4vw'}}>Cursos que oferecemos</p>
+                <div className='todosCard' style={{display: 'flex',alignItems: 'center',alignContent: 'center',flexWrap: 'wrap',gap: '3vw', justifyContent: 'space-evenly'}}>
+                    <CardExibir placeholder={'Oficina de bolos'} img='img1' categoria={'Presencial'}></CardExibir>
+                    <CardExibir placeholder={'Dramaturgia'} img='img2' categoria={'Presencial'}></CardExibir>
+                    <CardExibir placeholder={'Iniciação ao inglês'} img='img3' categoria={'Presencial'}></CardExibir>
+                    <CardExibir placeholder={'Iniciação ao Espanhol'} img='img7' categoria={'Presencial'}></CardExibir>
+
                 </div>
 
 

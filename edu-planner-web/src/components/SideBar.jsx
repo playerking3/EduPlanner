@@ -3,9 +3,9 @@ import {Link} from "react-router-dom";
 function SideBar(){
     return(
         <div className={css.total}>
-            <div>
+            <Link to={'/editar-pessoa'}>
                 <img src={'fotoperfil.png'} className={css.perfil}/>
-            </div>
+            </Link>
             <div className={css.iconGroup}>
                 <Link to={'/cursos'}><i className={"fa-solid fa-book fa-xl " + css.icon}></i></Link>
                 <Link to={'/dashboard'}><i className={"fa-regular fa-calendar fa-xl " + css.icon}></i></Link>

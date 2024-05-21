@@ -33,7 +33,7 @@ function Cadastro() {
                         <CadastroInput type={'password'} name={'senha'} placeholder={'Senha'} />
                     </div>
                 </div>
-                <BtnEnviar/>
+                <BtnEnviar placeholder='Salvar'/>
             </div>
         </div>
     )

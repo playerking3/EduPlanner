@@ -27,7 +27,7 @@ function CursoBox ({placeholder}){
                     <InputImagem placeholder={'Adicionar imagem'} name={'img'}></InputImagem>
                 </div>
                 <div>
-                    <BtnEnviar></BtnEnviar>
+                    <BtnEnviar placeholder='Salvar'></BtnEnviar>
                 </div>
             </form>
         </div>
