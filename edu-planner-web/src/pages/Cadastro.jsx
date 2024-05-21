@@ -2,8 +2,6 @@ import SideBar from "../components/SideBar";
 import css from './CadastroCurso.module.css'
 import CadastroBox from "../components/CadastroBox";
 import React, {useEffect, useState} from "react";
-import css from './Cadastro.module.css';
-import SideBar from "../components/SideBar";
 import {useNavigate} from "react-router-dom";
 import {rotaSegurity} from "../functions/rotaSegurity";
 
