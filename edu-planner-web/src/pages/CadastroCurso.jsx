@@ -7,7 +7,7 @@ function CadastroCurso(){
         <div className={css.tudo}>
             <SideBar></SideBar>
             <div className={css.conteudo}>
-                <CursoBox></CursoBox>
+                <CursoBox placeholder='Cadastro de curso'></CursoBox>
             </div>
         </div>
     )
