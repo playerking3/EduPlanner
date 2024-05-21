@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from models.Sala import *
-from TurmaSalaController import *
+from controllers.TurmaSalaController import *
 
 class SalaController:
     def Cadastro(self):
