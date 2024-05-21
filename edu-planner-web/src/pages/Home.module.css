@@ -1,6 +1,19 @@
+.todosCard{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 3vw;
+    justify-content: space-evenly;
+}
 
+.oferecep{
+    text-align: center;
+    font-size: 2.5vw;
+    font-weight: 600;
+    padding: 4vw;
+}
 .logo {
-    background-color: #ffdd26;
     padding: 10px;
     align-items: center;
     justify-content: space-between;
@@ -41,12 +54,7 @@
     align-items: center;
 }
 /*----------------------------------------*/
-.oferecep{
-    padding: 3vw;
-    padding-top: 4vw;
-    font-weight: 500;
 
-}
 .coisas{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
@@ -190,13 +198,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.todosCard{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-wrap: wrap;
-    gap: 2vw;
 }

@@ -2,8 +2,8 @@ import css from './Login.module.css'
 import React, {useState} from "react";
 import CadastroInput from "../components/CadastroInput";
 import BtnEnviar from "../components/BtnEnviar";
-import {useEffect, useState} from "react";
-import {json, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 import {rotaSegurity} from "../functions/rotaSegurity";
 
 function Login(props) {
@@ -58,7 +58,7 @@ function Login(props) {
                     <CadastroInput type={'text'} name={'nome'} placeholder={'CPF'}/>
                     <CadastroInput type={'text'} name={'nome'} placeholder={'Senha'}/>
 
-                    <BtnEnviar placeholder='Logar'/>
+                    <BtnEnviar placeholder='Logar' onClick={login}/>
                     <div className={css.infor}>
                         <label>CPF: <span className={css.asterisco}>*</span></label>
                         <input onChange={(event)=> setCpf(event.target.value)} value={cpf}/>
@@ -68,7 +68,6 @@ function Login(props) {
                         <input onChange={(event) => setSenha(event.target.value)} value={senha}/>
                     </div>
                     <div>
-                    <button onClick={login}>Fazer login</button>
                     </div>
                 </div>
             </div>

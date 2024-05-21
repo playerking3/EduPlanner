@@ -2,7 +2,7 @@ import styles from './CardExibir.module.css'
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
-function CardExibir({placeholder, img, descricao, categoria}) {
+function CardExibir({placeholder, img, categoria}) {
     const [card, setCard] = useState(styles.card)
     const [fotos, setFotos] = useState(styles.fotos)
     const [escritas, setEscritas] = useState(styles.escritas)
@@ -34,7 +34,6 @@ function CardExibir({placeholder, img, descricao, categoria}) {
             </div>
             <div className={escritas}>
                 <h4 className={styles.titulo}>{placeholder}</h4>
-                <p className={styles.p}>{descricao}</p>
                 <div className={styles.turmas}>
                     <div className={styles.fichaTurma}><p className={styles.p2}>{categoria}</p></div>
                     <div className={styles.fichaTurma}><p className={styles.p2}>{categoria}</p></div>
@@ -44,15 +43,14 @@ function CardExibir({placeholder, img, descricao, categoria}) {
                 </div>
                 <div className={styles.detalhes}>
                     <div className={styles.infos}>
-                    <i className="fa-regular fa-clock"></i>
+                        <i className="fa-regular fa-clock"></i>
                         <p>Carga Horária: <strong style={{fontWeight:700}}>40 horas</strong></p>
-
                     </div>
                     <div className={none2}>
-                    <div className={styles.infos}>
+                        <div className={styles.infos}>
                             <i className="fa-solid fa-child-reaching"></i>
-                        <p>Faixa Etária: <strong style={{fontWeight: 700}}>8 a 12 anos</strong></p>
-                    </div>
+                            <p>Faixa Etária: <strong style={{fontWeight: 700}}>8 a 12 anos</strong></p>
+                        </div>
                     </div>
                 </div>
                 <div className={none2}>

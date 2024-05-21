@@ -1,9 +1,4 @@
-*{
-    margin: 0
-.oferecep{
-    padding: 3vw;
-    padding-top: 4vw;
-}
+
 .coisas{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
@@ -30,32 +25,10 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 1.5vw;
+    gap: 1vw;
 }
 .divao{
     margin: 8px;
-}
-.link{
-    background: #FFA500;
-    width: 45%;
-    text-align: center;
-    border-radius: 2vw;
-    color: white;
-    padding: 0.6vw;
-    text-decoration: none;
-}
-.link2{
-    background: #FF6B00;
-    width: 45%;
-    text-align: center;
-    border-radius: 2vw;
-    color: white;
-    padding: 0.6vw;
-    text-decoration: none;
-}
-
-.link:hover, .link2:hover{
-    background-color: #6495ED;
 }
 
 .card{
@@ -121,7 +94,6 @@
     gap: 0.5vw;
     overflow-x: auto;
     margin-bottom: 1vw;
-    margin-top: 1vw;
 }
 
 .fichaTurma {
@@ -185,7 +157,7 @@
 }
 
 .escritas{
-    padding: 1.5vw;
+    padding: 2vw;
     text-align: left;
 }
 
@@ -249,3 +221,4 @@
     justify-content: space-around;
     align-items: center;
 }
+
