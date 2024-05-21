@@ -1,99 +1,180 @@
-.oferecep{
-    padding: 3vw;
-    padding-top: 4vw;
+*{
+    margin: 0
 }
-.coisas{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
-    margin: 10px;
-}
-.presencial p{
-    text-align: center;
-}
-.oficinas {
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-    margin: 20px;
-}
-.oficinas2 {
-    border-radius: 20px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-    margin: 70px;
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-}
-.escritas{
-    padding: 2vw;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5vw;
-}
-.divao{
-    margin: 8px;
-}
-.link{
-    background: #FFA500;
-    width: 45%;
-    text-align: center;
-    border-radius: 2vw;
-    color: white;
-    padding: 0.6vw;
-    text-decoration: none;
-}
-.link2{
-    background: #FF6B00;
-    width: 45%;
-    text-align: center;
-    border-radius: 2vw;
-    color: white;
-    padding: 0.6vw;
-    text-decoration: none;
-}
-.card{
-    border-radius: 2vw;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-    width: 35vw;
-}
-.botoes{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1vw;
-    font-size: 1.3vw;
-}
+
 .fotos{
-    background-image: url("../../public/img1.png");
+    background-image: url('/public/foto1.png');
     height: 25vw;
-    background-size: cover;
     background-position: center;
-    border-radius: 2vw 2vw 0 0;
+    background-size: cover;
+    border-radius: 2vw 2vw 0vw 0vw;
+}
+.imgAberto{
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 2vw 0vw 0vw 2vw;
 }
 .titulo{
-    font-size: 2vw;
-    font-weight: 600;
-    margin-top: 0.2vw;
-    margin-bottom: 0.2vw;
+    font-size: 1.8vw;
+    font-weight: 650;
+    margin-bottom: 0.5vw;
+    margin-top: 1vw;
 }
 
-.desc{
-    display: none;
-    text-align: justify;
+.p{
+    margin-bottom: 0.5vw;
+    margin-top: 0.5vw;
+    font-size: 1.2vw;
+}
+.card{
+    width: 33vw;
+    min-height: 40vw;
+    border-radius: 3vw;
+    -webkit-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
 }
 
-.idade{
-    display: none;
+.cardAberto{
+    width: 78.5vw;
+    min-height: 40vw;
+    border-radius: 3vw;
+    box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .turmas{
     display: flex;
-    gap: .5vw;
-    justify-content: space-evenly;
-    text-align: center;
+    gap: 0.5vw;
+    overflow-x: auto;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+}
+
+.fichaTurma {
+    border: 0.3vw solid #FFD700;
+    padding: 0.2vw;
+    padding-right: 0.9vw;
+    padding-left: 0.9vw;
+    margin-bottom: 1vw;
+    margin-top: 0.7vw;
+    border-radius: 5vw;
     font-size: 1.3vw;
-    overflow-x: scroll;
-    padding-bottom: 0.5vw;
+    font-weight: 600;
+    height: 2vw;
+    display: flex;
+    align-items: center;
+    min-width: 6.8vw;
+}
+
+.p2{
+    width: 6vw;
+    text-align: center;
+    height: auto;
+    font-weight: 600;
+}
+.botao1{
+    display: flex;
+    justify-content: center;
+    background: #FFA500;
+    color: white;
+    border-radius: 5vw;
+    padding-bottom: 0.7vw;
+    padding-top: 0.7vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    font-size: 1.3vw;
+    cursor: pointer;
+}
+.botao2{
+    display: flex;
+    justify-content: center;
+    background: #FF6B00;
+    color: white;
+    border-radius: 5vw;
+    padding-bottom: 0.7vw;
+    padding-top: 0.7vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    font-size: 1.3vw;
+    cursor: pointer;
+
+}
+
+.botao1:hover,
+.botao2:hover,
+.botao3:hover{
+    -webkit-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+}
+
+.escritas{
+    padding: 1.5vw;
+    text-align: left;
+}
+
+.escritasAberto{
+    padding: 2.5vw;
+    text-align: left;
+}
+
+.link{
+    text-decoration: none;
+    width: 14vw;
+}
+.detalhes{
+    display: flex;
+    gap: 1vw;
+    flex-direction: column;
+    margin-bottom: .5vw;
+}
+.none{
+    text-decoration: none;
+    width: 14vw;
+    display: none;
+}
+.noneAberto{
+    text-decoration: none;
+    width: 14vw;
+    display: block;
+}
+.infos i{
+    font-size: 2.2vw;
+}
+.infos{
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}
+
+.infos p{
+    font-size: 1.4vw;
+    font-weight: 600;
+}
+.none2{
+    display: none;
+}
+.none2Aberto{
+    display: block;
+}
+.blockAberto{
+    display: none;
+}
+.desc{
+    font-size: 1.2vw;
+    margin-top: 3vw;
+    margin-bottom: 2vw;
+    font-weight: 600;
+    text-align: justify;
+
+}
+.botoes{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

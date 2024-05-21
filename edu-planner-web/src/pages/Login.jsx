@@ -1,5 +1,7 @@
 import css from './Login.module.css'
-import {useState} from "react";
+import React, {useState} from "react";
+import CadastroInput from "../components/CadastroInput";
+import BtnEnviar from "../components/BtnEnviar";
 
 function Login() {
     const [cpf, setCpf] = useState('')
@@ -15,17 +17,10 @@ function Login() {
                     <img src={"./logo.png"} alt="Logo"/>
                 </div>
                 <div className={css.form}>
-                    <div className={css.infor}>
-                        <label>CPF: <span className={css.asterisco}>*</span></label>
-                        <input onChange={(event)=> setCpf(event.target.value)} value={cpf}/>
-                    </div>
-                    <div className={css.infor}>
-                        <label>Senha: <span className={css.asterisco}>*</span></label>
-                        <input onChange={(event) => setSenha(event.target.value)} value={senha}/>
-                    </div>
-                    <div>
-                    <button>Fazer login</button>
-                    </div>
+                    <CadastroInput type={'text'} name={'nome'} placeholder={'CPF'}/>
+                    <CadastroInput type={'text'} name={'nome'} placeholder={'Senha'}/>
+
+                    <BtnEnviar placeholder='Logar'/>
                 </div>
             </div>
         </div>

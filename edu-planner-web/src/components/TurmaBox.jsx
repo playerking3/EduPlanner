@@ -60,7 +60,7 @@ function TurmaBox (){
                     </div>
                 </div>
                 <div>
-                    <BtnEnviar funcao={calculaFim}></BtnEnviar>
+                    <BtnEnviar placeholder='Salvar' funcao={calculaFim}></BtnEnviar>
                 </div>
             </form>
         </div>

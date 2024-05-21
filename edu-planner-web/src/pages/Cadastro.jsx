@@ -72,7 +72,7 @@ function Cadastro(props) {
                         <CadastroInput type={'password'} name={'senha'} placeholder={'Senha'} valor={senha} setar={setSenha}/>
                     </div>
                 </div>
-                <BtnEnviar funcao={enviar}/>
+                <BtnEnviar  placeholder='Salvar' funcao={enviar}/>
             </div>
         </div>
     )

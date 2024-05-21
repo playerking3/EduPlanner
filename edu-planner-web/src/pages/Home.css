@@ -41,6 +41,8 @@
 .oferecep{
     padding: 3vw;
     padding-top: 4vw;
+    font-weight: 500;
+
 }
 .coisas{
     display: grid;
