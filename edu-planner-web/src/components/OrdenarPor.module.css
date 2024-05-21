@@ -1,0 +1,10 @@
+.ordenarPor {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.setabaixo {
+    width: 2.5%;
+    height: 2.5%;
+    margin: 10px;
+}
