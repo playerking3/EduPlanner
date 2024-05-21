@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, {useEffect, useState} from "react";
 import css from './Cadastro.module.css';
 import CadastroInput from "../components/CadastroInput";
 import InputImagem from "../components/InputImagem";
@@ -6,6 +6,7 @@ import BtnEnviar from "../components/BtnEnviar";
 import SideBar from "../components/SideBar";
 import ComboBox from "../components/ComboBox";
 import {useNavigate} from "react-router-dom";
+import {rotaSegurity} from "../functions/rotaSegurity";
 
 function Cadastro(props) {
     const [nome, setNome] = useState('')
@@ -16,6 +17,11 @@ function Cadastro(props) {
     const [senha, setSenha] = useState('')
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+    }, []);
+
     async function enviar(){
         console.log(nome, cpf, nascimento, senha, funcao)
 
