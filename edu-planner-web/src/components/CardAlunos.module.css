@@ -1,0 +1,60 @@
+.alunos {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.fotoperfil {
+    width: 100px;
+}
+
+.identificacao {
+    font-weight: bold;
+    font-size: 20px;
+}
+.setalado {
+    margin-top: 100px;
+    padding-left: 10px;
+}
+.usuarioazul {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 250px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+.usuarioazul {
+    background-image: url("../../public/azul.png");
+    background-position: center;
+}
+
+.lapislixo {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.lapislixo img {
+    width: 15px;
+}
+
+.lapislixo button {
+    border: none;
+    border-radius: 50%;
+    background-color: #FF6B00;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.lapislixo button:hover {
+    background-color: #FF8C42;
+}

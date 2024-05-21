@@ -6,11 +6,8 @@ import random
 
 class UserController:
     def login(self):
-        # cpf = request.json.get('cpf')
-        # password = request.json.get('password')
-        cpf = 40404044052
-        password = 'Teste123-'
-
+        cpf = request.json.get('cpf')
+        password = request.json.get('password')
 
         user = User(cpf, password)
         infos = user.login()
@@ -18,8 +15,8 @@ class UserController:
             if infos[1] == Criptografia().hashSenha(password + infos[2]):
                 token = Criptografia().gerarToken(infos[0], infos[3])
                 return jsonify({'status': 'success', 'token': token})
-            return jsonify({'status': 'usuario ou senha invalido'})
-        return jsonify({'status': 'usuario nao encontrado'})
+            return jsonify({'status': 'error', 'info': 'usuario ou senha invalido'})
+        return jsonify({'status': 'error', 'info': 'usuario nao encontrado'})
 
     def cadastro(self):
         cpf = request.json.get('cpf')

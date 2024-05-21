@@ -1,5 +1,76 @@
 *{
     margin: 0
+.oferecep{
+    padding: 3vw;
+    padding-top: 4vw;
+}
+.coisas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    margin: 10px;
+}
+.presencial p{
+    text-align: center;
+}
+.oficinas {
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+.oficinas2 {
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    margin: 70px;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+.escritas{
+    padding: 2vw;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vw;
+}
+.divao{
+    margin: 8px;
+}
+.link{
+    background: #FFA500;
+    width: 45%;
+    text-align: center;
+    border-radius: 2vw;
+    color: white;
+    padding: 0.6vw;
+    text-decoration: none;
+}
+.link2{
+    background: #FF6B00;
+    width: 45%;
+    text-align: center;
+    border-radius: 2vw;
+    color: white;
+    padding: 0.6vw;
+    text-decoration: none;
+}
+
+.link:hover, .link2:hover{
+    background-color: #6495ED;
+}
+
+.card{
+    border-radius: 2vw;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    width: 35vw;
+}
+.botoes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    font-size: 1.3vw;
 }
 
 .fotos{

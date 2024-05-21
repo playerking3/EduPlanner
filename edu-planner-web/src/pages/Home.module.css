@@ -1,5 +1,6 @@
 
 .logo {
+    background-color: #ffdd26;
     padding: 10px;
     align-items: center;
     justify-content: space-between;
@@ -24,6 +25,8 @@
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: 40vh;
     margin-top: -1vw;
 }
 .divona{

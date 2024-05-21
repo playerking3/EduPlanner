@@ -16,7 +16,7 @@ app.config.from_pyfile('configs/config.py')
 db = SQLAlchemy(app)
 
 #-------rotas de usuário-----------------
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
     return UserController().login()
 
@@ -110,6 +110,13 @@ def getSala():
     if VerificaToken().validaToken():
         return SalaController().getList()
     return jsonify({'status': 'error', 'info': 'invalid token'})
+
+#----------proteção de rota---------------
+@app.route('/protegeRota', methods=['POST'])
+def protegeRota():
+    if VerificaToken().validaToken():
+        return jsonify({'status': 'success'})
+    return jsonify({'status': 'invalid'})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
