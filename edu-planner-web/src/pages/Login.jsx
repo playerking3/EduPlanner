@@ -13,7 +13,7 @@ function Login(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        rotaSegurity(props.api, localStorage.getItem('token'), 'externo', navigate)
+        rotaSegurity(props.api, localStorage.getItem('token'),navigate, 'externo')
     }, []);
 
    async function login () {

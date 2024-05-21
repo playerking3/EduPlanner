@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 
-export async function rotaSegurity (api,token, tipo = 'interno', navigate) {
+export async function rotaSegurity (api,token, navigate, tipo = 'interno') {
 
     var data = {
         'token': JSON.parse(token)
@@ -24,6 +24,7 @@ export async function rotaSegurity (api,token, tipo = 'interno', navigate) {
                 }
             }else{
                 localStorage.removeItem('token')
+                navigate('/login')
             }
             return false
         })
