@@ -22,31 +22,28 @@ class UserController:
         return jsonify({'status': 'usuario nao encontrado'})
 
     def cadastro(self):
-        cpf = 40404044052
-        password = 'Teste123-'
-        cargo = 'professor'
-        # cpf = request.json.get('cpf')
-        # password = request.json.get('password')
-        # nome = request.json.get('nome')
-        # email = request.json.get('email')
-        # cargo = request.json.get('cargo')
-        # nascimento = request.json.get('data_nascimento')
+        cpf = request.json.get('cpf')
+        password = request.json.get('password')
+        nome = request.json.get('nome')
+        email = request.json.get('email')
+        cargo = request.json.get('cargo')
+        nascimento = request.json.get('data_nascimento')
 
         salt = random.randint(1000000000, 9999999999999)
         password = Criptografia().hashSenha(password + str(salt))
         user = User(cpf, password)
         check = user.checkUser()
         if check == False:
-            response = user.cadastro('bia', 'bia@gmail.com', 'professor', '07/06/2005', salt)
+            response = user.cadastro(nome, email, cargo, nascimento, salt)
             if response:
                 id = user.checkUser()
                 print(id, 'id aqui')
                 if id:
                     token = Criptografia().gerarToken(id, cargo)
                     return jsonify({'status': 'success', 'token': token})
-                return jsonify({'status': 'error', 'infos': 'usuario nao cadastrado'})
+                return jsonify({'status': 'error', 'info': 'usuario nao cadastrado'})
             return jsonify({'status': 'error', 'info': response})
-        return jsonify({'status': 'usuario ja cadastrado'})
+        return jsonify({'status': 'error', 'info': 'usuario ja cadastrado'})
 
     def esqueciSenha(self):
         # cpf = request.json.get('cpf')

@@ -5,8 +5,9 @@ import InputImagem from "../components/InputImagem";
 import BtnEnviar from "../components/BtnEnviar";
 import SideBar from "../components/SideBar";
 import ComboBox from "../components/ComboBox";
+import {useNavigate} from "react-router-dom";
 
-function Cadastro() {
+function Cadastro(props) {
     const [nome, setNome] = useState('')
     const [funcao, setFuncao] = useState('')
     const [foto, setFoto] = useState('')
@@ -14,44 +15,40 @@ function Cadastro() {
     const [nascimento, setNascimento] = useState('')
     const [senha, setSenha] = useState('')
 
-    function enviar(){
+    const navigate = useNavigate();
+    async function enviar(){
         console.log(nome, cpf, nascimento, senha, funcao)
-    }
 
-    async function cadastrarUser (){
-            const data = {
-                'nome':nome,
-                'cpf':cpf,
-                'data_nascimento':nascimento,
-                'password': senha,
-                'cargo': funcao,
-                'foto': foto
-            }
+        const data = {
+            'nome':nome,
+            'cpf':cpf,
+            'data_nascimento':nascimento,
+            'password': senha,
+            'cargo': funcao,
+            'foto': foto
+        }
 
-            await fetch(props.api + '/cadastro', {
-                method: 'POST',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
-                },
-                body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        await fetch(props.api + '/cadastro', {
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                if (acert.status == 'success') {
+                    navigate('/dashboard')
+                }
+                else {
+                    alert(acert.info)
+                }
             })
-                .then((resp) => resp.json())
-                .then(function(data) {
-                    let acert = data // saberemos se deu certo
-                    if (acert.status === true) {
-                        console.log('código enviado')
-                        localStorage.setItem('eValidation', JSON.stringify(acert.resp))
-                        setCharger('none')
-                        setConfirma('flex')
-                    }
-                    else {
-                        setStatusCad(acert.status)
-                    }
-                })
-                .catch(function(error) {
-                    console.log(error);
-                })
+            .catch(function(error) {
+                console.log(error);
+            })
     }
 
 
