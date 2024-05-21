@@ -1,11 +1,15 @@
 .amarelo {
     background-color: #FCC602;
-    height: calc(100vh);
+    padding: 80px;
+    margin-bottom: -1vw;
+    height: calc(100vh - 160px);
 }
-.logo2{
+
+.logo{
     width: 15%;
     height: auto;
 }
+
 .brancao {
     background-color: white;
     padding: 4vw;
@@ -25,26 +29,24 @@
     margin-top: -1vw;
 }
 
-.num {
-    font-size: 7vw;
+.numero {
+    font-size: 90px;
     font-weight: bold;
     margin-bottom: -1vw;
 }
 
 .p {
     font-size: 15px;
+    padding: 20px 0 20px 0px;
 }
 
-.button2 {
+.botao {
     background-color: #FF6B00;
     color: white;
+    padding: 15px 25px;
     border: none;
     cursor: pointer;
     border-radius: 25px;
-    width: 75%;
-    padding: 1vw;
-    font-size: 1vw;
-    font-weight: 600;
 }
 
 .button:hover{
@@ -83,15 +85,18 @@
         height: auto;
     }
 
-    .num {
+    .numero {
         font-size: 16vw;
         margin-bottom: -2vw;
     }
 
     .p {
-        font-size: 8vw;
+        font-size: 6vw;
     }
 
+    .botao {
+        font-size: 4vw;
+    }
 
     .informacoes {
         grid-template-columns: 1fr;
