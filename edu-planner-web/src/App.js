@@ -16,7 +16,7 @@ import Erro from "./pages/Erro";
 import {useState} from "react";
 
 function App() {
-    const [api, setApi] = useState('http://192.168.1.134:5000/')
+    const [api, setApi] = useState('http://192.168.0.131:5000')
   return (
     <BrowserRouter>
       <Routes>

@@ -6,7 +6,7 @@ import InputImagem2 from "./InputImagem2";
 import BtnEnviar from "./BtnEnviar";
 import ComboBox from "./ComboBox";
 
-function CadastroBox ({placeholder}){
+function CadastroBox ({placeholder, nome, setNome, funcao, setFuncao, cpf, setCpf, senha, setSenha, nascimento, setNascimento, foto, setFoto, email, setEmail, enviar}){
     return(
         <div className={css.box}>
             <div>
@@ -15,21 +15,21 @@ function CadastroBox ({placeholder}){
             <form>
                 <div className={css.formContainer}>
                     <div>
-                        <CadastroInput placeholder={'Nome'} type={'text'} name={'nomeUser'}/>
-                        <CadastroInput placeholder={'Função'} type={'text'} name={'nomeUser'}/>
+                        <CadastroInput placeholder={'Nome'} type={'text'} name={'nomeUser'} setar={setNome} valor={nome}/>
+                        <CadastroInput placeholder={'Função'} type={'text'} name={'nomeUser'} setar={setFuncao} valor={funcao}/>
                         <InputImagem2 placeholder={'Adicionar imagem'} name={'img'}></InputImagem2>
 
                     </div>
                     <div>
-                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'}/>
-                        <CadastroInput placeholder={'Data de nascimento'} type={'text'} name={'nascimento'}/>
-                        <CadastroInput placeholder={'Email'} type={'text'} name={'email'}/>
-                        <CadastroInput placeholder={'Senha'} type={'text'} name={'senha'}/>
+                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf}/>
+                        <CadastroInput placeholder={'Data de nascimento'} type={'text'} name={'nascimento'} setar={setNascimento} valor={nascimento}/>
+                        <CadastroInput placeholder={'Email'} type={'text'} name={'email'} setar={setEmail} valor={enviar}/>
+                        <CadastroInput placeholder={'Senha'} type={'text'} name={'senha'} setar={setSenha} valor={senha}/>
 
                     </div>
                 </div>
                 <div>
-                    <BtnEnviar placeholder='Salvar'></BtnEnviar>
+                    <BtnEnviar placeholder='Salvar' funcao={enviar}></BtnEnviar>
                 </div>
             </form>
         </div>
