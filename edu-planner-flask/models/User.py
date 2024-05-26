@@ -1,6 +1,6 @@
 from configs.Conection import *
 class User:
-    def __init__(self, cpf, password = ''):
+    def __init__(self, cpf = '', password = ''):
         self.cpf = cpf
         self.password = password
 
@@ -26,5 +26,19 @@ class User:
         query = f"SELECT id_usuario, email FROM `usuario` WHERE cpf = '{self.cpf}';"
         conexao = Conection()
         exis = conexao.get_query(query)
+        print(exis)
+        return exis
+
+    def getAlunos(self):
+        query = f"SELECT nome FROM `usuario` WHERE cargo = 'aluno';"
+        conexao = Conection()
+        exis = conexao.get_list(query)
+        print(exis)
+        return exis
+
+    def getProfessores(self):
+        query = f"SELECT nome FROM `usuario` WHERE cargo = 'professor';"
+        conexao = Conection()
+        exis = conexao.get_list(query)
         print(exis)
         return exis

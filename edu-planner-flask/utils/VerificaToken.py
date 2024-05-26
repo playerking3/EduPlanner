@@ -4,7 +4,7 @@ from dateutil import parser as date_parser
 from flask import request
 
 class VerificaToken:
-    def validaToken(self, cord = False):
+    def validaToken(self):
         token = request.json.get('token')
         valid = Criptografia().decode(token)
         print(valid)
@@ -14,6 +14,4 @@ class VerificaToken:
             if day > vence:
                 print('venceu')
                 return False
-            if cord:
-                pass
         return valid

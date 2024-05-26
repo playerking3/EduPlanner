@@ -26,7 +26,7 @@ function App() {
           <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />
           <Route path={'/editar-pessoa'} element={<Edicao/>}/>
           <Route path={'dashboard'} element={<Dashboard/>}/>
-          <Route path={'/cadastro-turma'} element={<CadastroTurma/>}/>
+          <Route path={'/cadastro-turma'} element={<CadastroTurma api={api}/>}/>
           <Route path={'/'} element={<Home/>}/>
           <Route path={'/cursos'} element={<VisualizacaoCurso/>}/>
           <Route path={'*'} element={<Erro/>}/>

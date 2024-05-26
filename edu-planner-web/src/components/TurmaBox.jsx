@@ -6,10 +6,12 @@ import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 import Periodicidade from "./Periodicidade";
 import ComboBoxMultiplo from "./ComboBoxMultiplo";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import periodicidade from "./Periodicidade";
+import {rotaSegurity} from "../functions/rotaSegurity";
+import {useNavigate} from "react-router-dom";
 
-function TurmaBox (){
+function TurmaBox (props){
     const [duracaoCurso, setDuracaoCurso] = useState(40)
     const [nome, setNome] = useState('')
     const [inicio,setInicio] = useState('')
@@ -19,6 +21,47 @@ function TurmaBox (){
     const [alunos, setAlunos] = useState('')
     const [professores, setProfessores] = useState('')
     const [salas, setSalas] = useState('')
+    const [opProfessores, setOpProfessores] = useState([])
+    const [opAlunos, setOpAlunos] = useState([])
+    const [opSalas, setOpSalas] = useState([])
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+        getInfos()
+    }, []);
+
+    async function getInfos (){
+        const data = {
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
+
+        await fetch(props.api + '/getInfos', {
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                console.log(acert)
+                if (acert.status == 'success') {
+                    setAlunos([...acert.infos.alunos])
+                    setProfessores([...acert.infos.professores])
+                    setSalas([...acert.infos.salas])
+                }
+                else {
+                    alert(acert.info)
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
 
     function calculaFim(){
         let msPorDia = 24 * 60 * 60 * 1000
@@ -48,14 +91,14 @@ function TurmaBox (){
                     <div>
                         <CadastroInput placeholder={'Nome da turma'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome}/>
                         <Periodicidade selectedButtons={periodicidade} setSelectedButtons={setPeriodicidade}></Periodicidade>
-                        <InputMultiplo label={'Alunos/Participantes'}></InputMultiplo>
-                        <ComboBoxMultiplo name={'salas'} label={'Salas alocadas'} opcoes={['sala1', 'sala2','sala3']}/>
+                        <ComboBoxMultiplo name={'alunos'} label={'Alunos/Participantes'} opcoes={alunos} list={alunos} setList={setAlunos}></ComboBoxMultiplo>
+                        <ComboBoxMultiplo name={'salas'} label={'Salas alocadas'} opcoes={salas} list={salas} setList={setSalas}/>
                     </div>
                     <div>
                         <CadastroInput placeholder={'Data: Início'} type={'date'} name={'cargaHoraria'} valor={inicio} setar={setInicio}/>
                         <CadastroInput placeholder={'Duração da aula'} type={'text'} name={'nomeCurso'} setar={setDuracaoAula} valor={duracaoAula}/>
-                        <CadastroInput placeholder={'Horário de aula'} type={'text'} name={'nomeCurso'}/>
-                        <ComboBoxMultiplo name={'professor'} label={'Professor/orientador'} opcoes={['Igor Cacerez', 'Laís Sinatra', 'Bruno Torrezan']}/>
+                        <CadastroInput placeholder={'Horário de aula'} type={'text'} name={'nomeCurso'} setar={setHorario} valor={horario}/>
+                        <ComboBoxMultiplo name={'professor'} label={'Professor/orientador'} opcoes={professores} list={professores} setList={setProfessores}/>
 
                     </div>
                 </div>
