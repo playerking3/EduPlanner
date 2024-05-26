@@ -22,9 +22,9 @@ function CadastroBox ({placeholder, nome, setNome, funcao, setFuncao, cpf, setCp
                     </div>
                     <div>
                         <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf}/>
-                        <CadastroInput placeholder={'Data de nascimento'} type={'text'} name={'nascimento'} setar={setNascimento} valor={nascimento}/>
-                        <CadastroInput placeholder={'Email'} type={'text'} name={'email'} setar={setEmail} valor={enviar}/>
-                        <CadastroInput placeholder={'Senha'} type={'text'} name={'senha'} setar={setSenha} valor={senha}/>
+                        <CadastroInput placeholder={'Data de nascimento'} type={'date'} name={'nascimento'} setar={setNascimento} valor={nascimento}/>
+                        <CadastroInput placeholder={'Email'} type={'text'} name={'email'} setar={setEmail} valor={email}/>
+                        <CadastroInput placeholder={'Senha'} type={'password'} name={'senha'} setar={setSenha} valor={senha}/>
 
                     </div>
                 </div>

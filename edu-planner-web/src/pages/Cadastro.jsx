@@ -29,7 +29,8 @@ function Cadastro(props) {
             'data_nascimento':nascimento,
             'password': senha,
             'cargo': funcao,
-            'foto': foto
+            'foto': foto,
+            'email': email
         }
 
         await fetch(props.api + '/cadastro', {
