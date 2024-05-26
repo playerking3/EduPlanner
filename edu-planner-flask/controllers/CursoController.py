@@ -5,7 +5,7 @@ class CursoController:
     def CadastroCurso(self):
         nome = request.json.get('nome')
         carga_horaria = request.json.get('carga_horaria')
-        descrição = request.json.get('descrição')
+        descricao = request.json.get('descricao')
         faixa_etaria = request.json.get('faixa_etaria')
         imagem = request.json.get('imagem')
         categorias = request.json.get('categorias')
@@ -13,9 +13,9 @@ class CursoController:
         curso = Curso()
         print(curso.getCurso(nome))
         if curso.getCurso(nome) == False:
-            response = curso.createCurso(nome, carga_horaria, faixa_etaria, categorias, descrição, imagem)
-            return jsonify({'status': response})
-        return jsonify({'status': 'curso de mesmo nome ja cadastrado'})
+            response = curso.createCurso(nome, carga_horaria, faixa_etaria, categorias, descricao)
+            return jsonify({'status': 'success'})
+        return jsonify({'status': 'error', 'info': 'curso de mesmo nome ja cadastrado'})
 
     def editarCurso(self):
         nome = request.json.get('nome')

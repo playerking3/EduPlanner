@@ -20,7 +20,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path={'/cadastro-curso'} element={<CadastroCurso />}/>
+          <Route path={'/cadastro-curso'} element={<CadastroCurso api={api} />}/>
           <Route path={'/editar-curso'} element={<EditarCurso/>}/>
           <Route path={'/login'} element={<Login api={api}/>}/>
           <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />

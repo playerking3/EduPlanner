@@ -5,7 +5,7 @@ import InputTextArea from "./InputTextArea";
 import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 
-function CursoBox ({placeholder}){
+function CursoBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categorias, setCategorias, faixaE, setFaixaE, descricao, setDescricao, imagem, setImagem}){
     return(
         <div className={css.box}>
             <div>
@@ -14,20 +14,20 @@ function CursoBox ({placeholder}){
             <form>
                 <div className={css.formContainer}>
                     <div>
-                        <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'}/>
-                        <InputMultiplo label={'Categorias'}></InputMultiplo>
+                        <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome}/>
+                        <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias}></InputMultiplo>
                     </div>
                     <div>
-                        <CadastroInput placeholder={'Carga horária por dia'} type={'text'} name={'cargaHoraria'}/>
-                        <InputTextArea placeholder={'Descrição'} name={'descricao'}></InputTextArea>
+                        <CadastroInput placeholder={'Carga horária por dia'} type={'text'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH}/>
+                        <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao}></InputTextArea>
                     </div>
                 </div>
                 <div className={css.formContainer}>
-                    <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'nomeCurso'}/>
+                    <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'nomeCurso'} setar={setFaixaE} valor={faixaE}/>
                     <InputImagem placeholder={'Adicionar imagem'} name={'img'}></InputImagem>
                 </div>
                 <div>
-                    <BtnEnviar placeholder='Salvar'></BtnEnviar>
+                    <BtnEnviar placeholder='Salvar' funcao={enviar}></BtnEnviar>
                 </div>
             </form>
         </div>

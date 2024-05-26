@@ -4,12 +4,16 @@ from dateutil import parser as date_parser
 from flask import request
 
 class VerificaToken:
-    def validaToken(self):
+    def validaToken(self, cord = False):
         token = request.json.get('token')
         valid = Criptografia().decode(token)
+        print(valid)
         if valid:
             vence = datetime.strptime(valid['vencimento'], "%Y-%m-%d")
             day = datetime.today()
             if day > vence:
+                print('venceu')
                 return False
+            if cord:
+                pass
         return valid

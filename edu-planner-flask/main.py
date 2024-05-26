@@ -29,7 +29,7 @@ def esqueci():
     return UserController().esqueciSenha()
 
 #------rotas de curso-------------------
-@app.route('/cadastrarCurso')
+@app.route('/cadastrarCurso', methods=['POST'])
 def cadastraCurso():
     if VerificaToken().validaToken():
         return CursoController().CadastroCurso()

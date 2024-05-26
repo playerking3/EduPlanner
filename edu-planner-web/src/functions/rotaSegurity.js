@@ -18,7 +18,7 @@ export async function rotaSegurity (api,token, navigate, tipo = 'interno') {
         .then(function(data) {
             let acert = data // saberemos se deu certo
             console.log(acert)
-            if (acert.status == 'invalid') {
+            if (acert.status == 'success') {
                 if (tipo == 'externo'){
                     navigate('/dashboard')
                 }
