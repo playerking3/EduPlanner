@@ -6,6 +6,7 @@ from controllers.SalaController import *
 from controllers.TurmaController import *
 from controllers.ParticipanteController import *
 from controllers.SalaAlunoProfessorController import *
+from controllers.TurmaParticipantesSalaController import *
 from utils.VerificaToken import *
 
 from flask_cors import CORS
@@ -47,7 +48,7 @@ def excluiCurso():
 @app.route('/cadastrarTurma', methods=['POST'])
 def cadastrarTurma():
     if VerificaToken().validaToken():
-        return TurmaController().Cadastro()
+        return TurmaParticipantesSalaController().cadastrarTurma()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 @app.route('/editarCurso')
 def editarTurma():
