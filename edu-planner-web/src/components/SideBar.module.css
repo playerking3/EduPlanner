@@ -101,3 +101,106 @@
 .icon{
     color: white;
 }
+
+@media (max-width: 885px) {
+    .total{
+        max-height: 99svh;
+        width: 8vw;
+    }
+
+    .total:hover p {
+        font-size: 3vw !important;
+    }
+    .total:hover .links2 p {
+        font-size: 3vw !important;
+    }
+
+    .total:hover{
+        width: 40vw;
+    }
+    .total:hover p{
+        font-size: 3.7vw;
+    }
+    .total:hover .links .risco,
+    .total:hover .links2 .risco{
+        width: .5vw !important;
+        height: 5vw !important;
+        margin-right: .5vw;
+        margin-left: .5vw;
+    }
+    .total .perfil{
+        width: 5vw;
+        margin-top: 5vw;
+        border-radius: 100px;
+        border: solid 2px white;
+        transition: 1s;
+    }
+    .fa-xl {
+        font-size: 2.5em !important;
+    }
+    .links{
+        margin-top: 3em;
+        font-size: 3vw;
+    }
+    .total:hover .perfil{
+        width: 15vw;
+        margin-top: 10vw;
+        border-radius: 100px;
+        border: solid 2px white;
+        transition: 1s;
+    }
+    .total .links2 {
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+        text-decoration: none;
+        transition: 1s;
+        margin-top: 1.8em;
+        font-size: 2.4em !important;
+    }
+    .iconGroup{
+        margin-top: -8vw;
+    }
+}
+
+@media (max-width: 429px) {
+    .total{
+        max-height: 99svh;
+        width: 15vw;
+    }
+
+    .total:hover{
+        width: 40vw;
+    }
+    .total:hover p{
+        font-size: 3.7vw;
+    }
+    .total:hover .links2 p{
+        font-size: 3.7vw !important;
+    }
+
+    .total:hover .links .risco,
+    .total:hover .links2 .risco{
+        width: .5vw !important;
+        height: 5vw !important;
+        margin-right: .5vw;
+        margin-left: .5vw;
+    }
+    .total .perfil{
+        width: 10vw;
+        margin-top: 5vw;
+        border-radius: 100px;
+        border: solid 2px white;
+        transition: 1s;
+    }
+    .total:hover .perfil{
+        width: 22vw;
+        margin-top: 10vw;
+        border-radius: 100px;
+        border: solid 2px white;
+        transition: 1s;
+    }
+    .iconGroup{
+        margin-top: -8vw;
+    }
+}

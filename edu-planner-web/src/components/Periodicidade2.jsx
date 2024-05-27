@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import css from './Periodicidade2.module.css'
+import './Responsivo.module.css'
 function Periodicidade2({selectedButtons, setSelectedButtons}) {
 
     const handleButtonClick = (buttonIndex, event) => {
