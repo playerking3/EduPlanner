@@ -97,7 +97,7 @@ def getParticipantes():
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
 #------rotas de sala-------------------
-@app.route('/cadastrarSala')
+@app.route('/cadastrarSala', methods=['POST'])
 def cadastrarSala():
     if VerificaToken().validaToken():
         return SalaController().Cadastro()

@@ -1,8 +1,8 @@
 from configs.Conection import *
 
 class Sala:
-    def create(self, nome, capacidade):
-        query = f'INSERT INTO sala (nome, capacidade) VALUES ("{nome}", {capacidade});'
+    def create(self, nome, capacidade, numero_sala, descricao):
+        query = f'INSERT INTO sala (nome, capacidade, numero_sala, descricao) VALUES ("{nome}", {capacidade}, {numero_sala}, "{descricao}");'
         conexao = Conection()
         response = conexao.add_query(query)
         return response
