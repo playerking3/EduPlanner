@@ -55,20 +55,10 @@ function Login(props) {
                     <img src={"./logo.png"} alt="Logo"/>
                 </div>
                 <div className={css.form}>
-                    <CadastroInput type={'text'} name={'nome'} placeholder={'CPF'}/>
-                    <CadastroInput type={'text'} name={'nome'} placeholder={'Senha'}/>
+                    <CadastroInput type={'text'} name={'nome'} placeholder={'CPF'} setar={setCpf} valor={cpf}/>
+                    <CadastroInput type={'text'} name={'nome'} placeholder={'Senha'} setar={setSenha} valor={senha}/>
 
-                    <BtnEnviar placeholder='Logar' onClick={login}/>
-                    <div className={css.infor}>
-                        <label>CPF: <span className={css.asterisco}>*</span></label>
-                        <input onChange={(event)=> setCpf(event.target.value)} value={cpf}/>
-                    </div>
-                    <div className={css.infor}>
-                        <label>Senha: <span className={css.asterisco}>*</span></label>
-                        <input onChange={(event) => setSenha(event.target.value)} value={senha}/>
-                    </div>
-                    <div>
-                    </div>
+                    <BtnEnviar placeholder='Logar' funcao={login}/>
                 </div>
             </div>
         </div>

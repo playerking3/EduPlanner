@@ -1,8 +1,8 @@
 from configs.Conection import *
 
 class Curso:
-    def createCurso(self, nome, carga_horaria, faixa_etaria, categorias, descricao, imagem):
-        query = f'INSERT INTO curso (nome, carga_horaria, faixa_etaria, categorias, descricao, image, status) VALUES ("{nome}", {carga_horaria}, "{faixa_etaria}", "{categorias}", "{descricao}", "{imagem}", "ativo");'
+    def createCurso(self, nome, carga_horaria, faixa_etaria, categorias, descricao):
+        query = f'INSERT INTO curso (nome, carga_horaria, faixa_etaria, categorias, descricao, status) VALUES ("{nome}", {carga_horaria}, "{faixa_etaria}", "{categorias}", "{descricao}", "ativo");'
         conexao = Conection()
         response = conexao.add_query(query)
         return response

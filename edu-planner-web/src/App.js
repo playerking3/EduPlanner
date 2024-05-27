@@ -17,11 +17,11 @@ import {useState} from "react";
 import CadastroSala from "./pages/CadastroSala";
 
 function App() {
-    const [api, setApi] = useState('http://192.168.1.134:5000/')
+    const [api, setApi] = useState('http://192.168.0.131:5000')
   return (
     <BrowserRouter>
       <Routes>
-          <Route path={'/cadastro-curso'} element={<CadastroCurso />}/>
+          <Route path={'/cadastro-curso'} element={<CadastroCurso api={api} />}/>
           <Route path={'/editar-curso'} element={<EditarCurso/>}/>
           <Route path={'/login'} element={<Login api={api}/>}/>
           <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />

@@ -12,6 +12,7 @@ function Cadastro(props) {
     const [cpf,setCpf] = useState('')
     const [nascimento, setNascimento] = useState('')
     const [senha, setSenha] = useState('')
+    const [email, setEmail] = useState('')
 
     const navigate = useNavigate();
 
@@ -28,7 +29,8 @@ function Cadastro(props) {
             'data_nascimento':nascimento,
             'password': senha,
             'cargo': funcao,
-            'foto': foto
+            'foto': foto,
+            'email': email
         }
 
         await fetch(props.api + '/cadastro', {
@@ -58,7 +60,7 @@ function Cadastro(props) {
         <div className={css.tudo}>
             <SideBar></SideBar>
             <div className={css.conteudo}>
-                <CadastroBox placeholder='Cadastro de usuário'></CadastroBox>
+                <CadastroBox placeholder='Cadastro de usuário' nome={nome} setNome={setNome} funcao={funcao} setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha} nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto} email={email} setEmail={setEmail} enviar={enviar}></CadastroBox>
             </div>
         </div>
     )

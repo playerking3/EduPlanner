@@ -2,6 +2,7 @@ from models.User import *
 from utils.Criptografia import *
 from flask import jsonify, request
 from utils.Email import *
+from utils.CpfCheck import *
 import random
 
 class UserController:
@@ -25,6 +26,13 @@ class UserController:
         email = request.json.get('email')
         cargo = request.json.get('cargo')
         nascimento = request.json.get('data_nascimento')
+
+        #verificador de cpf
+        cpfcheck = Cpf(cpf)
+        resp, msn = cpfcheck.is_cpf_valid()
+        print(cpfcheck.is_cpf_valid())
+        if resp == False:
+            return jsonify({'status': 'error', 'info': msn})
 
         salt = random.randint(1000000000, 9999999999999)
         password = Criptografia().hashSenha(password + str(salt))

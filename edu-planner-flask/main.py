@@ -5,6 +5,8 @@ from controllers.CursoController import *
 from controllers.SalaController import *
 from controllers.TurmaController import *
 from controllers.ParticipanteController import *
+from controllers.SalaAlunoProfessorController import *
+from controllers.TurmaParticipantesSalaController import *
 from utils.VerificaToken import *
 
 from flask_cors import CORS
@@ -29,7 +31,7 @@ def esqueci():
     return UserController().esqueciSenha()
 
 #------rotas de curso-------------------
-@app.route('/cadastrarCurso')
+@app.route('/cadastrarCurso', methods=['POST'])
 def cadastraCurso():
     if VerificaToken().validaToken():
         return CursoController().CadastroCurso()
@@ -43,10 +45,10 @@ def excluiCurso():
     return CursoController().excluiCurso()
 
 #------rotas de turma-------------------
-@app.route('/cadastrarTurma')
+@app.route('/cadastrarTurma', methods=['POST'])
 def cadastrarTurma():
     if VerificaToken().validaToken():
-        return TurmaController().Cadastro()
+        return TurmaParticipantesSalaController().cadastrarTurma()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 @app.route('/editarCurso')
 def editarTurma():
@@ -63,6 +65,12 @@ def excluirTurma():
 def getTurma():
     if VerificaToken().validaToken():
         return TurmaController().getList()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+@app.route('/getInfos', methods=['POST'])
+def getInfos():
+    if VerificaToken().validaToken():
+        return SalaAlunoProfessorController().retornarInfos()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
 #------rotas de Participantes-------------------

@@ -3,12 +3,12 @@ import styles from './CadastroCurso.module.css'
 import TurmaBox from "../components/TurmaBox";
 import {useState} from "react";
 
-function CadastroTurma(){
+function CadastroTurma({api}){
     return(
         <div className={styles.tudo}>
             <SideBar></SideBar>
             <div className={styles.conteudo}>
-                <TurmaBox></TurmaBox>
+                <TurmaBox api={api}></TurmaBox>
             </div>
         </div>
     )

@@ -4,7 +4,7 @@ import InputTextArea from "./InputTextArea";
 import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 
-function CursoBox ({placeholder}){
+function CursoBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categorias, setCategorias, faixaE, setFaixaE, descricao, setDescricao, imagem, setImagem}){
     return(
         <div className={css.box}>
             <div>
@@ -24,7 +24,7 @@ function CursoBox ({placeholder}){
                     </div>
                 </div>
                 <div>
-                    <BtnEnviar placeholder='Salvar'></BtnEnviar>
+                    <BtnEnviar placeholder='Salvar' funcao={enviar}></BtnEnviar>
                 </div>
             </form>
         </div>

@@ -1,8 +1,7 @@
 import css from './InputMultiplo.module.css'
 import React, {useState} from "react";
-function InputMultiplo({label}){
+function InputMultiplo({label, list, setList}){
     const [numCats, setNumCats] = useState(0)
-    const [list, setList] = useState([])
     function addInput(){
         setNumCats(numCats + 1)
     }
