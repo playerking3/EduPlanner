@@ -26,11 +26,12 @@ class UserController:
         email = request.json.get('email')
         cargo = request.json.get('cargo')
         nascimento = request.json.get('data_nascimento')
+        foto = request.json.get('foto')
+
 
         #verificador de cpf
         cpfcheck = Cpf(cpf)
         resp, msn = cpfcheck.is_cpf_valid()
-        print(cpfcheck.is_cpf_valid())
         if resp == False:
             return jsonify({'status': 'error', 'info': msn})
 
@@ -42,6 +43,7 @@ class UserController:
             response = user.cadastro(nome, email, cargo, nascimento, salt)
             if response:
                 id = user.checkUser()
+                foto.save(f'uploads/capa{id}.jpg')
                 print(id, 'id aqui')
                 if id:
                     token = Criptografia().gerarToken(id, cargo)

@@ -17,7 +17,7 @@ function CadastroBox ({placeholder, nome, setNome, funcao, setFuncao, cpf, setCp
                     <div>
                         <CadastroInput placeholder={'Nome'} type={'text'} name={'nomeUser'} setar={setNome} valor={nome}/>
                         <CadastroInput placeholder={'Função'} type={'text'} name={'nomeUser'} setar={setFuncao} valor={funcao}/>
-                        <InputImagem2 placeholder={'Adicionar imagem'} name={'img'}></InputImagem2>
+                        <InputImagem2 placeholder={'Adicionar imagem'} name={'img'} setar={setFoto} valor={foto}></InputImagem2>
 
                     </div>
                     <div>
