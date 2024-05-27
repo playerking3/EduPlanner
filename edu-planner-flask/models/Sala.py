@@ -26,7 +26,7 @@ class Sala:
         return response
 
     def getList(self):
-        query = f"SELECT * FROM `sala`;"
+        query = f"SELECT nome, id_sala FROM `sala`;"
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis

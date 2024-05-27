@@ -2,14 +2,20 @@ from flask import jsonify, request
 from models.Participante import *
 
 class ParticipanteController:
-    def Cadastro(self):
-        id_turma = request.json.get('id_turma')
-        id_usuario = request.json.get('id_usuario')
+    def Cadastro(self, id_turma):
+        professores = request.json.get('professores')
+        alunos = request.json.get('alunos')
+        print(professores, alunos, 'alunos e prof')
 
         obj = Participante()
-        if obj.get(id_turma, id_usuario) == False:
-            response = obj.create(id_turma, id_usuario)
-            return jsonify({'status': response})
+
+        for i in alunos:
+            list = i.split(",")
+            id = int(list[1])
+            print(id_turma, id)
+            if obj.get(id_turma[0], id) == False:
+                response = obj.create(id_turma[0], id)
+                return jsonify({'status': response})
         return jsonify({'status': 'curso de mesmo nome ja cadastrado'})
 
     def editar(self):

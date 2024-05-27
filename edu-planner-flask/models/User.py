@@ -30,14 +30,14 @@ class User:
         return exis
 
     def getAlunos(self):
-        query = f"SELECT nome FROM `usuario` WHERE cargo = 'aluno';"
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'aluno';"
         conexao = Conection()
         exis = conexao.get_list(query)
         print(exis)
         return exis
 
     def getProfessores(self):
-        query = f"SELECT nome FROM `usuario` WHERE cargo = 'professor';"
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'professor';"
         conexao = Conection()
         exis = conexao.get_list(query)
         print(exis)
