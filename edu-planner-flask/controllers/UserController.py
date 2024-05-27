@@ -1,6 +1,6 @@
 from models.User import *
 from utils.Criptografia import *
-from flask import jsonify, request
+from flask import jsonify, request, send_from_directory
 from utils.Email import *
 from utils.CpfCheck import *
 import random
