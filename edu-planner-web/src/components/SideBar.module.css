@@ -10,7 +10,7 @@
     align-items: center;
     width: 5vw;
     transition: 1s;
-
+    z-index: 10;
 }
 
 
@@ -64,6 +64,8 @@
 .total p{
     display: none;
     transition: 3s;
+    font-size: 1.3vw;
+
 }
 
 .risco{
