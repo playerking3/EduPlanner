@@ -1,5 +1,6 @@
 import css from './CardProfessores.module.css'
 import OrdenarPor from "./OrdenarPor";
+import {Link} from "react-router-dom";
 
 function CardProfessores(){
     return(
@@ -27,7 +28,7 @@ function CardProfessores(){
                     <img src={'fotoperfil.png'} className={css.fotoperfil}/>
                     <label>Luisa Scanbelli dos Santos</label>
                     <div className={css.lapislixo}>
-                        <button><img src={'lapis.png'}/></button>
+                        <Link to={'/editar-pessoa'}><button><img src={'lapis.png'}/></button></Link>
                         <button><img src={'lixo.png'}/></button>
                     </div>
                 </div>
