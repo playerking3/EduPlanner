@@ -11,7 +11,7 @@ function VisualizacaoCurso() {
             <SideBar></SideBar>
             <div>
                 <div className={styles.botaoTopo}>
-                    <Link to={'/cadastro-curso'} className={styles.link}>
+                    <Link to={'/cadastro-sala'} className={styles.link}>
                         <div className={styles.botaoc}><p>Nova sala</p> <i className="fa-solid fa-plus fa-xl"></i>
                         </div>
                     </Link>

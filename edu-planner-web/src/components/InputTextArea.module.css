@@ -22,12 +22,13 @@
 
 
 .input{
-    padding: 4px;
+    padding: 1vw;
     padding-top: 1em;
     border: none;
-    border-radius: .5em;
+    border-radius: 1vw;
+    outline: none;
     height: 11em;
-    width: 95%;
+    width: 90%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
     resize: none;
 }

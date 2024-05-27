@@ -14,6 +14,7 @@ import EditarCurso from "./pages/EditarCurso";
 import CadastroTurma from './pages/CadastroTurma'
 import Erro from "./pages/Erro";
 import {useState} from "react";
+import CadastroSala from "./pages/CadastroSala";
 
 function App() {
     const [api, setApi] = useState('http://192.168.1.134:5000/')
@@ -27,6 +28,7 @@ function App() {
           <Route path={'/editar-pessoa'} element={<Edicao/>}/>
           <Route path={'dashboard'} element={<Dashboard/>}/>
           <Route path={'/cadastro-turma'} element={<CadastroTurma/>}/>
+          <Route path={'/cadastro-sala'} element={<CadastroSala/>}/>
           <Route path={'/'} element={<Home/>}/>
           <Route path={'/cursos'} element={<VisualizacaoCurso/>}/>
           <Route path={'*'} element={<Erro/>}/>
