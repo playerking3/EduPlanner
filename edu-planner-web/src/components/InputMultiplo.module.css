@@ -54,3 +54,34 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 429px) {
+    .icon{
+        cursor: pointer;
+        background: #FF8C00;
+        height: 7.5vw;
+        width: 7.5vw;
+        font-size: 4vw;
+        color: white;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .titulop{
+        font-weight: 600;
+        font-size: 3vw;
+    }
+
+    .input{
+        padding: 2vw;
+        border: none;
+        border-radius: .5em;
+        height: 5vw;
+        width: 87%;
+        box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
+        margin-bottom: .5em;
+        margin-top: .5em;
+        font-size: 3vw;
+    }
+}

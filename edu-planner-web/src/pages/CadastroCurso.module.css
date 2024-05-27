@@ -12,3 +12,15 @@
     margin-top: 2vw;
     margin-bottom: 2vw;
 }
+
+
+@media (max-width: 429px) {
+    .conteudo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+    }
+
+}

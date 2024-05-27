@@ -108,9 +108,6 @@
         width: 8vw;
     }
 
-    .total:hover p {
-        font-size: 3vw !important;
-    }
     .total:hover .links2 p {
         font-size: 3vw !important;
     }
@@ -155,8 +152,8 @@
         gap: 1vw;
         text-decoration: none;
         transition: 1s;
-        margin-top: 1.8em;
-        font-size: 2.4em !important;
+        margin-top: 1.9em !important;
+        font-size: 1em !important;
     }
     .iconGroup{
         margin-top: -8vw;

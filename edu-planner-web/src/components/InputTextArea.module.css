@@ -31,3 +31,22 @@
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
     resize: none;
 }
+
+
+@media (max-width: 429px) {
+    .container label{
+        font-weight: 600;
+        font-size: 3vw;
+    }
+
+    .input{
+        padding: 1em 1vw 1vw;
+        border: none;
+        border-radius: 2vw;
+        outline: none;
+        height: 11em;
+        width: 95%;
+        box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
+        resize: none;
+    }
+}

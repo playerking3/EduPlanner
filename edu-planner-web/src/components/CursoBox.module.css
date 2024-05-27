@@ -14,3 +14,24 @@
     grid-template-columns: 1fr 1fr;
     gap: 1em;
 }
+
+@media(max-width: 429px){
+    .h1{
+        font-weight: 600;
+        padding-bottom: 1vw;
+        font-size: 4.6vw;
+    }
+    .box{
+        padding: 6vw 2vw 6vw;
+        width: 80%;
+        border-radius: 1em;
+        box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.26);
+    }
+    .formContainer {
+        display: flex;
+        gap: 0;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}

@@ -12,17 +12,17 @@ function SalaBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, catego
                 <h1 className={css.h1}>{placeholder}</h1>
             </div>
             <form>
-                <div className={css.formContainer}>
-                    <div>
+                <div className={css.formContainer} >
+                    <div style={{width: '100%'}}>
                         <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome}/>
                         <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias}></InputMultiplo>
                     </div>
-                    <div>
+                    <div style={{width: '100%'}}>
                         <CadastroInput placeholder={'Carga horária por dia'} type={'text'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH}/>
                         <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao}></InputTextArea>
                     </div>
                 </div>
-                <div className={css.formContainer}>
+                <div className={css.formContainer} >
                     <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'nomeCurso'} setar={setFaixaE} valor={faixaE}/>
                     <InputImagem placeholder={'Adicionar imagem'} name={'img'} setar={setImagem} valor={imagem}></InputImagem>
                 </div>
