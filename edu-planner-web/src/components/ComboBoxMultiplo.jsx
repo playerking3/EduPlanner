@@ -30,7 +30,7 @@ function ComboBoxMultiplo({opcoes, label, name, list, setList}){
                 {Array.from({length: numCats}).map((numero, index) => (
                     <select className={css.select} id={name} onChange={(event)=> alterar(index,event)}>
                         {opcoes.map((item) =>
-                            <option value={item}>{item}</option>
+                            <option value={item}>{item[0]}</option>
                         )}
                     </select>
                 ))}

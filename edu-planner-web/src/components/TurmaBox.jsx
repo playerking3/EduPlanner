@@ -91,6 +91,8 @@ function TurmaBox (props){
             'horario':horario,
             'id_curso': 10,
             'id_sala': 1,
+            'professores': professores,
+            'alunos': alunos,
             'token': JSON.parse(localStorage.getItem('token'))
         }
 
