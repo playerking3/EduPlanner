@@ -12,7 +12,7 @@ function VisualizacaoCurso() {
             <div>
                 <div className={styles.botaoTopo}>
                     <Link to={'/cadastro-sala'} className={styles.link}>
-                        <div className={styles.botaoc}><p>Nova sala</p> <i className="fa-solid fa-plus fa-xl"></i>
+                        <div className={styles.botaoc}><p style={{fontWeight:600}}>Nova sala</p> <i className="fa-solid fa-plus fa-xl"></i>
                         </div>
                     </Link>
                 </div>

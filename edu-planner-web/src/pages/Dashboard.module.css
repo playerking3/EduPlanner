@@ -1,9 +1,8 @@
 .body{
     display: grid;
-    grid-template-columns: 4em 2fr 0.8fr;
+    grid-template-columns: 4em 1fr;
     min-height: 100vh;
     text-align: center;
-    justify-items: center;
 }
 
 .calendario{

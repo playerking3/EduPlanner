@@ -5,8 +5,10 @@ import {Link} from "react-router-dom";
 function CardProfessores(){
     return(
         <div className={css.conteinerUsua}>
-            <p className={css.identificacao}>Professores</p>
-            <div><OrdenarPor></OrdenarPor></div>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <p className={css.identificacao} style={{textAlign: 'left'}}>Professores</p>
+                <div><OrdenarPor></OrdenarPor></div>
+            </div>
             <div className={css.professores}>
                 <div className={css.usuarioroxo}>
                     <img src={'fotoperfil.png'} className={css.fotoperfil}/>
