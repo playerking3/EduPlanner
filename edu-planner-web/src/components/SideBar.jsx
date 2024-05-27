@@ -1,13 +1,21 @@
 import css from './SideBar.module.css'
-import {Link} from "react-router-dom";
-import {useState} from "react";
-import styles from "../pages/CardExibir.module.css";
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {rotaSegurity} from "../functions/rotaSegurity";
 function SideBar(){
-    const [fundo, setFundo] = useState(css.fundo)
 
-    function mudarEstilo(){
-        setFundo(css.fundo2)
+    const [api, setApi] = useState('http://127.0.0.1:5000')
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        rotaSegurity(api, localStorage.getItem('token'), navigate)
+    }, []);
+
+    function sair () {
+        localStorage.removeItem('token')
+        navigate('/login')
     }
+
     return(
         <div className={css.total}>
             <Link to={'/editar-pessoa'} style={{display: 'flex',alignItems: 'center',justifyContent:' center'}}>
@@ -38,8 +46,7 @@ function SideBar(){
 
             </div>
             <div>
-                <Link to={'/login'} style={{fontSize: '1.4em'}}><i
-                    className={"fa-solid fa-arrow-right-from-bracket " + css.icon}></i></Link>
+                <Link to={'/login'} style={{fontSize: '1.4em'}} onClick={() => sair()}><i className={"fa-solid fa-arrow-right-from-bracket "+ css.icon}></i></Link>
             </div>
         </div>
     )

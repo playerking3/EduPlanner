@@ -5,11 +5,12 @@ class TurmaController:
     def Cadastro(self):
         nome = request.json.get('nome')
         inicio = request.json.get('inicio')
-        fim = request.json.get('fim')
         lista_dias = request.json.get('lista_dias')
         horas_dia = request.json.get('horas_dia')
         id_curso = request.json.get('id_curso')
         id_sala = request.json.get('id_sala')
+
+        fim = '0'
 
         obj = Turma()
         if obj.get(nome) == False:

@@ -1,10 +1,11 @@
 import css from './CursoBox.module.css'
 import CadastroInput from "./CadastroInput";
+import InputMultiplo from "./InputMultiplo";
 import InputTextArea from "./InputTextArea";
 import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 
-function CursoBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categorias, setCategorias, faixaE, setFaixaE, descricao, setDescricao, imagem, setImagem}){
+function SalaBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categorias, setCategorias, faixaE, setFaixaE, descricao, setDescricao, imagem, setImagem}){
     return(
         <div className={css.box}>
             <div>
@@ -13,15 +14,17 @@ function CursoBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categ
             <form>
                 <div className={css.formContainer}>
                     <div>
-                        <CadastroInput placeholder={'Nome da sala'} type={'text'} name={'nomeCurso'}/>
-                        <InputImagem placeholder={'Escolher imagem'}></InputImagem>
-                        <CadastroInput placeholder={'Ocupação máxima'} type={'text'} name={'nomeCurso'}/>
-
+                        <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome}/>
+                        <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias}></InputMultiplo>
                     </div>
                     <div>
-                        <CadastroInput placeholder={'Número da sala'} type={'text'} name={'cargaHoraria'}/>
-                        <InputTextArea placeholder={'Descrição'} name={'descricao'}></InputTextArea>
+                        <CadastroInput placeholder={'Carga horária por dia'} type={'text'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH}/>
+                        <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao}></InputTextArea>
                     </div>
+                </div>
+                <div className={css.formContainer}>
+                    <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'nomeCurso'} setar={setFaixaE} valor={faixaE}/>
+                    <InputImagem placeholder={'Adicionar imagem'} name={'img'} setar={setImagem} valor={imagem}></InputImagem>
                 </div>
                 <div>
                     <BtnEnviar placeholder='Salvar' funcao={enviar}></BtnEnviar>
@@ -30,4 +33,4 @@ function CursoBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categ
         </div>
     )
 }
-export default CursoBox
+export default SalaBox
