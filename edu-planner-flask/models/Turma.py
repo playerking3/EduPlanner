@@ -1,8 +1,8 @@
 from configs.Conection import *
 
 class Turma:
-    def create(self, nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala):
-        query = f'INSERT INTO turma (nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala, status) VALUES ("{nome}", "{inicio}", "{fim}", "{lista_dias}", {horas_dia}, {id_sala}, {id_curso}, "ativo");'
+    def create(self, nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala, horario):
+        query = f'INSERT INTO turma (nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala, status, hora_inicio) VALUES ("{nome}", "{inicio}", "{fim}", "{lista_dias}", {horas_dia}, {id_curso}, {id_sala}, "ativo", "{horario}");'
         conexao = Conection()
         response = conexao.add_query(query)
         return response

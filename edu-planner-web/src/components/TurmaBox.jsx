@@ -88,10 +88,13 @@ function TurmaBox (props){
             'inicio': inicio,
             'lista_dias': periodicidade,
             'horas_dia': duracaoAula,
-            'id_curso': 1,
-            'id_sala': [1,2,3],
+            'horario':horario,
+            'id_curso': 10,
+            'id_sala': 1,
             'token': JSON.parse(localStorage.getItem('token'))
         }
+
+        console.log(data)
 
         await fetch(props.api + '/cadastrarTurma', {
             method: 'POST',
