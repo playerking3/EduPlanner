@@ -44,3 +44,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 1.5em !important;
+  width: 60vw !important;
+}
+
+.fc .fc-button-primary {
+  background-color: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: white !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active {
+  background-color: #FF6B00 !important;
+  border-color: #FF6B00 !important;
+  color: white !important;
+}
+
+.fc-direction-ltr {
+  margin-top: 4vw !important;
+  margin-bottom: 4vw !important;
+}
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+  display: none !important;
+}
+
+.fc .fc-button-primary:focus {
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0.2rem !important;
+}
