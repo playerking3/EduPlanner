@@ -4,8 +4,10 @@ import {Link} from "react-router-dom";
 function CardCoordenador(){
     return (
         <div className={css.conteinerUsua}>
-            <p className={css.identificacao}>Coordenadores</p>
-            <div><OrdenarPor></OrdenarPor></div>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <p className={css.identificacao} style={{textAlign: 'left'}}>Coodenadores</p>
+                <div><OrdenarPor></OrdenarPor></div>
+            </div>
 
             <div className={css.coordenador}>
                 <div className={css.usuariolara}>

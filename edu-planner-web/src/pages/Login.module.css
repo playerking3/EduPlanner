@@ -13,6 +13,8 @@
 }
 .logo img{
     width: 13vw;
+    margin-bottom: -1vw;
+
 }
 .bloco{
     background-color: white;
