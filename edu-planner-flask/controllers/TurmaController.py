@@ -6,15 +6,16 @@ class TurmaController:
         nome = request.json.get('nome')
         inicio = request.json.get('inicio')
         lista_dias = request.json.get('lista_dias')
-        horas_dia = request.json.get('horas_dia')
+        horario = request.json.get('horario')
+        horas_dia = int(request.json.get('horas_dia'))
         id_curso = request.json.get('id_curso')
         id_sala = request.json.get('id_sala')
 
-        fim = '0'
+        fim = '2024-06-30'
 
         obj = Turma()
         if obj.get(nome) == False:
-            response = obj.create(nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala)
+            response = obj.create(nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala, horario)
             return jsonify({'status': response})
         return jsonify({'status': 'curso de mesmo nome ja cadastrado'})
 
