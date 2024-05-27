@@ -1,8 +1,13 @@
 import css from "./ComboBoxMultiplo.module.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 function ComboBoxMultiplo({opcoes, label, name, list, setList}){
     const [numCats, setNumCats] = useState(0)
+
+    useEffect(() => {
+        console.log(opcoes)
+    }, []);
+
     function addInput(){
         setNumCats(numCats + 1)
     }

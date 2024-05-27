@@ -17,7 +17,7 @@ function Cadastro(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        //rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+        rotaSegurity(props.api, localStorage.getItem('token'), navigate)
     }, []);
 
     async function enviar(){

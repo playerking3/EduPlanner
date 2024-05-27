@@ -5,4 +5,3 @@ class TurmaParticipantesSalaController:
     def cadastrarTurma(self):
         turma = TurmaController()
         turma.Cadastro()
-
