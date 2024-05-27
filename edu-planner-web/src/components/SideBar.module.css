@@ -1,13 +1,12 @@
 .total{
-    max-height: 98.5svh;
+    max-height: 94.6svh;
     position: sticky;
     top: 0;
     background: #FFDD26;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: .5vw;
-    padding-bottom: 2vw;
+    padding: .5vw .5vw 2vw;
     align-items: center;
 
 }

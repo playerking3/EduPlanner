@@ -22,8 +22,7 @@
 
 
 .input{
-    padding: 1vw;
-    padding-top: 1em;
+    padding: 1em 1vw 1vw;
     border: none;
     border-radius: 1vw;
     outline: none;
