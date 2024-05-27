@@ -29,11 +29,7 @@ function SideBar(){
 
             </div>
             <div>
-<<<<<<< HEAD
                 <Link to={'/login'} onClick={() => sair()}><i className={"fa-solid fa-arrow-right-from-bracket "+ css.icon}></i></Link>
-=======
-                <Link to={'/login'} style={{fontSize: '1.4em'}}><i className={"fa-solid fa-arrow-right-from-bracket "+ css.icon}></i></Link>
->>>>>>> 82094d8c237fc76f2443df34ddd895aa59a5f3c8
             </div>
         </div>
     )
