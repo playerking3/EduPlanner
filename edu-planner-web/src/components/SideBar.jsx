@@ -22,7 +22,7 @@ function SideBar(){
                 <img src={'fotoperfil.png'} className={css.perfil}/>
             </Link>
             <div className={css.iconGroup}>
-                <Link to={'/cursos'} className={css.links}><i className={"fa-solid fa-book fa-xl " + css.icon} id={fundo} onClick={mudarEstilo}></i>
+                <Link to={'/cursos'} className={css.links}><i className={"fa-solid fa-book fa-xl " + css.icon}></i>
                     <div className={css.risco}
                          style={{width: '0.1vw', height: '2vw', background: 'white'}}></div>
                     <p>Cursos</p></Link>
