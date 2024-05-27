@@ -1,0 +1,36 @@
+.titulo{
+    font-weight: 600;
+    font-size: 1.3vw;
+}
+.asterisco{
+    color: red ;
+}
+
+.tudoPeriodicidade{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.buttons{
+    background-color: #FFD700;
+    border: none;
+    font-size: 1.5vw;
+    margin: 0.1vw;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 3vw;
+    height: 3vw;
+    font-weight: 600;
+
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: .5em;
+}
+.selected {
+    background-color: #FFA500;
+}
