@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
-import CardCurso from "./teste";
+import CardCurso from "./CardCurso";
 
 export default function Home({ navigation }) {
   const handleMenuPress = () => {

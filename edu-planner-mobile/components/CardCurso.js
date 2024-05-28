@@ -110,5 +110,7 @@ const styles = StyleSheet.create({
   },
   descricao: {
     marginTop: 10,
+    textAlign: 'justify',
+    paddingHorizontal: 8
   },
 });

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Image, Text, TouchableWithoutFeedback } from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faBook} from "@fortawesome/free-solid-svg-icons/faBook";
+import {faCalendar} from "@fortawesome/free-solid-svg-icons/faCalendar";
+import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
+import {faRightFromBracket} from "@fortawesome/free-solid-svg-icons/faRightFromBracket";
 
 const Stack = createStackNavigator();
 
@@ -17,11 +22,11 @@ export default function Menu({ navigation, sairModal, setSairModal }) {
   return (
     <View style={styles.container}>
       <View style={styles.menuItems}>
-        <MenuItem onPress={cursos} icon={require('../assets/caalendario.png')} text="Cursos" />
-        <MenuItem icon={require('../assets/agenda.png')} text="Agenda" />
-        <MenuItem onPress={perfil} icon={require('../assets/perfiil.png')} text="Perfil" />
+        <MenuItem onPress={cursos} icon={faBook} text="Cursos" />
+        <MenuItem icon={faCalendar} text="Agenda" />
+        <MenuItem onPress={perfil} icon={faUser} text="Perfil" />
         <View>
-          <MenuItem onPress={() => setSairModal(true)} icon={require('../assets/sair.png')} />
+          <MenuItem onPress={() => setSairModal(true)} icon={faRightFromBracket} />
         </View>
         
       </View>
@@ -47,10 +52,7 @@ const MenuItem = ({ icon, text, onPress }) => {
       onPress={onPress}
     >
       <View style={styles.menuItem}>
-        <Image
-          style={[styles.icon, pressed && styles.iconPressed]}
-          source={icon}
-        />
+        <FontAwesomeIcon icon={icon}/>
         <Text style={styles.text}>{text}</Text>
       </View>
     </TouchableWithoutFeedback>
