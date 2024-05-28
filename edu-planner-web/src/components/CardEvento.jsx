@@ -2,11 +2,11 @@ import styles from './CardEvento.module.css'
 import React from "react";
 import Periodicidade2 from "./Periodicidade2";
 
-function CardEvento() {
+function CardEvento({placeholder, horario, color}) {
     return(
-        <div className={styles.card}>
-            <h3 className={styles.texto}>Curso de vendas</h3>
-            <p className={styles.texto}>Horário: 15:00 as 17:00</p>
+        <div className={styles.card} style={{background:color}}>
+            <h3 className={styles.texto}>{placeholder}</h3>
+            <p className={styles.texto}>{horario}</p>
             <Periodicidade2></Periodicidade2>
         </div>
     );

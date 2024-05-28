@@ -19,7 +19,6 @@
     display: flex;
     flex-direction: row;
     margin: 20px 0;
-    flex-wrap: wrap;
     gap: 10px;
 }
 .usuarioroxo {
@@ -61,4 +60,39 @@
 }
 .lapislixo button:hover {
     background-color: #FF8C42;
+}
+
+
+@media (max-width: 429px) {
+    .usuarioroxo{
+        width: 33vw;
+        height: 40vw;
+        gap: 2vw;
+    }
+    .usuarioroxo label{
+        font-size: 2vw;
+        width: 90%;
+    }
+    .fotoperfil{
+        width: 13vw;
+    }
+    .lapislixo button {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+    .lapislixoimg {
+        width: 3vw;
+    }
+    .ordenarPor{
+        font-size: 3vw;
+    }
+    .identificacao{
+        font-size: 4vw;
+    }
+    .professores{
+        display: flex;
+        flex-direction: row;
+        gap: 1vw;
+        overflow-x: auto;
+    }
 }

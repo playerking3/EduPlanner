@@ -72,3 +72,41 @@ code {
 .fc .fc-button-primary:focus {
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0.2rem !important;
 }
+.fc .fc-toolbar-title {
+  font-size: 2.5vw !important;
+}
+
+.fc .fc-button {
+  font-size: 1.5vw;
+}
+.fc .fc-scrollgrid-liquid {
+  font-size: 1.5vw;
+}
+
+
+@media (max-width: 429px) {
+  .fc td, .fc th {
+    width: 10.6vw !important;
+  }
+  .fc .fc-toolbar-title {
+    font-size: 3.5vw !important;
+  }
+
+  .fc .fc-button {
+    font-size: 2.5vw;
+  }
+  .fc .fc-scrollgrid-liquid {
+    font-size: 2vw;
+  }
+  .fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 1.5em !important;
+    width: 75vw !important;
+  }
+  .fc .fc-view-harness {
+    height: 82vw !important;
+  }
+  .fc .fc-daygrid-day-frame {
+    min-height: 13vw;
+    position: relative;
+  }
+}

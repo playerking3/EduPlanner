@@ -8,10 +8,11 @@ function Dashboard() {
     return(
         <div className={styles.body}>
             <SideBar/>
-            <div style={{display: 'flex', flexDirection: 'row', marginLeft: '4vw', gap:'2vw'}}>
+            <div style={{display: 'flex', flexDirection: 'row', marginLeft: '4vw', gap:'2vw', alignItems: 'center'}} className={styles.agrupamento}>
                 <Calendario></Calendario>
                 <div className={styles.agenda}>
-                    <CardEvento></CardEvento>
+                    <CardEvento placeholder={'Curso de vendas'} horario={'Horário: 15:00 as 17:00'} color={'#FFDD26'}></CardEvento>
+                    <CardEvento placeholder={'Curso de Calçado'} horario={'Horário: 12:00 as 17:00'} color={'orange'}></CardEvento>
                 </div>
             </div>
 

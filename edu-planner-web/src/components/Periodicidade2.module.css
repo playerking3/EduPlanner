@@ -34,3 +34,13 @@
 .selected {
     background-color: #FFA500;
 }
+
+
+@media (max-width: 429px) {
+    .buttons{
+        margin: 3vw 0.2vw 0.2vw;
+        width: 4.5vw;
+        height: 4.5vw;
+        font-size: 2.5vw;
+    }
+}

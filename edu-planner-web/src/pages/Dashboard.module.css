@@ -111,5 +111,23 @@
 
 .agenda{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    height: 80%;
+    overflow-y: auto;
+    margin-top: 6vw;
+    gap: 1vw;
+}
+
+@media (max-width: 885px) {
+    .agrupamento{
+        display: flex;
+        flex-direction: column !important;
+    }
+}
+@media (max-width: 429px) {
+    .agrupamento{
+        display: flex;
+        flex-direction: column !important;
+        margin-top: 5vh;
+    }
 }

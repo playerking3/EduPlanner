@@ -14,6 +14,7 @@
 .texto{
     text-align: left;
     margin-left: 0.5vw;
+    font-size: 1.5vw;
 }
 
 .dia{
@@ -22,4 +23,16 @@
     padding-bottom: 0.1vw;
     height: 2vw;
     width: 2vw;
+}
+
+
+@media (max-width: 429px) {
+    .texto{
+        text-align: left;
+        margin-left: 0.5vw;
+        font-size: 2.5vw;
+    }
+    .card{
+        padding: 4vw 2vw;
+    }
 }
