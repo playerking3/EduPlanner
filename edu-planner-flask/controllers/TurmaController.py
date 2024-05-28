@@ -18,7 +18,7 @@ class TurmaController:
             response = obj.create(nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala, horario)
             id = obj.get(nome)
             return {'status': 'success', 'id': id}
-        return {'status': 'error', 'infos':'curso de mesmo nome ja cadastrado'}
+        return {'status': 'error', 'info':'curso de mesmo nome ja cadastrado'}
 
     def editar(self):
         nome = request.json.get('nome')

@@ -43,7 +43,7 @@ class UserController:
             response = user.cadastro(nome, email, cargo, nascimento, salt)
             if response:
                 id = user.checkUser()
-                foto.save(f'uploads/capa{id}.jpg')
+                #foto.save(f'uploads/capa{id}.jpg')
                 print(id, 'id aqui')
                 if id:
                     token = Criptografia().gerarToken(id, cargo)

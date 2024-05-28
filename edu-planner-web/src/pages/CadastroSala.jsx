@@ -40,6 +40,12 @@ function CadastroCurso(props){
             .then(function(data) {
                 let acert = data // saberemos se deu certo
                 console.log(acert)
+                if (acert.status == 'success') {
+                    navigate('/dashboard')
+                }
+                else {
+                    alert(acert.info)
+                }
             })
             .catch(function(error) {
                 console.log(error);

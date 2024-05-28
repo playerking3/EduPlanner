@@ -5,18 +5,21 @@ class ParticipanteController:
     def Cadastro(self, id_turma):
         professores = request.json.get('professores')
         alunos = request.json.get('alunos')
-        print(professores, alunos, 'alunos e prof')
+        listaCompleta = professores + alunos
+        print(professores + alunos, 'alunos e prof')
 
         obj = Participante()
 
-        for i in alunos:
+        for i in listaCompleta:
             list = i.split(",")
+            print(list, 'lista depois do split')
             id = int(list[1])
             print(id_turma, id)
             if obj.get(id_turma[0], id) == False:
                 response = obj.create(id_turma[0], id)
-                return jsonify({'status': response})
-        return jsonify({'status': 'curso de mesmo nome ja cadastrado'})
+                if response == False:
+                    return {'status': 'error', 'info': 'erro no cadastro dos usuários'}
+        return {'status': 'success'}
 
     def editar(self):
         id_turma = request.json.get('id_turma')

@@ -30,6 +30,7 @@ export async function rotaSegurity (api,token, navigate, tipo = 'interno') {
         })
         .catch(function(error) {
             console.log(error);
+            navigate('/login')
         })
 
 }
