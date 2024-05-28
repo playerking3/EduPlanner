@@ -10,11 +10,12 @@ class SalaController:
         descricao = request.json.get('descricao')
 
         obj = Sala()
-        if obj.get(nome) == False:
+        if obj.get(nome, numero_sala) == False:
+            print(obj.get(nome, numero_sala))
             response = obj.create(nome, capacidade, numero_sala, descricao)
             if response:
                 return jsonify({'status': 'success'})
-        return jsonify({'status': 'error', 'info': 'curso de mesmo nome ja cadastrado'})
+        return jsonify({'status': 'error', 'info': 'curso de mesmo nome ja cadastrado ou com mesmo número'})
 
     def editar(self):
         nome = request.json.get('nome')
