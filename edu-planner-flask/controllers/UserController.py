@@ -14,8 +14,10 @@ class UserController:
         infos = user.login()
         if infos:
             if infos[1] == Criptografia().hashSenha(password + infos[2]):
-                token = Criptografia().gerarToken(infos[0], infos[3])
-                return jsonify({'status': 'success', 'token': token})
+                if infos[3] == 'coordenador':
+                    token = Criptografia().gerarToken(infos[0], infos[3])
+                    return jsonify({'status': 'success', 'token': token})
+                return jsonify({'status': 'error', 'info': 'o login deve ser feito por um coordenador'})
             return jsonify({'status': 'error', 'info': 'usuario ou senha invalido'})
         return jsonify({'status': 'error', 'info': 'usuario nao encontrado'})
 
