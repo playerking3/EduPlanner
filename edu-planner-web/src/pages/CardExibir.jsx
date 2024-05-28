@@ -68,7 +68,7 @@ function CardExibir({placeholder, img, categoria}) {
                     <Link to={'/'} className={none} onClick={mudarEstilo2}>
                         <div className={styles.botao1}><p>Veja menos</p></div>
                     </Link>
-                    <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Gerenciar</p></div></Link>
+                    <Link to={'/cursos'} className={styles.link}><div className={styles.botao2}><p>Gerenciar</p></div></Link>
                 </div>
             </div>
         </div>
