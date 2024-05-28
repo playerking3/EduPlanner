@@ -36,22 +36,21 @@ class FimDeCurso:
     def contaMes(self):
         for i in self.mes:
             if i[1] >= self.mesInicio and i[2] >= self.diaInicio:
-                if self.listaSemana[i[3]] in self.periodicidade:
-                    if date(i[0], i[1], i[2]) not in self.listaFeriados:
-                        print(self.diasPassados)
-                        if self.horasContadas < self.duracaoCurso:
+                if self.horasContadas < self.duracaoCurso:
+                    if self.listaSemana[i[3]] in self.periodicidade:
+                        if date(i[0], i[1], i[2]) not in self.listaFeriados:
                             self.horasContadas += self.duracaoAula
-                        else:
-                            break
-                self.diasPassados += 1
+                    self.diasPassados += 1
+                else:
+                    break
         if self.horasContadas < self.duracaoCurso:
             self.mesInicio += 1
             self.diaInicio = 1
             self.mes = self.calendario.itermonthdays4(self.anoInicio, self.mesInicio)
-            self.contaMes()
+            return self.contaMes()
         else:
-            dataFinal = self.dataInicio + timedelta(days=self.diasPassados)
-            return dataFinal.isoformat()
+            dataFinal = self.dataInicio + timedelta(days=self.diasPassados-1)
+            return dataFinal
 
 
 teste = FimDeCurso([1,2], ['2024-05-21'], '2024-05-13', 20, 4)
