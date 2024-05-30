@@ -25,10 +25,9 @@ export default function Menu({ navigation, sairModal, setSairModal }) {
         <MenuItem onPress={cursos} icon={faBook} text="Cursos" />
         <MenuItem icon={faCalendar} text="Agenda" />
         <MenuItem onPress={perfil} icon={faUser} text="Perfil" />
-        <View>
-          <MenuItem onPress={() => setSairModal(true)} icon={faRightFromBracket} />
-        </View>
-        
+      </View>
+      <View style={styles.sair}>
+        <MenuItem onPress={() => setSairModal(true)} icon={faRightFromBracket} />
       </View>
     </View>
   );
@@ -52,7 +51,7 @@ const MenuItem = ({ icon, text, onPress }) => {
       onPress={onPress}
     >
       <View style={styles.menuItem}>
-        <FontAwesomeIcon icon={icon}/>
+        <FontAwesomeIcon icon={icon} style={styles.icon} size={22}/>
         <Text style={styles.text}>{text}</Text>
       </View>
     </TouchableWithoutFeedback>
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FF8C00',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
@@ -76,19 +75,23 @@ const styles = StyleSheet.create({
     marginTop: -20, 
   },
   menuItem: {
-    backgroundColor: '#FFD700',
-    
+
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    margin: 20,
   },
   icon: {
-    width: 30,
-    height:30,
     marginRight: 10,
+    color: 'white'
   },
   text: {
     color: 'white',
     fontSize: 18,
   },
+  sair: {
+    position: "absolute",
+    bottom: 0,
+    left: 0
+
+  }
 });
