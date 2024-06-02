@@ -1,12 +1,67 @@
-import React from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity } from "react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox/lib";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {useFocusEffect} from "@react-navigation/native";
+import * as LocalAuthentication from 'expo-local-authentication';
 
 export default function Login({ navigation }) {
   const [imageUri, setImageUri] = React.useState(null);
-
-  const handleLogin = () => {
-    navigation.navigate('Home');
+  const [opcaoDigital, setOpcaoDigital] = useState(false)
+  const [cpf, setCpf] = useState(null)
+  const [senha, setSenha] = useState('')
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('UserData', jsonValue);
+    } catch (e) {
+      return e
+    }
   };
+
+  const getData = async (key) => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(key);
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+      // error reading value
+    }
+  };
+  const handleLogin = () => {
+    if (senha!= '' && cpf != ''){
+      //colocar a verificação da api aqui
+      if (opcaoDigital){
+        let dados = {
+          cpf: cpf,
+          senha: senha,
+          digital: true
+        }
+        const teste = storeData(dados)
+
+      }
+      navigation.navigate('Home');
+    }
+
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      async function verificaDigital(){
+        console.log(opcaoDigital)
+        if (opcaoDigital){
+          const dados = await getData('UserData')
+          console.log(dados.digital)
+          if (dados.digital){
+            const resposta = await LocalAuthentication.authenticateAsync()
+            if (resposta.success){
+              navigation.navigate('Home');
+            }
+          }
+        }
+      }
+      verificaDigital()
+    }, [])
+  )
 
   return (
     <ImageBackground source={require('../assets/fundoLogin.png')} resizeMode="cover" style={styles.container}> 
@@ -20,6 +75,7 @@ export default function Login({ navigation }) {
             <TextInput
               style={styles.input}
               placeholder="CPF"
+              onChangeText={setCpf}
             />
           </View>
           <View style={styles.inputContainer}>
@@ -28,11 +84,20 @@ export default function Login({ navigation }) {
               style={styles.input}
               placeholder="Senha"
               secureTextEntry={true}
+              onChangeText={setSenha}
             />
           </View>
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Fazer Login</Text>
           </TouchableOpacity>
+          <BouncyCheckbox
+              onPress={(isChecked)=> {
+                setOpcaoDigital(isChecked)
+              }}
+              text={'Entrar com biometria'}
+              textStyle={{textDecorationLine: 'none'}}
+              fillColor={'orange'}
+          />
         </View>
       </View>
       {imageUri && <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />}
