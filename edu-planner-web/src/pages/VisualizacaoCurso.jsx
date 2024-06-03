@@ -20,7 +20,6 @@ function VisualizacaoCurso() {
                     <CardCurso placeholder='Oficina de bolos' img='img1' descricao='Turmas inscritas:'></CardCurso>
                     <CardCurso placeholder='Oficina de bolos' img='img2' descricao='Turmas inscritas:'></CardCurso>
                     <CardCurso placeholder='Oficina de bolos' img='img3' descricao='Turmas inscritas:'></CardCurso>
-
                 </div>
             </div>
         </div>

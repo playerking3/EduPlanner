@@ -142,7 +142,7 @@
         font-size: 2.2vw;
     }
     .card{
-        width: 55vw;
+        width: 60vw;
         min-height: 40vw;
         border-radius: 3vw;
         -webkit-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
@@ -187,7 +187,7 @@
         font-weight: 500;
         margin-bottom: 1vw;
         margin-top: 1vw;
-        font-size: 2.2vw;
+        font-size: 2.3vw;
 
     }
     .botao2{
@@ -201,7 +201,7 @@
         font-weight: 500;
         margin-bottom: 1vw;
         margin-top: 1vw;
-        font-size: 2.2vw;
+        font-size: 2.3vw;
 
     }
     .botao3{
@@ -215,7 +215,7 @@
         font-weight: 500;
         margin-bottom: 1vw;
         margin-top: 1vw;
-        font-size: 2.2vw;
+        font-size: 2.3vw;
 
     }
 

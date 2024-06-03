@@ -1,5 +1,5 @@
 .fotoperfil {
-    width: 100px;
+    width: 7vw;
 }
 .identificacao {
     font-weight: bold;
@@ -22,20 +22,29 @@
     gap: 10px;
 }
 .usuarioroxo {
+    background-image: url("../../public/roxo.png");
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    width: 250px;
-    height: 300px;
+    background-size: contain;
+    height: 21vw;
+    min-width: 19vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 20px;
+    gap: 1vw;
+    margin-bottom: 1vw;
+    margin-top: 0.7vw;
+    border-radius: 2vw;
+    font-size: 1.3vw;
+    font-weight: 600;
 }
-.usuarioroxo {
-    background-image: url("../../public/roxo.png");
-    background-position: center;
+
+.usuarioroxo label{
+    font-size: 1.3vw;
+    width: 10vw;
+    overflow-x: auto;
 }
 .lapislixo {
     display: flex;
@@ -44,15 +53,15 @@
 }
 
 .lapislixo img {
-    width: 15px;
+    width: 1.3vw;
 }
 
 .lapislixo button {
     border: none;
     border-radius: 50%;
     background-color: #FF6B00;
-    width: 40px;
-    height: 40px;
+    width: 3vw;
+    height: 3vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,28 +70,55 @@
 .lapislixo button:hover {
     background-color: #FF8C42;
 }
-
-
-@media (max-width: 429px) {
+@media (max-width: 885px) {
     .usuarioroxo{
-        width: 33vw;
-        height: 40vw;
-        gap: 2vw;
+        height: 28vw;
+        min-width: 25vw;
     }
     .usuarioroxo label{
-        font-size: 2vw;
+        font-size: 1.8vw;
         width: 90%;
     }
     .fotoperfil{
-        width: 13vw;
+        width: 10vw;
+    }
+    .lapislixo button {
+        width: 5.5vw;
+        height: 5.5vw;
+    }
+    .lapislixo img {
+        width: 2.3vw;
+    }
+    .ordenarPor{
+        font-size: 3vw;
+    }
+    .identificacao{
+        font-size: 4vw;
+    }
+}
+
+
+
+@media (max-width: 429px){
+    .usuarioroxo{
+        height: 41vw;
+        min-width: 36vw;
+    }
+    .usuarioroxo label{
+        font-size: 2.3vw;
+        width: 80%;
+    }
+    .fotoperfil{
+        width: 16vw;
     }
     .lapislixo button {
         width: 7.5vw;
         height: 7.5vw;
     }
-    .lapislixoimg {
-        width: 3vw;
+    .lapislixo img {
+        width: 3.3vw;
     }
+
     .ordenarPor{
         font-size: 3vw;
     }

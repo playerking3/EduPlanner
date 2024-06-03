@@ -15,8 +15,8 @@ function CardCurso({placeholder, img, descricao}) {
                     <div className={styles.fichaTurma}><p className={styles.p2}>Turma 1</p></div>
                     <div className={styles.fichaTurma}><p className={styles.p2}>Turma 1</p></div>
                     <div className={styles.fichaTurma}><p className={styles.p2}>Turma 1</p></div>
-
                 </div>
+
                 <div className={styles.botoes}>
                     <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
                     <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Editar curso</p></div></Link>

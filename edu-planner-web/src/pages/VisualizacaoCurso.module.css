@@ -35,8 +35,13 @@
     display: flex;
     gap: 2vw;
     align-items: center;
-}
+    transition: 1s;
 
+}
+.botaoc:hover{
+    background: #ef6402;
+    transition: 1s;
+}
 .container{
     display: grid;
     grid-template-columns: 4em 1fr;

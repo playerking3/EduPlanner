@@ -39,11 +39,34 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
-    height: 40vh;
+    height: 55vh;
     margin-top: -1vw;
 }
+.letraGrid{
+    color: white;
+    margin-top: 1vw;
+    font-size: 2vw;
+    font-weight: 600;
+}
+.conhecer, .conviver{
+    height: 8vw;
+}
+.fazer{
+    height: 8vw;
+}
+
 .divona{
     background-color: #EEEBEB;
+}
+
+.tudos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textin{
+    font-size: 1.5vw;
 }
 
 /*----------------------------------------*/
@@ -100,8 +123,6 @@
     color: white;
     border: none;
     padding: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
     border-radius: 15px;
     cursor: pointer;
     margin: 10px;
@@ -126,11 +147,11 @@
 }
 /*----------------------------------------*/
 .gerenciamento{
-    margin: 100px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
+    width: 90%;
 }
 
 .textos{
@@ -150,37 +171,32 @@
     margin-bottom: 3vw;
 }
 .texto{
-    font-size: 55px;
+    font-size: 4vw;
     font-weight: bold;
-    width: 90%;
+    width: 85%;
+    margin-top: 2vw;
 }
-
+.bolas{
+    width: 100%;
+}
 .h1metodo{
     font-size: 2.5vw;
     font-weight: 600;
 }
-
 .metodologiap{
     text-align: justify;
     font-size: 1.4vw;
     letter-spacing: 0.01vw;
 }
-.textao{
-    margin-right: 100px;
-}
 .button{
     background-color: #6495ED;
     border: 1px solid #6495ED;
     width: 65%;
-    height: 50px;
     color: white;
-    border: none;
-    padding: 10px;
+    padding: 1.5vw;
     border-radius: 15px;
     cursor: pointer;
-    margin: 10px;
-    margin-left: 0;
-    font-size: 1.3vw;
+    font-size: 1.6vw;
 }
 .button:hover{
     background-color: #537fcb;
@@ -189,13 +205,113 @@
 .footer {
     position: relative;
 }
-
 .logos {
     position: absolute;
-    bottom: 30px; /* ajuste conforme necessário */
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+@media (max-width: 885px) {
+    .fazer, .conviver, .conhecer{
+        height: 12vw;
+    }
+    .letraGrid{
+        margin-top: 3vw;
+        font-size: 4vw;
+    }
+    .logo img {
+        width: 15%;
+    }
+    .metodologiap {
+        font-size: 2vw;
+    }
+    .h1metodo{
+        font-size: 3.5vw;
+        padding: 1vw 0;
+    }
+    .gerenciamento {
+        width: 85%;
+        margin: 4vw 0;
+    }
+}
+@media (max-width: 429px) {
+    .gerenciamento {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
+    .bolas{
+        display: none;
+    }
+    .banner img {
+        width: auto;
+        height: 85vw;
+        position: relative;
+        left: -50%;
+    }
+    .h1metodo{
+        font-size: 4vw;
+        font-weight: 600;
+        padding: 1vw 0;
+    }
+    .metodologiap{
+        text-align: justify;
+        font-size: 2.6vw;
+        width: 95%;
+        letter-spacing: .02vw;
+     }
+
+    .oferecep{
+        text-align: center;
+        font-size: 4vw;
+        font-weight: 600;
+        padding: 8vw 0;
+    }
+    .texto {
+        font-size: 6vw;
+        width: 100%;
+    }
+    .textin {
+        font-size: 3vw;
+        margin-top: 3vw;    }
+    .button {
+        padding: 2.5vw;
+        margin-top: 3vw;
+        width: 100%;
+        font-size: 3vw;
+    }
+    .tudos{
+        margin: 10vw 0;
+    }
+    .conviver, .conhecer, .fazer {
+        height: 15vw;
+    }
+    .letraGrid {
+        font-size: 5vw;
+        margin-top: 5vw;
+    }
+    .logos {
+        bottom: 3vw;
+        left: 47%;
+    }
+
+    .fundo{
+        width: 105%;
+        height: 20vw;
+
+    }
+    .img1{
+        width: 30%;
+    }
+
+    .img2{
+        width: 60%;
+    }
+
+    .img3{
+        width: 15%;
+    }
 }

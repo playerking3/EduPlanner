@@ -116,6 +116,9 @@
     overflow-y: auto;
     margin-top: 6vw;
     gap: 1vw;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
 }
 
 @media (max-width: 885px) {
