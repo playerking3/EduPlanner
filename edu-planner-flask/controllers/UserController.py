@@ -62,7 +62,7 @@ class UserController:
             if response:
                 id = user.checkUser()
 
-                response = Imagem().cadastrarImagem(base64_string, id)
+                response = Imagem().cadastrarImagem(base64_string, id, 'usuario')
 
                 if response != True:
                     return jsonify({'status': 'error', 'info': response})
