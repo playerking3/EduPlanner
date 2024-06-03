@@ -1,15 +1,19 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
 import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox/lib";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useFocusEffect} from "@react-navigation/native";
 import * as LocalAuthentication from 'expo-local-authentication';
+import Dados from "./DadosContext";
 
 export default function Login({ navigation }) {
   const [imageUri, setImageUri] = React.useState(null);
-  const [opcaoDigital, setOpcaoDigital] = useState(false)
+  const { opDigital, setOpcaoDigital} = useContext(Dados)
   const [cpf, setCpf] = useState(null)
   const [senha, setSenha] = useState('')
+
+  let opcaoDigital = opDigital()
+
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
@@ -47,10 +51,11 @@ export default function Login({ navigation }) {
   useFocusEffect(
     useCallback(() => {
       async function verificaDigital(){
+        opcaoDigital = await opDigital()
         console.log(opcaoDigital)
         if (opcaoDigital){
           const dados = await getData('UserData')
-          console.log(dados.digital)
+          console.log(dados)
           if (dados.digital){
             const resposta = await LocalAuthentication.authenticateAsync()
             if (resposta.success){
@@ -59,6 +64,7 @@ export default function Login({ navigation }) {
           }
         }
       }
+
       verificaDigital()
     }, [])
   )
@@ -90,14 +96,19 @@ export default function Login({ navigation }) {
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Fazer Login</Text>
           </TouchableOpacity>
-          <BouncyCheckbox
-              onPress={(isChecked)=> {
-                setOpcaoDigital(isChecked)
-              }}
-              text={'Entrar com biometria'}
-              textStyle={{textDecorationLine: 'none'}}
-              fillColor={'orange'}
-          />
+          <View style={styles.checkBox}>
+            <BouncyCheckbox
+                onPress={(isChecked)=> {
+                  console.log("aa", isChecked)
+                  setOpcaoDigital(isChecked ? "true" : "false")
+                  opcaoDigital = opDigital()
+                }}
+                text={'Entrar com biometria'}
+                textStyle={{textDecorationLine: 'none'}}
+                fillColor={'orange'}
+
+            />
+          </View>
         </View>
       </View>
       {imageUri && <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />}
@@ -106,6 +117,13 @@ export default function Login({ navigation }) {
 };
 
 const styles = StyleSheet.create({
+  checkBox: {
+    width: '100%',
+    alignItems: "center",
+    justifyContent: 'center',
+    marginTop: 16,
+    flexDirection: 'column',
+  },
   container: {
     flex: 1,
     justifyContent: "center",

@@ -1,11 +1,12 @@
 import styles from './VisualizacaoCurso.module.css'
-import React from "react";
+import React, {useState} from "react";
 import CardCurso from "../components/CardCurso";
 import {Link} from "react-router-dom";
 import SideBar from "../components/SideBar";
 
 
 function VisualizacaoCurso() {
+    const [listaCursos, setListaCursos] = useState([{placeholder: 'teste', img: 'img1', descricao: 'testes'}])
     return(
         <div className={styles.container}>
             <SideBar></SideBar>
@@ -17,9 +18,9 @@ function VisualizacaoCurso() {
                     </Link>
                 </div>
                 <div className={styles.mostraCards}>
-                    <CardCurso placeholder='Oficina de bolos' img='img1' descricao='Turmas inscritas:'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img2' descricao='Turmas inscritas:'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img3' descricao='Turmas inscritas:'></CardCurso>
+                    {listaCursos.map((e)=>(
+                        <CardCurso placeholder={e.placeholder} img={e.img} descricao={e.descricao}/>
+                    ))}
                 </div>
             </div>
         </div>
