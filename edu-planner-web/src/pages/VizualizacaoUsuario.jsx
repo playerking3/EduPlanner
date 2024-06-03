@@ -5,25 +5,33 @@ import CardAlunos from "../components/CardAlunos";
 import SideBar from "../components/SideBar";
 import styles from "./VisualizacaoCurso.module.css";
 import {Link, useNavigate} from "react-router-dom";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {rotaSegurity} from "../functions/rotaSegurity";
 
 function VizualizacaoUsuario(props){
+    const [professores, setProfessores] = useState([])
+    const [alunos, setAlunos] = useState([])
+    const [coordenadores, setCoordenadores] = useState([])
 
     const navigate = useNavigate();
 
     useEffect(() => {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+        enviar()
     }, []);
 
     async function enviar(){
 
+        const data = {
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
 
         await fetch(props.api + '/getUsers', {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
             },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
         })
             .then((resp) => resp.json())
             .then(function(data) {
