@@ -8,10 +8,15 @@ from utils.Image import *
 
 class UserController:
     def getUser(self):
+        print('dentro do get')
         user = User()
         professores = user.getProfessores()
         alunos = user.getAlunos()
         coordenadores = user.getCoordenadores()
+
+        print(professores)
+        print(alunos)
+        print(coordenadores)
 
         if professores and alunos and coordenadores:
             return jsonify({'status': 'success', 'professores' : professores, 'alunos': alunos, 'coordenadores': coordenadores})

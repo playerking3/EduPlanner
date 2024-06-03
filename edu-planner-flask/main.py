@@ -39,9 +39,10 @@ def cadastro():
 def esqueci():
     return UserController().esqueciSenha()
 
-@app.route('/getUsers', methods=['GET'])
+@app.route('/getUsers', methods=['POST'])
 def getUsers():
     if VerificaToken().validaToken():
+        print('dps do protege rota')
         return UserController().getUser()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
