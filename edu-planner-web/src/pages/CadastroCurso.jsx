@@ -13,7 +13,7 @@ function CadastroCurso(props){
     const [imagem, setImagem] = useState('')
     const [categorias, setCategorias] = useState([])
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     useEffect(() => {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate)

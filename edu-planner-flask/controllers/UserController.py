@@ -4,8 +4,20 @@ from flask import jsonify, request, send_from_directory
 from utils.Email import *
 from utils.CpfCheck import *
 import random
+from utils.Image import *
 
 class UserController:
+    def getUser(self):
+        user = User()
+        professores = user.getProfessores()
+        alunos = user.getAlunos()
+        coordenadores = user.getCoordenadores()
+
+        if professores and alunos and coordenadores:
+            return jsonify({'status': 'success', 'professores' : professores, 'alunos': alunos, 'coordenadores': coordenadores})
+        return jsonify({'status': 'error', 'infos': 'falha em recuperar informações'})
+
+
     def login(self):
         cpf = request.json.get('cpf')
         password = request.json.get('password')
@@ -21,15 +33,14 @@ class UserController:
             return jsonify({'status': 'error', 'info': 'usuario ou senha invalido'})
         return jsonify({'status': 'error', 'info': 'usuario nao encontrado'})
 
-    def cadastro(self):
+    def cadastro(self, app):
         cpf = request.json.get('cpf')
         password = request.json.get('password')
         nome = request.json.get('nome')
         email = request.json.get('email')
         cargo = request.json.get('cargo')
         nascimento = request.json.get('data_nascimento')
-        foto = request.json.get('foto')
-
+        base64_string = request.json.get('foto')
 
         #verificador de cpf
         cpfcheck = Cpf(cpf)
@@ -45,12 +56,17 @@ class UserController:
             response = user.cadastro(nome, email, cargo, nascimento, salt)
             if response:
                 id = user.checkUser()
-                #foto.save(f'uploads/capa{id}.jpg')
+
+                response = Imagem().cadastrarImagem(base64_string, id)
+
+                if response != True:
+                    return jsonify({'status': 'error', 'info': response})
+
                 print(id, 'id aqui')
                 if id:
                     token = Criptografia().gerarToken(id, cargo)
                     return jsonify({'status': 'success', 'token': token})
-                return jsonify({'status': 'error', 'info': 'usuario nao cadastrado'})
+                return jsonify({'status': 'error', 'info': 'usuario não cadastrado'})
             return jsonify({'status': 'error', 'info': response})
         return jsonify({'status': 'error', 'info': 'usuario ja cadastrado'})
 

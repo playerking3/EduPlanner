@@ -21,7 +21,6 @@ function Cadastro(props) {
     }, []);
 
     async function enviar(){
-        console.log(nome, cpf, nascimento, senha, funcao)
 
         const data = {
             'nome':nome,
@@ -36,7 +35,6 @@ function Cadastro(props) {
         await fetch(props.api + '/cadastro', {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
             },
             body: JSON.stringify(data) // Converta o objeto em uma string JSON

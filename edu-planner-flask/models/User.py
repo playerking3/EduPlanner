@@ -42,3 +42,10 @@ class User:
         exis = conexao.get_list(query)
         print(exis)
         return exis
+
+    def getCoordenadores(self):
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'coordenador';"
+        conexao = Conection()
+        exis = conexao.get_list(query)
+        print(exis)
+        return exis

@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import os
 from controllers.UserController import *
 from controllers.CursoController import *
 from controllers.SalaController import *
@@ -12,7 +13,15 @@ from utils.VerificaToken import *
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, origins=["*"])
+
+# Configura o diretório para armazenar as imagens
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Certifique-se de que o diretório de uploads existe
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 app.config.from_pyfile('configs/config.py')
 db = SQLAlchemy(app)
@@ -24,11 +33,17 @@ def login():
 
 @app.route('/cadastro', methods=['POST'])
 def cadastro():
-    return UserController().cadastro()
+    return UserController().cadastro(app)
 
 @app.route('/esqueciSenha')
 def esqueci():
     return UserController().esqueciSenha()
+
+@app.route('/getUsers', methods=['GET'])
+def getUsers():
+    if VerificaToken().validaToken():
+        return UserController().getUser()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
 
 #------rotas de curso-------------------
 @app.route('/cadastrarCurso', methods=['POST'])

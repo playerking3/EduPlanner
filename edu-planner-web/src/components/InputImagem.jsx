@@ -1,6 +1,26 @@
 import css from './InputImagem.module.css'
 import React from "react";
+import {wait} from "@testing-library/user-event/dist/utils";
 function InputImagem({name, placeholder, setar, valor}){
+
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+    });
+
+    const handleFileInput = async (e) => {
+        alert("AAAAA")
+        console.log('handleFileInput working!')
+        console.log(e.target.files[0]);
+        const base = await toBase64(e.target.files[0])
+        setar(base)
+        console.log(base)
+    }
+
+
+
     return(
         <div className={css.container}>
             <div>
@@ -11,7 +31,7 @@ function InputImagem({name, placeholder, setar, valor}){
                     <label htmlFor={'img'} className={css.input}>
                         <i className="fa-solid fa-arrow-up-from-bracket"></i></label>
                 </div>
-                <input type={'file'} name={'img'} id={'img'} accept="image/png, image/jpeg" style={{display: "none"}} onChange={(event)=> setar(event.target.value)} value={valor}/>
+                <input type="file" onChange={handleFileInput}/>
             </div>
         </div>
     )

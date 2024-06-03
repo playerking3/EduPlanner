@@ -35,6 +35,12 @@
     width: 10vw;
     overflow-x: auto;
 }
+
+.usuarioroxo {
+    background-image: url("../../public/roxo.png");
+    background-position: center;
+}
+
 .lapislixo button:hover {
     background-color: #FF8C42;
 }
