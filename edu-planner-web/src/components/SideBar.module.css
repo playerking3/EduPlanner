@@ -13,11 +13,28 @@
     z-index: 10;
 }
 
+.total2{
+    height: 99svh;
+    position: sticky;
+    top: 0;
+    background: #FFDD26;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5vw .5vw 2vw;
+    align-items: center;
+    width: 12vw;
+    transition: 1s;
+    z-index: 10;
+    display: none;
+}
+
 
 .total:hover {
     width: 15vw;
-    transition: .5s;
+    transition: 1s;
     box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+    padding: .5vw 1.5vw 2vw;
+
 }
 
 .total:hover .links{
@@ -26,7 +43,7 @@
     gap: 1vw;
     text-decoration: none;
     transition: 1s;
-    margin-top: 2em;
+    margin-top: 3vw;
 }
 .total .links{
     display: flex;
@@ -52,6 +69,17 @@
     transition: 1s;
 }
 
+.apareceM{
+    display: none;
+}
+
+.desapareceM{
+    display: flex;
+}
+
+.apareceA{
+    display: flex;
+}
 
 .total:hover p{
     text-decoration: none;
@@ -84,6 +112,14 @@
     width: 4vw;
     border-radius: 100px;
     border: solid 2px white;
+    transition: 2s;
+    margin-top: 2vw;
+}
+
+.total:hover .perfil{
+    width: 8vw;
+    margin-top: 4vw;
+    transition: 2s;
 }
 
 .iconGroup{
@@ -95,30 +131,35 @@
 
 .total:hover .iconGroup{
     align-items: flex-start;
+    margin-top: -2vw;
 }
 
 
 .icon{
     color: white;
+    font-size: 2vw;
 }
 
 @media (max-width: 885px) {
-    .total{
+    .total {
         max-height: 99svh;
         width: 8vw;
     }
 
+    .icon{
+        font-size: 3vw;
 
+    }
 
     .total:hover .links2 p {
         font-size: 3vw !important;
     }
 
     .total:hover{
-        width: 40vw;
+        width: 25vw;
     }
     .total:hover p{
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
     .total:hover .links .risco,
     .total:hover .links2 .risco{
@@ -138,12 +179,12 @@
         font-size: 2.5em !important;
     }
     .links{
-        margin-top: 3em;
+        margin-top: 5.7vw !important;
         font-size: 3vw;
     }
     .total:hover .perfil{
-        width: 15vw;
-        margin-top: 10vw;
+        width: 10vw;
+        margin-top: 5vw;
         border-radius: 100px;
         border: solid 2px white;
         transition: 1s;
@@ -154,7 +195,7 @@
         gap: 1vw;
         text-decoration: none;
         transition: 1s;
-        font-size: 4.5vw !important;
+        margin-top: 5vw !important;
     }
     .iconGroup{
         margin-top: -8vw;
@@ -166,6 +207,38 @@
         max-height: 99svh;
         width: 15vw;
     }
+    .total:hover .iconGroup{
+        align-items: flex-start;
+        margin-top: -10vw;
+    }
+
+    .icon{
+        font-size: 6vw;
+    }
+
+    .links{
+        margin-top: 11vw !important;
+    }
+    .total2{
+        display: flex;
+    }
+
+    .apareceM{
+        display: flex;
+    }
+
+    .desapareceM{
+        display: none;
+    }
+
+    .apareceA{
+        display: flex;
+    }
+
+    .desapareceA{
+        display: none;
+    }
+
 
     .total:hover{
         width: 40vw;

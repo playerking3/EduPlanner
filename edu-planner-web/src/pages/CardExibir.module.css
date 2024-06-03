@@ -221,4 +221,66 @@
     justify-content: space-around;
     align-items: center;
 }
+@media (max-width: 885px) {
+    .card{
+        width: 40vw;
 
+    }
+    .botao1, .botao2{
+        font-size: 1.8vw;
+    }
+    .link{
+        width: 17vw;
+    }
+    .titulo{
+        font-size: 2.5vw;
+    }
+}
+
+
+
+@media (max-width: 429px) {
+    .fotos{
+        height: 40vw;
+        border-radius: 3vw 3vw 0vw 0vw;
+    }
+    .escritas{
+        padding: 4vw;
+    }
+    .card {
+        width: 65vw;
+    }
+    .infos i {
+        font-size: 4.2vw;
+    }
+
+    .infos p {
+        font-size: 3vw;
+        font-weight: 600;
+    }
+    .botao1, .botao2{
+        font-size: 3vw;
+        padding-bottom: 1.7vw;
+        padding-top: 1.7vw;
+    }
+
+    .fichaTurma{
+        border: 0.3vw solid #FFD700;
+        padding: 1.2vw 2.9vw;
+        margin-bottom: 1vw;
+        margin-top: 0.7vw;
+        border-radius: 5vw;
+        font-size: 2.3vw;
+        font-weight: 600;
+        height: 2vw;
+        display: flex;
+        align-items: center;
+        min-width: 11.8vw;
+    }
+    .link{
+        width: 25vw;
+    }
+    .titulo{
+        font-size: 4vw;
+    }
+}
