@@ -38,6 +38,9 @@ function VizualizacaoUsuario(props){
             .then(function(data) {
                 let acert = data // saberemos se deu certo
                 console.log(acert)
+                setCoordenadores([...acert.coordenadores])
+                setProfessores([...acert.professores])
+                setAlunos([...acert.alunos])
             })
             .catch(function(error) {
                 console.log(error);
@@ -63,7 +66,7 @@ function VizualizacaoUsuario(props){
                         <div><OrdenarPor></OrdenarPor></div>
                     </div>
                     <div className={css.turmas}>
-                        {coordenadores.aula.map((item, index) =>(
+                        {coordenadores.map((item, index) =>(
                             <CardCoordenador nome={item[0]} id={item[1]}></CardCoordenador>
                         ))}
                     </div>
@@ -74,13 +77,9 @@ function VizualizacaoUsuario(props){
                         <div><OrdenarPor></OrdenarPor></div>
                     </div>
                     <div className={css.turmas}>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
+                        {professores.map((item, index) =>(
+                            <CardProfessores nome={item[0]} id={item[1]}></CardProfessores>
+                        ))}
                     </div>
                 </div>
                 <div>
@@ -89,14 +88,9 @@ function VizualizacaoUsuario(props){
                         <div><OrdenarPor></OrdenarPor></div>
                     </div>
                     <div className={css.turmas}>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-
+                        {alunos.map((item, index) =>(
+                            <CardAlunos nome={item[0]} id={item[1]}></CardAlunos>
+                        ))}
                     </div>
                 </div>
             </div>
