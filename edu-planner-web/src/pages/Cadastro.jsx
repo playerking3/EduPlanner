@@ -21,7 +21,22 @@ function Cadastro(props) {
     }, []);
 
     async function enviar(){
-        console.log(nome, cpf, nascimento, senha, funcao)
+        // const formData = new FormData();
+        //
+        // // Adiciona os campos ao FormData
+        // formData.append('nome', nome);
+        // formData.append('cpf', cpf);
+        // formData.append('data_nascimento', nascimento);
+        // formData.append('password', senha);
+        // formData.append('cargo', funcao);
+        // formData.append('email', email);
+        //
+        // console.log("FOTO", foto)
+        //
+        // // Adiciona a foto ao FormData
+        // if (foto) {
+        //     formData.append('foto', foto);
+        // }
 
         const data = {
             'nome':nome,
@@ -36,7 +51,6 @@ function Cadastro(props) {
         await fetch(props.api + '/cadastro', {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
             },
             body: JSON.stringify(data) // Converta o objeto em uma string JSON

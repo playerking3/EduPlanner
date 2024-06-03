@@ -1,14 +1,12 @@
 import css from './CadastroBox.module.css'
 import CadastroInput from "./CadastroInput";
-import InputMultiplo from "./InputMultiplo";
-import InputTextArea from "./InputTextArea";
-import InputImagem2 from "./InputImagem2";
+import InputImagem2 from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
-import ComboBox from "./ComboBox";
 
 function CadastroBox ({placeholder, nome, setNome, funcao, setFuncao, cpf, setCpf, senha, setSenha, nascimento, setNascimento, foto, setFoto, email, setEmail, enviar}){
     return(
         <div className={css.box}>
+            <h1>BANANA</h1>
             <div>
                 <h1 className={css.h1}>{placeholder}</h1>
             </div>
