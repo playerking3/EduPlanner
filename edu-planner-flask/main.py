@@ -39,6 +39,12 @@ def cadastro():
 def esqueci():
     return UserController().esqueciSenha()
 
+@app.route('/getUsers', methods=['GET'])
+def getUsers():
+    if VerificaToken().validaToken():
+        return UserController().getUser()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
 #------rotas de curso-------------------
 @app.route('/cadastrarCurso', methods=['POST'])
 def cadastraCurso():

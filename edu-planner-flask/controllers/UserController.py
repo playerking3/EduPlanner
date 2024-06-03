@@ -7,6 +7,17 @@ import random
 from utils.Image import *
 
 class UserController:
+    def getUser(self):
+        user = User()
+        professores = user.getProfessores()
+        alunos = user.getAlunos()
+        coordenadores = user.getCoordenadores()
+
+        if professores and alunos and coordenadores:
+            return jsonify({'status': 'success', 'professores' : professores, 'alunos': alunos, 'coordenadores': coordenadores})
+        return jsonify({'status': 'error', 'infos': 'falha em recuperar informações'})
+
+
     def login(self):
         cpf = request.json.get('cpf')
         password = request.json.get('password')
@@ -46,7 +57,7 @@ class UserController:
             if response:
                 id = user.checkUser()
 
-                response = Image().cadastrarImagem(base64_string, id)
+                response = Imagem().cadastrarImagem(base64_string, id)
 
                 if response != True:
                     return jsonify({'status': 'error', 'info': response})

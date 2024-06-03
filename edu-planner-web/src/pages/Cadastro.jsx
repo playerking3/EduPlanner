@@ -21,22 +21,6 @@ function Cadastro(props) {
     }, []);
 
     async function enviar(){
-        // const formData = new FormData();
-        //
-        // // Adiciona os campos ao FormData
-        // formData.append('nome', nome);
-        // formData.append('cpf', cpf);
-        // formData.append('data_nascimento', nascimento);
-        // formData.append('password', senha);
-        // formData.append('cargo', funcao);
-        // formData.append('email', email);
-        //
-        // console.log("FOTO", foto)
-        //
-        // // Adiciona a foto ao FormData
-        // if (foto) {
-        //     formData.append('foto', foto);
-        // }
 
         const data = {
             'nome':nome,

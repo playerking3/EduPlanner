@@ -4,10 +4,38 @@ import CardProfessores from "../components/CardProfessores";
 import CardAlunos from "../components/CardAlunos";
 import SideBar from "../components/SideBar";
 import styles from "./VisualizacaoCurso.module.css";
-import {Link} from "react-router-dom";
-import React from "react";
+import {Link, useNavigate} from "react-router-dom";
+import React, {useEffect} from "react";
+import {rotaSegurity} from "../functions/rotaSegurity";
 
-function VizualizacaoUsuario(){
+function VizualizacaoUsuario(props){
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+    }, []);
+
+    async function enviar(){
+
+
+        await fetch(props.api + '/getUsers', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                console.log(acert)
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
+
+
     return(
         <div className={css.container}>
             <SideBar></SideBar>

@@ -2,7 +2,7 @@ import base64
 from PIL import Image
 from io import BytesIO
 
-class Image:
+class Imagem:
     def cadastrarImagem(self, base64_string, id):
         try:
             if base64_string.startswith('data:image/png;base64,'):
@@ -15,7 +15,7 @@ class Image:
             image = Image.open(BytesIO(image_data))
 
             # Salve a imagem em um arquivo
-            image.save(f"uploads/{id}.png")
+            image.save(f"uploads/{id[0]}.png")
 
             return True
         except FileNotFoundError as error:
