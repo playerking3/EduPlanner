@@ -26,6 +26,21 @@
 }
 
 
+@media (max-width: 885px) {
+    .card{
+        background: #FFDD26;
+        padding: 3vw;
+        color: white;
+        border-radius: 1vw;
+        display: flex;
+        flex-direction: column;
+        gap: .5vw;
+    }
+    .texto{
+        font-size: 2vw;
+    }
+}
+
 @media (max-width: 429px) {
     .texto{
         text-align: left;

@@ -5,6 +5,7 @@
     height: 2.5em;
     width: 95%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
+    font-size: 1.3vw;
 }
 
 .container{
@@ -27,4 +28,19 @@
 }
 .asterisco{
     color: red;
+}
+
+
+@media (max-width: 429px) {
+    .select {
+        width: 100%;
+        margin-top: 2vw;
+        height: 2.9em;
+        padding: 4px 1.8vw;
+        width: 100%;
+        font-size: 3vw;
+    }
+    .container label {
+        font-size: 3vw;
+    }
 }

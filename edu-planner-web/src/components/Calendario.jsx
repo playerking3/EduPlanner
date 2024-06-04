@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list'; // Para visualização em lista
 import ptLocale from '@fullcalendar/core/locales/pt';
-import './Calendario.module.css'
+import css from './Calendario.module.css'
 export default function Calendario() {
     const [currentView, setCurrentView] = useState('dayGridMonth');
     const [events, setEvents] = useState([]);
@@ -34,7 +34,7 @@ export default function Calendario() {
     }
 
     return (
-        <div>
+        <div className={css.todoCalendario}>
             <FullCalendar
                 plugins={[dayGridPlugin, timeGridPlugin, listPlugin]}
                 initialView={currentView}

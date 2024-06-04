@@ -1,5 +1,4 @@
 .box{
-    min-height: 85%;
     padding: 4vw 1vw 2vw;
     width: 65%;
     border-radius: 1em;
@@ -14,4 +13,50 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
+}
+
+@media (max-width: 700px) {
+    .CadastroBox_maior__ZNNow {
+        width: 100%;
+    }
+}
+
+@media (max-width: 885px) {
+    .box{
+        width: 80%;
+        padding: 4vw 0;
+    }
+    .h1 {
+         font-size: 3vw;
+     }
+    .maior{
+        width: 90%
+    }
+    .formContainer {
+        justify-items: center;
+    }
+}
+
+@media (max-width: 429px) {
+    .h1{
+        font-weight: 600;
+        padding-bottom: 2vw;
+        margin-top: 4vw;
+        font-size: 4vw;
+    }
+    .formContainer {
+        display: flex;
+        grid-template-rows: 1fr 1fr !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0em;
+    }
+    .box{
+        width: 85%;
+        margin-left: -3vw;
+    }
+
+    .maior {
+        width: 85%;
+    }
 }

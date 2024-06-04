@@ -14,7 +14,7 @@
 .turmas{
     display: flex;
     gap: 0.5vw;
-    overflow-x: scroll;
+    overflow-x: auto;
     margin-bottom: 1vw;
     margin-top: 1vw;
 }

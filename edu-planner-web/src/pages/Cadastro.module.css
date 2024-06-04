@@ -166,3 +166,10 @@ input{
     height: 40px;
     border-radius: 20px;
 }
+
+
+@media (max-width: 429px) {
+    .maior{
+        width: 85%;
+    }
+}

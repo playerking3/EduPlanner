@@ -10,6 +10,13 @@
     cursor: pointer;
 }
 
+@media (max-width: 885px) {
+    .botao{
+        font-size: 2vw;
+        width: 80%;
+    }
+}
+
 @media (max-width: 429px) {
     .botao{
         border: none;

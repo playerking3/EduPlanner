@@ -5,7 +5,7 @@ import Periodicidade2 from "./Periodicidade2";
 function CardEvento({placeholder, horario, color}) {
     return(
         <div className={styles.card} style={{background:color}}>
-            <h3 className={styles.texto}>{placeholder}</h3>
+            <h3 className={styles.texto} style={{fontWeight:'600'}}>{placeholder}</h3>
             <p className={styles.texto}>{horario}</p>
             <Periodicidade2></Periodicidade2>
         </div>
