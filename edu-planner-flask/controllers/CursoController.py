@@ -19,11 +19,15 @@ class CursoController:
         categorias = request.json.get('categorias')
 
         curso = Curso()
-        print(curso.getCurso(nome))
         if curso.getCurso(nome) == False:
-            response = curso.createCurso(nome, carga_horaria, faixa_etaria, categorias, descricao)
-            #Imagem().cadastrarImagem(imagem, curso.getCurso(nome), 'curso')
-            return jsonify({'status': 'success'})
+            curso.createCurso(nome, carga_horaria, faixa_etaria, categorias, descricao)
+            print(curso.getCurso(nome))
+            id = curso.getCurso(nome)
+            print(id)
+            if id != False:
+                Imagem().cadastrarImagem(imagem, id, 'curso')
+                return jsonify({'status': 'success'})
+            return jsonify({'status': 'error', 'info': 'falha em cadastrar a imagem'})
         return jsonify({'status': 'error', 'info': 'curso de mesmo nome ja cadastrado'})
 
     def editarCurso(self):

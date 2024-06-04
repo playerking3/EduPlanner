@@ -3,11 +3,26 @@
 }
 
 .fotos{
-    background-image: url('/public/foto1.png');
+    /*background-image: url('/public/foto1.png');*/
     height: 18vw;
     background-position: center;
     background-size: cover;
     border-radius: 2vw 2vw 0 0;
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.fotoperfil {
+    height: 18vw;
+    border-radius: 2vw 2vw 0 0;
+}
+
+.fotoDefault {
+    height: 18vw;
+    border-radius: 2vw 2vw 0 0;
+    scale: 1.4;
 }
 
 .titulo{
@@ -122,11 +137,22 @@
 
 @media (max-width: 429px) {
     .fotos{
-        background-image: url('/public/foto1.png');
         height: 30vw;
         background-position: center;
         background-size: cover;
         border-radius: 2vw 2vw 0 0;
+    }
+
+    .fotoperfil {
+        height: 30vw;
+        border-radius: 2vw 2vw 0 0;
+        scale: 1.2;
+    }
+
+    .fotoDefault {
+        height: 30vw;
+        border-radius: 2vw 2vw 0 0;
+        scale: 2;
     }
 
     .titulo{

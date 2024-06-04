@@ -11,7 +11,6 @@ function InputImagem({name, placeholder, setar, valor}){
     });
 
     const handleFileInput = async (e) => {
-        alert("AAAAA")
         console.log('handleFileInput working!')
         console.log(e.target.files[0]);
         const base = await toBase64(e.target.files[0])
