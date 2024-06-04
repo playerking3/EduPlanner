@@ -19,6 +19,12 @@ class Curso:
         exis = conexao.get_query(query)
         return exis
 
+    def getCursos(self):
+        query = f"SELECT nome, id_curso, descricao FROM `curso` WHERE status = 'ativo';"
+        conexao = Conection()
+        exis = conexao.get_list_image(query, 'curso')
+        return exis
+
     def excluiCurso(self, nome):
         query = f'UPDATE curso SET status = "inativo" WHERE nome = "{nome}";'
         conexao = Conection()

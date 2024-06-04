@@ -8,7 +8,6 @@ from utils.Image import *
 
 class UserController:
     def getUser(self):
-        print('dentro do get')
         user = User()
         professores = user.getProfessores()
         alunos = user.getAlunos()

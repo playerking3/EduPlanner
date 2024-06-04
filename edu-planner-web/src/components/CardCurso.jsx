@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 function CardCurso({placeholder, img, descricao}) {
     return(
         <div className={styles.card}>
-            <div style={{ backgroundImage: `url(/${img}.png)`}} className={styles.fotos}>
+            <div style={{ backgroundImage: "data:image/png;base64," + img}} className={styles.fotos}>
 
             </div>
             <div className={styles.escritas}>

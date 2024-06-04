@@ -59,6 +59,12 @@ def editaCurso():
 def excluiCurso():
     return CursoController().excluiCurso()
 
+@app.route('/getCursos', methods=['POST'])
+def getCursos():
+    if VerificaToken().validaToken():
+        return CursoController().getCurso()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
 #------rotas de turma-------------------
 @app.route('/cadastrarTurma', methods=['POST'])
 def cadastrarTurma():
