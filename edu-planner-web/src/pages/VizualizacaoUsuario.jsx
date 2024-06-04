@@ -78,18 +78,18 @@ function VizualizacaoUsuario(props){
                     </div>
                     <div className={css.turmas}>
                         {professores.map((item, index) =>(
-                            <CardProfessores nome={item[0]} id={item[1]}></CardProfessores>
+                            <CardProfessores nome={item[0]} id={item[1]} imagem={item[2]}></CardProfessores>
                         ))}
                     </div>
                 </div>
                 <div>
                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}} className={css.classe}>
-                        <p className={css.identificacao}>Coodenadores</p>
+                        <p className={css.identificacao}>Alunos</p>
                         <div><OrdenarPor></OrdenarPor></div>
                     </div>
                     <div className={css.turmas}>
                         {alunos.map((item, index) =>(
-                            <CardAlunos nome={item[0]} id={item[1]}></CardAlunos>
+                            <CardAlunos nome={item[0]} id={item[1]} imagem={item[2]}></CardAlunos>
                         ))}
                     </div>
                 </div>
