@@ -28,5 +28,5 @@ class Sala:
     def getList(self):
         query = f"SELECT nome, id_sala FROM `sala`;"
         conexao = Conection()
-        exis = conexao.get_list(query)
+        exis = conexao.get_list_image(query, 'sala')
         return exis

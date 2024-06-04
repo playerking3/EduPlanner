@@ -134,7 +134,7 @@ def excluirSala():
     if VerificaToken().validaToken():
         return SalaController().excluir()
     return jsonify({'status': 'error', 'info': 'invalid token'})
-@app.route('/getSala')
+@app.route('/getSala', methods=['POST'])
 def getSala():
     if VerificaToken().validaToken():
         return SalaController().getList()
