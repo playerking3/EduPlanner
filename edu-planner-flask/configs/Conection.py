@@ -1,4 +1,5 @@
 import mysql.connector
+from utils.Image import *
 
 class Conection:
     def add_query (self, query):
@@ -50,6 +51,31 @@ class Conection:
                 exist = True
                 for i in cursor:
                     di.append(i)
+            else:
+                exist = False
+            cursor.close()
+            conect.close()
+            if exist:
+                return di
+            else:
+                return False
+        except mysql.connector.Error as erro:
+            print(erro)
+            return False
+
+    def get_list_image (self, query, repositorio):
+        try:
+            conect = mysql.connector.connect(user="root", password="", host="127.0.0.1", database='eduplanner', port='3306')
+            cursor = conect.cursor()
+            inserir = query
+            cursor.execute(inserir)
+            di = []
+            if cursor:
+                exist = True
+                for i in cursor:
+                    resistro = [i[0], i[1], Imagem().converteImagem(i[1], repositorio)]
+                    print(resistro)
+                    di.append(resistro)
             else:
                 exist = False
             cursor.close()

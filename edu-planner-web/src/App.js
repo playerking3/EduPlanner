@@ -30,7 +30,7 @@ function App() {
               <Route path={'/cadastro-turma'} element={<CadastroTurma api={api}/>}/>
               <Route path={'/cadastro-sala'} element={<CadastroSala api={api}/>}/>
               <Route path={'/'} element={<Home/>}/>
-              <Route path={'/cursos'} element={<VisualizacaoCurso/>}/>
+              <Route path={'/cursos'} element={<VisualizacaoCurso api={api}/>}/>
               <Route path={'*'} element={<Erro/>}/>
               <Route path={'/salas'} element={<VisualizacaoSala/>}/>
               <Route path={'/visualizacao-usuario'} element={<VizualizacaoUsuario api={api}/>}/>

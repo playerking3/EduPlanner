@@ -13,6 +13,10 @@ class UserController:
         alunos = user.getAlunos()
         coordenadores = user.getCoordenadores()
 
+        print(professores)
+        print(alunos)
+        print(coordenadores)
+
         if professores and alunos and coordenadores:
             return jsonify({'status': 'success', 'professores' : professores, 'alunos': alunos, 'coordenadores': coordenadores})
         return jsonify({'status': 'error', 'infos': 'falha em recuperar informações'})
@@ -57,7 +61,7 @@ class UserController:
             if response:
                 id = user.checkUser()
 
-                response = Imagem().cadastrarImagem(base64_string, id)
+                response = Imagem().cadastrarImagem(base64_string, id, 'usuario')
 
                 if response != True:
                     return jsonify({'status': 'error', 'info': response})

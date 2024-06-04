@@ -5,31 +5,42 @@ import CardAlunos from "../components/CardAlunos";
 import SideBar from "../components/SideBar";
 import styles from "./VisualizacaoCurso.module.css";
 import {Link, useNavigate} from "react-router-dom";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import OrdenarPor from "../components/OrdenarPor";
 import {rotaSegurity} from "../functions/rotaSegurity";
 
 function VizualizacaoUsuario(props){
+    const [professores, setProfessores] = useState([])
+    const [alunos, setAlunos] = useState([])
+    const [coordenadores, setCoordenadores] = useState([])
 
     const navigate = useNavigate();
 
     useEffect(() => {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+        enviar()
     }, []);
 
     async function enviar(){
 
+        const data = {
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
 
         await fetch(props.api + '/getUsers', {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
             },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
         })
             .then((resp) => resp.json())
             .then(function(data) {
                 let acert = data // saberemos se deu certo
                 console.log(acert)
+                setCoordenadores([...acert.coordenadores])
+                setProfessores([...acert.professores])
+                setAlunos([...acert.alunos])
             })
             .catch(function(error) {
                 console.log(error);
@@ -55,13 +66,9 @@ function VizualizacaoUsuario(props){
                         <div><OrdenarPor></OrdenarPor></div>
                     </div>
                     <div className={css.turmas}>
-                        <CardCoordenador></CardCoordenador>
-                        <CardCoordenador></CardCoordenador>
-                        <CardCoordenador></CardCoordenador>
-                        <CardCoordenador></CardCoordenador>
-                        <CardCoordenador></CardCoordenador>
-                        <CardCoordenador></CardCoordenador>
-                        <CardCoordenador></CardCoordenador>
+                        {coordenadores.map((item, index) =>(
+                            <CardCoordenador nome={item[0]} id={item[1]} imagem={item[2]}></CardCoordenador>
+                        ))}
                     </div>
                 </div>
                 <div>
@@ -70,29 +77,20 @@ function VizualizacaoUsuario(props){
                         <div><OrdenarPor></OrdenarPor></div>
                     </div>
                     <div className={css.turmas}>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
-                        <CardProfessores></CardProfessores>
+                        {professores.map((item, index) =>(
+                            <CardProfessores nome={item[0]} id={item[1]} imagem={item[2]}></CardProfessores>
+                        ))}
                     </div>
                 </div>
                 <div>
                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}} className={css.classe}>
-                        <p className={css.identificacao}>Coodenadores</p>
+                        <p className={css.identificacao}>Alunos</p>
                         <div><OrdenarPor></OrdenarPor></div>
                     </div>
                     <div className={css.turmas}>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-                        <CardAlunos></CardAlunos>
-
+                        {alunos.map((item, index) =>(
+                            <CardAlunos nome={item[0]} id={item[1]} imagem={item[2]}></CardAlunos>
+                        ))}
                     </div>
                 </div>
             </div>

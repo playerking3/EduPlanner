@@ -1,11 +1,44 @@
 import styles from './VisualizacaoCurso.module.css'
-import React from "react";
+import React, {useEffect, useState} from "react";
 import CardCurso from "../components/CardCurso";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import SideBar from "../components/SideBar";
+import {rotaSegurity} from "../functions/rotaSegurity";
 
 
-function VisualizacaoCurso() {
+function VisualizacaoCurso(props) {
+    const [listaCursos, setListaCursos] = useState([{placeholder: 'teste', img: 'img1', descricao: 'testes'}])
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+        enviar()
+    }, []);
+
+    async function enviar(){
+
+        const data = {
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
+
+        await fetch(props.api + '/getCursos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                console.log(acert)
+                setListaCursos([...acert.cursos])
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
+
     return(
         <div className={styles.container}>
             <SideBar></SideBar>
@@ -17,9 +50,9 @@ function VisualizacaoCurso() {
                     </Link>
                 </div>
                 <div className={styles.mostraCards}>
-                    <CardCurso placeholder='Oficina de bolos' img='img1' descricao='Turmas inscritas:'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img2' descricao='Turmas inscritas:'></CardCurso>
-                    <CardCurso placeholder='Oficina de bolos' img='img3' descricao='Turmas inscritas:'></CardCurso>
+                    {listaCursos.map((e)=>(
+                        <CardCurso placeholder={e[0]} img={e[2]} descricao={e.descricao}/>
+                    ))}
                 </div>
             </div>
         </div>

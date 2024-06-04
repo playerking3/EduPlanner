@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity } from "react-native";
 
 export default function Home({ navigation }) {

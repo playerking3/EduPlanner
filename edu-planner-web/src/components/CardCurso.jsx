@@ -1,12 +1,14 @@
 import styles from './CardCurso.module.css'
 import React from "react";
 import {Link} from "react-router-dom";
+import css from "./CardCoordenador.module.css";
 
 function CardCurso({placeholder, img, descricao}) {
     return(
         <div className={styles.card}>
-            <div style={{ backgroundImage: `url(/${img}.png)`}} className={styles.fotos}>
-
+            <div style={{ backgroundImage: "data:image/png;base64," + img}} className={styles.fotos}>
+                {img === '' ? <img src={'/foto1.png'} className={styles.fotoDefault}/> :
+                    <img src={"data:image/png;base64," + img} className={styles.fotoperfil}/>}
             </div>
             <div className={styles.escritas}>
                 <h4 className={styles.titulo}>{placeholder}</h4>

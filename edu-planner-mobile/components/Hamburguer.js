@@ -18,12 +18,15 @@ export default function Menu({ navigation, sairModal, setSairModal }) {
     navigation.navigate('Cursos');
   };
 
+  const calendario = () =>{
+    navigation.navigate('Calendario')
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.menuItems}>
         <MenuItem onPress={cursos} icon={faBook} text="Cursos" />
-        <MenuItem icon={faCalendar} text="Agenda" />
+        <MenuItem onPress={calendario} icon={faCalendar} text="Agenda" />
         <MenuItem onPress={perfil} icon={faUser} text="Perfil" />
       </View>
       <View style={styles.sair}>
