@@ -126,6 +126,11 @@
         display: flex;
         flex-direction: column !important;
     }
+    .agenda {
+         min-height: 25vh;
+         margin-top: 0vw;
+     }
+
 }
 @media (max-width: 429px) {
     .agrupamento{
