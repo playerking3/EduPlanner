@@ -32,7 +32,7 @@ function App() {
               <Route path={'/'} element={<Home/>}/>
               <Route path={'/cursos'} element={<VisualizacaoCurso api={api}/>}/>
               <Route path={'*'} element={<Erro/>}/>
-              <Route path={'/salas'} element={<VisualizacaoSala/>}/>
+              <Route path={'/salas'} element={<VisualizacaoSala api={api}/>}/>
               <Route path={'/visualizacao-usuario'} element={<VizualizacaoUsuario api={api}/>}/>
           </Routes>
         </BrowserRouter>

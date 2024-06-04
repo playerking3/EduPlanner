@@ -42,5 +42,5 @@ class SalaController:
         obj = Sala()
         response = obj.getList()
         if response:
-            return jsonify({'status': 'success', 'lista_turma': response})
+            return jsonify({'status': 'success', 'getSala': response})
         return jsonify({'status': 'error', 'info': response})

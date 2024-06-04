@@ -1,11 +1,45 @@
 import styles from './VisualizacaoCurso.module.css'
-import React from "react";
+import React, {useEffect, useState} from "react";
 import CardCurso from "../components/CardCurso";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import SideBar from "../components/SideBar";
+import {rotaSegurity} from "../functions/rotaSegurity";
 
 
-function VisualizacaoCurso() {
+function VisualizacaoCurso(props) {
+    const [listSalas, setListSalas] = useState([])
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        rotaSegurity(props.api, localStorage.getItem('token'), navigate)
+        enviar()
+    }, []);
+
+    async function enviar(){
+
+        const data = {
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
+
+        await fetch(props.api + '/getSala', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                console.log(acert)
+                setListSalas([...acert.getSala])
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
+
     return(
         <div className={styles.container}>
             <SideBar></SideBar>
@@ -17,9 +51,9 @@ function VisualizacaoCurso() {
                     </Link>
                 </div>
                 <div className={styles.mostraCards}>
-                    <CardCurso placeholder='Sala de Informática' img='img6' descricao='Sala 23'></CardCurso>
-                    <CardCurso placeholder='Cozinha KIDS' img='img5' descricao='Sala 24'></CardCurso>
-                    <CardCurso placeholder='Sala de Jogos' img='img4' descricao='Sala 25'></CardCurso>
+                    {listSalas.map((e)=>(
+                        <CardCurso placeholder={e[0]} img={e[2]} descricao={e.descricao}/>
+                    ))}
 
                 </div>
             </div>
