@@ -117,15 +117,19 @@
     text-decoration: none;
 }
 
-
+@media (max-width: 885px) {
+    .card{
+        width: 35vw;
+    }
+    .fotos{
+        height: 20vw;
+    }
+}
 
 
 @media (max-width: 429px) {
     .fotos{
-        background-image: url('/public/foto1.png');
         height: 30vw;
-        background-position: center;
-        background-size: cover;
         border-radius: 2vw 2vw 0 0;
     }
 

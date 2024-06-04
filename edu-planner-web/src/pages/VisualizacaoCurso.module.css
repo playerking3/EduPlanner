@@ -71,3 +71,10 @@
         align-items: center;
     }
 }
+
+@media (max-width: 163px) {
+    .container{
+        display: grid;
+        grid-template-columns: .1fr 1fr;
+    }
+}

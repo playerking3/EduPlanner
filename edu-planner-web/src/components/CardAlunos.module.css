@@ -45,7 +45,7 @@
 .lapislixo {
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 4vw;
 }
 
 .lapislixo img {

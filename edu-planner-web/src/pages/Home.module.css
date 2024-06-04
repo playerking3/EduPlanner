@@ -57,6 +57,7 @@
 
 .divona{
     background-color: #EEEBEB;
+    overflow: hidden;
 }
 
 .tudos{
@@ -197,9 +198,12 @@
     border-radius: 15px;
     cursor: pointer;
     font-size: 1.6vw;
+    transition: 1s;
 }
 .button:hover{
     background-color: #537fcb;
+    transition: 1s;
+
 }
 /*--------------------------------------------------------*/
 .footer {

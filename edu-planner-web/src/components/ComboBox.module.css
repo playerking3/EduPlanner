@@ -21,3 +21,10 @@
     flex-direction: column;
     align-items: center;
 }
+.container label {
+    font-weight: 600;
+    font-size: 1.3vw;
+}
+.asterisco{
+    color: red;
+}

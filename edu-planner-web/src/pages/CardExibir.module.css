@@ -131,6 +131,8 @@
     margin-top: 1vw;
     font-size: 1.3vw;
     cursor: pointer;
+    transition: 1s;
+
 }
 .botao2{
     display: flex;
@@ -145,15 +147,18 @@
     margin-top: 1vw;
     font-size: 1.3vw;
     cursor: pointer;
+    transition: 1s;
 
 }
 
-.botao1:hover,
-.botao2:hover,
-.botao3:hover{
-    -webkit-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 48px -17px rgba(0, 0, 0, 0.75);
+.botao1:hover{
+    background: #e79501;
+    transition: 1s;
+}
+
+.botao2:hover{
+    background: #ea6503;
+    transition: 1s;
 }
 
 .escritas{

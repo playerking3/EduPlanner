@@ -28,10 +28,11 @@ function InputImagem({name, placeholder, setar, valor}){
             </div>
             <div className={css.inputGroup}>
                 <div className={css.btnInput}>
+                    <input id={'img'} type="file" name={'img'} onChange={handleFileInput} style={{display:'none'}}/>
                     <label htmlFor={'img'} className={css.input}>
-                        <i className="fa-solid fa-arrow-up-from-bracket"></i></label>
+                    <i className="fa-solid fa-arrow-up-from-bracket"></i></label>
                 </div>
-                <input type="file" onChange={handleFileInput}/>
+
             </div>
         </div>
     )

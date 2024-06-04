@@ -44,7 +44,7 @@ function VizualizacaoUsuario(props){
             <div className={css.conteinerUsua}>
                 <div className={css.botaoTopo}>
                     <Link to={'/cadastro-pessoa'} className={styles.link}>
-                        <div className={css.botaoc}><p style={{fontWeight: 600}}>Novo curso</p> <i
+                        <div className={css.botaoc}><p style={{fontWeight: 600}}>Novo usuário</p> <i
                             className="fa-solid fa-plus fa-xl"></i>
                         </div>
                     </Link>

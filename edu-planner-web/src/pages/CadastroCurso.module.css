@@ -12,6 +12,10 @@
     margin-top: 2vw;
     margin-bottom: 2vw;
 }
+.container label {
+    font-weight: 600;
+    font-size: 1.3vw;
+}
 
 
 @media (max-width: 429px) {
