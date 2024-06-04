@@ -1,6 +1,7 @@
 import base64
 from PIL import Image
 from io import BytesIO
+import os
 
 class Imagem:
     def cadastrarImagem(self, base64_string, id, repositorio):
@@ -21,5 +22,12 @@ class Imagem:
         except FileNotFoundError as error:
             print(error)
             return error
-    def converteImagem(self, id):
-        pass
+    def converteImagem(self, id, repositorio):
+        for root, dirs, files in os.walk(f'uploads/{repositorio}'):
+            if str(id) + '.png' in files:
+                target = os.path.join(root, str(id) + '.png')
+                with Image.open(target) as image:
+                    buffered = BytesIO()
+                    image.save(buffered, format=image.format)
+                    return base64.b64encode(buffered.getvalue()).decode('utf-8')
+        return ''

@@ -32,20 +32,20 @@ class User:
     def getAlunos(self):
         query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'aluno';"
         conexao = Conection()
-        exis = conexao.get_list_image(query)
+        exis = conexao.get_list_image(query, 'usuario')
         print(exis)
         return exis
 
     def getProfessores(self):
         query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'professor';"
         conexao = Conection()
-        exis = conexao.get_list_image(query)
+        exis = conexao.get_list_image(query, 'usuario')
         print(exis)
         return exis
 
     def getCoordenadores(self):
         query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'coordenador';"
         conexao = Conection()
-        exis = conexao.get_list_image(query)
+        exis = conexao.get_list_image(query, 'usuario')
         print(exis)
         return exis

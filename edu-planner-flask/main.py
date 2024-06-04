@@ -42,7 +42,6 @@ def esqueci():
 @app.route('/getUsers', methods=['POST'])
 def getUsers():
     if VerificaToken().validaToken():
-        print('dps do protege rota')
         return UserController().getUser()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 

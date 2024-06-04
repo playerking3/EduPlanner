@@ -67,7 +67,7 @@ function VizualizacaoUsuario(props){
                     </div>
                     <div className={css.turmas}>
                         {coordenadores.map((item, index) =>(
-                            <CardCoordenador nome={item[0]} id={item[1]}></CardCoordenador>
+                            <CardCoordenador nome={item[0]} id={item[1]} imagem={item[2]}></CardCoordenador>
                         ))}
                     </div>
                 </div>
