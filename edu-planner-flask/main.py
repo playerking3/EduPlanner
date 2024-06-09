@@ -45,6 +45,12 @@ def getUsers():
         return UserController().getUser()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
+@app.route('/excluirUser', methods=['POST'])
+def excuirUser():
+    if VerificaToken().validaToken():
+        return UserController().excluir()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
 #------rotas de curso-------------------
 @app.route('/cadastrarCurso', methods=['POST'])
 def cadastraCurso():

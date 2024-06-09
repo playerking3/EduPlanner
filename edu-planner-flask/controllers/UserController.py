@@ -17,7 +17,7 @@ class UserController:
         print(alunos)
         print(coordenadores)
 
-        if professores and alunos and coordenadores:
+        if professores != False and alunos != False and coordenadores != False:
             return jsonify({'status': 'success', 'professores' : professores, 'alunos': alunos, 'coordenadores': coordenadores})
         return jsonify({'status': 'error', 'infos': 'falha em recuperar informações'})
 
@@ -94,4 +94,11 @@ class UserController:
             return jsonify({'status': True})
         return jsonify({'satus': False})
 
+    def excluir(self):
+        id = request.json.get('id')
 
+        curso = User()
+        response = curso.excluiUser(id)
+        if response:
+            return jsonify({'status': 'success'})
+        return jsonify({'status': 'error', 'info': 'erro ao excluir usuário'})
