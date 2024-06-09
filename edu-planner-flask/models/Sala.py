@@ -13,7 +13,7 @@ class Sala:
         response = conexao.add_query(query)
         return response
 
-    def get(self, nome, numero):
+    def get(self, nome, numero = 0):
         query = f'SELECT id_sala FROM `sala` WHERE nome = "{nome}" OR numero_sala = {numero};'
         conexao = Conection()
         exis = conexao.get_query(query)
