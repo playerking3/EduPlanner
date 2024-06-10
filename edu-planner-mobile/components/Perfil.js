@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
   },
   tudo: {
     backgroundColor: 'white',
-    width: 350,
-    height: 700,
+    width: 320,
+    height: 600,
     borderRadius: 10, 
     shadowColor: '#000', 
     shadowOffset: { width: 0, height: 2 },
@@ -61,12 +61,12 @@ const styles = StyleSheet.create({
     marginTop: 60
   },
   hamburguer: {
-    marginRight: 320,
+    marginRight: 260,
     marginTop: 30
   },
   lapis: {
-    width: 300,
-    height: 300,
+    width: 280,
+    height: 280,
     marginLeft: 20
   },
   inputContainer: {
@@ -101,16 +101,12 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#C2C2C2',
-    borderRadius: 5,
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 20,
-    
-
   },
   buttonCancelar:{
-     backgroundColor: '#C2C2C2',
-    borderRadius: 5,
+    backgroundColor: '#C2C2C2',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 20,

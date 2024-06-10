@@ -19,7 +19,7 @@ const Tab = ({ onPress, abaSelecionada }) => (
   </TouchableOpacity>
 );
 
-const Calendario = () => {
+const Calendario = ({ navigation }) => {
   const [dataSelecionada, setDataSelecionada] = useState('');
   const windowHeight = Dimensions.get('window').height;
   const translateY = useSharedValue(windowHeight - 300);
@@ -32,6 +32,10 @@ const Calendario = () => {
     setAbaSelecionada('atividades');
     translateY.value = withSpring(0, { damping: 20, stiffness: 50 });
     calendarScale.value = withSpring(0.8, { damping: 20, stiffness: 50 });
+  };
+  const handleMenuPress = () => {
+    navigation.openDrawer()
+    console.log("Menu pressionado");
   };
 
   const toggleAba = () => {
@@ -59,27 +63,35 @@ const Calendario = () => {
   const animatedCalendarStyle = useAnimatedStyle(() => ({ transform: [{ scale: calendarScale.value }] }));
 
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <Animated.View style={[styles.calendarContainer, animatedCalendarStyle]}>
-        <Calendar onDayPress={aoPressionarDia} markedDates={{ [dataSelecionada]: { selected: true, marked: true, selectedColor: 'orange' } }} style={styles.calendar} />
-      </Animated.View>
-      <PanGestureHandler onGestureEvent={gestureHandler} activeOffsetY={[-20, 20]}>
-        <Animated.View style={[styles.bottomSheet, animatedStyle]}>
-          <Tab onPress={toggleAba} abaSelecionada={abaSelecionada} />
-          <FlatList
-            data={atividades[dataSelecionada] || []}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <View><Text style={styles.activityItem}>{item.title}</Text></View>}
-            ListEmptyComponent={<Text style={styles.noActivities}>Nenhuma atividade</Text>}
-          />
-        </Animated.View>
-      </PanGestureHandler>
-    </GestureHandlerRootView>
+      <View style={styles.container}>
+        <TouchableOpacity style={{backgroundColor:'#FFD700'}}  onPress={handleMenuPress}>
+          <Image style={{marginVertical:20, marginLeft: 20, marginTop:50}} source={require('../assets/hamburguer.png')} />
+        </TouchableOpacity>
+
+        <GestureHandlerRootView style={styles.container2}>
+          <Animated.View style={[styles.calendarContainer, animatedCalendarStyle]}>
+            <Calendar onDayPress={aoPressionarDia} markedDates={{ [dataSelecionada]: { selected: true, marked: true, selectedColor: 'orange' } }} style={styles.calendar} />
+          </Animated.View>
+          <PanGestureHandler onGestureEvent={gestureHandler} activeOffsetY={[-20, 20]}>
+            <Animated.View style={[styles.bottomSheet, animatedStyle]}>
+              <Tab onPress={toggleAba} abaSelecionada={abaSelecionada} />
+              <FlatList
+                  data={atividades[dataSelecionada] || []}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({ item }) => <View><Text style={styles.activityItem}>{item.title}</Text></View>}
+                  ListEmptyComponent={<Text style={styles.noActivities}>Nenhuma atividade</Text>}
+              />
+            </Animated.View>
+          </PanGestureHandler>
+        </GestureHandlerRootView>
+      </View>
+
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#ffdd26', alignItems: 'center', justifyContent: 'flex-start', paddingTop: 50 },
+  container: { flex: 1},
+  container2: { flex: 1, backgroundColor: '#FFD700', alignItems:'center'},
   calendarContainer: { width: Dimensions.get('window').width * 0.9, aspectRatio: 1, borderRadius: 10, overflow: 'hidden', marginTop: 20 },
   calendar: { borderRadius: 10 },
   bottomSheet: { flex: 1, width: "90%", backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', borderRadius: 20, overflow: 'hidden' },

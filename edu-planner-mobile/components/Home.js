@@ -12,8 +12,8 @@ export default function Home({ navigation }) {
  return (
     <ImageBackground source={require('../assets/fundoLogin.png')} resizeMode="cover" style={styles.container}>
      <View style={styles.header}>
-     <TouchableOpacity onPress={handleMenuPress}>
-       <Image source={require('../assets/hamburguer.png')} />
+     <TouchableOpacity  onPress={handleMenuPress}>
+       <Image style={{marginTop:20}} source={require('../assets/hamburguer.png')} />
      </TouchableOpacity>
       <Image source={require('../assets/logo2.png')} style={styles.logo} />
      </View>
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
+    marginTop:10
   }
 });
 

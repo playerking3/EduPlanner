@@ -48,7 +48,7 @@ function Login(props) {
             })
     }
 
-    return(
+        return(
         <div className={css.tudo}>
             <div className={css.bloco}>
                 <div className={css.logo}>
@@ -56,8 +56,7 @@ function Login(props) {
                 </div>
                 <div className={css.form}>
                     <CadastroInput type={'text'} name={'nome'} placeholder={'CPF'} setar={setCpf} valor={cpf}/>
-                    <CadastroInput type={'text'} name={'nome'} placeholder={'Senha'} setar={setSenha} valor={senha}/>
-
+                    <CadastroInput type={'text'} name={'nome'} placeholder={'Senha'} setar={setSenha} valor={senha} />
                     <BtnEnviar placeholder='Logar' funcao={login}/>
                 </div>
             </div>

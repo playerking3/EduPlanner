@@ -1,23 +1,19 @@
 import React, { useCallback, useContext, useState } from "react";
-import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity } from "react-native";
+import {View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, Alert} from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox/lib";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect } from "@react-navigation/native";
+import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import * as LocalAuthentication from 'expo-local-authentication';
-import Dados from "./DadosContext";
-
-// Importe as imagens para o olho aberto e fechado
 import OlhoAberto from '../assets/olhoaberto.png';
 import OlhoFechado from '../assets/olhofechado.png';
+import {Dados} from "../context/context";
 
 export default function Login({ navigation }) {
   const [imageUri, setImageUri] = React.useState(null);
-  const { opDigital, setOpcaoDigital } = useContext(Dados);
+  const { opDigital, setOpcaoDigital, fetchData, setAuth, setUser } = useContext(Dados);
   const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
-
-  let opcaoDigital = opDigital();
 
   const storeData = async (value) => {
     try {
@@ -37,18 +33,32 @@ export default function Login({ navigation }) {
     }
   };
 
-  const handleLogin = () => {
-    if (senha !== '' && cpf !== '') {
-      // Colocar a verificação da API aqui
-      if (opcaoDigital) {
-        let dados = {
-          cpf: cpf,
-          senha: senha,
-          digital: true
-        }
-        const teste = storeData(dados);
+  const handleLogin = async () => {
+    const data = {
+      cpf: cpf,
+      password: senha,
+    };
+
+    console.log(data);
+
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const acert = await response.json();
+      if (acert.status === 'success') {
+        await AsyncStorage.setItem('token', JSON.stringify(acert.token));
+        navigation.navigate('Home');
+      } else {
+        Alert.alert('Erro', acert.info);
       }
-      navigation.navigate('Home');
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -75,14 +85,13 @@ export default function Login({ navigation }) {
 
   const formatCpf = (value) => {
     const cpf = value.replace(/\D/g, '');
-    
+
     if (cpf.length <= 11) {
       return cpf
           .replace(/(\d{3})(\d)/, '$1.$2')
           .replace(/(\d{3})(\d)/, '$1.$2')
           .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
     }
-
     return cpf;
   };
 
@@ -90,6 +99,26 @@ export default function Login({ navigation }) {
     const formattedCpf = formatCpf(value);
     setCpf(formattedCpf);
   };
+
+  async function cadastrar() {
+    console.log(cpf)
+    if (!cpf || !senha) {
+      Alert.alert("Preenchimento obrigatório", "Por favor, preencha todos os campos.");
+      return;
+    }
+
+    let loginResp = await fetchData('/login', 'POST', { 'cpf': cpf, 'password': senha });
+    console.log("LOGIN", loginResp)
+
+    if (loginResp.status === "success") {
+      Alert.alert("Sucesso", "Login realizado com sucesso!");
+      setAuth(loginResp.token.key);
+      navigation.navigate('Home');
+    } else {
+      Alert.alert("Erro", "CPF ou senha incorretos. Tente novamente.");
+    }
+  }
+
 
   return (
       <ImageBackground source={require('../assets/fundoLogin.png')} resizeMode="cover" style={styles.container}>
@@ -104,9 +133,9 @@ export default function Login({ navigation }) {
                   style={styles.input}
                   placeholder="CPF"
                   value={cpf}
-                  onChangeText={handleCpfChange}
                   keyboardType="numeric"
                   maxLength={14}
+                    onChangeText={setCpf}
               />
             </View>
             <View style={styles.inputContainer}>
@@ -116,7 +145,10 @@ export default function Login({ navigation }) {
                     style={styles.input}
                     placeholder="Senha"
                     secureTextEntry={!mostrarSenha}
+                    value={senha}
                     onChangeText={setSenha}
+                    keyboardType="visible-password"
+                    placeholderTextColor="#fff"
                 />
                 <TouchableOpacity
                     style={{ position: 'absolute', top: 10, right: 10 }}
@@ -132,7 +164,7 @@ export default function Login({ navigation }) {
             <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={styles.forgotPasswordText}>Esqueci a Senha</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <TouchableOpacity style={styles.button} onPress={cadastrar}>
               <Text style={styles.buttonText}>Fazer Login</Text>
             </TouchableOpacity>
             <View style={styles.checkBox}>
@@ -140,7 +172,6 @@ export default function Login({ navigation }) {
                   onPress={(isChecked) => {
                     console.log("aa", isChecked);
                     setOpcaoDigital(isChecked ? "true" : "false");
-                    opcaoDigital = opDigital();
                   }}
                   text={'Entrar com biometria'}
                   textStyle={{ textDecorationLine: 'none' }}
@@ -170,9 +201,9 @@ const styles = StyleSheet.create({
   div: {
     marginTop: 20,
     backgroundColor: '#ffffff',
-    width: 350,
+    width: 340,
     height: 600,
-    borderRadius: 40,
+    borderRadius: 30,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
