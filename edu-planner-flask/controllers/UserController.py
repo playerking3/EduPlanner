@@ -103,6 +103,12 @@ class UserController:
         id = request.json.get('id')
 
         response = User().getId(id)
+
+        response = response[0]
+        password = response[6]
+        cripto = Criptografia()
+        print(cripto.descriptoHashSenha(password))
+
         if response:
             return jsonify({'status': 'success', 'infos': response})
         return jsonify({'status': 'error', 'info': 'erro ao recuperar informações'})

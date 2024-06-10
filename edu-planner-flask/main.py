@@ -4,8 +4,6 @@ import os
 from controllers.UserController import *
 from controllers.CursoController import *
 from controllers.SalaController import *
-from controllers.TurmaController import *
-from controllers.ParticipanteController import *
 from controllers.SalaAlunoProfessorController import *
 from controllers.TurmaParticipantesSalaController import *
 from utils.VerificaToken import *

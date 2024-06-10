@@ -39,12 +39,13 @@ function Edicao({api}) {
                 let acert = data // saberemos se deu certo
                 console.log(acert)
                 if (acert.status === 'success') {
-                    setNome(acert.infos[0])
-                    setCpf(acert.infos[2])
-                    setNascimento(acert.infos[3])
-                    setFuncao(acert.infos[4])
-                    setEmail(acert.infos[5])
-                    setFoto(acert.infos[6])
+                    setNome(acert.infos[0][0])
+                    setCpf(acert.infos[0][2])
+                    setNascimento(acert.infos[0][3])
+                    setFuncao(acert.infos[0][4])
+                    setEmail(acert.infos[0][5])
+                    setSenha(acert.infos[0][6])
+                    setFoto(acert.infos[0][7])
                 }
 
             })
