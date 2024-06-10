@@ -10,24 +10,15 @@ import Cursos from './components/Cursos'
 import Sair from './components/Sair'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Calendario from "./components/Calendario";
+import {DadosProvider} from "./context/context";
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [sairModal, setSairModal] = useState(false)
 
-  const opDigital = async () => {
-      const a = await AsyncStorage.getItem("digital")
-      return a == "true"
-  }
-
-  const setOpcaoDigital = async (item) => {
-      console.log("SALVA", item)
-      AsyncStorage.setItem("digital", item)
-  }
-
   return (
-    <Dados.Provider value={{opDigital, setOpcaoDigital}}>
+    <DadosProvider>
         <NavigationContainer>
             <Drawer.Navigator
                 drawerContent={(props) => <Hamburguer setSairModal={setSairModal} sairModal={sairModal} {...props} />}
@@ -43,6 +34,6 @@ export default function App() {
 
             {sairModal && <Sair setSairModal={setSairModal} />}
         </NavigationContainer>
-    </Dados.Provider>
+    </DadosProvider>
   );
 }
