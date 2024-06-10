@@ -40,14 +40,18 @@ class User:
         query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'professor' and status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list_image(query, 'usuario')
-        print(exis)
         return exis
 
     def getCoordenadores(self):
         query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'coordenador' and status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list_image(query, 'usuario')
-        print(exis)
+        return exis
+
+    def getId(self, id):
+        query = f"SELECT nome, cpf, data_nascimento FROM `usuario` WHERE id_usuario = {id} and status = 'ativo';"
+        conexao = Conection()
+        exis = conexao.get_list_image(query, 'usuario')
         return exis
 
     def excluiUser(self, id):

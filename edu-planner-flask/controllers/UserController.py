@@ -13,10 +13,6 @@ class UserController:
         alunos = user.getAlunos()
         coordenadores = user.getCoordenadores()
 
-        print(professores)
-        print(alunos)
-        print(coordenadores)
-
         if professores != False and alunos != False and coordenadores != False:
             return jsonify({'status': 'success', 'professores' : professores, 'alunos': alunos, 'coordenadores': coordenadores})
         return jsonify({'status': 'error', 'infos': 'falha em recuperar informações'})
@@ -102,3 +98,6 @@ class UserController:
         if response:
             return jsonify({'status': 'success'})
         return jsonify({'status': 'error', 'info': 'erro ao excluir usuário'})
+
+    def getUsuarioID(self):
+        id = request.json.get('id')

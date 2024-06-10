@@ -22,10 +22,10 @@ function App() {
         <BrowserRouter>
           <Routes>
               <Route path={'/cadastro-curso'} element={<CadastroCurso api={api} />}/>
-              <Route path={'/editar-curso'} element={<EditarCurso />}/>
+              <Route path={'/editar-curso/:id'} element={<EditarCurso />}/>
               <Route path={'/login'} element={<Login api={api}/>}/>
               <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />
-              <Route path={'/editar-pessoa'} element={<Edicao api={api}/>}/>
+              <Route path={'/editar-pessoa/:id'} element={<Edicao api={api}/>}/>
               <Route path={'dashboard'} element={<Dashboard/>}/>
               <Route path={'/cadastro-turma'} element={<CadastroTurma api={api}/>}/>
               <Route path={'/cadastro-sala'} element={<CadastroSala api={api}/>}/>
