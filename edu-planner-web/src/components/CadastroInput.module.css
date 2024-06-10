@@ -5,6 +5,7 @@
     padding: 1.5vw;
     gap: .5em;
     font-weight: bold;
+    width: 95%;
 }
 
 .container label{
@@ -25,18 +26,25 @@
 .input{
     border: none;
     border-radius: .5em;
-    height: 2em;
+    height: 2.5em;
     padding: 4px 1.8vw;
-    width: 85%;
+    width: 86%;
     font-size: 1.3vw;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
 }
 
-@media (max-width: 429px) {
-    .container{
-        width: 86%;
+@media (max-width: 885px) {
+    .container label{
+        font-size: 2vw;
+        gap: 1em;
     }
 
+    .input{
+        height: 3em;
+    }
+}
+
+@media (max-width: 429px) {
     .container label{
         font-weight: 600;
         font-size: 3vw;

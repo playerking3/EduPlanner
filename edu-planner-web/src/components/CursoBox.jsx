@@ -13,11 +13,11 @@ function SalaBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, catego
             </div>
             <form>
                 <div className={css.formContainer} >
-                    <div style={{width: '100%'}}>
+                    <div className={css.todos}>
                         <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome}/>
                         <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias}></InputMultiplo>
                     </div>
-                    <div style={{width: '100%'}}>
+                    <div className={css.todos}>
                         <CadastroInput placeholder={'Carga horária por dia'} type={'text'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH}/>
                         <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao}></InputTextArea>
                     </div>
