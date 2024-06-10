@@ -1,5 +1,7 @@
 .fotoperfil {
     width: 7vw;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
 }
 .identificacao {
     font-weight: bold;

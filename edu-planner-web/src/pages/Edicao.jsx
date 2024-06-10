@@ -1,22 +1,20 @@
 import React, {useEffect, useState} from "react";
-import css from './Cadastro.module.css';
-import CadastroInput from "../components/CadastroInput";
-import InputImagem from "../components/InputImagem";
-import BtnEnviar from "../components/BtnEnviar";
 import SideBar from "../components/SideBar";
-import ComboBox from "../components/ComboBox";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import CursoBox from "../components/SalaBox";
+import {rotaSegurity} from "../functions/rotaSegurity";
+import css from './CadastroCurso.module.css'
+import CadastroBox from "../components/CadastroBox";
 
-
-function Cadastro({api}) {
+function Edicao({api}) {
     const { id } = useParams();
-
-    const [nome, setNome] = useState("");
-    const [senha, setSenha] = useState("");
-    const [data, setData] = useState("");
-    const [email, setEmail] = useState("");
-    const [imagem, setImagem] = useState('')
-    const [cpf, setCpf] = useState('')
+    const [nome, setNome] = useState('')
+    const [funcao, setFuncao] = useState('')
+    const [foto, setFoto] = useState('')
+    const [cpf,setCpf] = useState('')
+    const [nascimento, setNascimento] = useState('')
+    const [senha, setSenha] = useState('')
+    const [email, setEmail] = useState('')
 
     useEffect(() => {
         //console.log(id)
@@ -46,34 +44,59 @@ function Cadastro({api}) {
             })
     }
 
+    const navigate = useNavigate();
 
-    return(
-        <div className={css.container}>
-            <SideBar/>
+    useEffect(() => {
+        rotaSegurity(api, localStorage.getItem('token'), navigate)
+    }, []);
 
-            <div className={css.header}>
-                <h2 className={css.h2Cadastro}>Edição de usuário</h2>
+    async function enviar(){
 
-                <div className={css.divtudo}>
-                    <div className={css.ladoEsquerdo}>
-                        <CadastroInput type={'text'} name={'nome'} placeholder={'Nome'} setar={setNome} valor={nome}/>
-                        {/*<ComboBox name={'funcao'} placeholder={'Função'}/>*/}
-                        <InputImagem name={'perfil'} placeholder={'Escolher foto de perfil'} setar={setImagem} valor={imagem}/>
-                    </div>
+        const data = {
+            'nome':nome,
+            'cpf':cpf,
+            'data_nascimento':nascimento,
+            'password': senha,
+            'cargo': funcao,
+            'foto': foto,
+            'email': email
+        }
+
+        await fetch(api + '/cadastro', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                if (acert.status == 'success') {
+                    navigate('/dashboard')
+                }
+                else {
+                    alert(acert.info)
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
 
 
-                    <div>
-                        <CadastroInput type={'text'} name={'cpf'} placeholder={'CPF'} setar={setCpf} valor={cpf}/>
-
-                        <CadastroInput type={'date'} name={'nascimento'} placeholder={'Data de nascimento'} setar={setData} valor={data}/>
-                        <CadastroInput type={'password'} name={'senha'} placeholder={'Senha'} setar={setSenha} valor={senha}/>
-                    </div>
-                </div>
-                <BtnEnviar placeholder='Salvar'/>
+    return (
+        <div className={css.tudo}>
+            <SideBar></SideBar>
+            <div className={css.conteudo}>
+                <CadastroBox placeholder='Edição de usuário' nome={nome} setNome={setNome} funcao={funcao}
+                          setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha}
+                          nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto}
+                          email={email} setEmail={setEmail} enviar={enviar}></CadastroBox>
             </div>
         </div>
     )
 }
 
 
-export default Cadastro
+export default Edicao;

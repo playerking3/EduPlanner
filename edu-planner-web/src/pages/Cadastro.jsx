@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {rotaSegurity} from "../functions/rotaSegurity";
 import CursoBox from "../components/SalaBox";
+import CadastroBox from "../components/CadastroBox";
 
 function Cadastro(props) {
     const [nome, setNome] = useState('')
@@ -58,7 +59,7 @@ function Cadastro(props) {
         <div className={css.tudo}>
             <SideBar></SideBar>
             <div className={css.conteudo}>
-                <CursoBox placeholder='Cadastro de usuário' nome={nome} setNome={setNome} funcao={funcao} setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha} nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto} email={email} setEmail={setEmail} enviar={enviar}></CursoBox>
+                <CadastroBox placeholder='Cadastro de usuário' nome={nome} setNome={setNome} funcao={funcao} setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha} nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto} email={email} setEmail={setEmail} enviar={enviar}></CadastroBox>
             </div>
         </div>
     )
