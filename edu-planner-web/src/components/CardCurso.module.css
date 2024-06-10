@@ -100,6 +100,20 @@
     font-size: 1.2vw;
 
 }
+.botaoExcluir {
+   background-color: #e79501;
+    color: white;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 5vw;
+    padding-bottom: 0.6vw;
+    padding-top: 0.6vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    font-size: 1.2vw;
+}
 .botao3{
     display: flex;
     justify-content: center;
@@ -130,6 +144,9 @@
 
 .link{
     text-decoration: none;
+    border: none;
+    width: 100%;
+    background: transparent;
 }
 
 @media (max-width: 885px) {

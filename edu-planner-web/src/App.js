@@ -17,6 +17,8 @@ import { useState, createContext, useContext } from "react";
 import CadastroSala from "./pages/CadastroSala";
 
 function App() {
+
+
     const [api, setApi] = useState('http://127.0.0.1:5000')
   return (
         <BrowserRouter>

@@ -1,14 +1,37 @@
-import styles from './CardCurso.module.css'
+import styles from './CardCurso.module.css';
 import React from "react";
-import {Link} from "react-router-dom";
-import css from "./CardCoordenador.module.css";
+import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
-function CardCurso({placeholder, img, descricao, id}) {
-    return(
+function CardCurso({ placeholder, img, descricao, id, onDelete }) {
+
+    const handleDelete = () => {
+        Swal.fire({
+            title: "Você tem certeza?",
+            text: "Você não poderá reverter isso!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#FFDD26",
+            cancelButtonColor: "#FF6B00",
+            confirmButtonText: "Sim, delete!",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                onDelete(id);
+                Swal.fire({
+                    title: "Deletado!",
+                    text: "Seu arquivo foi deletado.",
+                    icon: "success"
+                });
+            }
+        });
+    };
+
+    return (
         <div className={styles.card}>
-            <div style={{ backgroundImage: "data:image/png;base64," + img}} className={styles.fotos}>
-                {img === '' ? <img src={'/foto1.png'} className={styles.fotoDefault}/> :
-                    <img src={"data:image/png;base64," + img} className={styles.fotoperfil}/>}
+            <div style={{ backgroundImage: "url('data:image/png;base64," + img + "')" }} className={styles.fotos}>
+                {img === '' ? <img src={'/foto1.png'} className={styles.fotoDefault} /> :
+                    <img src={"data:image/png;base64," + img} className={styles.fotoperfil} />}
             </div>
             <div className={styles.escritas}>
                 <h4 className={styles.titulo}>{placeholder}</h4>
@@ -23,7 +46,7 @@ function CardCurso({placeholder, img, descricao, id}) {
                     <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
                     <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Editar curso</p></div></Link>
                     <Link to={`/cadastro-turma/${id}`} className={styles.link}><div className={styles.botao3}><p>Cadastrar turma</p></div></Link>
-                    <Link to={'/'} className={styles.link}><div className={styles.botao2}><p>Excluir curso</p></div></Link>
+                    <button onClick={handleDelete} className={styles.link}><div className={styles.botaoExcluir}><p>Excluir curso</p></div></button>
                 </div>
             </div>
         </div>
