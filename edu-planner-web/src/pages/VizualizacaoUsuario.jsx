@@ -67,7 +67,7 @@ function VizualizacaoUsuario(props){
                     </div>
                     <div className={css.turmas}>
                         {coordenadores.map((item, index) =>(
-                            <CardCoordenador nome={item[0]} id={item[1]} imagem={item[2]}></CardCoordenador>
+                            <CardCoordenador nome={item[0]} id={item[1]} imagem={item[2]} api={props.api}></CardCoordenador>
                         ))}
                     </div>
                 </div>
@@ -78,7 +78,7 @@ function VizualizacaoUsuario(props){
                     </div>
                     <div className={css.turmas}>
                         {professores.map((item, index) =>(
-                            <CardProfessores nome={item[0]} id={item[1]} imagem={item[2]}></CardProfessores>
+                            <CardProfessores nome={item[0]} id={item[1]} imagem={item[2]} api={props.api}></CardProfessores>
                         ))}
                     </div>
                 </div>
@@ -89,7 +89,7 @@ function VizualizacaoUsuario(props){
                     </div>
                     <div className={css.turmas}>
                         {alunos.map((item, index) =>(
-                            <CardAlunos nome={item[0]} id={item[1]} imagem={item[2]}></CardAlunos>
+                            <CardAlunos nome={item[0]} id={item[1]} imagem={item[2]} api={props.api}></CardAlunos>
                         ))}
                     </div>
                 </div>

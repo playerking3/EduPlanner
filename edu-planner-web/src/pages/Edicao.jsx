@@ -1,12 +1,21 @@
-import React,{useState} from "react";
+import React, {useEffect, useState} from "react";
 import css from './Cadastro.module.css';
 import CadastroInput from "../components/CadastroInput";
 import InputImagem from "../components/InputImagem";
 import BtnEnviar from "../components/BtnEnviar";
 import SideBar from "../components/SideBar";
 import ComboBox from "../components/ComboBox";
+import {useRoutes} from "react-router-dom";
+
 
 function Cadastro() {
+    const route = useRoutes();
+    const { id } = route.params;
+
+    useEffect(() => {
+        console.log(id)
+    }, []);
+
     const [nome, setNome] = useState("");
     const [senha, setSenha] = useState("");
     const [data, setData] = useState("");
@@ -21,7 +30,7 @@ function Cadastro() {
                 <div className={css.divtudo}>
                     <div className={css.ladoEsquerdo}>
                         <CadastroInput type={'text'} name={'nome'} placeholder={'Nome'}/>
-                        <ComboBox name={'funcao'} placeholder={'Função'}/>
+                        {/*<ComboBox name={'funcao'} placeholder={'Função'}/>*/}
                         <InputImagem name={'perfil'} placeholder={'Escolher foto de perfil'} />
                     </div>
 

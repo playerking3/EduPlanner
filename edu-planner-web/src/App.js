@@ -25,7 +25,7 @@ function App() {
               <Route path={'/editar-curso'} element={<EditarCurso />}/>
               <Route path={'/login'} element={<Login api={api}/>}/>
               <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />
-              <Route path={'/editar-pessoa'} element={<Edicao/>}/>
+              <Route path={'/editar-pessoa'} element={<Edicao api={api}/>}/>
               <Route path={'dashboard'} element={<Dashboard/>}/>
               <Route path={'/cadastro-turma'} element={<CadastroTurma api={api}/>}/>
               <Route path={'/cadastro-sala'} element={<CadastroSala api={api}/>}/>

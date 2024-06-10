@@ -30,22 +30,28 @@ class User:
         return exis
 
     def getAlunos(self):
-        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'aluno';"
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'aluno' and status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list_image(query, 'usuario')
         print(exis)
         return exis
 
     def getProfessores(self):
-        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'professor';"
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'professor' and status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list_image(query, 'usuario')
         print(exis)
         return exis
 
     def getCoordenadores(self):
-        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'coordenador';"
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'coordenador' and status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list_image(query, 'usuario')
         print(exis)
         return exis
+
+    def excluiUser(self, id):
+        query = f'UPDATE usuario SET status = "inativo" WHERE id_usuario = {id};'
+        conexao = Conection()
+        response = conexao.add_query(query)
+        return response

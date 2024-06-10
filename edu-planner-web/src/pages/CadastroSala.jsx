@@ -28,6 +28,8 @@ function CadastroCurso(props){
             'token': JSON.parse(localStorage.getItem('token'))
         }
 
+        console.log(data)
+
         await fetch(props.api + '/cadastrarSala', {
             method: 'POST',
             headers: {
