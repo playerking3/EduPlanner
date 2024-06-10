@@ -73,9 +73,11 @@ class Conection:
             if cursor:
                 exist = True
                 for i in cursor:
-                    print(list(i))
-                    resistro = [i[0], i[1], Imagem().converteImagem(i[1], repositorio)]
-                    di.append(resistro)
+                    listI = list(i)
+                    for j in listI:
+                        di.append(j)
+                    di.append(Imagem().converteImagem(i[1], repositorio))
+                    print(di)
             else:
                 exist = False
             cursor.close()

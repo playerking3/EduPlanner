@@ -107,6 +107,14 @@ class UserController:
             return jsonify({'status': 'success', 'infos': response})
         return jsonify({'status': 'error', 'info': 'erro ao recuperar informações'})
 
-
-
+    def editarUsuario(self):
+        id = request.json.get('id')
+        cpf = request.json.get('cpf')
+        password = request.json.get('password')
+        nome = request.json.get('nome')
+        email = request.json.get('email')
+        cargo = request.json.get('cargo')
+        nascimento = request.json.get('data_nascimento')
+        base64_string = request.json.get('foto')
+        pass
 
