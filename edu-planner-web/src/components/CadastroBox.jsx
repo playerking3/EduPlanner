@@ -19,7 +19,7 @@ function CadastroBox ({placeholder, nome, setNome, funcao, setFuncao, cpf, setCp
 
                     </div>
                     <div className={css.maior}>
-                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf}/>
+                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99" />
                         <CadastroInput placeholder={'Data de nascimento'} type={'date'} name={'nascimento'} setar={setNascimento} valor={nascimento}/>
                         <CadastroInput placeholder={'Email'} type={'text'} name={'email'} setar={setEmail} valor={email}/>
                         <CadastroInput placeholder={'Senha'} type={'password'} name={'senha'} setar={setSenha} valor={senha}/>
