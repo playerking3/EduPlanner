@@ -2,15 +2,7 @@ from flask import jsonify, request
 from models.Turma import *
 
 class TurmaController:
-    def Cadastro(self):
-        nome = request.json.get('nome')
-        inicio = request.json.get('inicio')
-        lista_dias = request.json.get('lista_dias')
-        horario = request.json.get('horario')
-        horas_dia = int(request.json.get('horas_dia'))
-        id_curso = request.json.get('id_curso')
-        id_sala = request.json.get('id_sala')
-
+    def Cadastro(self, nome, inicio, lista_dias, horario, horas_dia, id_curso, id_sala, fim):
         fim = '2024-06-30'
 
         obj = Turma()
