@@ -23,6 +23,8 @@ function CardCurso({placeholder, img, descricao}) {
                     <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
                     <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Editar curso</p></div></Link>
                     <Link to={'/cadastro-turma'} className={styles.link}><div className={styles.botao3}><p>Cadastrar turma</p></div></Link>
+                    <Link to={'/'} className={styles.link}><div className={styles.botao2}><p>Excluir curso</p></div></Link>
+
                 </div>
             </div>
         </div>

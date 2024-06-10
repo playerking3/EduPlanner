@@ -4,6 +4,7 @@
     align-items: start;
     padding: 1em;
     gap: .5em;
+    width: 92%;
 }
 .asterisco{
     color: red ;
@@ -25,7 +26,7 @@
     padding: 0.9vw;
     border: none;
     border-radius: .5em;
-    height: 13%;
+    height: 15%;
     width: 90%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
     margin-bottom: .5em;
