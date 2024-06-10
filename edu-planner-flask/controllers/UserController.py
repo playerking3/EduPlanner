@@ -101,3 +101,12 @@ class UserController:
 
     def getUsuarioID(self):
         id = request.json.get('id')
+
+        response = User().getId(id)
+        if response:
+            return jsonify({'status': 'success', 'infos': response})
+        return jsonify({'status': 'error', 'info': 'erro ao recuperar informações'})
+
+
+
+

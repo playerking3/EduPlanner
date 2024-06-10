@@ -89,7 +89,7 @@ function TurmaBox (props){
             'lista_dias': periodicidade,
             'horas_dia': duracaoAula,
             'horario':horario,
-            'id_curso': 10,
+            'id_curso': props.id,
             'id_sala': 1,
             'professores': professores,
             'alunos': alunos,

@@ -5,7 +5,6 @@ import {Link, useNavigate} from "react-router-dom";
 import SideBar from "../components/SideBar";
 import {rotaSegurity} from "../functions/rotaSegurity";
 
-
 function VisualizacaoCurso(props) {
     const [listaCursos, setListaCursos] = useState([{placeholder: 'teste', img: 'img1', descricao: 'testes'}])
     const navigate = useNavigate();
@@ -51,7 +50,7 @@ function VisualizacaoCurso(props) {
                 </div>
                 <div className={styles.mostraCards}>
                     {listaCursos.map((e)=>(
-                        <CardCurso placeholder={e[0]} img={e[2]} descricao={e.descricao}/>
+                        <CardCurso placeholder={e[0]} id={e[1]} img={e[2]} descricao={e.descricao}/>
                     ))}
                 </div>
             </div>

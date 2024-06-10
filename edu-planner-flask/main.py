@@ -48,7 +48,7 @@ def getUsers():
 @app.route('/getEditarUsuario', methods=['POST'])
 def getEditarUsuario():
     if VerificaToken().validaToken():
-        return UserController().getUser()
+        return UserController().getUsuarioID()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
 @app.route('/excluirUser', methods=['POST'])
