@@ -116,5 +116,27 @@ class UserController:
         cargo = request.json.get('cargo')
         nascimento = request.json.get('data_nascimento')
         base64_string = request.json.get('foto')
-        pass
 
+        cpfcheck = Cpf(cpf)
+        resp, msn = cpfcheck.is_cpf_valid()
+        if resp == False:
+            return jsonify({'status': 'error', 'info': msn})
+
+        salt = random.randint(1000000000, 9999999999999)
+        password = Criptografia().hashSenha(password + str(salt))
+        user = User(cpf, password)
+        response = user.editUser(nome, email, cargo, nascimento, salt, id)
+        if response:
+            id = user.checkUser()
+
+            response = Imagem().cadastrarImagem(base64_string, id, 'usuario')
+
+            if response != True:
+                return jsonify({'status': 'error', 'info': response})
+
+            print(id, 'id aqui')
+            if id:
+                token = Criptografia().gerarToken(id, cargo)
+                return jsonify({'status': 'success', 'token': token})
+            return jsonify({'status': 'error', 'info': 'usuario não cadastrado'})
+        return jsonify({'status': 'error', 'info': response})
