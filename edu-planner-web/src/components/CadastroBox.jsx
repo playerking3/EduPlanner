@@ -13,7 +13,7 @@ function CadastroBox ({placeholder, nome, setNome, funcao, setFuncao, cpf, setCp
             <form>
                 <div className={css.formContainer}>
                     <div className={css.maior} style={{width: '95%',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
-                        <CadastroInput placeholder={'Nome'} type={'text'} name={'nomeUser'} setar={setNome} />
+                        <CadastroInput placeholder={'Nome'} type={'text'} name={'nomeUser'} setar={setNome} valor={nome}/>
                         <ComboBox placeholder={'Função'} type={'text'} name={'nomeUser'} setar={setFuncao} opcoes={['Aluno', 'Professor', 'Coordenador']}/>
                         <InputImagem2 placeholder={'Adicionar imagem'} name={'img'} setar={setFoto} valor={foto}></InputImagem2>
                     </div>

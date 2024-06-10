@@ -17,7 +17,8 @@ function Edicao({api}) {
     const [email, setEmail] = useState('')
 
     useEffect(() => {
-        //console.log(id)
+        rotaSegurity(   api, localStorage.getItem('token'), navigate)
+        getDados()
     }, []);
 
     async function getDados () {
@@ -37,6 +38,15 @@ function Edicao({api}) {
             .then(function(data) {
                 let acert = data // saberemos se deu certo
                 console.log(acert)
+                if (acert.status === 'success') {
+                    setNome(acert.infos[0][0])
+                    setCpf(acert.infos[0][2])
+                    setNascimento(acert.infos[0][3])
+                    setFuncao(acert.infos[0][4])
+                    setEmail(acert.infos[0][5])
+                    setSenha(acert.infos[0][6])
+                    setFoto(acert.infos[0][7])
+                }
 
             })
             .catch(function(error) {
@@ -50,41 +60,6 @@ function Edicao({api}) {
         rotaSegurity(api, localStorage.getItem('token'), navigate)
     }, []);
 
-    async function enviar(){
-
-        const data = {
-            'nome':nome,
-            'cpf':cpf,
-            'data_nascimento':nascimento,
-            'password': senha,
-            'cargo': funcao,
-            'foto': foto,
-            'email': email
-        }
-
-        await fetch(api + '/cadastro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
-            },
-            body: JSON.stringify(data) // Converta o objeto em uma string JSON
-        })
-            .then((resp) => resp.json())
-            .then(function(data) {
-                let acert = data // saberemos se deu certo
-                if (acert.status == 'success') {
-                    navigate('/dashboard')
-                }
-                else {
-                    alert(acert.info)
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-            })
-    }
-
-
     return (
         <div className={css.tudo}>
             <SideBar></SideBar>
@@ -92,7 +67,7 @@ function Edicao({api}) {
                 <CadastroBox placeholder='Edição de usuário' nome={nome} setNome={setNome} funcao={funcao}
                           setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha}
                           nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto}
-                          email={email} setEmail={setEmail} enviar={enviar}></CadastroBox>
+                          email={email} setEmail={setEmail} ></CadastroBox>
             </div>
         </div>
     )
