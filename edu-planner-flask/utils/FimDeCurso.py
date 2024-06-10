@@ -53,7 +53,7 @@ class FimDeCurso:
             return self.contaMes()
         else:
             dataFinal = self.dataInicio + timedelta(days=self.diasPassados-1)
-            return self.listData
+            return dataFinal, self.listData
 
 
 teste = FimDeCurso([1,2], ['2024-05-21'], '2024-05-13', 20, 4)

@@ -1,13 +1,12 @@
-
-
-
 import css from './CursoBox.module.css'
 import CadastroInput from "./CadastroInput";
 import InputTextArea from "./InputTextArea";
 import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 
+
 function CursoBox ({placeholder, nome, setNome, capacidade, setCapacidade, numeroSala, setNumeroSala, descricao, setDescricao, imagem, setImagem, enviar}){
+
     return(
         <div className={css.box}>
             <div>

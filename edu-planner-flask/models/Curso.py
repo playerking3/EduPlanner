@@ -30,3 +30,9 @@ class Curso:
         conexao = Conection()
         response = conexao.add_query(query)
         return response
+
+    def getDuracao(self, id):
+        query = f"SELECT carga_horaria FROM `curso` WHERE status = 'ativo' and id = {id};"
+        conexao = Conection()
+        exis = conexao.get_query(query)
+        return exis

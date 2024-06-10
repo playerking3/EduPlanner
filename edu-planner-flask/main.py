@@ -27,6 +27,7 @@ db = SQLAlchemy(app)
 #-------rotas de usuário-----------------
 @app.route('/login', methods=['POST'])
 def login():
+    print('estamos carregando')
     return UserController().login()
 
 @app.route('/cadastro', methods=['POST'])
