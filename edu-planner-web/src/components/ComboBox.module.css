@@ -2,8 +2,8 @@
     padding: 4px;
     border: none;
     border-radius: .5em;
-    height: 2.5em;
-    width: 95%;
+    height: 3em;
+    width: 98%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
     font-size: 1.3vw;
 }
@@ -14,6 +14,7 @@
     align-items: start;
     padding: 1em;
     gap: .5em;
+    width: 95%;
 }
 
 .inputGroup{
@@ -30,6 +31,19 @@
     color: red;
 }
 
+@media (max-width: 885px) {
+    .container label{
+        font-size: 2vw;
+    }
+
+    .input{
+        height: 15.5vw;
+    }
+
+    .select{
+        height: 3.5em;
+    }
+}
 
 @media (max-width: 429px) {
     .select {

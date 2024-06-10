@@ -4,6 +4,7 @@
     align-items: start;
     padding: 1.5vw;
     gap: 1.1em;
+    width: 95%;
 }
 .asterisco{
     color: red ;
@@ -39,6 +40,13 @@
     align-items: center;
 }
 
+
+
+@media (max-width: 885px) {
+    .titulop {
+        font-size: 2vw;
+    }
+}
 
 @media (max-width: 429px) {
     .titulop{
