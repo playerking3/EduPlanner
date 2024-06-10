@@ -5,7 +5,7 @@ import InputTextArea from "./InputTextArea";
 import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 
-function SalaBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categorias, setCategorias, faixaE, setFaixaE, descricao, setDescricao, imagem, setImagem}){
+function CursoBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, categorias, setCategorias, faixaE, setFaixaE, descricao, setDescricao, imagem, setImagem}){
     return(
         <div className={css.box}>
             <div>
@@ -18,12 +18,12 @@ function SalaBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, catego
                         <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias}></InputMultiplo>
                     </div>
                     <div style={{width: '100%'}}>
-                        <CadastroInput placeholder={'Carga horária por dia'} type={'text'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH}/>
+                        <CadastroInput placeholder={'Carga horária (em horas)'} type={'number'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH}/>
                         <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao}></InputTextArea>
                     </div>
                 </div>
                 <div className={css.formContainer} >
-                    <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'nomeCurso'} setar={setFaixaE} valor={faixaE}/>
+                    <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'faixaEtaria'} setar={setFaixaE} valor={faixaE}/>
                     <InputImagem placeholder={'Adicionar imagem'} name={'img'} setar={setImagem} valor={imagem}></InputImagem>
                 </div>
                 <div>
@@ -33,4 +33,5 @@ function SalaBox ({placeholder, nome, setNome, cargaH, setCargaH, enviar, catego
         </div>
     )
 }
-export default SalaBox
+
+export default CursoBox;
