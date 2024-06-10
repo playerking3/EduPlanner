@@ -28,7 +28,7 @@ function Cadastro({api}) {
             'token': JSON.parse(localStorage.getItem('token'))
         }
 
-        await fetch(api + '/getUsers', {
+        await fetch(api + '/getEditarUsuario', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON

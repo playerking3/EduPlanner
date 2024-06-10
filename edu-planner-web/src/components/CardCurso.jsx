@@ -3,7 +3,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import css from "./CardCoordenador.module.css";
 
-function CardCurso({placeholder, img, descricao}) {
+function CardCurso({placeholder, img, descricao, id}) {
     return(
         <div className={styles.card}>
             <div style={{ backgroundImage: "data:image/png;base64," + img}} className={styles.fotos}>
@@ -22,7 +22,7 @@ function CardCurso({placeholder, img, descricao}) {
                 <div className={styles.botoes}>
                     <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
                     <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Editar curso</p></div></Link>
-                    <Link to={'/cadastro-turma'} className={styles.link}><div className={styles.botao3}><p>Cadastrar turma</p></div></Link>
+                    <Link to={`/cadastro-turma/${id}`} className={styles.link}><div className={styles.botao3}><p>Cadastrar turma</p></div></Link>
                 </div>
             </div>
         </div>
