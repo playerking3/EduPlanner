@@ -59,3 +59,9 @@ class User:
         conexao = Conection()
         response = conexao.add_query(query)
         return response
+
+    def editUser(self, nome, email, cargo, data_nascimento, salt, id):
+        query = f"UPDATE usuario SET nome = '{nome}', cpf = '{self.cpf}', email = '{email}', senha = '{self.password}', cargo = '{cargo}', data_nascimento = '{data_nascimento}', salt = '{salt}' WHERE id_usuario = {id};"
+        conexao = Conection()
+        response = conexao.add_query(query)
+        return response
