@@ -6,7 +6,7 @@ import SideBar from "../components/SideBar";
 import { rotaSegurity } from "../functions/rotaSegurity";
 
 function VisualizacaoCurso(props) {
-    const [listaCursos, setListaCursos] = useState([]);
+    const [listaCursos, setListaCursos] = useState([{ id: 1, placeholder: 'teste', img: 'defaultRoomCourse', descricao: 'testes' }]);
     const navigate = useNavigate();
 
     useEffect(() => {

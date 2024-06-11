@@ -2,7 +2,7 @@ import styles from './CardExibir.module.css'
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
-function CardExibir({placeholder, img, categoria}) {
+function CardExibir({placeholder, img, categoria, descricao}) {
     const [card, setCard] = useState(styles.card)
     const [fotos, setFotos] = useState(styles.fotos)
     const [escritas, setEscritas] = useState(styles.escritas)
@@ -54,10 +54,7 @@ function CardExibir({placeholder, img, categoria}) {
                     </div>
                 </div>
                 <div className={none2}>
-                    <p className={styles.desc}>Um curso de inglês para iniciantes pode ser uma grande oportunidade de
-                        desbloquear conhecimento e iniciar novas habilidades. Falar outra língua pode parecer distante para quem nunca estudou, mas tudo começa com o primeiro passo.
-                    A Cultura Inglesa encara esse momento inicial como algo incrível. Por isso, os cursos para iniciantes ajudam pessoas a começarem uma jornada de aprendizado de maneira didática e interessante. É o começo da conquista de um objetivo.
-                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. </p>
+                    <p className={styles.desc}>{descricao}</p>
                 </div>
                 <div className={styles.botoes}>
                     <div className={block}>
