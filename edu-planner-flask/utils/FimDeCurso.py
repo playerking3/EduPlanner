@@ -56,5 +56,5 @@ class FimDeCurso:
             return dataFinal, self.listData
 
 
-teste = FimDeCurso([1,2], ['2024-05-21'], '2024-05-13', 20, 4)
+teste = FimDeCurso([1,2], [], '2024-06-04', 20, 2)
 print(teste.contaMes())
