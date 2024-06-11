@@ -6,6 +6,8 @@ import Home from './components/Home'
 import Dados from './components/DadosContext.js';
 import Hamburguer from './components/Hamburguer'
 import Perfil from './components/Perfil'
+import PerfilView from './components/PerfilView'
+
 import Cursos from './components/Cursos'
 import Sair from './components/Sair'
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -28,6 +30,7 @@ export default function App() {
                 <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Home" component={Home} />
                 <Drawer.Screen name="Perfil" component={Perfil} />
+                <Drawer.Screen name="PerfilView" component={PerfilView} />
                 <Drawer.Screen name="Cursos" component={Cursos} />
                 <Drawer.Screen name="Calendario" component={Calendario} />
             </Drawer.Navigator>

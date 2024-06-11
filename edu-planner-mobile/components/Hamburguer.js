@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Image, Text, TouchableWithoutFeedback } from "react-native";
+import {View, StyleSheet, Image, Text, TouchableWithoutFeedback, Pressable} from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {faBook} from "@fortawesome/free-solid-svg-icons/faBook";
@@ -14,6 +14,10 @@ export default function Menu({ navigation, sairModal, setSairModal }) {
     navigation.navigate('Perfil');
   };
 
+  const perfilView = () => {
+    navigation.navigate('PerfilView');
+  };
+
   const cursos = () => {
     navigation.navigate('Cursos');
   };
@@ -24,6 +28,7 @@ export default function Menu({ navigation, sairModal, setSairModal }) {
 
   return (
     <View style={styles.container}>
+      <Pressable onPress={perfilView}><Image source={require('../assets/defaultUser.png')} style={styles.foto}></Image></Pressable>
       <View style={styles.menuItems}>
         <MenuItem onPress={cursos} icon={faBook} text="Cursos" />
         <MenuItem onPress={calendario} icon={faCalendar} text="Agenda" />
@@ -95,6 +100,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     left: 0
-
+  },
+  foto: {
+    position: "relative",
+    top: -200,
+    width: 80,
+    height: 80,
+    borderRadius: 500,
+    borderWidth: 3,
+    borderColor: 'white'
   }
 });
