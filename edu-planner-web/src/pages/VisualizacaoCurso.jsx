@@ -7,35 +7,61 @@ import { rotaSegurity } from "../functions/rotaSegurity";
 
 function VisualizacaoCurso(props) {
     const [listaCursos, setListaCursos] = useState([]);
+    const [turmas, setTurmas] = useState([])
     const navigate = useNavigate();
 
     useEffect(() => {
+        async function enviar() {
+            console.log("GET CURSOS")
+            const data = {
+                token: JSON.parse(localStorage.getItem('token'))
+            };
+
+            await fetch(props.api + '/getCursos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    let acert = data;
+                    console.log(acert);
+                    setListaCursos([...acert.cursos]);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+        async function getTurma(){
+            console.log("GET TURMAS")
+            const data = {
+                token: JSON.parse(localStorage.getItem('token'))
+            };
+
+            await fetch(props.api + '/getTurma', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    let acert = data;
+                    setTurmas([...acert.lista_turma]);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
         rotaSegurity(props.api, localStorage.getItem('token'), navigate);
         enviar();
+        getTurma()
     }, []);
-
-    async function enviar() {
-        const data = {
-            token: JSON.parse(localStorage.getItem('token'))
-        };
-
-        await fetch(props.api + '/getCursos', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then((resp) => resp.json())
-            .then(function (data) {
-                let acert = data;
-                console.log(acert);
-                setListaCursos([...acert.cursos]);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
 
     const handleDelete = (id) => {
         setListaCursos(listaCursos.filter(curso => curso.id !== id));
@@ -60,6 +86,7 @@ function VisualizacaoCurso(props) {
                             img={curso[3]}
                             descricao={curso[2]}
                             onDelete={handleDelete}
+                            listaTurmas={turmas}
                         />
                     ))}
                 </div>

@@ -3,7 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
-function CardCurso({ placeholder, img, descricao, id, onDelete }) {
+function CardCurso({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
+    console.log(listaTurmas)
 
     const handleDelete = () => {
         Swal.fire({
@@ -37,13 +38,13 @@ function CardCurso({ placeholder, img, descricao, id, onDelete }) {
                 <h4 className={styles.titulo}>{placeholder}</h4>
                 <p className={styles.p}>{descricao}</p>
                 <div className={styles.turmas}>
-                    <div className={styles.fichaTurma}><p className={styles.p2}>Turma 1</p></div>
-                    <div className={styles.fichaTurma}><p className={styles.p2}>Turma 1</p></div>
-                    <div className={styles.fichaTurma}><p className={styles.p2}>Turma 1</p></div>
+                    {listaTurmas.map((e) => (
+                        (e[1] == id) && <div className={styles.fichaTurma}><p className={styles.p2}>{e[3]}</p></div>
+                    ))}
                 </div>
 
                 <div className={styles.botoes}>
-                    <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
+                <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
                     <Link to={`/cadastro-turma/${id}`} className={styles.link}><div className={styles.botao3}><p>Cadastrar turma</p></div></Link>
                     <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Editar</p></div></Link>
                     <button onClick={handleDelete} className={styles.link}><div className={styles.botao2}><p>Excluir curso</p></div></button>

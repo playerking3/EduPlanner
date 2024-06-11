@@ -99,7 +99,7 @@ def excluirTurma():
     if VerificaToken().validaToken():
         return TurmaController().excluir()
     return jsonify({'status': 'error', 'info': 'invalid token'})
-@app.route('/getTurma')
+@app.route('/getTurma', methods=['POST'])
 def getTurma():
     if VerificaToken().validaToken():
         return TurmaController().getList()
