@@ -1,7 +1,9 @@
-import css from './InputImagem.module.css'
-import React from "react";
 import {wait} from "@testing-library/user-event/dist/utils";
-function InputImagem({name, placeholder, setar, valor}){
+import React, { useState } from "react";
+import css from './InputImagem.module.css';
+
+function InputImagem({ name, placeholder, setar, valor }) {
+    const [preview, setPreview] = useState(null);
 
     const toBase64 = file => new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -11,30 +13,33 @@ function InputImagem({name, placeholder, setar, valor}){
     });
 
     const handleFileInput = async (e) => {
-        console.log('handleFileInput working!')
-        console.log(e.target.files[0]);
-        const base = await toBase64(e.target.files[0])
-        setar(base)
-        console.log(base)
-    }
+        const file = e.target.files[0];
+        if (file) {
+            const base = await toBase64(file);
+            setar(base);
+            setPreview(base);
+        }
+    };
 
-
-
-    return(
+    return (
         <div className={css.container}>
             <div>
                 <p className={css.titulop}>{placeholder} <span className={css.asterisco}>*</span></p>
             </div>
             <div className={css.inputGroup}>
                 <div className={css.btnInput}>
-                    <input id={'img'} type="file" name={'img'} onChange={handleFileInput} style={{display:'none'}}/>
-                    <label htmlFor={'img'} className={css.input}>
-                    <i className="fa-solid fa-arrow-up-from-bracket"></i></label>
+                    <input id="img" type="file" name="img" onChange={handleFileInput} style={{ display: 'none' }} />
+                    <label htmlFor="img" className={css.input}>
+                        {preview ? (
+                            <img src={preview} alt="preview" className={css.previewImage} />
+                        ) : (
+                            <i className="fa-solid fa-arrow-up-from-bracket" style={{ fontSize: '24px' }}></i>
+                        )}
+                    </label>
                 </div>
-
             </div>
         </div>
-    )
+    );
 }
 
-export default InputImagem
+export default InputImagem;

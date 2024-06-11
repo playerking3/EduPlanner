@@ -31,7 +31,7 @@ function CardCurso({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
     return (
         <div className={styles.card}>
             <div style={{ backgroundImage: "url('data:image/png;base64," + img + "')" }} className={styles.fotos}>
-                {img === '' ? <img src={'/foto1.png'} className={styles.fotoDefault} /> :
+                {img === '' ? <img src={'/defaultRoomCourse.png'} className={styles.fotoDefault}  alt={'imagem'}/> :
                     <img src={"data:image/png;base64," + img} className={styles.fotoperfil} />}
             </div>
             <div className={styles.escritas}>

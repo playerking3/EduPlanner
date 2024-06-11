@@ -65,6 +65,7 @@ export default function Login({ navigation }) {
   useFocusEffect(
       useCallback(() => {
         async function verificaDigital() {
+          let opcaoDigital;
           opcaoDigital = await opDigital();
           console.log(opcaoDigital);
           if (opcaoDigital) {
@@ -111,7 +112,6 @@ export default function Login({ navigation }) {
     console.log("LOGIN", loginResp)
 
     if (loginResp.status === "success") {
-      Alert.alert("Sucesso", "Login realizado com sucesso!");
       setAuth(loginResp.token.key);
       navigation.navigate('Home');
     } else {

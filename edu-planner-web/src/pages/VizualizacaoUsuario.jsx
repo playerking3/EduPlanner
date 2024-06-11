@@ -13,6 +13,9 @@ function VizualizacaoUsuario(props) {
     const [professores, setProfessores] = useState([]);
     const [alunos, setAlunos] = useState([]);
     const [coordenadores, setCoordenadores] = useState([]);
+    const [ordemCoordenadores, setOrdemCoordenadores] = useState("");
+    const [ordemProfessores, setOrdemProfessores] = useState("");
+    const [ordemAlunos, setOrdemAlunos] = useState("");
 
     const navigate = useNavigate();
 
@@ -34,27 +37,36 @@ function VizualizacaoUsuario(props) {
             body: JSON.stringify(data)
         })
             .then((resp) => resp.json())
-            .then(function (data) {
-                let acert = data;
-                console.log(acert);
-                setCoordenadores([...acert.coordenadores]);
-                setProfessores([...acert.professores]);
-                setAlunos([...acert.alunos]);
+            .then((data) => {
+                setCoordenadores(data.coordenadores);
+                setProfessores(data.professores);
+                setAlunos(data.alunos);
             })
-            .catch(function (error) {
+            .catch((error) => {
                 console.log(error);
             });
     }
 
     const ordenarUsuarios = (usuarios, ordem) => {
-        return usuarios.sort((a, b) => {
-            if (ordem === "A-Z") {
-                return a[0].localeCompare(b[0]);
-            } else {
-                return b[0].localeCompare(a[0]);
-            }
-        });
+        if (ordem === "A-Z") {
+            return [...usuarios].sort((a, b) => a[0].localeCompare(b[0]));
+        } else if (ordem === "Z-A") {
+            return [...usuarios].sort((a, b) => b[0].localeCompare(a[0]));
+        }
+        return usuarios;
     };
+
+    useEffect(() => {
+        setCoordenadores(ordenarUsuarios(coordenadores, ordemCoordenadores));
+    }, [ordemCoordenadores, coordenadores]);
+
+    useEffect(() => {
+        setProfessores(ordenarUsuarios(professores, ordemProfessores));
+    }, [ordemProfessores, professores]);
+
+    useEffect(() => {
+        setAlunos(ordenarUsuarios(alunos, ordemAlunos));
+    }, [ordemAlunos, alunos]);
 
     return (
         <div className={css.container}>
@@ -70,7 +82,7 @@ function VizualizacaoUsuario(props) {
                 <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className={css.classe}>
                         <p className={css.identificacao}>Coordenadores</p>
-                        <div><OrdenarPor ordenar={(ordem) => setCoordenadores(ordenarUsuarios(coordenadores, ordem))} /></div>
+                        <div><OrdenarPor ordenar={setOrdemCoordenadores} /></div>
                     </div>
                     <div className={css.turmas}>
                         {coordenadores.map((item, index) => (
@@ -81,7 +93,7 @@ function VizualizacaoUsuario(props) {
                 <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className={css.classe}>
                         <p className={css.identificacao}>Professores</p>
-                        <div><OrdenarPor ordenar={(ordem) => setProfessores(ordenarUsuarios(professores, ordem))} /></div>
+                        <div><OrdenarPor ordenar={setOrdemProfessores} /></div>
                     </div>
                     <div className={css.turmas}>
                         {professores.map((item, index) => (
@@ -92,7 +104,7 @@ function VizualizacaoUsuario(props) {
                 <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className={css.classe}>
                         <p className={css.identificacao}>Alunos</p>
-                        <div><OrdenarPor ordenar={(ordem) => setAlunos(ordenarUsuarios(alunos, ordem))} /></div>
+                        <div><OrdenarPor ordenar={setOrdemAlunos} /></div>
                     </div>
                     <div className={css.turmas}>
                         {alunos.map((item, index) => (

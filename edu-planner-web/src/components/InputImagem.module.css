@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -6,10 +6,12 @@
     gap: 1.1em;
     width: 95%;
 }
-.asterisco{
-    color: red ;
+
+.asterisco {
+    color: red;
 }
-.input{
+
+.input {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -17,15 +19,17 @@
     padding: 4px;
     border: none;
     border-radius: .5em;
-    height: 2em;
-    width: 95%;
+    height: auto;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
+    width: 400px;
 }
-.titulop{
+
+.titulop {
     font-weight: 600;
     font-size: 1.3vw;
 }
-.inputGroup{
+
+.inputGroup {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -33,13 +37,24 @@
     justify-content: center;
 }
 
-.btnInput{
+.btnInput {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
+.previewImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 885px) {
+    .titulop {
+        font-size: 2vw;
+    }
+}
 
 
 @media (max-width: 885px) {
@@ -49,7 +64,7 @@
 }
 
 @media (max-width: 429px) {
-    .titulop{
+    .titulop {
         font-weight: 600;
         font-size: 3vw;
     }
