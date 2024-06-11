@@ -26,7 +26,6 @@ function Cadastro(props) {
             icon: "error",
             title: "Oops...",
             text: "Algo está errado!",
-            footer: '<a href="#">Why do I have this issue?</a>'
         });
     }
 
@@ -56,7 +55,7 @@ function Cadastro(props) {
                     navigate('/dashboard')
                 }
                 else {
-                    alert(erro())
+                    erro()
                 }
             })
             .catch(function(error) {

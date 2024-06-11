@@ -27,6 +27,7 @@ db = SQLAlchemy(app)
 #-------rotas de usuário-----------------
 @app.route('/login', methods=['POST'])
 def login():
+    print('estamos carregando')
     return UserController().login()
 
 @app.route('/cadastro', methods=['POST'])
@@ -58,7 +59,7 @@ def excuirUser():
 @app.route('/editUsers', methods=['POST'])
 def editUsers():
     if VerificaToken().validaToken():
-        return UserController().getUser()
+        return UserController().editarUsuario()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
 #------rotas de curso-------------------

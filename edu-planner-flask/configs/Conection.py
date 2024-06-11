@@ -72,8 +72,8 @@ class Conection:
             di = []
             if cursor:
                 exist = True
-                listT = []
                 for i in cursor:
+                    listT = []
                     listI = list(i)
                     for j in listI:
                         listT.append(j)

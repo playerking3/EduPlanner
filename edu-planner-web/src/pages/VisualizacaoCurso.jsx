@@ -54,11 +54,11 @@ function VisualizacaoCurso(props) {
                 <div className={styles.mostraCards}>
                     {listaCursos.map((curso) => (
                         <CardCurso
-                            key={curso.id}
-                            id={curso.id}
-                            placeholder={curso.placeholder}
-                            img={curso.img}
-                            descricao={curso.descricao}
+                            key={curso[1]}
+                            id={curso[1]}
+                            placeholder={curso[0]}
+                            img={curso[3]}
+                            descricao={curso[2]}
                             onDelete={handleDelete}
                         />
                     ))}

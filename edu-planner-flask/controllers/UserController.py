@@ -22,11 +22,16 @@ class UserController:
         cpf = request.json.get('cpf')
         password = request.json.get('password')
 
+        print(cpf, password, '---print')
+
+        cpf = str(cpf)
+        password = str(password)
+
         user = User(cpf, password)
         infos = user.login()
         if infos:
             if infos[1] == Criptografia().hashSenha(password + infos[2]):
-                if infos[3] == 'coordenador':
+                if infos[3].lower() == 'coordenador':
                     token = Criptografia().gerarToken(infos[0], infos[3])
                     return jsonify({'status': 'success', 'token': token})
                 return jsonify({'status': 'error', 'info': 'o login deve ser feito por um coordenador'})
@@ -105,9 +110,7 @@ class UserController:
         response = User().getId(id)
 
         response = response[0]
-        password = response[6]
-        cripto = Criptografia()
-        print(cripto.descriptoHashSenha(password))
+
 
         if response:
             return jsonify({'status': 'success', 'infos': response})

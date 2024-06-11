@@ -53,3 +53,9 @@ class CursoController:
             response = curso.excluiCurso(nome)
             return jsonify({'status': response})
         return jsonify({'status': 'error', 'info': 'curso não encontrado'})
+
+    def getDuracao(self, id):
+        duracao = Curso().getDuracao(id)
+        if duracao:
+            return jsonify({'status': 'success'})
+        return jsonify({'status': 'error', 'info': 'curso não encontrado'})
