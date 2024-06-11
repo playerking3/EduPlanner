@@ -6,7 +6,7 @@ import listPlugin from '@fullcalendar/list'; // Para visualização em lista
 import ptLocale from '@fullcalendar/core/locales/pt';
 import css from './Calendario.module.css'
 
-export default function Calendario() {
+export default function Calendario(props) {
     const [currentEvents, setCurrentEvents] = useState([]);
     const [title2, setTitle] = useState('')
     const [selectItem, setSelectItem] = useState('')
@@ -14,7 +14,7 @@ export default function Calendario() {
     const [listaEventos, setListaEventos] = useState([])
 
     useEffect(() => {
-        async function getApi(){
+        async function getApi(props){
             const data = {
                 token: JSON.parse(localStorage.getItem('token'))
             };
