@@ -51,27 +51,26 @@ function Login(props) {
             });
     }
 
-    return (
-        <div className={css.tudo}>
-            <div className={css.bloco}>
-                <div className={css.logo}>
-                    <img src={"./logo.png"} alt="Logo" />
-                </div>
-                <div className={css.form}>
-                    <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99"
-                    />
-                    <BntSenhaOlho setSenha={setSenha} senha={senha} />
-                    <BtnEnviar placeholder='Logar' funcao={login} />
-                    <button
-                        onClick={() => navigate('/forgot-password')}
-                        className={css.esqueciSenha}
-                    >
-                        Esqueci a senha
-                    </button>
+        return(
+
+            <div className={css.tudo}>
+                <div className={css.bloco}>
+                    <div className={css.logo}>
+                        <img src={"./logo.png"} alt="Logo" />
+                    </div>
+                    <div className={css.form}>
+
+                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99"
+                        />
+                        <BntSenhaOlho setSenha={setSenha} senha={senha} />
+                        <BtnEnviar placeholder='Logar' funcao={login} />
+                        <button onClick={() => navigate('/forgot-password')} className={css.esqueciSenha}>Esqueci a senha</button>
+
+
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
 }
 
 export default Login;

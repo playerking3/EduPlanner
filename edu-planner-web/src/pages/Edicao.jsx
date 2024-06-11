@@ -1,52 +1,106 @@
 import React, {useEffect, useState} from "react";
-import css from './Cadastro.module.css';
-import CadastroInput from "../components/CadastroInput";
-import InputImagem from "../components/InputImagem";
-import BtnEnviar from "../components/BtnEnviar";
 import SideBar from "../components/SideBar";
-import ComboBox from "../components/ComboBox";
-import {useRoutes} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import CursoBox from "../components/SalaBox";
+import {rotaSegurity} from "../functions/rotaSegurity";
+import css from './CadastroCurso.module.css'
+import CadastroBox from "../components/CadastroBox";
 
-
-function Cadastro() {
-    const route = useRoutes();
-    const { id } = route.params;
-
+function Edicao({api}) {
+    const { id } = useParams();
+    const [nome, setNome] = useState('')
+    const [funcao, setFuncao] = useState('')
+    const [foto, setFoto] = useState('')
+    const [cpf,setCpf] = useState('')
+    const [nascimento, setNascimento] = useState('')
+    const [senha, setSenha] = useState('')
+    const [email, setEmail] = useState('')
     useEffect(() => {
-        console.log(id)
+        rotaSegurity(   api, localStorage.getItem('token'), navigate)
+        getDados()
     }, []);
 
-    const [nome, setNome] = useState("");
-    const [senha, setSenha] = useState("");
-    const [data, setData] = useState("");
-    const [email, setEmail] = useState("");
-    return(
-        <div className={css.container}>
-            <SideBar/>
+    async function getDados () {
+        const data = {
+            'id': id,
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
 
-            <div className={css.header}>
-                <h2 className={css.h2Cadastro}>Edição de usuário</h2>
+        await fetch(api + '/getEditarUsuario', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                console.log(acert)
+                if (acert.status === 'success') {
+                    setNome(acert.infos[0])
+                    setCpf(acert.infos[2])
+                    setNascimento(acert.infos[3])
+                    setFuncao(acert.infos[4])
+                    setEmail(acert.infos[5])
+                    setFoto(acert.infos[7])
+                }
 
-                <div className={css.divtudo}>
-                    <div className={css.ladoEsquerdo}>
-                        <CadastroInput type={'text'} name={'nome'} placeholder={'Nome'}/>
-                        {/*<ComboBox name={'funcao'} placeholder={'Função'}/>*/}
-                        <InputImagem name={'perfil'} placeholder={'Escolher foto de perfil'} />
-                    </div>
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
 
+    async function editDados(){
+        const data = {
+            'id': id,
+            'cpf':cpf,
+            'password': senha,
+            'nome':nome,
+            'cargo': funcao,
+            'email': email,
+            'data_nascimento':nascimento,
+            'foto': foto,
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
+        await fetch(api + '/editUsers', {
 
-                    <div>
-                        <CadastroInput type={'text'} name={'cpf'} placeholder={'CPF'} />
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                console.log(acert)
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
 
-                        <CadastroInput type={'date'} name={'nascimento'} placeholder={'Data de nascimento'} />
-                        <CadastroInput type={'password'} name={'senha'} placeholder={'Senha'} />
-                    </div>
-                </div>
-                <BtnEnviar placeholder='Salvar'/>
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        rotaSegurity(api, localStorage.getItem('token'), navigate)
+    }, []);
+
+    return (
+        <div className={css.tudo}>
+            <SideBar></SideBar>
+            <div className={css.conteudo}>
+                <CadastroBox placeholder='Edição de usuário' nome={nome} setNome={setNome} funcao={funcao}
+                          setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha}
+                          nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto}
+                          email={email} setEmail={setEmail}  enviar={editDados}></CadastroBox>
             </div>
         </div>
     )
 }
 
 
-export default Cadastro
+export default Edicao;

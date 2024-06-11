@@ -4,8 +4,6 @@ import os
 from controllers.UserController import *
 from controllers.CursoController import *
 from controllers.SalaController import *
-from controllers.TurmaController import *
-from controllers.ParticipanteController import *
 from controllers.SalaAlunoProfessorController import *
 from controllers.TurmaParticipantesSalaController import *
 from utils.VerificaToken import *
@@ -29,6 +27,7 @@ db = SQLAlchemy(app)
 #-------rotas de usuário-----------------
 @app.route('/login', methods=['POST'])
 def login():
+    print('estamos carregando')
     return UserController().login()
 
 @app.route('/cadastro', methods=['POST'])
@@ -45,10 +44,22 @@ def getUsers():
         return UserController().getUser()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
+@app.route('/getEditarUsuario', methods=['POST'])
+def getEditarUsuario():
+    if VerificaToken().validaToken():
+        return UserController().getUsuarioID()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
 @app.route('/excluirUser', methods=['POST'])
 def excuirUser():
     if VerificaToken().validaToken():
         return UserController().excluir()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+@app.route('/editUsers', methods=['POST'])
+def editUsers():
+    if VerificaToken().validaToken():
+        return UserController().editarUsuario()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
 #------rotas de curso-------------------

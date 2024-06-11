@@ -13,10 +13,6 @@ class UserController:
         alunos = user.getAlunos()
         coordenadores = user.getCoordenadores()
 
-        print(professores)
-        print(alunos)
-        print(coordenadores)
-
         if professores != False and alunos != False and coordenadores != False:
             return jsonify({'status': 'success', 'professores' : professores, 'alunos': alunos, 'coordenadores': coordenadores})
         return jsonify({'status': 'error', 'infos': 'falha em recuperar informações'})
@@ -26,11 +22,16 @@ class UserController:
         cpf = request.json.get('cpf')
         password = request.json.get('password')
 
+        print(cpf, password, '---print')
+
+        cpf = str(cpf)
+        password = str(password)
+
         user = User(cpf, password)
         infos = user.login()
         if infos:
             if infos[1] == Criptografia().hashSenha(password + infos[2]):
-                if infos[3] == 'coordenador':
+                if infos[3].lower() == 'coordenador':
                     token = Criptografia().gerarToken(infos[0], infos[3])
                     return jsonify({'status': 'success', 'token': token})
                 return jsonify({'status': 'error', 'info': 'o login deve ser feito por um coordenador'})
@@ -102,3 +103,49 @@ class UserController:
         if response:
             return jsonify({'status': 'success'})
         return jsonify({'status': 'error', 'info': 'erro ao excluir usuário'})
+
+    def getUsuarioID(self):
+        id = request.json.get('id')
+
+        response = User().getId(id)
+
+        response = response[0]
+
+
+        if response:
+            return jsonify({'status': 'success', 'infos': response})
+        return jsonify({'status': 'error', 'info': 'erro ao recuperar informações'})
+
+    def editarUsuario(self):
+        id = request.json.get('id')
+        cpf = request.json.get('cpf')
+        password = request.json.get('password')
+        nome = request.json.get('nome')
+        email = request.json.get('email')
+        cargo = request.json.get('cargo')
+        nascimento = request.json.get('data_nascimento')
+        base64_string = request.json.get('foto')
+
+        cpfcheck = Cpf(cpf)
+        resp, msn = cpfcheck.is_cpf_valid()
+        if resp == False:
+            return jsonify({'status': 'error', 'info': msn})
+
+        salt = random.randint(1000000000, 9999999999999)
+        password = Criptografia().hashSenha(password + str(salt))
+        user = User(cpf, password)
+        response = user.editUser(nome, email, cargo, nascimento, salt, id)
+        if response:
+            id = user.checkUser()
+
+            response = Imagem().cadastrarImagem(base64_string, id, 'usuario')
+
+            if response != True:
+                return jsonify({'status': 'error', 'info': response})
+
+            print(id, 'id aqui')
+            if id:
+                token = Criptografia().gerarToken(id, cargo)
+                return jsonify({'status': 'success', 'token': token})
+            return jsonify({'status': 'error', 'info': 'usuario não cadastrado'})
+        return jsonify({'status': 'error', 'info': response})

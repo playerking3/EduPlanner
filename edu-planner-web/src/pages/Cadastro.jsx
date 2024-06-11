@@ -1,9 +1,11 @@
 import SideBar from "../components/SideBar";
 import css from './CadastroCurso.module.css'
-import CadastroBox from "../components/CadastroBox";
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {rotaSegurity} from "../functions/rotaSegurity";
+import CursoBox from "../components/SalaBox";
+import CadastroBox from "../components/CadastroBox";
+import Swal from 'sweetalert2';
 
 function Cadastro(props) {
     const [nome, setNome] = useState('')
@@ -19,6 +21,13 @@ function Cadastro(props) {
     useEffect(() => {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate)
     }, []);
+    async function erro(){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo está errado!",
+        });
+    }
 
     async function enviar(){
 
@@ -46,13 +55,14 @@ function Cadastro(props) {
                     navigate('/dashboard')
                 }
                 else {
-                    alert(acert.info)
+                    erro()
                 }
             })
             .catch(function(error) {
                 console.log(error);
             })
     }
+
 
     return(
         <div className={css.tudo}>

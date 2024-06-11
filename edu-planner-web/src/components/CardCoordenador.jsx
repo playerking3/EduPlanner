@@ -35,7 +35,7 @@ function CardCoordenador({nome, id, imagem = '' ,api}){
                 <img src={"data:image/png;base64," + imagem} className={css.fotoperfil}/>}
             <label>{nome}</label>
             <div className={css.lapislixo}>
-                <button onClick={() => navigate('/editar-pessoa', {id})}><img src={'lapis.png'}/></button>
+                <button onClick={() => navigate(`/editar-pessoa/${id}`)}><img src={'lapis.png'}/></button>
                 <button onClick={() => excluir()}><img src={'lixo.png'}/></button>
             </div>
         </div>

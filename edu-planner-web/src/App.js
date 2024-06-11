@@ -17,17 +17,19 @@ import { useState, createContext, useContext } from "react";
 import CadastroSala from "./pages/CadastroSala";
 
 function App() {
+
+
     const [api, setApi] = useState('http://127.0.0.1:5000')
   return (
         <BrowserRouter>
           <Routes>
               <Route path={'/cadastro-curso'} element={<CadastroCurso api={api} />}/>
-              <Route path={'/editar-curso'} element={<EditarCurso />}/>
+              <Route path={'/editar-curso/:id'} element={<EditarCurso />}/>
               <Route path={'/login'} element={<Login api={api}/>}/>
               <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />
-              <Route path={'/editar-pessoa'} element={<Edicao api={api}/>}/>
+              <Route path={'/editar-pessoa/:id'} element={<Edicao api={api}/>}/>
               <Route path={'dashboard'} element={<Dashboard/>}/>
-              <Route path={'/cadastro-turma'} element={<CadastroTurma api={api}/>}/>
+              <Route path={'/cadastro-turma/:id'} element={<CadastroTurma api={api}/>}/>
               <Route path={'/cadastro-sala'} element={<CadastroSala api={api}/>}/>
               <Route path={'/'} element={<Home/>}/>
               <Route path={'/cursos'} element={<VisualizacaoCurso api={api}/>}/>

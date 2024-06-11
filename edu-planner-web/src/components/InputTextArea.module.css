@@ -4,6 +4,7 @@
     align-items: start;
     padding: 1em;
     gap: .5em;
+    width: 95%;
 }
 .container label{
     font-weight: 600;
@@ -26,12 +27,22 @@
     border: none;
     border-radius: 1vw;
     outline: none;
-    height: 11em;
+    height: 11vw;
     width: 90%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
     resize: none;
-}
+    margin-top: 1vw;
 
+}
+@media (max-width: 885px) {
+    .container label{
+        font-size: 2vw;
+    }
+
+    .input{
+        height: 15.5vw;
+    }
+}
 
 @media (max-width: 429px) {
     .container label{

@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
     width: '35%',
     height: '100%',
     marginRight: 7,
-    borderRadius: 5,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10
   },
   textContainer: {
     flex: 1,
