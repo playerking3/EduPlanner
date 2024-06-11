@@ -7,29 +7,18 @@ function BntSenhaOlho({ setSenha, senha }) {
 
     return (
         <div style={{ position: 'relative' }}>
-            <CadastroInput
-                type={mostrarSenha ? 'text' : 'password'}
-                name={'senha'}
-                placeholder={'Senha'}
-                setar={setSenha}
-                valor={senha}
-            />
-            <button
-                className={css.MudSenha}
-                onClick={(e) => {
-                    e.preventDefault(); // Previne a ação padrão de submissão do formulário
-                    setMostrarSenha(!mostrarSenha);
-                }}
-            >
-                <img
-                    className={'img'}
-                    src={mostrarSenha ? 'OlhoFechado.png' : 'OlhoAberto.png'}
-                    alt={mostrarSenha ? 'Ocultar Senha' : 'Mostrar Senha'}
-                />
-            </button>
+            <div className={css.InputContainer}>
+                <CadastroInput
+                    type={mostrarSenha ? 'text' : 'password'} name={'senha'} placeholder={'Senha'} setar={setSenha} valor={senha}/>
+                <button className={css.MudSenha} onClick={() => {setMostrarSenha(!mostrarSenha);}}>
+                    <img
+                        className={css.img}
+                        src={mostrarSenha ? './OlhoFechado.png' : './OlhoAberto.png'}
+                        alt={mostrarSenha ? 'Ocultar Senha' : 'Mostrar Senha'}
+                    />
+                </button>
+            </div>
         </div>
     );
 }
-
 export default BntSenhaOlho;
-

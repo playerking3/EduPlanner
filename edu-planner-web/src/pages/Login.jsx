@@ -4,11 +4,14 @@ import { rotaSegurity } from "../functions/rotaSegurity";
 import CadastroInput from "../components/CadastroInput";
 import BtnEnviar from "../components/BtnEnviar";
 import BntSenhaOlho from "../components/BntSenhaOlho";
+import RequerimentoSenha from "../components/RequerimentoSenha";
 import css from './Login.module.css';
 
 function Login(props) {
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
+    const [mostrarModal, setMostrarModal] = useState(false);
+    const [mensagemErro, setMensagemErro] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,7 +20,8 @@ function Login(props) {
 
     async function login() {
         if (senha.length < 8) {
-            alert("A senha deve ter no mínimo 8 caracteres.");
+            setMensagemErro("A senha deve ter no mínimo 8 caracteres.");
+            setMostrarModal(true);
             return;
         }
 
@@ -43,7 +47,8 @@ function Login(props) {
                     localStorage.setItem('token', JSON.stringify(acert.token));
                     navigate('/dashboard');
                 } else {
-                    alert(acert.info);
+                    setMensagemErro(acert.info);
+                    setMostrarModal(true);
                 }
             })
             .catch(function(error) {
@@ -51,28 +56,26 @@ function Login(props) {
             });
     }
 
-        return(
-
-            <div className={css.tudo}>
-                <div className={css.bloco}>
-                    <div className={css.logo}>
-                        <img src={"./logo.png"} alt="Logo" />
-                    </div>
-                    <div className={css.form}>
-
-                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99"
-                        />
-                        <BntSenhaOlho setSenha={setSenha} senha={senha} />
-                        <BtnEnviar placeholder='Logar' funcao={login} />
-                        <button onClick={() => navigate('/forgot-password')} className={css.esqueciSenha}>Esqueci a senha</button>
-
-
-                    </div>
+    return (
+        <div className={css.tudo}>
+            <div className={css.bloco}>
+                <div className={css.logo}>
+                    <img src={"./logo.png"} alt="Logo" />
+                </div>
+                <div className={css.form}>
+                    <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99" />
+                    <BntSenhaOlho setSenha={setSenha} senha={senha} />
+                    <BtnEnviar placeholder='Logar' funcao={login} />
+                    <button onClick={() => navigate('/forgot-password')} className={css.esqueciSenha}>Esqueci a senha</button>
                 </div>
             </div>
-        );
+            {mostrarModal && (
+                <div className={css.modalOverlay}>
+                    <RequerimentoSenha onClose={() => setMostrarModal(false)} />
+                </div>
+            )}
+        </div>
+    );
 }
 
 export default Login;
-
-
