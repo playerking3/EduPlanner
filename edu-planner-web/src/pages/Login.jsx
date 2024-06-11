@@ -60,7 +60,7 @@ function Login(props) {
                     </div>
                     <div className={css.form}>
 
-                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99"
+                        <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf}
                         />
                         <BntSenhaOlho setSenha={setSenha} senha={senha} />
                         <BtnEnviar placeholder='Logar' funcao={login} />

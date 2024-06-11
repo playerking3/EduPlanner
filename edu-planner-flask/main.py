@@ -24,6 +24,11 @@ if not os.path.exists(UPLOAD_FOLDER):
 app.config.from_pyfile('configs/config.py')
 db = SQLAlchemy(app)
 
+@app.route('/')
+def index():
+    return "SERVIDOR RODANDO."
+
+
 #-------rotas de usuário-----------------
 @app.route('/login', methods=['POST'])
 def login():
