@@ -4,13 +4,13 @@ import InputImagem2 from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 import ComboBox from "./ComboBox";
 
-function CadastroBox ({placeholder, nome, setNome, funcao, setFuncao, cpf, setCpf, senha, setSenha, nascimento, setNascimento, foto, setFoto, email, setEmail, enviar}){
+function CadastroBox ({placeholder, nome, setNome, setFuncao, cpf, setCpf, senha, setSenha, nascimento, setNascimento, foto, setFoto, email, setEmail, enviar}){
     return(
         <div className={css.box}>
             <div>
                 <h1 className={css.h1}>{placeholder}</h1>
             </div>
-            <form>
+            <form autocomplete="off">
                 <div className={css.formContainer}>
                     <div className={css.maior} style={{width: '95%',display: 'flex',flexDirection: 'column',alignItems: 'center'}}>
                         <CadastroInput placeholder={'Nome'} type={'text'} name={'nomeUser'} setar={setNome} valor={nome}/>

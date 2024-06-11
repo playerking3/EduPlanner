@@ -15,7 +15,6 @@ function Edicao({api}) {
     const [nascimento, setNascimento] = useState('')
     const [senha, setSenha] = useState('')
     const [email, setEmail] = useState('')
-
     useEffect(() => {
         rotaSegurity(   api, localStorage.getItem('token'), navigate)
         getDados()
@@ -39,15 +38,45 @@ function Edicao({api}) {
                 let acert = data // saberemos se deu certo
                 console.log(acert)
                 if (acert.status === 'success') {
-                    setNome(acert.infos[0][0])
-                    setCpf(acert.infos[0][2])
-                    setNascimento(acert.infos[0][3])
-                    setFuncao(acert.infos[0][4])
-                    setEmail(acert.infos[0][5])
-                    setSenha(acert.infos[0][6])
-                    setFoto(acert.infos[0][7])
+                    setNome(acert.infos[0])
+                    setCpf(acert.infos[2])
+                    setNascimento(acert.infos[3])
+                    setFuncao(acert.infos[4])
+                    setEmail(acert.infos[5])
+                    setFoto(acert.infos[7])
                 }
 
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
+
+    async function editDados(){
+        const data = {
+            'id': id,
+            'cpf':cpf,
+            'password': senha,
+            'nome':nome,
+            'cargo': funcao,
+            'email': email,
+            'data_nascimento':nascimento,
+            'foto': foto,
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
+        await fetch(api + '/editUsers', {
+
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data // saberemos se deu certo
+                console.log(acert)
             })
             .catch(function(error) {
                 console.log(error);
@@ -67,7 +96,7 @@ function Edicao({api}) {
                 <CadastroBox placeholder='Edição de usuário' nome={nome} setNome={setNome} funcao={funcao}
                           setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha}
                           nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto}
-                          email={email} setEmail={setEmail} ></CadastroBox>
+                          email={email} setEmail={setEmail}  enviar={editDados}></CadastroBox>
             </div>
         </div>
     )
