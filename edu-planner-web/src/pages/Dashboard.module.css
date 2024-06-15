@@ -112,7 +112,7 @@
 .agenda{
     display: flex;
     align-items: flex-start;
-    height: 80%;
+    height: 75vh;
     overflow-y: auto;
     margin-top: 6vw;
     gap: 1vw;
