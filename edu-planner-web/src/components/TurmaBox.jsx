@@ -93,7 +93,9 @@ function TurmaBox (props){
                 let acert = data // saberemos se deu certo
                 console.log(acert)
                 if (acert.status == 'success') {
-                    console.log('eee')
+                    setOpAlunos([...acert.infos.alunos])
+                    setOpProfessores([...acert.infos.professores])
+                    setOpSalas([...acert.infos.salas])
                 }else {
                     alert(acert.info)
                 }

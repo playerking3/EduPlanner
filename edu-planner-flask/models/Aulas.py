@@ -7,11 +7,25 @@ class Aulas:
         response = conexao.add_query(query)
         return response
 
-    def listarAulasESalas(self):
-        query = f'SELECT aulas.id_dataAula ,aulas.data_aula, sala.nome, turma.hora_inicio FROM aulas INNER JOIN  turma ON aulas.id_turma = turma.id_turma INNER JOIN sala ON turma.id_sala = sala.id_sala;'
+    def listarAulasESalas(self, dias):
+        diasString = ",".join(str(element) for element in dias)
+        query = f"select sala.nome, turma.hora_inicio, TIME_FORMAT(turma.horas_dia, '%S') as horas_dia from aulas \
+        left join turma on turma.id_turma = aulas.id_turma \
+        left join sala on sala.id_sala = turma.id_sala \
+        where aulas.data_aula IN ({', '.join([f"'{str(data)}'" for data in dias])})"
+
+        # query = "select sala.nome, turma.hora_inicio from aulas left join turma on turma.id_turma = aulas.id_turma left join sala on sala.id_sala = turma.id_sala where aulas.data_aula IN ('2024-06-16', '2024-06-19', '2024-06-20');"
+
+        print("query dias", query)
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis
 
-tese = Aulas()
-tese.listarAulasESalas()
+        horas = hh * 60 * 60
+
+    def listarAulasPorCurso(self, IDs):
+        idString = ",".join(str(element) for element in IDs)
+        query = f'SELECT * FROM aulas WHERE id_turma IN({idString})'
+        conexao = Conection()
+        exis = conexao.get_list(query)
+        return exis

@@ -25,6 +25,7 @@ function Dashboard(props) {
                 .then(function (data) {
                     let acert = data;
                     setListaEventos([...acert.lista_turma]);
+                    console.log("AAA", [...acert.lista_turma])
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -32,7 +33,7 @@ function Dashboard(props) {
         }
 
         getApi(props)
-        console.log(listaEventos)
+        console.log("EVENTOS", listaEventos)
     }, []);
 
     function generateRadomColor(){
@@ -44,10 +45,10 @@ function Dashboard(props) {
         <div className={styles.body}>
             <SideBar/>
             <div style={{display: 'flex', flexDirection: 'row', marginLeft: '4vw', gap:'2vw', alignItems: 'center'}} className={styles.agrupamento}>
-                <Calendario></Calendario>
+                <Calendario listaEventos={listaEventos} api={props.api}></Calendario>
                 <div className={styles.agenda}>
                     {listaEventos.map((item)=>(
-                            item[8] === 'ativo' && <CardEvento placeholder={item[3]} horario={'Horário: '+item[9]+' as 17:00'} color={generateRadomColor()} periodo={item[6]}></CardEvento>
+                        <CardEvento placeholder={item[3]} horario={'Horário: '+item[9]+' as 17:00'} color={generateRadomColor()} periodo={item[6]}></CardEvento>
                     ))}
                 </div>
             </div>
