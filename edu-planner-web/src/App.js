@@ -19,7 +19,7 @@ import CadastroSala from "./pages/CadastroSala";
 function App() {
 
 
-    const [api, setApi] = useState('http://10.92.3.183:5000')
+    const [api, setApi] = useState('http://127.0.0.1:5000')
   return (
         <BrowserRouter>
           <Routes>
@@ -28,7 +28,7 @@ function App() {
               <Route path={'/login'} element={<Login api={api}/>}/>
               <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />
               <Route path={'/editar-pessoa/:id'} element={<Edicao api={api}/>}/>
-              <Route path={'dashboard'} element={<Dashboard/>}/>
+              <Route path={'dashboard'} element={<Dashboard api={api}/>}/>
               <Route path={'/cadastro-turma/:id'} element={<CadastroTurma api={api}/>}/>
               <Route path={'/cadastro-sala'} element={<CadastroSala api={api}/>}/>
               <Route path={'/'} element={<Home/>}/>

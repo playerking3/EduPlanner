@@ -22,15 +22,15 @@ class TurmaParticipantesSalaController:
         print(lista_dias, listaFeriados, inicio, duracao, int(horas_dia))
         if duracao:
             duracao = duracao[0]
-            fim, listaAulas = FimDeCurso(lista_dias, listaFeriados, inicio, duracao, int(horas_dia)).contaMes()
-            print(fim, listaAulas)
+            fim = FimDeCurso(lista_dias, listaFeriados, inicio, duracao, int(horas_dia))
 
-            responseCad = turma.Cadastro(nome, inicio, lista_dias, horario, horas_dia, id_curso, id_sala, fim)
+
+            responseCad = turma.Cadastro(nome, inicio, lista_dias, horario, horas_dia, id_curso, id_sala, fim.dataFinal)
 
             if responseCad['status'] == 'success':
                 participante = ParticipanteController()
                 participante.Cadastro(responseCad['id'])
-                TurmaDataController().cadastraCalendar(listaAulas, responseCad['id'][0])
+                TurmaDataController().cadastraCalendar(fim.listData, responseCad['id'][0])
 
             return jsonify(responseCad)
         return jsonify({'status': 'error', 'info':'curso não achado'})
