@@ -24,6 +24,11 @@ if not os.path.exists(UPLOAD_FOLDER):
 app.config.from_pyfile('configs/config.py')
 db = SQLAlchemy(app)
 
+@app.route('/')
+def index():
+    return "SERVIDOR RODANDO."
+
+
 #-------rotas de usuário-----------------
 @app.route('/login', methods=['POST'])
 def login():
@@ -99,7 +104,7 @@ def excluirTurma():
     if VerificaToken().validaToken():
         return TurmaController().excluir()
     return jsonify({'status': 'error', 'info': 'invalid token'})
-@app.route('/getTurma')
+@app.route('/getTurma', methods=['POST'])
 def getTurma():
     if VerificaToken().validaToken():
         return TurmaController().getList()

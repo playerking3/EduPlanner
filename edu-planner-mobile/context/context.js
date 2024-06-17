@@ -22,6 +22,13 @@ function DadosProvider({ children }) {
     const fetchData = async (url, method, body= null, id= null) => {
         console.log(url, method, body, id)
 
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        if (auth) {
+            myHeaders.append("Authorization", "Bearer " + auth)
+        }
+
         if (method in ['GET', 'POST', "PUT", "DELETE"]) {
             return {"mensagem": "Erro: Método não selecionado"}
         }
@@ -36,23 +43,20 @@ function DadosProvider({ children }) {
 
         let config = {
             method: method,
-            headers: {
-                "Content-Type": "application/json"
-            }
+            headers: myHeaders,
+            redirect: "follow"
         }
 
         if (body) {
             config.body = JSON.stringify(body)
         }
 
-        if (auth) {
-            config.headers.Authorization = "Bearer " + auth
-        }
-
         let rota = "http://192.168.1.134:5000"+url
-        return await fetch(rota, config)
-            .then(response => response.json())
-            .catch(error => console.warn(error))
+
+        return fetch(rota, config)
+            .then((response) => response.json())
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error));
     }
 
 

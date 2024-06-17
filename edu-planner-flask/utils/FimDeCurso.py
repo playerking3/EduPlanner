@@ -19,6 +19,7 @@ class FimDeCurso:
         self.calendario = calendar.Calendar()
         self.mes = self.calendario.itermonthdays4(self.anoInicio, self.mesInicio)
         self.listData = []
+        self.dataFinal = self.contaMes()
 
     def transformaObjData(self, lista):
         result = []
@@ -53,8 +54,4 @@ class FimDeCurso:
             return self.contaMes()
         else:
             dataFinal = self.dataInicio + timedelta(days=self.diasPassados-1)
-            return dataFinal, self.listData
-
-
-teste = FimDeCurso([1,2], [], '2024-06-04', 20, 2)
-print(teste.contaMes())
+            return dataFinal

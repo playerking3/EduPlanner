@@ -101,14 +101,14 @@ export default function Login({ navigation }) {
     setCpf(formattedCpf);
   };
 
-  async function cadastrar() {
+  async function cadastrarAA() {
     console.log(cpf)
     if (!cpf || !senha) {
       Alert.alert("Preenchimento obrigatório", "Por favor, preencha todos os campos.");
       return;
     }
 
-    let loginResp = await fetchData('/login', 'POST', { 'cpf': cpf, 'password': senha });
+    let loginResp = await fetchData('/login', 'POST', { cpf, password: senha });
     console.log("LOGIN", loginResp)
 
     if (loginResp.status === "success") {
@@ -119,6 +119,39 @@ export default function Login({ navigation }) {
     }
   }
 
+  async function cadastrar() {
+    if (!cpf || !senha) {
+      Alert.alert("Preenchimento obrigatório", "Por favor, preencha todos os campos.");
+      return;
+    }
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      "cpf": String(cpf),
+      "password": String(senha)
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+
+    fetch("http://192.168.1.107:5000/login", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.status === "success") {
+            setAuth(result.token.key);
+            navigation.navigate('Home');
+          } else {
+            Alert.alert("Erro", "CPF ou senha incorretos. Tente novamente.");
+          }
+        })
+        .catch((error) => console.error(error));
+  }
 
   return (
       <ImageBackground source={require('../assets/fundoLogin.png')} resizeMode="cover" style={styles.container}>

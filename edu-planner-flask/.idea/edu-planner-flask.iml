@@ -5,7 +5,11 @@
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
+<<<<<<< HEAD
+    <orderEntry type="inheritedJdk" />
+=======
     <orderEntry type="jdk" jdkName="Python 3.12 (edu-planner-flask)" jdkType="Python SDK" />
+>>>>>>> 90915879c0069cdbc1386b6933e5576ccc1b254e
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

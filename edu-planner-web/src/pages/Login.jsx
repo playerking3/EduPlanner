@@ -18,7 +18,9 @@ function Login(props) {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate, 'externo');
     }, [props.api, navigate]);
 
-    async function login() {
+    async function login(event) {
+        event.preventDefault();
+
         if (senha.length < 8) {
             setMensagemErro("A senha deve ter no mínimo 8 caracteres.");
             setMostrarModal(true);
@@ -63,7 +65,7 @@ function Login(props) {
                     <img src={"./logo.png"} alt="Logo" />
                 </div>
                 <div className={css.form}>
-                    <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99" />
+                    <CadastroInput placeholder={'CPF'} type={'text'} name={'cpf'} setar={setCpf} valor={cpf} mask="999.999.999-99"/>
                     <BntSenhaOlho setSenha={setSenha} senha={senha} />
                     <BtnEnviar placeholder='Logar' funcao={login} />
                     <button onClick={() => navigate('/forgot-password')} className={css.esqueciSenha}>Esqueci a senha</button>
@@ -71,7 +73,7 @@ function Login(props) {
             </div>
             {mostrarModal && (
                 <div className={css.modalOverlay}>
-                    <RequerimentoSenha onClose={() => setMostrarModal(false)} />
+                    <RequerimentoSenha onClose={() => setMostrarModal(false)} mensagemErro={mensagemErro} />
                 </div>
             )}
         </div>
@@ -79,3 +81,4 @@ function Login(props) {
 }
 
 export default Login;
+
