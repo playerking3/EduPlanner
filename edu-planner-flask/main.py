@@ -6,6 +6,7 @@ from controllers.CursoController import *
 from controllers.SalaController import *
 from controllers.SalaAlunoProfessorController import *
 from controllers.TurmaParticipantesSalaController import *
+from controllers.AulaController import *
 from utils.VerificaToken import *
 
 from flask_cors import CORS
@@ -115,6 +116,11 @@ def getInfos():
     if VerificaToken().validaToken():
         return SalaAlunoProfessorController().retornarInfos()
     return jsonify({'status': 'error', 'info': 'invalid token'})
+
+#------rotas de Aulas-------------------
+@app.route('/getAulas', methods=['POST'])
+def getAulas():
+    return AulaController().listarAulas()
 
 #------rotas de Participantes-------------------
 @app.route('/cadastrarPartipantes')

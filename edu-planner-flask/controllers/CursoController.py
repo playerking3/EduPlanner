@@ -5,7 +5,6 @@ from utils.Image import *
 class CursoController:
     def getCurso(self):
         response = Curso().getCursos()
-        print(response)
         if response:
             return jsonify({'status': 'success', 'cursos': response})
         return jsonify({'status': 'error', 'infos': 'falha em recuperar informações'})

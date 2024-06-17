@@ -37,6 +37,38 @@ export default function Calendario(props) {
     // }
 
 
+
+    useEffect(() => {
+        async function calendarEvents(){
+            let ids = props.listaEventos.map(evento => evento[0]);
+
+            const data = {
+                lista_turmas: ids
+            };
+
+            await fetch(props.api + '/getAulas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    let acert = data;
+                    console.log(acert, 'aaaaa')
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            console.log("IDS", props.listaEventos)
+        }
+
+        if (props.listaEventos.length > 0) calendarEvents()
+    }, [props.listaEventos]);
+
+
     return (
         <div className={css.todoCalendario}>
             <FullCalendar
