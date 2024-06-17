@@ -18,9 +18,7 @@ function Login(props) {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate, 'externo');
     }, [props.api, navigate]);
 
-    async function login(event) {
-        event.preventDefault();
-
+    async function login() {
         if (senha.length < 8) {
             setMensagemErro("A senha deve ter no mínimo 8 caracteres.");
             setMostrarModal(true);
@@ -28,7 +26,7 @@ function Login(props) {
         }
 
         const data = {
-            'cpf': cpf,
+            'cpf': cpf.replaceAll('.','').replaceAll('-',''),
             'password': senha,
         };
 
