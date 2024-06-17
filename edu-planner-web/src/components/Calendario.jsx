@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list'; // Para visualização em lista
+import listPlugin from '@fullcalendar/list';
 import ptLocale from '@fullcalendar/core/locales/pt';
 import css from './Calendario.module.css'
 

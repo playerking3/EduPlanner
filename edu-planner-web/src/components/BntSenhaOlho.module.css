@@ -1,21 +1,8 @@
-.esqueciSenha {
-    padding: 5px;
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
-    margin-top: 20px;
-    border: none;
-    background: white;
-}
-
-.esqueciSenha:hover {
-    color: darkblue;
-}
 
 .MudSenha {
     position: absolute;
-    top: 50%;
-    right: 10px;
+    top: 67%;
+    right: 5.5%;
     transform: translateY(-50%);
     background: none;
     border: none;

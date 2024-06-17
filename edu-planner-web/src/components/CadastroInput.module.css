@@ -27,8 +27,9 @@
     border: none;
     border-radius: .5em;
     height: 2.5em;
-    padding: 4px 1.8vw;
+    padding: 4px 2vw;
     width: 86%;
+    margin-top: 1vw;
     font-size: 1.3vw;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
 }
