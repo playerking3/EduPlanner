@@ -21,11 +21,9 @@ class Aulas:
         exis = conexao.get_list(query)
         return exis
 
-        horas = hh * 60 * 60
-
     def listarAulasPorCurso(self, IDs):
         idString = ",".join(str(element) for element in IDs)
-        query = f'SELECT * FROM aulas WHERE id_turma IN({idString})'
+        query = f"SELECT aulas.id_dataAula, turma.nome, DATE_FORMAT(aulas.data_aula, '%Y-%m-%d') FROM aulas left join turma on turma.id_turma = aulas.id_turma WHERE aulas.id_turma IN({idString})"
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis

@@ -30,3 +30,9 @@ class Sala:
         conexao = Conection()
         exis = conexao.get_list_image(query, 'sala')
         return exis
+
+    def getNomes(self):
+        query = f"SELECT nome FROM `sala`;"
+        conexao = Conection()
+        exis = conexao.get_list(query)
+        return exis

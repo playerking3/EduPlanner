@@ -57,6 +57,7 @@ export default function Calendario(props) {
                 .then(function (data) {
                     let acert = data;
                     console.log(acert, 'aaaaa')
+                    listarEventos(acert.aulas)
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -68,6 +69,15 @@ export default function Calendario(props) {
         if (props.listaEventos.length > 0) calendarEvents()
     }, [props.listaEventos]);
 
+    function listarEventos(lista) {
+        let novosEventos = lista.map(item => ({
+            id: item[0],
+            title: item[1],
+            date: item[2],
+        }));
+        setEventsCalender(novosEventos);
+        console.log(novosEventos, 'listagem log')
+    }
 
     return (
         <div className={css.todoCalendario}>
@@ -89,11 +99,7 @@ export default function Calendario(props) {
                 dayMaxEvents={true}
                 locale={ptLocale}
 
-                events={[{
-                    id: "1215",
-                    title: "All-day event",
-                    date: "2024-06-15",
-                }]}
+                events={eventsCalender}
             />
         </div>
     )

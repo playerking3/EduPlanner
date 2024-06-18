@@ -19,10 +19,14 @@ function Login(props) {
     }, [props.api, navigate]);
 
     async function login() {
-        if (senha.length < 8) {
+        console.log(senha.length)
+        if (senha.length < 7) {
             setMensagemErro("A senha deve ter no mínimo 8 caracteres.");
             setMostrarModal(true);
             return;
+        }else {
+            console.log('nada')
+            setMostrarModal(false);
         }
 
         const data = {
