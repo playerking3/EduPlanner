@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useState } from "react";
-import {View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, Alert} from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, Alert } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox/lib";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {useFocusEffect, useNavigation} from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import * as LocalAuthentication from 'expo-local-authentication';
 import OlhoAberto from '../assets/olhoaberto.png';
 import OlhoFechado from '../assets/olhofechado.png';
-import {Dados} from "../context/context";
+import { Dados } from "../context/context";
 
 export default function Login({ navigation }) {
   const [imageUri, setImageUri] = React.useState(null);
@@ -101,56 +101,23 @@ export default function Login({ navigation }) {
     setCpf(formattedCpf);
   };
 
-  async function cadastrarAA() {
+  async function cadastrar() {
     console.log(cpf)
     if (!cpf || !senha) {
       Alert.alert("Preenchimento obrigatório", "Por favor, preencha todos os campos.");
       return;
     }
 
-    let loginResp = await fetchData('/login', 'POST', { cpf, password: senha });
+    let loginResp = await fetchData('/login', 'POST', { 'cpf': cpf, 'password': senha });
     console.log("LOGIN", loginResp)
 
     if (loginResp.status === "success") {
+      Alert.alert("Sucesso", "Login realizado com sucesso!");
       setAuth(loginResp.token.key);
       navigation.navigate('Home');
     } else {
       Alert.alert("Erro", "CPF ou senha incorretos. Tente novamente.");
     }
-  }
-
-  async function cadastrar() {
-    if (!cpf || !senha) {
-      Alert.alert("Preenchimento obrigatório", "Por favor, preencha todos os campos.");
-      return;
-    }
-
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-      "cpf": String(cpf),
-      "password": String(senha)
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow"
-    };
-
-    fetch("http://192.168.1.107:5000/login", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-          if (result.status === "success") {
-            setAuth(result.token.key);
-            navigation.navigate('Home');
-          } else {
-            Alert.alert("Erro", "CPF ou senha incorretos. Tente novamente.");
-          }
-        })
-        .catch((error) => console.error(error));
   }
 
   return (
@@ -168,7 +135,7 @@ export default function Login({ navigation }) {
                   value={cpf}
                   keyboardType="numeric"
                   maxLength={14}
-                    onChangeText={setCpf}
+                  onChangeText={handleCpfChange}
               />
             </View>
             <View style={styles.inputContainer}>
@@ -176,12 +143,12 @@ export default function Login({ navigation }) {
               <View style={{ position: 'relative' }}>
                 <TextInput
                     style={styles.input}
-                    placeholder="Senha"
-                    secureTextEntry={!mostrarSenha}
+                    placeholder="*********"
                     value={senha}
                     onChangeText={setSenha}
-                    keyboardType="visible-password"
+                    keyboardType="password"
                     placeholderTextColor="#fff"
+                    secureTextEntry={!mostrarSenha}
                 />
                 <TouchableOpacity
                     style={{ position: 'absolute', top: 10, right: 10 }}
@@ -274,7 +241,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height:       3,
+      height: 3,
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -301,4 +268,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-
