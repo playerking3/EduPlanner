@@ -7,12 +7,12 @@ import { rotaSegurity } from "../functions/rotaSegurity";
 
 function VisualizacaoCurso(props) {
     const [listaCursos, setListaCursos] = useState([]);
-    const [turmas, setTurmas] = useState([])
+    const [turmas, setTurmas] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         async function enviar() {
-            console.log("GET CURSOS")
+            console.log("GET CURSOS");
             const data = {
                 token: JSON.parse(localStorage.getItem('token'))
             };
@@ -35,8 +35,8 @@ function VisualizacaoCurso(props) {
                 });
         }
 
-        async function getTurma(){
-            console.log("GET TURMAS")
+        async function getTurma() {
+            console.log("GET TURMAS");
             const data = {
                 token: JSON.parse(localStorage.getItem('token'))
             };
@@ -60,12 +60,34 @@ function VisualizacaoCurso(props) {
 
         rotaSegurity(props.api, localStorage.getItem('token'), navigate);
         enviar();
-        getTurma()
+        getTurma();
     }, []);
 
-    const handleDelete = (id) => {
-        setListaCursos(listaCursos.filter(curso => curso.id !== id));
-    };
+    async function handleDelete(id) {
+        const data = {
+            id: id,
+            token: JSON.parse(localStorage.getItem('token'))
+        };
+
+        await fetch(props.api + '/excluiCurso', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then((resp) => resp.json())
+            .then(function (data) {
+                let acert = data;
+                console.log(acert);
+                if (acert.status === 'success') {
+                    setListaCursos(prevState => prevState.filter(curso => curso[1] !== id));
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     return (
         <div className={styles.container}>
@@ -73,8 +95,7 @@ function VisualizacaoCurso(props) {
             <div>
                 <div className={styles.botaoTopo}>
                     <Link to={'/cadastro-curso'} className={styles.link}>
-                        <div className={styles.botaoc}><p style={{ fontWeight: 600 }}>Novo curso</p> <i className="fa-solid fa-plus fa-xl"></i>
-                        </div>
+                        <div className={styles.botaoc}><p style={{ fontWeight: 600 }}>Novo curso</p> <i className="fa-solid fa-plus fa-xl"></i></div>
                     </Link>
                 </div>
                 <div className={styles.mostraCards}>
@@ -83,7 +104,7 @@ function VisualizacaoCurso(props) {
                             key={curso[1]}
                             id={curso[1]}
                             placeholder={curso[0]}
-                            img={curso[3]}
+                            img={curso[5]}
                             descricao={curso[2]}
                             onDelete={handleDelete}
                             listaTurmas={turmas}
