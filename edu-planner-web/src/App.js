@@ -31,7 +31,7 @@ function App() {
               <Route path={'dashboard'} element={<Dashboard api={api}/>}/>
               <Route path={'/cadastro-turma/:id'} element={<CadastroTurma api={api}/>}/>
               <Route path={'/cadastro-sala'} element={<CadastroSala api={api}/>}/>
-              <Route path={'/'} element={<Home/>}/>
+              <Route path={'/'} element={<Home api={api}/>}/>
               <Route path={'/cursos'} element={<VisualizacaoCurso api={api}/>}/>
               <Route path={'*'} element={<Erro/>}/>
               <Route path={'/salas'} element={<VisualizacaoSala api={api}/>}/>
