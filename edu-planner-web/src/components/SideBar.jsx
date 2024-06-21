@@ -33,13 +33,11 @@ function SideBar(){
             </div>
             <div className={desapareceM}>
                 <div className={css.total}>
-                    <div></div>
+                    <Link to={'/editar-pessoa'}
+                          style={{display: 'flex', alignItems: 'center', justifyContent: ' center'}}>
+                        <img src={'fotoperfil.png'} className={css.perfil}/>
+                    </Link>
                     <div className={css.iconGroup}>
-                        <Link to={'/'} className={css.links}><i
-                            className={"fa-solid fa-house fa-xl " + css.icon}></i>
-                            <div className={css.risco}
-                                 style={{width: '0.1vw', height: '2vw', background: 'white'}}></div>
-                            <p>Home</p></Link>
                         <Link to={'/cursos'} className={css.links}><i
                             className={"fa-solid fa-book fa-xl " + css.icon}></i>
                             <div className={css.risco}
