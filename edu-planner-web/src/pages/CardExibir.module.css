@@ -47,15 +47,12 @@
 }
 
 .fotos{
-    height: 21vw;
+    background-image: url('/public/foto1.png');
+    height: 25vw;
     background-position: center;
     background-size: cover;
-    border-radius: 2vw 2vw 0 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
+    border-radius: 2vw 2vw 0vw 0vw;
 }
-
 .imgAberto{
     height: 100%;
     background-position: center;
@@ -229,15 +226,6 @@
     justify-content: space-around;
     align-items: center;
 }
-
-.fotoperfil{
-    transform: scale(1.6);
-}
-
-.fotoDefault{
-    transform: scale(1.9);
-}
-
 @media (max-width: 885px) {
     .card{
         width: 40vw;
@@ -251,10 +239,6 @@
     }
     .titulo{
         font-size: 2.5vw;
-    }
-
-    .fotos{
-        height: 20vw;
     }
 }
 

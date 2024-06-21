@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import {rotaSegurity} from "../functions/rotaSegurity";
 
 function Home(props) {
-    const [listaCursos, setListaCursos] = useState([]);
+    const [listaCursos, setListaCursos] = useState([{ id: 1, placeholder: 'teste', img: 'defaultRoomCourse', descricao: 'testes' }]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,64 +36,6 @@ function Home(props) {
                 console.log(error);
             });
     }
-
-    const [turmas, setTurmas] = useState([])
-
-    useEffect(() => {
-        async function enviar() {
-            console.log("GET CURSOS")
-            const data = {
-                token: JSON.parse(localStorage.getItem('token'))
-            };
-
-            await fetch(props.api + '/getCursos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then((resp) => resp.json())
-                .then(function (data) {
-                    let acert = data;
-                    console.log(acert);
-                    setListaCursos([...acert.cursos]);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
-
-        async function getTurma(){
-            console.log("GET TURMAS")
-            const data = {
-                token: JSON.parse(localStorage.getItem('token'))
-            };
-
-            await fetch(props.api + '/getTurma', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then((resp) => resp.json())
-                .then(function (data) {
-                    let acert = data;
-                    setTurmas([...acert.lista_turma]);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
-
-        rotaSegurity(props.api, localStorage.getItem('token'), navigate);
-        enviar();
-        getTurma()
-    }, []);
-
-
-
     return (
         <div style={{fontFamily: 'Montserrat, sans-serif', overflowX:'hidden'}}>
             <div className={css.divona}>
@@ -139,34 +81,31 @@ function Home(props) {
                 <div style={{backgroundColor: "white"}} className="ofc">
                     <p className="oferecep" style={{textAlign: 'center',fontSize: '2.5vw',fontWeight: 600, padding: '4vw'}}>Cursos que oferecemos</p>
                     <div className='todosCard' style={{display: 'flex',alignItems: 'center',alignContent: 'center',flexWrap: 'wrap',gap: '3vw', justifyContent: 'space-evenly'}}>
-                        <CardExibir placeholder={'Oficina de bolos'} img={'/img1.png'} categoria={'Presencial'} descricao={'Um curso de inglês para iniciantes pode ser uma grande oportunidade de\n' +
+                        <CardExibir placeholder={'Oficina de bolos'} img='img1' categoria={'Presencial'} descricao={'Um curso de inglês para iniciantes pode ser uma grande oportunidade de\n' +
                             '                        desbloquear conhecimento e iniciar novas habilidades. Falar outra língua pode parecer distante para quem nunca estudou, mas tudo começa com o primeiro passo.\n' +
                             '                    A Cultura Inglesa encara esse momento inicial como algo incrível. Por isso, os cursos para iniciantes ajudam pessoas a começarem uma jornada de aprendizado de maneira didática e interessante. É o começo da conquista de um objetivo.\n' +
-                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '} cargaH={'40'} faixaE={'8 a 12'}></CardExibir>
+                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '} ></CardExibir>
                         <CardExibir placeholder={'Dramaturgia'} img='img2' categoria={'Presencial'} descricao={'Um curso de inglês para iniciantes pode ser uma grande oportunidade de\n' +
                             '                        desbloquear conhecimento e iniciar novas habilidades. Falar outra língua pode parecer distante para quem nunca estudou, mas tudo começa com o primeiro passo.\n' +
                             '                    A Cultura Inglesa encara esse momento inicial como algo incrível. Por isso, os cursos para iniciantes ajudam pessoas a começarem uma jornada de aprendizado de maneira didática e interessante. É o começo da conquista de um objetivo.\n' +
-                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '} cargaH={'40'} faixaE={'8 a 12'}></CardExibir>
+                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '}></CardExibir>
                         <CardExibir placeholder={'Iniciação ao inglês'} img='img3' categoria={'Presencial'} descricao={'Um curso de inglês para iniciantes pode ser uma grande oportunidade de\n' +
                             '                        desbloquear conhecimento e iniciar novas habilidades. Falar outra língua pode parecer distante para quem nunca estudou, mas tudo começa com o primeiro passo.\n' +
                             '                    A Cultura Inglesa encara esse momento inicial como algo incrível. Por isso, os cursos para iniciantes ajudam pessoas a começarem uma jornada de aprendizado de maneira didática e interessante. É o começo da conquista de um objetivo.\n' +
-                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '} cargaH={'40'} faixaE={'8 a 12'}></CardExibir>
+                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '}></CardExibir>
                         <CardExibir placeholder={'Iniciação ao Espanhol'} img='img7' categoria={'Presencial'} descricao={'Um curso de inglês para iniciantes pode ser uma grande oportunidade de\n' +
                             '                        desbloquear conhecimento e iniciar novas habilidades. Falar outra língua pode parecer distante para quem nunca estudou, mas tudo começa com o primeiro passo.\n' +
                             '                    A Cultura Inglesa encara esse momento inicial como algo incrível. Por isso, os cursos para iniciantes ajudam pessoas a começarem uma jornada de aprendizado de maneira didática e interessante. É o começo da conquista de um objetivo.\n' +
-                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '} cargaH={'40'} faixaE={'8 a 12'}></CardExibir>
+                            '                    Se tem dúvidas sobre aulas de inglês para iniciantes e como funcionam, este conteúdo vai ajudar você. '}></CardExibir>
                         {listaCursos.map((curso) => (
                             <CardExibir
-                                key={curso[1]}
-                                id={curso[1]}
-                                placeholder={curso[0]}
-                                img={curso[5]}
-                                descricao={curso[2]}
-                                faixaE={curso[4]}
-                                cargaH={curso[3]}
+                                key={curso.id}
+                                id={curso.id}
+                                placeholder={curso.placeholder}
+                                img={curso.img}
+                                descricao={curso.descricao}
                             />
                         ))}
-
                     </div>
 
                     <div className={css.tudos}>
@@ -198,5 +137,3 @@ function Home(props) {
 }
 
 export default Home;
-
-
