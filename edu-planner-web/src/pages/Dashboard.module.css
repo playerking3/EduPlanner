@@ -115,6 +115,8 @@
     height: 75vh;
     overflow-y: auto;
     margin-top: 6vw;
+    margin-right: 1vw;
+
     gap: 1vw;
     flex-wrap: wrap;
     align-content: flex-start;

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 1em;
+    padding: 1.5vw;
     gap: .5em;
     width: 95%;
 }
@@ -28,11 +28,11 @@
     border-radius: 1vw;
     outline: none;
     height: 11vw;
-    width: 90%;
+    width: 94%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
     resize: none;
     margin-top: 1vw;
-
+    font-size: 1.3vw;
 }
 @media (max-width: 885px) {
     .container label{
@@ -55,8 +55,8 @@
         border: none;
         border-radius: 2vw;
         outline: none;
-        height: 11em;
-        width: 95%;
+        height: 21vw;
+        width: 97%;
         box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
         resize: none;
     }

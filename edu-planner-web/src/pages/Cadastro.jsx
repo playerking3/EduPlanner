@@ -19,55 +19,54 @@ function Cadastro(props) {
 
     useEffect(() => {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate);
-    }, [props.api, navigate]);
+    }, []);
 
-    async function erro() {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Algo está errado!",
-        });
-    }
-
-    async function enviar(event) {
-        event.preventDefault();
-
-        const data = {
-            'nome': nome,
-            'cpf': cpf,
-            'data_nascimento': nascimento,
-            'password': senha,
-            'cargo': funcao,
-            'foto': foto,
-            'email': email
-        };
-
-        await fetch(props.api + '/cadastro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
-            },
-            body: JSON.stringify(data) // Converta o objeto em uma string JSON
-        })
-            .then((resp) => resp.json())
-            .then(function(data) {
-                let acert = data; // saberemos se deu certo
-                if (acert.status === 'success') {
-                    navigate('/dashboard');
-                } else {
-                    erro();
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
+    async function enviar(dados) {
+        try {
+            const response = await fetch(props.api + '/cadastro', {
+                method: 'POST',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados),
             });
+
+            if (!response.ok) {
+                throw new Error('Erro ao cadastrar usuário');
+            }
+
+            const responseData = await response.json();
+            if (responseData.status === 'success') {
+                navigate('/dashboard');
+            } else {
+                alert(responseData.info);
+            }
+        } catch (error) {
+            console.error('Erro:', error);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Algo está errado!",
+            });
+        }
     }
 
     return (
         <div className={css.tudo}>
             <SideBar />
             <div className={css.conteudo}>
-                <CadastroBox placeholder='Cadastro de usuário' nome={nome} setNome={setNome} funcao={funcao} setFuncao={setFuncao} cpf={cpf} setCpf={setCpf} senha={senha} setSenha={setSenha} nascimento={nascimento} setNascimento={setNascimento} foto={foto} setFoto={setFoto} email={email} setEmail={setEmail} enviar={enviar}/>
+                <CadastroBox
+                    placeholder='Cadastro de usuário'
+                    nome={nome} setNome={setNome}
+                    funcao={funcao} setFuncao={setFuncao}
+                    cpf={cpf} setCpf={setCpf}
+                    senha={senha} setSenha={setSenha}
+                    nascimento={nascimento} setNascimento={setNascimento}
+                    foto={foto} setFoto={setFoto}
+                    email={email} setEmail={setEmail}
+                    enviar={enviar}
+                />
             </div>
         </div>
     );

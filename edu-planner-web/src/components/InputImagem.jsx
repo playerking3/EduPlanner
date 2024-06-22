@@ -33,7 +33,7 @@ function InputImagem({ name, placeholder, setar, valor }) {
                         {preview ? (
                             <img src={preview} alt="preview" className={css.previewImage} />
                         ) : (
-                            <i className="fa-solid fa-arrow-up-from-bracket" style={{ fontSize: '24px' }}></i>
+                            <i className="fa-solid fa-arrow-up-from-bracket" style={{fontSize: '2vw', padding: '2vw' }}></i>
                         )}
                     </label>
                 </div>

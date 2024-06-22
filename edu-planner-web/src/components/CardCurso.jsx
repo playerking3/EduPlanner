@@ -27,6 +27,8 @@ function CardCurso({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
             }
         });
     };
+    const turmasCadastradas = listaTurmas.filter(e => e[1] === id);
+
 
     return (
         <div className={styles.card}>
@@ -37,9 +39,17 @@ function CardCurso({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
             <div className={styles.escritas}>
                 <h4 className={styles.titulo}>{placeholder}</h4>
                 <div className={styles.turmas}>
-                    {listaTurmas.map((e) => (
-                        (e[1] === id) && <div className={styles.fichaTurma}><p className={styles.p2}>{e[3]}</p></div>
-                    ))}
+                    {turmasCadastradas.length === 0 ? (
+                        <div className={styles.fichaTurma2}>
+                            <p className={styles.p2}>Nenhuma turma cadastrada</p>
+                        </div>
+                    ) : (
+                        turmasCadastradas.map(e => (
+                            <div key={e[0]} className={styles.fichaTurma}>
+                                <p className={styles.p2}>{e[3]}</p>
+                            </div>
+                        ))
+                    )}
                 </div>
 
                 <div className={styles.botoes}>

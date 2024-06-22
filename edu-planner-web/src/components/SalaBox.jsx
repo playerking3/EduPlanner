@@ -5,7 +5,7 @@ import InputImagem from "./InputImagem";
 import BtnEnviar from "./BtnEnviar";
 
 
-function CursoBox ({placeholder, nome, setNome, capacidade, setCapacidade, numeroSala, setNumeroSala, descricao, setDescricao, imagem, setImagem, enviar}){
+function SalaBox ({placeholder, nome, setNome, capacidade, setCapacidade, numeroSala, setNumeroSala, descricao, setDescricao, imagem, setImagem, enviar}){
 
     return(
         <div className={css.box}>
@@ -15,13 +15,12 @@ function CursoBox ({placeholder, nome, setNome, capacidade, setCapacidade, numer
             <form>
                 <div className={css.formContainer}>
                     <div className={css.todos}>
-                        <CadastroInput placeholder={'Nome da sala'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome}/>
+                        <CadastroInput placeholder={'Nome da sala'} type={'text'} name={'nomeSala'} setar={setNome} valor={nome}/>
                         <InputImagem placeholder={'Escolher imagem'} setar={setImagem} valor={imagem}></InputImagem>
-                        <CadastroInput placeholder={'Ocupação máxima'} type={'text'} name={'nomeCurso'} setar={setCapacidade} valor={capacidade}/>
-
+                        <CadastroInput placeholder={'Ocupação máxima'} type={'text'} name={'capacidade'} setar={setCapacidade} valor={capacidade}/>
                     </div>
                     <div className={css.todos}>
-                        <CadastroInput placeholder={'Número da sala'} type={'text'} name={'cargaHoraria'} setar={setNumeroSala} valor={numeroSala}/>
+                        <CadastroInput placeholder={'Número da sala'} type={'text'} name={'numeroSala'} setar={setNumeroSala} valor={numeroSala}/>
                         <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao}></InputTextArea>
                     </div>
                 </div>
@@ -32,4 +31,4 @@ function CursoBox ({placeholder, nome, setNome, capacidade, setCapacidade, numer
         </div>
     )
 }
-export default CursoBox
+export default SalaBox;

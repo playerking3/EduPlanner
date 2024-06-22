@@ -2,7 +2,7 @@ import styles from './CardExibir.module.css'
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 
-function CardExibir({placeholder, img, categoria,cargaH, faixaE, descricao}) {
+function CardExibir({placeholder, img, listaCategorias, id, cargaH, faixaE, descricao}) {
     const [card, setCard] = useState(styles.card)
     const [fotos, setFotos] = useState(styles.fotos)
     const [escritas, setEscritas] = useState(styles.escritas)
@@ -29,17 +29,12 @@ function CardExibir({placeholder, img, categoria,cargaH, faixaE, descricao}) {
 
     return(
         <div className={card}>
-            <div style={{ backgroundImage: "url('data:image/png;base64," + img + "')" }} className={styles.fotos}>
-                {img === '' ? <img src={'/defaultRoomCourse.png'} className={styles.fotoDefault}  alt={'imagem'}/> :
-                    <img src={"data:image/png;base64," + img} className={styles.fotoperfil} />}
+            <div style={{ backgroundImage: "url('data:image/png;base64," + img + "')" }} className={fotos}>
+
             </div>
             <div className={escritas}>
                 <h4 className={styles.titulo}>{placeholder}</h4>
                 <div className={styles.turmas}>
-                    <div className={styles.fichaTurma}><p className={styles.p2}>{categoria}</p></div>
-                    <div className={styles.fichaTurma}><p className={styles.p2}>{categoria}</p></div>
-                    <div className={styles.fichaTurma}><p className={styles.p2}>{categoria}</p></div>
-                    <div className={styles.fichaTurma}><p className={styles.p2}>{categoria}</p></div>
 
                 </div>
                 <div className={styles.detalhes}>
