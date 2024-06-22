@@ -7,13 +7,13 @@ import { rotaSegurity } from "../functions/rotaSegurity";
 
 function VisualizacaoCurso(props) {
     const [listaCursos, setListaCursos] = useState([]);
-    const [turmas, setTurmas] = useState([])
+    const [turmas, setTurmas] = useState([]);
     const navigate = useNavigate();
     const [ignore, setIgonore] = useState(0)
 
     useEffect(() => {
         async function enviar() {
-            console.log("GET CURSOS")
+            console.log("GET CURSOS");
             const data = {
                 token: JSON.parse(localStorage.getItem('token'))
             };
@@ -36,8 +36,8 @@ function VisualizacaoCurso(props) {
                 });
         }
 
-        async function getTurma(){
-            console.log("GET TURMAS")
+        async function getTurma() {
+            console.log("GET TURMAS");
             const data = {
                 token: JSON.parse(localStorage.getItem('token'))
             };
@@ -94,8 +94,7 @@ function VisualizacaoCurso(props) {
             <div>
                 <div className={styles.botaoTopo}>
                     <Link to={'/cadastro-curso'} className={styles.link}>
-                        <div className={styles.botaoc}><p style={{ fontWeight: 600 }}>Novo curso</p> <i className="fa-solid fa-plus fa-xl"></i>
-                        </div>
+                        <div className={styles.botaoc}><p style={{ fontWeight: 600 }}>Novo curso</p> <i className="fa-solid fa-plus fa-xl"></i></div>
                     </Link>
                 </div>
                 <div className={styles.mostraCards}>
@@ -104,7 +103,7 @@ function VisualizacaoCurso(props) {
                             key={curso[1]}
                             id={curso[1]}
                             placeholder={curso[0]}
-                            img={curso[3]}
+                            img={curso[5]}
                             descricao={curso[2]}
                             onDelete={handleDelete}
                             listaTurmas={turmas}
