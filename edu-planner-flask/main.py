@@ -78,9 +78,11 @@ def cadastraCurso():
 def editaCurso():
     return CursoController().editarCurso()
 
-@app.route('/excluiCurso')
+@app.route('/excluiCurso', methods=['POST'])
 def excluiCurso():
-    return CursoController().excluiCurso()
+    if VerificaToken().validaToken():
+        return CursoController().excluiCurso()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
 
 @app.route('/getCursos', methods=['POST'])
 def getCursos():
@@ -166,6 +168,12 @@ def excluirSala():
 def getSala():
     if VerificaToken().validaToken():
         return SalaController().getList()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+@app.route('/getSalaId', methods=['POST'])
+def getSalaId():
+    if VerificaToken().validaToken():
+        return SalaController().getId()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
 #----------proteção de rota---------------

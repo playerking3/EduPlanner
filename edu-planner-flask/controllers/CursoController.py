@@ -45,11 +45,11 @@ class CursoController:
         return jsonify({'status': 'error', 'info': 'curso não encontrado'})
 
     def excluiCurso(self):
-        nome = request.json.get('nome')
-
+        id = request.json.get('id')
+        print(id)
         curso = Curso()
-        if curso.getCurso(nome):
-            response = curso.excluiCurso(nome)
+        if curso.getCurso(nome='',id=id):
+            response = curso.excluiCurso(id)
             return jsonify({'status': response})
         return jsonify({'status': 'error', 'info': 'curso não encontrado'})
 

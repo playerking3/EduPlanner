@@ -48,3 +48,11 @@ class SalaController:
         if response:
             return jsonify({'status': 'success', 'getSala': response})
         return jsonify({'status': 'error', 'info': response})
+
+    def getId(self):
+        nome = request.json.get('nome')
+        obj = Sala()
+        response = obj.get(nome)
+        if response:
+            return jsonify({'status': 'success', 'getSala': response})
+        return jsonify({'status': 'error', 'info': response})

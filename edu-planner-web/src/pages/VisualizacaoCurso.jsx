@@ -9,6 +9,7 @@ function VisualizacaoCurso(props) {
     const [listaCursos, setListaCursos] = useState([]);
     const [turmas, setTurmas] = useState([])
     const navigate = useNavigate();
+    const [ignore, setIgonore] = useState(0)
 
     useEffect(() => {
         async function enviar() {
@@ -61,10 +62,30 @@ function VisualizacaoCurso(props) {
         rotaSegurity(props.api, localStorage.getItem('token'), navigate);
         enviar();
         getTurma()
-    }, []);
+    }, [ignore]);
 
-    const handleDelete = (id) => {
-        setListaCursos(listaCursos.filter(curso => curso.id !== id));
+    async function handleDelete (id) {
+        const data = {
+            token: JSON.parse(localStorage.getItem('token')),
+            id: id
+        }
+
+        await fetch(props.api + '/excluiCurso', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then((resp) => resp.json())
+            .then(function (data) {
+                let acert = data;
+                console.log(acert)
+            })
+            .catch(function (error) {
+                    console.log(error);
+            });
+        setIgonore(1)
     };
 
     return (

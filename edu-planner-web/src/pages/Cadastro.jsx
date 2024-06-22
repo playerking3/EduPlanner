@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 function Cadastro(props) {
     const [nome, setNome] = useState('');
-    const [funcao, setFuncao] = useState('');
+    const [funcao, setFuncao] = useState('Aluno');
     const [foto, setFoto] = useState('');
     const [cpf, setCpf] = useState('');
     const [nascimento, setNascimento] = useState('');
@@ -30,7 +30,6 @@ function Cadastro(props) {
     }
 
     async function enviar(event) {
-        event.preventDefault();
 
         const data = {
             'nome': nome,

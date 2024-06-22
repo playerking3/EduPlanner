@@ -10,9 +10,9 @@ import {useEffect, useState} from "react";
 import periodicidade from "./Periodicidade";
 import {rotaSegurity} from "../functions/rotaSegurity";
 import {useNavigate} from "react-router-dom";
+import ComboBox from "./ComboBox";
 
 function TurmaBox (props){
-    const [duracaoCurso, setDuracaoCurso] = useState(40)
     const [nome, setNome] = useState('')
     const [inicio,setInicio] = useState('')
     const [periodicidade, setPeriodicidade] = useState([])
@@ -20,57 +20,17 @@ function TurmaBox (props){
     const [horario, setHorario] = useState('')
     const [alunos, setAlunos] = useState('')
     const [professores, setProfessores] = useState('')
-    const [salas, setSalas] = useState('')
     const [opProfessores, setOpProfessores] = useState([])
     const [opAlunos, setOpAlunos] = useState([])
     const [opSalas, setOpSalas] = useState([])
+    const [salas, setSalas] = useState(opSalas[0])
 
     const [partesDisplay, setPartesDisplay] = useState(['flex', 'none'])
 
     const navigate = useNavigate();
-
-    //useEffect(() => {
-    //         rotaSegurity(props.api, localStorage.getItem('token'), navigate)
-    //         getInfos()
-    //     }, []);
-    //
-    //     async function getInfos (){
-    //         const data = {
-    //             'token': JSON.parse(localStorage.getItem('token'))
-    //         }
-    //
-    //         await fetch(props.api + '/getInfos', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Access-Control-Allow-Origin': '*',
-    //                 'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
-    //             },
-    //             body: JSON.stringify(data) // Converta o objeto em uma string JSON
-    //         })
-    //             .then((resp) => resp.json())
-    //             .then(function(data) {
-    //                 let acert = data // saberemos se deu certo
-    //                 console.log(acert)
-    //                 if (acert.status == 'success') {
-    //                     setOpAlunos([...acert.infos.alunos])
-    //                     setOpProfessores([...acert.infos.professores])
-    //                     setOpSalas([...acert.infos.salas])
-    //                 }
-    //                 else {
-    //                     alert(acert.info)
-    //                 }
-    //
-    //             })
-    //             .catch(function(error) {
-    //                 console.log(error);
-    //             })
-    //     }
-
-    useEffect(() => {
-
-    }, []);
-
-    async function verificaSalas(){
+    
+    async function verificaSalas(e){
+        e.preventDefault()
         const data = {
             'token': JSON.parse(localStorage.getItem('token')),
             'nome': nome,
@@ -108,7 +68,8 @@ function TurmaBox (props){
     }
 
 
-    async function cadastrarTurma () {
+    async function cadastrarTurma (e) {
+        e.preventDefault()
         const data = {
             'nome': nome,
             'inicio': inicio,
@@ -116,7 +77,7 @@ function TurmaBox (props){
             'horas_dia': duracaoAula,
             'horario': horario,
             'id_curso': props.id,
-            'id_sala': 1,
+            'id_sala': salas,
             'professores': professores,
             'alunos': alunos,
             'token': JSON.parse(localStorage.getItem('token'))
@@ -177,8 +138,7 @@ function TurmaBox (props){
                 </div>
                 <div className={css.formContainer} style={{display: partesDisplay[1]}}>
                     <div className={css.parte2}>
-                        <ComboBoxMultiplo name={'salas'} label={'Salas alocadas'} opcoes={opSalas} list={salas}
-                                          setList={setSalas}/>
+                        <ComboBox setar={setSalas} name={'salas'} opcoes={opSalas} placeholder={'Salas alocadas'}/>
                         <ComboBoxMultiplo name={'professor'} label={'Professor/orientador'} opcoes={opProfessores}
                                           list={professores} setList={setProfessores}/>
                     </div>

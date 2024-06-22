@@ -7,7 +7,6 @@ import ComboBox from "./ComboBox";
 
 function CadastroBox({ placeholder, nome, setNome, funcao, setFuncao, cpf, setCpf, senha, setSenha, nascimento, setNascimento, foto, setFoto, email, setEmail, enviar }) {
     const enviarDados = (event) => {
-        event.preventDefault();
 
 
         const cpfNumerico = cpf.replace(/[.-]/g, ''); //Remove a máscara quando é enviado para o Bando de Dados

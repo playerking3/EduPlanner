@@ -13,8 +13,8 @@ class Curso:
         response = conexao.add_query(query)
         return response
 
-    def getCurso(self, nome):
-        query = f"SELECT id_curso FROM `curso` WHERE nome = '{nome}';"
+    def getCurso(self, nome, id = 0):
+        query = f"SELECT id_curso FROM `curso` WHERE nome = '{nome}' OR id_curso = {id};"
         conexao = Conection()
         exis = conexao.get_query(query)
         return exis
@@ -25,8 +25,8 @@ class Curso:
         exis = conexao.get_list_image(query, 'curso')
         return exis
 
-    def excluiCurso(self, nome):
-        query = f'UPDATE curso SET status = "inativo" WHERE nome = "{nome}";'
+    def excluiCurso(self, id):
+        query = f'UPDATE curso SET status = "inativo" WHERE id_curso = {id};'
         conexao = Conection()
         response = conexao.add_query(query)
         return response

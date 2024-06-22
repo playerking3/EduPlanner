@@ -14,16 +14,16 @@ function CardCurso({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
             showCancelButton: true,
             confirmButtonColor: "#FFDD26",
             cancelButtonColor: "#FF6B00",
-            confirmButtonText: "Sim, delete!",
+            confirmButtonText: "Sim, desativar!",
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                onDelete(id);
                 Swal.fire({
                     title: "Deletado!",
-                    text: "Seu arquivo foi deletado.",
+                    text: "Seu curso foi desativado",
                     icon: "success"
                 });
+                onDelete(id);
             }
         });
     };
@@ -47,7 +47,7 @@ function CardCurso({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
                 <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
                     <Link to={`/cadastro-turma/${id}`} className={styles.link}><div className={styles.botao3}><p>Cadastrar turma</p></div></Link>
                     <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Editar</p></div></Link>
-                    <button onClick={handleDelete} className={styles.link}><div className={styles.botao2}><p>Excluir curso</p></div></button>
+                    <button onClick={handleDelete} className={styles.link}><div className={styles.botao2}><p>Desativar curso</p></div></button>
                 </div>
             </div>
         </div>

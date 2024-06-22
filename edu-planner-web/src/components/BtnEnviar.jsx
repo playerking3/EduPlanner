@@ -3,8 +3,7 @@ function BtnEnviar({funcao, placeholder}){
     return(
         <div>
             <button className={css.botao} onClick={(e)=> {
-                e.preventDefault()
-                funcao()
+                funcao(e)
             }}>{placeholder}</button>
         </div>
     )

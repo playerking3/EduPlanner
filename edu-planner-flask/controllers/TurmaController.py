@@ -9,6 +9,7 @@ class TurmaController:
         if obj.get(nome) == False:
             response = obj.create(nome, inicio, fim, lista_dias, horas_dia, id_curso, id_sala, horario)
             id = obj.get(nome)
+            print(id, "resultado get")
             return {'status': 'success', 'id': id}
         return {'status': 'error', 'info':'curso de mesmo nome ja cadastrado'}
 
