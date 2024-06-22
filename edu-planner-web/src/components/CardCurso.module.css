@@ -96,7 +96,6 @@
     padding-top: 0.6vw;
     font-weight: 500;
     margin-bottom: 1vw;
-    margin-top: 1vw;
     font-size: 1.2vw;
 
 }
@@ -160,7 +159,6 @@
         height: 20vw;
     }
 }
-
 
 @media (max-width: 429px) {
     .fotos{

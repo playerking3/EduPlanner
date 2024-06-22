@@ -20,7 +20,7 @@ class Curso:
         return exis
 
     def getCursos(self):
-        query = f"SELECT nome, id_curso, descricao FROM `curso` WHERE status = 'ativo';"
+        query = f"SELECT nome, id_curso, descricao, carga_horaria, faixa_etaria FROM `curso` WHERE status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list_image(query, 'curso')
         return exis
