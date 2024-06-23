@@ -12,31 +12,6 @@ export default function Calendario(props) {
     const [selectItem, setSelectItem] = useState('')
     const [eventsCalender, setEventsCalender] = useState([])
 
-    /*const fullCalendarEvents = eventos.map(evento => ({
-        title: evento.descricao,
-        start: evento.data,
-        backgroundColor: evento.tipo === 'feriado' ? '#ff8080' : '#fffb94',
-        borderColor: evento.tipo === 'feriado' ? '#ff8080' : '#fffb94',
-        extendedProps: { ...evento, backgroundColor: evento.tipo === 'feriado' ? '#ff8080' : '#fffb94' }
-    }));*/
-
-    // function closeModal() {
-    //     const selected = selectItem;
-    //     const calendarApi = selected.view.calendar;
-    //     calendarApi.unselect();
-    //     console.log(title2)
-    //
-    //     calendarApi.addEvent({
-    //         id: `${selected.dateStr}-${title2}`,
-    //         title: "Python para Web",
-    //         start: new Date(2024, 5, 1),
-    //         end: new Date(2024, 5, 15),
-    //     });
-    //
-    //     setIsOpen(false);
-    // }
-
-
 
     useEffect(() => {
         async function calendarEvents(){
@@ -66,17 +41,37 @@ export default function Calendario(props) {
             console.log("IDS", props.listaEventos)
         }
 
-        if (props.listaEventos.length > 0) calendarEvents()
+        async function feriadoEvents(){
+            await fetch(props.api + '/getFeriados', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    let acert = data;
+                    listarEventos(acert.feriados)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+        if (props.listaEventos.length > 0) {
+            calendarEvents()
+        }
     }, [props.listaEventos]);
 
     function listarEventos(lista) {
-        let novosEventos = lista.map(item => ({
-            id: item[0],
+        let aux = [...eventsCalender]
+        lista.map(item => (aux.push({
             title: item[1],
             date: item[2],
-        }));
-        setEventsCalender(novosEventos);
-        console.log(novosEventos, 'listagem log')
+            color: item[0]=== 'feriado' ? 'black' : 'purple'
+        })));
+        setEventsCalender(aux);
+        console.log(eventsCalender, 'listagem log')
     }
 
     return (

@@ -65,6 +65,12 @@
     height: 2vw;
     display: flex;
     align-items: center;
+    cursor: pointer;
+}
+
+.fichaTurma:hover{
+    border: 0.3vw solid red;
+    background-color: rgba(255, 155, 155, 0.38);
 }
 
 .fichaTurma2 {
@@ -113,6 +119,13 @@
     font-size: 1.2vw;
 
 }
+
+.link:disabled{
+    .botao2{
+        background-color: gray;
+    }
+}
+
 .botaoExcluir {
    background-color: #e79501;
     color: white;
@@ -161,7 +174,6 @@
     width: 100%;
     background: transparent;
 }
-
 @media (max-width: 885px) {
     .card{
         width: 35vw;

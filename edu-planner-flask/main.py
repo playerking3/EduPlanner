@@ -102,7 +102,7 @@ def editarTurma():
         return TurmaController().editar()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
-@app.route('/excluirTurma')
+@app.route('/excluirTurma', methods=['POST'])
 def excluirTurma():
     if VerificaToken().validaToken():
         return TurmaController().excluir()
@@ -123,6 +123,10 @@ def getInfos():
 @app.route('/getAulas', methods=['POST'])
 def getAulas():
     return AulaController().listarAulas()
+
+@app.route('/getFeriados', methods=['POST'])
+def getFeriados():
+    return AulaController().feriados()
 
 #------rotas de Participantes-------------------
 @app.route('/cadastrarPartipantes')

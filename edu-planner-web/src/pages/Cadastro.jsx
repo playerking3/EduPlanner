@@ -61,24 +61,6 @@ function Cadastro(props) {
                 console.log(error);
             });
 
-            if (!response.ok) {
-                throw new Error('Erro ao cadastrar usuário');
-            }
-
-            const responseData = await response.json();
-            if (responseData.status === 'success') {
-                navigate('/dashboard');
-            } else {
-                alert(responseData.info);
-            }
-        } catch (error) {
-            console.error('Erro:', error);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Algo está errado!",
-            });
-        }
     }
 
     return (

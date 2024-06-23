@@ -107,6 +107,7 @@ function VisualizacaoCurso(props) {
                             descricao={curso[2]}
                             onDelete={handleDelete}
                             listaTurmas={turmas}
+                            api={props.api}
                         />
                     ))}
                 </div>

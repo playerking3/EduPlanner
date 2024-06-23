@@ -37,7 +37,7 @@ class TurmaController:
         if obj.get(nome):
             response = obj.excluir(nome)
             return jsonify({'status': response})
-        return jsonify({'status': 'error', 'info': 'curso não encontrado'})
+        return jsonify({'status': 'error', 'info': 'turma não encontrada'})
 
     def getList(self):
         obj = Turma()

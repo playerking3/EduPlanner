@@ -20,13 +20,13 @@ class Turma:
         return exis
 
     def excluir(self, nome):
-        query = f'UPDATE curso SET status = "inativo" WHERE nome = "{nome}";'
+        query = f'UPDATE turma SET status = "inativo" WHERE nome = "{nome}";'
         conexao = Conection()
         response = conexao.add_query(query)
         return response
 
     def getList(self):
-        query = "SELECT turma.id_turma, turma.id_curso, turma.id_sala, turma.nome, DATE_FORMAT(turma.inicio, '%Y-%m-%d') as inicio, DATE_FORMAT(turma.fim, '%Y-%m-%d') as fim, turma.lista_dias, TIME_FORMAT(turma.horas_dia, '%H:%i') as horas_dia, turma.status, TIME_FORMAT(turma.hora_inicio, '%H:%i') as hora_inicio FROM `turma` WHERE status = 'ativo';"
+        query = "SELECT turma.id_turma, turma.id_curso, turma.id_sala, turma.nome, DATE_FORMAT(turma.inicio, '%Y-%m-%d') as inicio, DATE_FORMAT(turma.fim, '%Y-%m-%d') as fim, turma.lista_dias, TIME_FORMAT(turma.horas_dia, '%s') as horas_dia, turma.status, TIME_FORMAT(turma.hora_inicio, '%H:%i') as hora_inicio FROM `turma` WHERE status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis

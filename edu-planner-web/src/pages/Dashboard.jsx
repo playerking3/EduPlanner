@@ -41,6 +41,12 @@ function Dashboard(props) {
         return 'hsl('+hue+', 100%, 30%)'
     }
 
+    function getFim(inicio, duracao){
+        let horaInicio = inicio.split(":")
+        let final = parseInt(horaInicio[0]) + parseInt(duracao)
+        return final+':'+ horaInicio[1]
+    }
+
     return(
         <div className={styles.body}>
             <SideBar/>
@@ -48,7 +54,7 @@ function Dashboard(props) {
                 <Calendario listaEventos={listaEventos} api={props.api}></Calendario>
                 <div className={styles.agenda}>
                     {listaEventos.map((item)=>(
-                        <CardEvento placeholder={item[3]} horario={'Horário: '+item[9]+' as 17:00'} color={generateRadomColor()} periodo={item[6]}></CardEvento>
+                        <CardEvento placeholder={item[3]} horario={'Horário: '+item[9]+' até '+ getFim(item[9], item[7])} color={generateRadomColor()} periodo={item[6]}></CardEvento>
                     ))}
                 </div>
             </div>

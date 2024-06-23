@@ -1,5 +1,6 @@
 import calendar
 from datetime import timedelta, date
+from utils.FeriadosAPI import *
 
 class FimDeCurso:
 
@@ -33,7 +34,8 @@ class FimDeCurso:
                 result.append(objeto)
             else:
                 result.append(objeto)
-        return result
+        print(result + Feriados().getFeriadosList(), 'Todos os feriados')
+        return result + Feriados().getFeriadosList()
 
     def contaMes(self):
         for i in self.mes:

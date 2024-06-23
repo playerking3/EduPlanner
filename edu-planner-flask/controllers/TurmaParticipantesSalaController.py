@@ -15,7 +15,7 @@ class TurmaParticipantesSalaController:
         id_curso = request.json.get('id_curso')
         nomeSala = request.json.get('id_sala')
 
-        id_sala = Sala().get(nome=nomeSala)[0]
+        id_sala = Sala().get(nome=nomeSala)[0 ]
 
         duracao = Curso().getDuracao(id_curso)
         listaFeriados = []
