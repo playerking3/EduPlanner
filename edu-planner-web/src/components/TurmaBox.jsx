@@ -116,16 +116,18 @@ function TurmaBox (props){
             </div>
             <form>
                 <div className={css.formContainer}style={{display: partesDisplay[0]}}>
-                    <CadastroInput placeholder={'Nome da turma'} type={'text'} name={'nomeCurso'}
-                                   setar={setNome} valor={nome}/>
-                    <div className={css.parte1}>
-                        <div>
+
+                    <div>
+                        <div className={css.todos}>
+                            <CadastroInput placeholder={'Nome da turma'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome}/>
+                        </div>
+                        <div className={css.todos2}>
                             <Periodicidade selectedButtons={periodicidade}
                                            setSelectedButtons={setPeriodicidade}></Periodicidade>
                             <CadastroInput placeholder={'Data: Início'} type={'date'} name={'cargaHoraria'}
                                            valor={inicio} setar={setInicio}/>
                         </div>
-                        <div>
+                        <div className={css.todos}>
                             <CadastroInput placeholder={'Duração da aula'} type={'text'} name={'nomeCurso'}
                                            setar={setDuracaoAula} valor={duracaoAula}/>
                             <CadastroInput placeholder={'Horário de aula'} type={'text'} name={'nomeCurso'}

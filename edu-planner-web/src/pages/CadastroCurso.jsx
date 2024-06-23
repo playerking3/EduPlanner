@@ -1,5 +1,3 @@
-// CadastroCurso.jsx
-
 import React, { useEffect, useState } from 'react';
 import css from './CadastroCurso.module.css';
 import CursoBox from '../components/CursoBox';

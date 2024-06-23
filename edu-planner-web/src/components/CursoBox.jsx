@@ -15,19 +15,19 @@ function CursoBox({ placeholder, nome, setNome, cargaH, setCargaH, enviar, categ
             <form>
                 <div className={css.formContainer}>
                     <div className={css.todos}>
-                        <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'} setar={setNome}
-                                       valor={nome}/>
-                        <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias}/>
-                        <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao}
-                                       valor={descricao}/>
+                        <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome} />
+                        <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias} />
+                        <InputImagem placeholder={'Adicionar imagem'} name={'img'} setar={setImagem} valor={imagem} />
+
                     </div>
                     <div className={css.todos}>
-                        <CadastroInput placeholder={'Carga horária (em horas)'} type={'number'} name={'cargaHoraria'}
-                                       setar={setCargaH} valor={cargaH}/>
-                        <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'faixaEtaria'} setar={setFaixaE}
-                                       valor={faixaE}/>
-                        <InputImagem placeholder={'Adicionar imagem'} name={'img'} setar={setImagem} valor={imagem}/>
+                        <CadastroInput placeholder={'Carga horária (em horas)'} type={'number'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH} />
+                        <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao} />
+                        <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'faixaEtaria'} setar={setFaixaE} valor={faixaE} />
+
                     </div>
+                </div>
+                <div className={css.formContainer}>
                 </div>
 
                 <div>
