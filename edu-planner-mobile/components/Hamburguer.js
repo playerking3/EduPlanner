@@ -11,11 +11,11 @@ const Stack = createStackNavigator();
 
 export default function Menu({ navigation, sairModal, setSairModal }) {
   const perfil = () => {
-    navigation.navigate('Perfil');
+    navigation.navigate('PerfilView');
   };
 
   const perfilView = () => {
-    navigation.navigate('PerfilView');
+    navigation.navigate('Perfil');
   };
 
   const cursos = () => {
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
   },
   sair: {
     position: "absolute",
-    bottom: 0,
-    left: 0
+    bottom: 10,
+    left: 110
   },
   foto: {
     position: "relative",

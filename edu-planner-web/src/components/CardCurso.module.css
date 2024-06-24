@@ -172,6 +172,9 @@
     .fotoperfil{
         height: 20vw;
     }
+    .fichaTurma2 {
+        margin-left: 5vw;
+    }
 }
 
 @media (max-width: 429px) {
@@ -234,8 +237,21 @@
         align-items: center;
     }
 
+    .fichaTurma2 {
+        padding: 1.2vw 2.9vw;
+        margin-bottom: 1vw;
+        margin-top: 0.7vw;
+        border-radius: 5vw;
+        font-size: 2.3vw;
+        font-weight: 600;
+        height: 2vw;
+        display: flex;
+        align-items: center;
+        margin-left: 7vw;
+    }
+
     .p2{
-        width: 11vw;
+        min-width: 11vw;
         text-align: center;
         height: auto;
     }

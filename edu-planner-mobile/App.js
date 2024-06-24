@@ -23,7 +23,7 @@ export default function App() {
         <NavigationContainer>
             <Drawer.Navigator drawerContent={(props) => <Hamburguer setSairModal={setSairModal} sairModal={sairModal} {...props} />}
                 screenOptions={{ headerShown: false }}
-                initialRouteName="Login">
+                initialRouteName="Perfil">
                 <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Home" component={Home} />
                 <Drawer.Screen name="Perfil" component={Perfil} />

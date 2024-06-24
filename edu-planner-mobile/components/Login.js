@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useState } from "react";
-import { View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, Alert } from "react-native";
+import {View, Text, StyleSheet, ImageBackground, Image, TextInput, TouchableOpacity, Alert} from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox/lib";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import * as LocalAuthentication from 'expo-local-authentication';
 import OlhoAberto from '../assets/olhoaberto.png';
 import OlhoFechado from '../assets/olhofechado.png';
-import { Dados } from "../context/context";
+import {Dados} from "../context/context";
 
 export default function Login({ navigation }) {
   const [imageUri, setImageUri] = React.useState(null);
@@ -33,34 +33,6 @@ export default function Login({ navigation }) {
     }
   };
 
-  const handleLogin = async () => {
-    const data = {
-      cpf: cpf,
-      password: senha,
-    };
-
-    console.log(data);
-
-    try {
-      const response = await fetch('/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const acert = await response.json();
-      if (acert.status === 'success') {
-        await AsyncStorage.setItem('token', JSON.stringify(acert.token));
-        navigation.navigate('Home');
-      } else {
-        Alert.alert('Erro', acert.info);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   useFocusEffect(
       useCallback(() => {
@@ -102,22 +74,37 @@ export default function Login({ navigation }) {
   };
 
   async function cadastrar() {
-    console.log(cpf)
     if (!cpf || !senha) {
       Alert.alert("Preenchimento obrigatório", "Por favor, preencha todos os campos.");
       return;
     }
 
-    let loginResp = await fetchData('/login', 'POST', { 'cpf': cpf, 'password': senha });
-    console.log("LOGIN", loginResp)
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    if (loginResp.status === "success") {
-      Alert.alert("Sucesso", "Login realizado com sucesso!");
-      setAuth(loginResp.token.key);
-      navigation.navigate('Home');
-    } else {
-      Alert.alert("Erro", "CPF ou senha incorretos. Tente novamente.");
-    }
+    const raw = JSON.stringify({
+      'cpf': cpf.replaceAll('.','').replaceAll('-',''),
+      "password": String(senha)
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+
+    fetch("http://192.168.0.105:5000/login", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.status === "success") {
+            setAuth(result.token.key);
+            navigation.navigate('Home');
+          } else {
+            Alert.alert("Erro", "CPF ou senha incorretos. Tente novamente.");
+          }
+        })
+        .catch((error) => console.error(error));
   }
 
   return (
@@ -161,9 +148,6 @@ export default function Login({ navigation }) {
                 </TouchableOpacity>
               </View>
             </View>
-            <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => navigation.navigate('ForgotPassword')}>
-              <Text style={styles.forgotPasswordText}>Esqueci a Senha</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={cadastrar}>
               <Text style={styles.buttonText}>Fazer Login</Text>
             </TouchableOpacity>
@@ -202,7 +186,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#ffffff',
     width: 340,
-    height: 600,
+    height: 550,
     borderRadius: 30,
     shadowColor: '#000',
     shadowOffset: {
@@ -266,5 +250,5 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
-  },
-});
+  }
+})
