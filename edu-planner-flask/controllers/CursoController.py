@@ -79,12 +79,13 @@ class CursoController:
 
         curso = Curso()
 
-        if curso.getCurso(nome) == False:
+        if curso.getCurso(nome) == True:
             return jsonify({'status': 'error', 'info': 'curso de mesmo nome cadastrado'})
+        print(categorias)
 
-        img = Imagem().cadastrarImagem(base64_string, id, 'usuario')
+        img = Imagem().cadastrarImagem(base64_string, id, 'curso')
 
-        response = curso.editaCurso(nome, cargaH, faixaE, categorias, descricao, img)
+        response = curso.editaCurso(nome, cargaH, faixaE, categorias, descricao, id)
         if response:
             return jsonify({'status': 'success'})
         return jsonify({'status': 'error', 'info': 'usuario não cadastrado'})

@@ -44,7 +44,7 @@ import {useNavigate} from "react-router-dom";
                     setNome(acert.infos[0])
                     setCargaH(acert.infos[2])
                     setFaixaE(acert.infos[3])
-                    setCategorias(acert.infos[4])
+                    //setCategorias(acert.infos[4])
                     setDescricao(acert.infos[5])
                     setImagem(acert.infos[6])
                 }
@@ -66,7 +66,7 @@ import {useNavigate} from "react-router-dom";
                 'imagem': imagem,
                 'token': JSON.parse(localStorage.getItem('token'))
             }
-            await fetch(api + '/editUsers', {
+            await fetch(api + '/editCurso', {
 
                 method: 'POST',
                 headers: {
@@ -79,6 +79,9 @@ import {useNavigate} from "react-router-dom";
                 .then(function(data) {
                     let acert = data // saberemos se deu certo
                     console.log(acert)
+                    if (acert.status == 'success'){
+                        navigate('/dashboard')
+                    }
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -109,7 +112,7 @@ import {useNavigate} from "react-router-dom";
                 </div>
 
                 <div>
-                    <BtnEnviar placeholder='Salvar' funcao={enviar}/>
+                    <BtnEnviar placeholder='Salvar' funcao={editDados}/>
                 </div>
             </form>
         </div>
