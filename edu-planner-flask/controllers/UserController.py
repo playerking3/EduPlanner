@@ -22,7 +22,7 @@ class UserController:
         cpf = request.json.get('cpf')
         password = request.json.get('password')
 
-        print(cpf, password, '---print')
+        print(cpf, password)
 
         cpf = str(cpf)
         password = str(password)

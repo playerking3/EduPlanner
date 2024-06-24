@@ -16,7 +16,7 @@ function Edicao({api}) {
     const [senha, setSenha] = useState('')
     const [email, setEmail] = useState('')
     useEffect(() => {
-        rotaSegurity(   api, localStorage.getItem('token'), navigate)
+        rotaSegurity(api, localStorage.getItem('token'), navigate)
         getDados()
     }, []);
 
@@ -40,7 +40,7 @@ function Edicao({api}) {
                 if (acert.status === 'success') {
                     setNome(acert.infos[0])
                     setCpf(acert.infos[2])
-                    setNascimento(acert.infos[3])
+                    setNascimento(formatDate(acert.infos[3]))
                     setFuncao(acert.infos[4])
                     setEmail(acert.infos[5])
                     setFoto(acert.infos[7])
@@ -88,6 +88,20 @@ function Edicao({api}) {
     useEffect(() => {
         rotaSegurity(api, localStorage.getItem('token'), navigate)
     }, []);
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
 
     return (
         <div className={css.tudo}>

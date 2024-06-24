@@ -19,6 +19,12 @@ class Sala:
         exis = conexao.get_query(query)
         return exis
 
+    def getEdit(self, id):
+        query = f'SELECT nome, id_sala, capacidade, numero_sala, descricao FROM `sala` WHERE id_sala = {id} AND status = "ativo";'
+        conexao = Conection()
+        exis = conexao.get_list_image(query, 'sala')
+        return exis
+
     def excluir(self, nome):
         query = f'UPDATE sala SET status = "inativo" WHERE nome = "{nome}"'
         conexao = Conection()

@@ -99,7 +99,7 @@ function CardCurso({ placeholder, img, descricao, id, onDelete, listaTurmas, api
                 <div className={styles.botoes}>
                     <Link to={'/'} className={styles.link}><div className={styles.botao1}><p>Mostrar na home</p></div></Link>
                     <Link to={`/cadastro-turma/${id}`} className={styles.link}><div className={styles.botao3}><p>Cadastrar turma</p></div></Link>
-                    <Link to={'/editar-curso'} className={styles.link}><div className={styles.botao2}><p>Editar</p></div></Link>
+                    <Link to={`/editar-curso/${id}`} className={styles.link}><div className={styles.botao2}><p>Editar</p></div></Link>
                     <button onClick={handleDelete} className={styles.link} disabled={turmasCadastradas.length === 0 ? false : true}><div className={styles.botao2}><p>Desativar curso</p></div></button>
                 </div>
             </div>

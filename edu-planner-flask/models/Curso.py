@@ -7,8 +7,8 @@ class Curso:
         response = conexao.add_query(query)
         return response
 
-    def editaCurso(self, nome, carga_horaria, faixa_etaria, categorias, descricao, imagem):
-        query = f'UPDATE curso SET carga_horaria = {carga_horaria}, faixa_etaria = "{faixa_etaria}", categorias = "{categorias}", descricao = "{descricao}", image = "{imagem}" WHERE nome = "{nome}";'
+    def editaCurso(self, nome, carga_horaria, faixa_etaria, categorias, descricao, id):
+        query = f'UPDATE curso SET nome = "{nome}", carga_horaria = {carga_horaria}, faixa_etaria = "{faixa_etaria}", categorias = "{categorias}", descricao = "{descricao}" WHERE id_curso = {id};'
         conexao = Conection()
         response = conexao.add_query(query)
         return response
@@ -35,4 +35,10 @@ class Curso:
         query = f"SELECT carga_horaria FROM `curso` WHERE status = 'ativo' and id_curso = {id};"
         conexao = Conection()
         exis = conexao.get_query(query)
+        return exis
+
+    def getId(self, id):
+        query = f"SELECT nome, id_curso, carga_horaria, faixa_etaria, categorias, descricao FROM `curso` WHERE id_curso = {id} and status = 'ativo';"
+        conexao = Conection()
+        exis = conexao.get_list_image(query, 'curso')
         return exis

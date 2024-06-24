@@ -1,8 +1,9 @@
 import css from './CardProfessores.module.css'
 import OrdenarPor from "./OrdenarPor";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function CardProfessores({nome, id, imagem = '', api}){
+    const navigate = useNavigate();
 
     async function excluir () {
         const data = {
@@ -36,7 +37,7 @@ function CardProfessores({nome, id, imagem = '', api}){
                 <img src={"data:image/png;base64," + imagem} className={css.fotoperfil}/>}
             <label>{nome}</label>
             <div className={css.lapislixo}>
-                <Link to={'/editar-pessoa'}><button><img src={'lapis.png'}/></button></Link>
+                <button onClick={() => navigate(`/editar-pessoa/${id}`)}><img src={'lapis.png'}/></button>
                 <button onClick={() => excluir()}><img src={'lixo.png'}/></button>
             </div>
         </div>

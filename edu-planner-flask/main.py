@@ -91,6 +91,19 @@ def getCursos():
         return CursoController().getCurso()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
+@app.route('/getCursoId', methods=['POST'])
+def getCursoId():
+    if VerificaToken().validaToken():
+        return CursoController().getCursoID()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+@app.route('/editCurso', methods=['POST'])
+def editCursos():
+    if VerificaToken().validaToken():
+        return CursoController().editarcurso()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+
 #------rotas de turma-------------------
 @app.route('/cadastrarTurma', methods=['POST'])
 def cadastrarTurma():
@@ -186,6 +199,18 @@ def getSala():
 def getSalaId():
     if VerificaToken().validaToken():
         return SalaController().getId()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+@app.route('/getSalaIdEdit', methods=['POST'])
+def getSalaIdEdit():
+    if VerificaToken().validaToken():
+        return SalaController().getIdEdit()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+@app.route('/editSala', methods=['POST'])
+def editSala():
+    if VerificaToken().validaToken():
+        return SalaController().EditSala()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
 #----------proteção de rota---------------

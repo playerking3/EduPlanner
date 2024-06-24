@@ -57,3 +57,32 @@ class SalaController:
         if response:
             return jsonify({'status': 'success', 'getSala': response})
         return jsonify({'status': 'error', 'info': response})
+
+    def getIdEdit(self):
+        id = request.json.get('id')
+        obj = Sala()
+        response = obj.getEdit(id)
+        print(response)
+        if response:
+            return jsonify({'status': 'success', 'getSala': response[0]})
+        return jsonify({'status': 'error', 'info': response})
+
+    def EditSala (self):
+        id = request.json.get('id')
+        nome = request.json.get('nome')
+        capacidade = request.json.get('capacidade')
+        numero_sala = request.json.get('numero_sala')
+        descricao = request.json.get('descricao')
+        base64_string = request.json.get('imagem')
+
+        sala = Sala()
+
+        if sala.get(nome, numero_sala) == True:
+            return jsonify({'status': 'error', 'info': 'curso de mesmo nome cadastrado'})
+
+        img = Imagem().cadastrarImagem(base64_string, id, 'curso')
+
+        response = curso.editaCurso(nome, cargaH, faixaE, categorias, descricao, id)
+        if response:
+            return jsonify({'status': 'success'})
+        return jsonify({'status': 'error', 'info': 'usuario não cadastrado'})
