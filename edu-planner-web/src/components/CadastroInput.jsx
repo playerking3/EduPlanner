@@ -8,11 +8,11 @@ function CadastroInput({ name, type, placeholder, setar, valor, mask }) {
         setar(value);
     };
 
-    const today = new Date().toISOString().split('T')[0];
+    const maxDate = type === 'date' && name === 'nascimento' ? new Date().toISOString().split('T')[0] : null;
 
     return (
         <div className={css.container}>
-            <label htmlFor={name}>{placeholder} <span className={css.asterisco}>*</span> </label>
+            <label htmlFor={name}>{placeholder} <span className={css.asterisco}>*</span></label>
             <div className={css.inputGroup}>
                 {mask ? (
                     <InputMask mask={mask} value={valor} onChange={handleChange}>
@@ -26,7 +26,7 @@ function CadastroInput({ name, type, placeholder, setar, valor, mask }) {
                         placeholder={placeholder}
                         onChange={handleChange}
                         value={valor}
-                        {...(type === 'date' && { max: today })}
+                        {...(maxDate && { max: maxDate })}
                     />
                 )}
             </div>
