@@ -5,7 +5,6 @@ import {rotaSegurity} from "../functions/rotaSegurity";
 function SideBar(){
 
     const [api, setApi] = useState('http://127.0.0.1:5000')
-    const navigate = useNavigate();
 
     useEffect(() => {
         rotaSegurity(api, localStorage.getItem('token'), navigate)
@@ -23,6 +22,10 @@ function SideBar(){
         setApareceM(css.desapareceA)
     }
 
+    const navigate = useNavigate();
+    const fotoPerfil = localStorage.getItem('fotoPerfil');
+
+
     return(
         <div style={{display: 'flex'}}>
             <div className={apareceM}>
@@ -35,7 +38,7 @@ function SideBar(){
                 <div className={css.total}>
                     <div></div>
                     <div className={css.iconGroup}>
-                        <Link to={'/'} className={css.links}><i
+                        <Link to={'/'} className={css.links} style={{marginLeft:'-.1vw'}}><i
                             className={"fa-solid fa-house fa-xl " + css.icon}></i>
                             <div className={css.risco}
                                  style={{width: '0.1vw', height: '2vw', background: 'white'}}></div>

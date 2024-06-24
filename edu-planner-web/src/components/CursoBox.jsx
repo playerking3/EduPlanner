@@ -26,6 +26,11 @@ function CursoBox({ placeholder, nome, setNome, cargaH, setCargaH, enviar, categ
                         <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'faixaEtaria'} setar={setFaixaE} valor={faixaE} />
 
                     </div>
+                    <div>
+                        <CadastroInput placeholder={'Carga horária (em horas)'} type={'number'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH} />
+                        <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao} />
+
+                    </div>
                 </div>
                 <div className={css.formContainer}>
                 </div>
