@@ -72,7 +72,7 @@ export default function Calendario(props) {
         lista.map(item => (aux.push({
             title: item[1],
             date: item[2],
-            color: item[0]=== 'feriado' ? 'black' : 'purple'
+            color: item[0]=== 'feriado' ? 'black' : item[0]==='emenda' ? 'gray':'purple'
         })));
 
         setItens(aux);
