@@ -84,18 +84,6 @@ export default function Login({ navigation }) {
       }, [])
   );
 
-  const formatCpf = (value) => {
-    const cpf = value.replace(/\D/g, '');
-
-    if (cpf.length <= 11) {
-      return cpf
-          .replace(/(\d{3})(\d)/, '$1.$2')
-          .replace(/(\d{3})(\d)/, '$1.$2')
-          .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    }
-    return cpf;
-  };
-
   const handleCpfChange = (value) => {
     const formattedCpf = formatCpf(value);
     setCpf(formattedCpf);
@@ -108,7 +96,7 @@ export default function Login({ navigation }) {
       return;
     }
 
-    let loginResp = await fetchData('/login', 'POST', { 'cpf': cpf, 'password': senha });
+    let loginResp = await fetchData('/login', 'POST', { 'cpf': cpf.replaceAll('.','').replaceAll('-',''), 'password': senha });
     console.log("LOGIN", loginResp)
 
     if (loginResp.status === "success") {
@@ -161,9 +149,6 @@ export default function Login({ navigation }) {
                 </TouchableOpacity>
               </View>
             </View>
-            <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => navigation.navigate('ForgotPassword')}>
-              <Text style={styles.forgotPasswordText}>Esqueci a Senha</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={cadastrar}>
               <Text style={styles.buttonText}>Fazer Login</Text>
             </TouchableOpacity>
@@ -202,7 +187,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#ffffff',
     width: 340,
-    height: 600,
+    height: 550,
     borderRadius: 30,
     shadowColor: '#000',
     shadowOffset: {

@@ -51,7 +51,7 @@ function DadosProvider({ children }) {
             config.body = JSON.stringify(body)
         }
 
-        let rota = "http://192.168.1.134:5000"+url
+        let rota = "http://10.92.20.40:5000" + url
 
         return fetch(rota, config)
             .then((response) => response.json())

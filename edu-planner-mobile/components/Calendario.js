@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, StyleSheet, Dimensions, FlatList, TouchableOpacity, Image } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { GestureHandlerRootView, PanGestureHandler } from 'react-native-gesture-handler';
@@ -19,13 +19,15 @@ const Tab = ({ onPress, abaSelecionada }) => (
   </TouchableOpacity>
 );
 
-const Calendario = ({ navigation }) => {
+const Calendario = ({ navigation, props }) => {
   const [dataSelecionada, setDataSelecionada] = useState('');
   const windowHeight = Dimensions.get('window').height;
   const translateY = useSharedValue(windowHeight - 300);
   const calendarScale = useSharedValue(1);
   const [abaSelecionada, setAbaSelecionada] = useState('calendario');
   const atividades = { '2024-06-20': [{ id: '1', title: 'Reunião com a equipe' }, { id: '2', title: 'Entrega do projeto' }], '2024-06-21': [{ id: '3', title: 'Consulta médica' }] };
+  const [eventsCalender, setEventsCalender] = useState([])
+  const [eventsCalenderFeriado, setEventsCalenderFeriado] = useState([])
 
   const aoPressionarDia = (dia) => {
     setDataSelecionada(dia.dateString);
@@ -62,28 +64,70 @@ const Calendario = ({ navigation }) => {
   const animatedStyle = useAnimatedStyle(() => ({ transform: [{ translateY: translateY.value }] }));
   const animatedCalendarStyle = useAnimatedStyle(() => ({ transform: [{ scale: calendarScale.value }] }));
 
+  useEffect(() => {
+    async function feriadoEvents(){
+      await fetch(props.api + '/getFeriados', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+          .then((resp) => resp.json())
+          .then(function (data) {
+            let acert = data;
+            listarEventos(acert.feriados, eventsCalenderFeriado, setEventsCalenderFeriado)
+            console.log(acert.feriados, 'feriados')
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+
+    if (props.listaEventos.length > 0) {
+      feriadoEvents()
+    }
+  }, [props.listaEventos]);
+
+  function listarEventos(lista, itens, setItens) {
+    let aux = []
+
+    lista.map(item => (aux.push({
+      title: item[1],
+      date: item[2],
+      color: item[0]=== 'feriado' ? 'black' : item[0]==='emenda' ? 'gray':'purple'
+    })));
+
+    setItens(aux);
+
+    console.log(aux, 'listagem log')
+  }
+
   return (
       <View style={styles.container}>
-        <TouchableOpacity style={{backgroundColor:'#FFD700'}}  onPress={handleMenuPress}>
-          <Image style={{marginVertical:20, marginLeft: 20, marginTop:50}} source={require('../assets/hamburguer.png')} />
+        <TouchableOpacity style={{ backgroundColor: '#FFD700' }} onPress={handleMenuPress}>
+          <Image style={{ marginVertical: 20, marginLeft: 20, marginTop: 50 }} source={require('../assets/hamburguer.png')} />
         </TouchableOpacity>
 
-        <GestureHandlerRootView style={styles.container2}>
-          <Animated.View style={[styles.calendarContainer, animatedCalendarStyle]}>
-            <Calendar onDayPress={aoPressionarDia} markedDates={{ [dataSelecionada]: { selected: true, marked: true, selectedColor: 'orange' } }} style={styles.calendar} />
-          </Animated.View>
-          <PanGestureHandler onGestureEvent={gestureHandler} activeOffsetY={[-20, 20]}>
-            <Animated.View style={[styles.bottomSheet, animatedStyle]}>
-              <Tab onPress={toggleAba} abaSelecionada={abaSelecionada} />
-              <FlatList
-                  data={atividades[dataSelecionada] || []}
-                  keyExtractor={(item) => item.id}
-                  renderItem={({ item }) => <View><Text style={styles.activityItem}>{item.title}</Text></View>}
-                  ListEmptyComponent={<Text style={styles.noActivities}>Nenhuma atividade</Text>}
-              />
-            </Animated.View>
-          </PanGestureHandler>
-        </GestureHandlerRootView>
+        <View style={styles.container2}>
+          <Calendar
+              onDayPress={aoPressionarDia}
+              markedDates={{
+                [dataSelecionada]: { selected: true, marked: true, selectedColor: 'orange' },
+              }}
+              style={styles.calendar}
+          />
+
+          <FlatList
+              data={eventsCalender.concat(eventsCalenderFeriado)}
+              keyExtractor={(item) => item.title}
+              renderItem={({ item }) => (
+                  <View>
+                    <Text style={styles.activityItem}>{item.title}</Text>
+                  </View>
+              )}
+              ListEmptyComponent={<Text style={styles.noActivities}>Nenhuma atividade</Text>}
+          />
+        </View>
       </View>
 
   );
