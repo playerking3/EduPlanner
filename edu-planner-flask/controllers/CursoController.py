@@ -58,3 +58,33 @@ class CursoController:
         if duracao:
             return jsonify({'status': 'success'})
         return jsonify({'status': 'error', 'info': 'curso não encontrado'})
+
+    def getCursoID(self):
+        id = request.json.get('id')
+        response = Curso().getId(id)
+        response = response[0]
+
+        if response:
+            return jsonify({'status': 'success', 'infos': response})
+        return jsonify({'status': 'error', 'info': 'erro ao recuperar informações'})
+
+    def editarcurso(self):
+        id = request.json.get('id')
+        nome = request.json.get('nome')
+        cargaH = request.json.get('cargaH')
+        faixaE = request.json.get('faixaE')
+        categorias = request.json.get('categorias')
+        descricao = request.json.get('descricao')
+        base64_string = request.json.get('imagem')
+
+        curso = Curso()
+
+        if curso.getCurso(nome) == False:
+            return jsonify({'status': 'error', 'info': 'curso de mesmo nome cadastrado'})
+
+        img = Imagem().cadastrarImagem(base64_string, id, 'usuario')
+
+        response = curso.editaCurso(nome, cargaH, faixaE, categorias, descricao, img)
+        if response:
+            return jsonify({'status': 'success'})
+        return jsonify({'status': 'error', 'info': 'usuario não cadastrado'})

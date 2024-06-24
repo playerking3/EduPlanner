@@ -36,3 +36,9 @@ class Curso:
         conexao = Conection()
         exis = conexao.get_query(query)
         return exis
+
+    def getId(self, id):
+        query = f"SELECT nome, id_curso, carga_horaria, faixa_etaria, categorias, descricao FROM `curso` WHERE id_curso = {id} and status = 'ativo';"
+        conexao = Conection()
+        exis = conexao.get_list_image(query, 'curso')
+        return exis
