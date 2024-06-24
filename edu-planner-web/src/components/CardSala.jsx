@@ -18,7 +18,7 @@ function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                onDelete(id);
+                onDelete(placeholder);
                 Swal.fire({
                     title: "Desativado!",
                     text: "Sua sala foi desativada.",

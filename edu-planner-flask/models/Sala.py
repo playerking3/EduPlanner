@@ -14,25 +14,25 @@ class Sala:
         return response
 
     def get(self, nome, numero = 0):
-        query = f'SELECT id_sala FROM `sala` WHERE nome = "{nome}" OR numero_sala = {numero};'
+        query = f'SELECT id_sala FROM `sala` WHERE nome = "{nome}" OR numero_sala = {numero} AND status = "ativo";'
         conexao = Conection()
         exis = conexao.get_query(query)
         return exis
 
     def excluir(self, nome):
-        query = f'DELETE FROM sala WHERE nome = "{nome}";'
+        query = f'UPDATE sala SET status = "inativo" WHERE nome = "{nome}"'
         conexao = Conection()
         response = conexao.add_query(query)
         return response
 
     def getList(self):
-        query = f"SELECT nome, id_sala FROM `sala`;"
+        query = f"SELECT nome, id_sala FROM `sala` WHERE status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list_image(query, 'sala')
         return exis
 
     def getNomes(self):
-        query = f"SELECT nome FROM `sala`;"
+        query = f"SELECT nome FROM `sala` WHERE status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis

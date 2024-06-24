@@ -11,6 +11,7 @@ export default function Calendario(props) {
     const [title2, setTitle] = useState('')
     const [selectItem, setSelectItem] = useState('')
     const [eventsCalender, setEventsCalender] = useState([])
+    const [eventsCalenderFeriado, setEventsCalenderFeriado] = useState([])
 
 
     useEffect(() => {
@@ -32,7 +33,7 @@ export default function Calendario(props) {
                 .then(function (data) {
                     let acert = data;
                     console.log(acert, 'aaaaa')
-                    listarEventos(acert.aulas)
+                    listarEventos(acert.aulas, eventsCalender, setEventsCalender)
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -51,7 +52,8 @@ export default function Calendario(props) {
                 .then((resp) => resp.json())
                 .then(function (data) {
                     let acert = data;
-                    listarEventos(acert.feriados)
+                    listarEventos(acert.feriados, eventsCalenderFeriado, setEventsCalenderFeriado)
+                    console.log(acert.feriados, 'feriados')
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -60,18 +62,22 @@ export default function Calendario(props) {
 
         if (props.listaEventos.length > 0) {
             calendarEvents()
+            feriadoEvents()
         }
     }, [props.listaEventos]);
 
-    function listarEventos(lista) {
-        let aux = [...eventsCalender]
+    function listarEventos(lista, itens, setItens) {
+        let aux = []
+
         lista.map(item => (aux.push({
             title: item[1],
             date: item[2],
             color: item[0]=== 'feriado' ? 'black' : 'purple'
         })));
-        setEventsCalender(aux);
-        console.log(eventsCalender, 'listagem log')
+
+        setItens(aux);
+
+        console.log(aux, 'listagem log')
     }
 
     return (
@@ -94,7 +100,7 @@ export default function Calendario(props) {
                 dayMaxEvents={true}
                 locale={ptLocale}
 
-                events={eventsCalender}
+                events={[...eventsCalender, ...eventsCalenderFeriado]}
             />
         </div>
     )

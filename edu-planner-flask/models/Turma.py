@@ -32,7 +32,8 @@ class Turma:
         return exis
 
     def getId(self, id):
-        query = f"SELECT id_turma FROM `turma` WHERE id_sala = {id};"
+        print(id, 'id da sala')
+        query = f"SELECT id_turma FROM `turma` WHERE id_sala = {id[0]} AND status = 'ativo';"
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis

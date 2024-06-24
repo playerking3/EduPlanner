@@ -45,11 +45,11 @@ function VisualizacaoSala(props) {
     }, []);
     async function handleDelete(id) {
         const data = {
-            id: id,
+            nome: id,
             token: JSON.parse(localStorage.getItem('token'))
         };
 
-        await fetch(props.api + '/excluiSala', {
+        await fetch(props.api + '/excluirSala', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

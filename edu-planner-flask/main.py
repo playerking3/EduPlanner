@@ -163,7 +163,7 @@ def editarSala():
         return SalaController().editar()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
-@app.route('/excluirSala')
+@app.route('/excluirSala', methods=['POST'])
 def excluirSala():
     if VerificaToken().validaToken():
         return SalaController().excluir()

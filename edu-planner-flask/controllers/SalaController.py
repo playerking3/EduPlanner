@@ -36,7 +36,8 @@ class SalaController:
 
         obj = Sala()
         if obj.get(nome):
-            if TurmaSalaController().verificaSaida(obj.get(nome)):
+            print(TurmaSalaController().verificaSaida(obj.get(nome)))
+            if not TurmaSalaController().verificaSaida(obj.get(nome)):
                 response = obj.excluir(nome)
                 return jsonify({'status': response})
             return jsonify({'status': 'error', 'info': 'a sala ainda tem alunos cadastrados'})
