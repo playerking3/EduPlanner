@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 from controllers.UserController import *
+from controllers.FeriadosController import *
 from controllers.CursoController import *
 from controllers.SalaController import *
 from controllers.SalaAlunoProfessorController import *
@@ -127,6 +128,13 @@ def getAulas():
 @app.route('/getFeriados', methods=['POST'])
 def getFeriados():
     return AulaController().feriados()
+
+@app.route('/addFeriado', methods=['POST'])
+def addFeriado():
+    if VerificaToken().validaToken():
+        return FeriadosController().addFeriado()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
 
 #------rotas de Participantes-------------------
 @app.route('/cadastrarPartipantes')

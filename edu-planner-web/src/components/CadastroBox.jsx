@@ -7,6 +7,7 @@ import ComboBox from "./ComboBox";
 
 function CadastroBox({ placeholder, nome, setNome, funcao, setFuncao, cpf, setCpf, senha, setSenha, nascimento, setNascimento, foto, setFoto, email, setEmail, enviar }) {
     const enviarDados = (event) => {
+        event.preventDefault()
 
 
         const cpfNumerico = cpf.replace(/[.-]/g, ''); //Remove a máscara quando é enviado para o Bando de Dados
@@ -44,7 +45,7 @@ function CadastroBox({ placeholder, nome, setNome, funcao, setFuncao, cpf, setCp
                     </div>
                 </div>
                 <div>
-                    <BtnEnviar placeholder='Salvar' funcao={enviarDados}></BtnEnviar>
+                    <BtnEnviar type={"submit"} placeholder='Salvar' funcao={() => console.log("aaaa")}></BtnEnviar>
                 </div>
             </form>
         </div>

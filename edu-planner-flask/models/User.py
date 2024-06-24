@@ -64,4 +64,4 @@ class User:
         query = f"UPDATE usuario SET nome = '{nome}', cpf = '{self.cpf}', email = '{email}', senha = '{self.password}', cargo = '{cargo}', data_nascimento = '{data_nascimento}', salt = '{salt}' WHERE id_usuario = {id};"
         conexao = Conection()
         response = conexao.add_query(query)
-        return response
+        return response 
