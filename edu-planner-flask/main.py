@@ -201,6 +201,18 @@ def getSalaId():
         return SalaController().getId()
     return jsonify({'status': 'error', 'info': 'invalid token'})
 
+@app.route('/getSalaIdEdit', methods=['POST'])
+def getSalaIdEdit():
+    if VerificaToken().validaToken():
+        return SalaController().getIdEdit()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
+@app.route('/editSala', methods=['POST'])
+def editSala():
+    if VerificaToken().validaToken():
+        return SalaController().EditSala()
+    return jsonify({'status': 'error', 'info': 'invalid token'})
+
 #----------proteção de rota---------------
 @app.route('/protegeRota', methods=['POST'])
 def protegeRota():

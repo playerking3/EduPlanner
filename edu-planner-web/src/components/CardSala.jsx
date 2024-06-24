@@ -47,7 +47,7 @@ function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
                     <Link to={`/cadastro-turma/${id}`} className={styles.link}>
                         <div className={styles.botao3}><p>Cadastrar turma</p></div>
                     </Link>
-                    <Link to={'/editar-sala'} className={styles.link}>
+                    <Link to={`/editar-sala/${id}`} className={styles.link}>
                         <div className={styles.botao2}><p>Editar</p></div>
                     </Link>
                     <button onClick={handleDelete} className={styles.link}>

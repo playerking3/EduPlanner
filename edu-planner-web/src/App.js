@@ -15,6 +15,7 @@ import CadastroTurma from './pages/CadastroTurma'
 import Erro from "./pages/Erro";
 import { useState, createContext, useContext } from "react";
 import CadastroSala from "./pages/CadastroSala";
+import EditarSala from "./pages/EditarSala";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Routes>
               <Route path={'/cadastro-curso'} element={<CadastroCurso api={api} />}/>
               <Route path={'/editar-curso/:id'} element={<EditarCurso api={api} />}/>
+              <Route path={'/editar-sala/:id'} element={<EditarSala api={api} />}/>
               <Route path={'/login'} element={<Login api={api}/>}/>
               <Route path={'/cadastro-pessoa'} element={<Cadastro api={api}/>} />
               <Route path={'/editar-pessoa/:id'} element={<Edicao api={api}/>}/>
