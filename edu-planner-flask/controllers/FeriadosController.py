@@ -6,8 +6,12 @@ class FeriadosController:
         nome = request.json.get('nome')
         data = request.json.get('data')
 
+        print("AAAAAA", nome, data)
+
         obj = Feriados()
-        if obj.getFeriado(nome):
+        print(obj.getFeriado(nome))
+        if not obj.getFeriado(nome):
+            print(nome, data, 'feriado dados')
             response = obj.addFeriado(nome, data)
             return jsonify({'status': response})
-        return jsonify({'status': 'error', 'info': 'curso não encontrado'})
+        return jsonify({'status': 'error', 'info': 'feriado já existente'})

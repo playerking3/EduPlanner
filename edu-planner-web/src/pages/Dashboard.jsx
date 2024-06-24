@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import CardEvento from "../components/CardEvento";
 import SideBar from "../components/SideBar";
 import Calendario from "../components/Calendario";
+import AddFeriado from "../components/AddFeriado";
 
 function Dashboard(props) {
 
@@ -53,6 +54,7 @@ function Dashboard(props) {
             <div style={{display: 'flex', flexDirection: 'row', marginLeft: '4vw', gap:'2vw', alignItems: 'center'}} className={styles.agrupamento}>
                 <Calendario listaEventos={listaEventos} api={props.api}></Calendario>
                 <div className={styles.agenda}>
+                    <AddFeriado api={props.api}/>
                     {listaEventos.map((item)=>(
                         <CardEvento placeholder={item[3]} horario={'Horário: '+item[9]+' até '+ getFim(item[9], item[7])} color={generateRadomColor()} periodo={item[6]}></CardEvento>
                     ))}
