@@ -18,9 +18,11 @@ function CursoBox({ placeholder, nome, setNome, cargaH, setCargaH, enviar, categ
                         <CadastroInput placeholder={'Nome do curso'} type={'text'} name={'nomeCurso'} setar={setNome} valor={nome} />
                         <InputMultiplo label={'Categorias'} list={categorias} setList={setCategorias} />
                     </div>
-                    <CadastroInput placeholder={'Carga horária (em horas)'} type={'number'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH} />
-                    <CadastroInput placeholder={'Carga horária por dia'} type={'text'} name={'cargaHorariaDia'} setar={setCargaH} valor={cargaH} />
-                    <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao} />
+                    <div>
+                        <CadastroInput placeholder={'Carga horária (em horas)'} type={'number'} name={'cargaHoraria'} setar={setCargaH} valor={cargaH} />
+                        <InputTextArea placeholder={'Descrição'} name={'descricao'} setar={setDescricao} valor={descricao} />
+
+                    </div>
                 </div>
                 <div className={css.formContainer}>
                     <CadastroInput placeholder={'Faixa Etária'} type={'text'} name={'faixaEtaria'} setar={setFaixaE} valor={faixaE} />
