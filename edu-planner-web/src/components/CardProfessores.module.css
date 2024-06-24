@@ -1,5 +1,6 @@
 .fotoperfil {
     width: 7vw;
+    height: 7vw;
     border-radius: 50%;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
 }
@@ -83,6 +84,7 @@
     }
     .fotoperfil{
         width: 10vw;
+        height: 10vw;
     }
     .lapislixo button {
         width: 5.5vw;
@@ -112,6 +114,7 @@
     }
     .fotoperfil{
         width: 16vw;
+        height: 16vw;
     }
     .lapislixo button {
         width: 7.5vw;

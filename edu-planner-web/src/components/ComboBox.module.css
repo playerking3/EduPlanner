@@ -1,11 +1,12 @@
 .select{
-    padding: 4px;
+    padding: 4px 1vw;
     border: none;
     border-radius: .5em;
     height: 3em;
     width: 98%;
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.26);
     font-size: 1.3vw;
+    margin-top: 1.2vw;
 }
 
 .container{
