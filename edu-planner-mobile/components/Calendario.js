@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, FlatList, TouchableOpacity, Image } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { GestureHandlerRootView, PanGestureHandler } from 'react-native-gesture-handler';
@@ -26,6 +26,27 @@ const Calendario = ({ navigation }) => {
   const calendarScale = useSharedValue(1);
   const [abaSelecionada, setAbaSelecionada] = useState('calendario');
   const atividades = { '2024-06-20': [{ id: '1', title: 'Reunião com a equipe' }, { id: '2', title: 'Entrega do projeto' }], '2024-06-21': [{ id: '3', title: 'Consulta médica' }] };
+  const [listaEventos, setListaEventos] = useState([])
+  async function getTurma() {
+    console.log("GET TURMAS");
+
+    const requestOptions = {
+      method: "POST",
+      redirect: "follow"
+    };
+
+    fetch("http://10.92.20.44:5000/getAula", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result)
+          setListaEventos([...result.lista_turma]);
+        })
+        .catch((error) => console.error(error));
+  }
+
+  useEffect(() => {
+    getTurma()
+  }, []);
 
   const aoPressionarDia = (dia) => {
     setDataSelecionada(dia.dateString);

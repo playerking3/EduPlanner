@@ -94,7 +94,7 @@ export default function Login({ navigation }) {
       redirect: "follow"
     };
 
-    fetch("http://192.168.0.105:5000/login", requestOptions)
+    fetch("http://10.92.20.44:5000/login", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           if (result.status === "success") {

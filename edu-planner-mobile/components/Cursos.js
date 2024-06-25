@@ -1,40 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import {View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Alert} from "react-native";
 import CardCurso from "./CardCurso";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function VisualizacaoCurso({ navigation }) {
+export default function Cursos({ navigation }) {
   const [listaCursos, setListaCursos] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = await AsyncStorage.getItem('token');
-        const responseCursos = await fetch(props.api + '/getCursos', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ token })
-        });
-        const dataCursos = await responseCursos.json();
-        setListaCursos(dataCursos.cursos);
+  async function getTurma() {
+    console.log("GET TURMAS");
 
-        const responseTurmas = await fetch(props.api + '/getTurma', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ token })
-        });
-        const dataTurmas = await responseTurmas.json();
-        setTurmas(dataTurmas.lista_turma);
-      } catch (error) {
-        console.error('Erro ao carregar dados:', error);
-      }
+    const requestOptions = {
+      method: "POST",
+      redirect: "follow"
     };
 
-    fetchData();
+    fetch("http://10.92.20.44:5000/getCursos", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          setListaCursos([...result.cursos])
+        })
+        .catch((error) => console.error(error));
+  }
+
+  useEffect(() => {
+    getTurma()
   }, []);
 
   const handleDelete = async (id) => {
@@ -61,14 +50,13 @@ export default function VisualizacaoCurso({ navigation }) {
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           {listaCursos.map((curso) => (
               <CardCurso
-                  key={curso.id}
-                  id={curso.id}
-                  img={curso.imagem}
-                  titulo={curso.titulo}
-                  hora={curso.hora}
-                  curso={curso.curso}
-                  faixa={curso.faixa}
-                  descricao={curso.descricao}
+                  key={curso[1]}
+                  id={curso[1]}
+                  placeholder={curso[0]}
+                  img={curso[5]}
+                  descricao={curso[2]}
+                  faixaE={curso[4]}
+                  cargaH={curso[3]}
                   onDelete={handleDelete}
               />
           ))}

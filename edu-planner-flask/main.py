@@ -84,9 +84,7 @@ def excluiCurso():
 
 @app.route('/getCursos', methods=['POST'])
 def getCursos():
-    if VerificaToken().validaToken():
-        return CursoController().getCurso()
-    return jsonify({'status': 'error', 'info': 'invalid token'})
+    return CursoController().getCurso()
 
 #------rotas de turma-------------------
 @app.route('/cadastrarTurma', methods=['POST'])
@@ -107,9 +105,7 @@ def excluirTurma():
     return jsonify({'status': 'error', 'info': 'invalid token'})
 @app.route('/getTurma', methods=['POST'])
 def getTurma():
-    if VerificaToken().validaToken():
-        return TurmaController().getList()
-    return jsonify({'status': 'error', 'info': 'invalid token'})
+    return TurmaController().getList()
 
 @app.route('/getInfos', methods=['POST'])
 def getInfos():

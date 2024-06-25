@@ -11,7 +11,7 @@ export default function CardCurso({ img, titulo, descricao, hora, curso, faixa }
 
   return (
     <View style={styles.div1}>
-      <Image style={styles.img} source={img} />
+      <Image style={styles.img} source={"data:image/png;base64," + img} />
       
       <View style={styles.textContainer}>
         <Text style={styles.title}>{titulo}</Text>

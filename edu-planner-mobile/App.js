@@ -17,18 +17,16 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [sairModal, setSairModal] = useState(false)
+    const [api, setApi] = useState('http://192.168.56.1:5000')
 
   return (
     <DadosProvider>
         <NavigationContainer>
             <Drawer.Navigator drawerContent={(props) => <Hamburguer setSairModal={setSairModal} sairModal={sairModal} {...props} />}
                 screenOptions={{ headerShown: false }}
-                initialRouteName="Perfil">
+                initialRouteName="home">
                 <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Home" component={Home} />
-                <Drawer.Screen name="Perfil" component={Perfil} />
-                <Drawer.Screen name="PerfilView" component={PerfilView} />
-                <Drawer.Screen name="Cursos" component={Cursos} />
                 <Drawer.Screen name="Calendario" component={Calendario} />
             </Drawer.Navigator>
 
