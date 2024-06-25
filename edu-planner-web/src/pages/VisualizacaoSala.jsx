@@ -88,6 +88,7 @@ function VisualizacaoSala(props) {
                             descricao={sala[3]}
                             onDelete={handleDelete}
                             listaTurmas={turmas}
+                            api={props.api}
                         />
                     ))}
                 </div>

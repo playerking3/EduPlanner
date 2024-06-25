@@ -3,10 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
-function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
+function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas, api }) {
     console.log(listaTurmas);
 
     const handleDelete = () => {
+        console.log(placeholder)
         Swal.fire({
             title: "Você tem certeza?",
             text: "Você não poderá reverter isso!",
@@ -19,6 +20,7 @@ function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
         }).then((result) => {
             if (result.isConfirmed) {
                 onDelete(placeholder);
+                excluir()
                 Swal.fire({
                     title: "Desativado!",
                     text: "Sua sala foi desativada.",
@@ -27,6 +29,33 @@ function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas }) {
             }
         });
     };
+
+    async function excluir () {
+        const data = {
+            'id': id,
+            'nome': placeholder,
+            'token': JSON.parse(localStorage.getItem('token'))
+        }
+
+        await fetch(api + '/excluirUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Especifique o tipo de conteúdo como JSON
+            },
+            body: JSON.stringify(data) // Converta o objeto em uma string JSON
+        })
+            .then((resp) => resp.json())
+            .then(function(data) {
+                let acert = data
+                console.log(acert)
+                if (acert.status == 'success'){
+                    window.location.reload(true);
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
 
     return (
         <div className={styles.card}>

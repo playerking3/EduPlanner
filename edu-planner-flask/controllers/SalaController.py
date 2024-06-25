@@ -33,6 +33,7 @@ class SalaController:
 
     def excluir(self):
         nome = request.json.get('nome')
+        print(nome)
 
         obj = Sala()
         if obj.get(nome):
