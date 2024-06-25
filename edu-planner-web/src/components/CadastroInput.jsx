@@ -4,7 +4,10 @@ import React from 'react';
 
 function CadastroInput({ name, type, placeholder, setar, valor, mask }) {
     const handleChange = (event) => {
-        const value = event.target.value;
+        let value = event.target.value;
+        if (name === 'duracaoAula') {
+            value += ' horas';
+        }
         setar(value);
     };
 

@@ -74,7 +74,7 @@ function TurmaBox (props){
             'nome': nome,
             'inicio': inicio,
             'lista_dias': periodicidade,
-            'horas_dia': duracaoAula,
+            'horas_dia': duracaoAula.replaceAll('horas',''),
             'horario': horario,
             'id_curso': props.id,
             'id_sala': salas,
@@ -128,10 +128,11 @@ function TurmaBox (props){
                                            valor={inicio} setar={setInicio}/>
                         </div>
                         <div className={css.todos}>
-                            <CadastroInput placeholder={'Duração da aula'} type={'text'} name={'nomeCurso'}
+                            <CadastroInput placeholder={'Duração da aula'} type={'text'} name={'duracaoAula'}
                                            setar={setDuracaoAula} valor={duracaoAula}/>
-                            <CadastroInput placeholder={'Horário de aula'} type={'text'} name={'nomeCurso'}
-                                           setar={setHorario} valor={horario}/>
+                            <CadastroInput placeholder={'Horário de aula'} type={'text'} name={'horario'}
+                                           setar={setHorario} valor={horario} mask={'99:99'}
+                            />
                         </div>
                     </div>
                     <div>
