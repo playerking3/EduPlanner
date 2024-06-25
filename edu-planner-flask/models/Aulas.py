@@ -12,7 +12,7 @@ class Aulas:
         query = f"select sala.nome, turma.hora_inicio, TIME_FORMAT(turma.horas_dia, '%S') as horas_dia from aulas \
         left join turma on turma.id_turma = aulas.id_turma \
         left join sala on sala.id_sala = turma.id_sala \
-        where aulas.data_aula IN ({', '.join([f"'{str(data)}'" for data in dias])})"
+        where aulas.data_aula IN ({', '.join([f'{str(data)}' for data in dias])})"
 
         # query = "select sala.nome, turma.hora_inicio from aulas left join turma on turma.id_turma = aulas.id_turma left join sala on sala.id_sala = turma.id_sala where aulas.data_aula IN ('2024-06-16', '2024-06-19', '2024-06-20');"
 
