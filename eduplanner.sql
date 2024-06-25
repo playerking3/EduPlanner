@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24/06/2024 às 22:20
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Tempo de geração: 25/06/2024 às 08:32
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,38 +38,20 @@ CREATE TABLE `aulas` (
 --
 
 INSERT INTO `aulas` (`id_dataAula`, `id_turma`, `data_aula`) VALUES
-(1, 25, '2024-06-16'),
-(2, 25, '2024-06-19'),
-(3, 25, '2024-06-20'),
-(4, 26, '2024-06-16'),
-(5, 26, '2024-06-19'),
-(6, 26, '2024-06-20'),
-(7, 27, '2024-06-16'),
-(8, 27, '2024-06-19'),
-(9, 27, '2024-06-20'),
-(10, 28, '2024-05-23'),
-(11, 28, '2024-05-24'),
-(12, 28, '2024-05-27'),
-(13, 28, '2024-05-31'),
-(14, 28, '2024-06-03'),
-(15, 28, '2024-06-06'),
-(16, 28, '2024-06-07'),
-(17, 28, '2024-06-10'),
-(18, 28, '2024-06-13'),
-(19, 28, '2024-06-14'),
-(20, 28, '2024-06-17'),
-(21, 28, '2024-06-20'),
-(22, 28, '2024-06-21'),
-(23, 28, '2024-06-24'),
-(24, 28, '2024-06-27'),
-(25, 28, '2024-06-28'),
-(26, 28, '2024-07-01'),
-(27, 28, '2024-07-04'),
-(28, 28, '2024-07-05'),
-(29, 28, '2024-07-08'),
-(30, 29, '2024-06-14'),
-(31, 29, '2024-06-17'),
-(32, 29, '2024-06-19');
+(1, 25, '2024-06-25'),
+(2, 25, '2024-07-01'),
+(3, 25, '2024-07-02'),
+(4, 25, '2024-07-08'),
+(5, 25, '2024-07-09'),
+(6, 25, '2024-07-15'),
+(7, 25, '2024-07-16'),
+(8, 26, '2024-07-02'),
+(9, 26, '2024-07-08'),
+(10, 26, '2024-07-09'),
+(11, 26, '2024-07-15'),
+(12, 26, '2024-07-16'),
+(13, 26, '2024-07-22'),
+(14, 26, '2024-07-23');
 
 -- --------------------------------------------------------
 
@@ -93,29 +75,11 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `nome`, `carga_horaria`, `faixa_etaria`, `categorias`, `descricao`, `image`, `status`) VALUES
-(10, 'sesi bgi', 10, '14-16', '[\'dfsgsd\', \'sfgsdfg\', \'sdfgsdfg\']', 'sfdgsdfg', NULL, 'ativo'),
-(11, 'turma do altinoff', 80, 'sdfsdf', '[\'sdfsdf\']', 'sdfsdf', NULL, 'ativo'),
-(12, 'Sim', 10, '30', '[\'1\', \'2\']', 'Legal', NULL, 'inativo');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `feriados`
---
-
-CREATE TABLE `feriados` (
-  `id_feriado` int(11) NOT NULL,
-  `nome` varchar(255) DEFAULT NULL,
-  `data_feriado` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Despejando dados para a tabela `feriados`
---
-
-INSERT INTO `feriados` (`id_feriado`, `nome`, `data_feriado`) VALUES
-(2, 'dsfsdgfsg', '2024-06-20'),
-(3, 'zdffdzdgfb', '2024-06-25');
+(10, 'sesi bgi', 10, '14-16', '[\'dfsgsd\', \'sfgsdfg\', \'sdfgsdfg\']', 'sfdgsdfg', NULL, 'inativo'),
+(11, 'turma do altinoff', 80, 'sdfsdf', '[\'sdfsdf\']', 'sdfsdf', NULL, 'inativo'),
+(12, 'Sim', 10, '30', '[\'1\', \'2\']', 'Legal', NULL, 'inativo'),
+(13, 'mecatrônica 2.0', 50, '12-14', '', 'curso de mecatrônica', NULL, 'inativo'),
+(14, 'Sesi bgi mec', 40, '12-14', '[\'tec\']', 'Senai mc', NULL, 'ativo');
 
 -- --------------------------------------------------------
 
@@ -149,7 +113,7 @@ CREATE TABLE `sala` (
   `capacidade` int(11) DEFAULT NULL,
   `numero_sala` int(11) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL
+  `status` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -158,12 +122,14 @@ CREATE TABLE `sala` (
 
 INSERT INTO `sala` (`id_sala`, `nome`, `capacidade`, `numero_sala`, `descricao`, `status`) VALUES
 (1, 'sesi bgi', 20, NULL, NULL, 'inativo'),
-(3, 'sesi bgi56', 20, 5, 'dsafasdf', 'ativo'),
-(4, 'turma do altinoffdd', 234234, 90, 'sadfa', 'ativo'),
-(5, 'TI', 20, 10, 'jdukskdqhuid', 'ativo'),
-(6, 'TI4', 20, 109, 'jdukskdqhuid', 'ativo'),
-(7, 'Sim', 10, 34, '', 'ativo'),
-(8, 'wdqrqwrqWR', 7, 1, 'pkomk-opm', 'ativo');
+(2, 'sesi bgi22', 60, 99, 'dsafasdf', 'inativo'),
+(3, 'sesi bgi56', 20, 5, 'dsafasdf', 'inativo'),
+(4, 'turma do altinoffdd', 234234, 90, 'sadfa', 'inativo'),
+(5, 'TI', 20, 10, 'jdukskdqhuid', 'inativo'),
+(6, 'TI4', 20, 109, 'jdukskdqhuid', 'inativo'),
+(7, 'Sim', 10, 34, '', 'inativo'),
+(8, 'wdqrqwrqWR', 7, 1, 'pkomk-opm', 'inativo'),
+(11, 'Sala de engenharia 2', 66, 70, 'Sala de engenharia', 'ativo');
 
 -- --------------------------------------------------------
 
@@ -209,11 +175,8 @@ INSERT INTO `turma` (`id_turma`, `id_curso`, `id_sala`, `nome`, `inicio`, `fim`,
 (22, 10, 1, 'sesi bgi2222222222', '2024-05-20', '2024-06-30', '[]', '00:00:20', 'inativo', '14:00'),
 (23, 10, 1, 'sesi bgi22222222222', '2024-05-20', '2024-06-30', '[]', '00:00:20', 'inativo', '14:00'),
 (24, 10, 1, 'turma do altino', '2024-06-05', '2024-06-30', '[1, 6]', '00:00:40', 'inativo', '16:00'),
-(25, 10, 1, 'Teste', '2024-06-14', '2024-06-30', '[0, 3, 4]', '00:00:04', 'inativo', '18:00'),
-(26, 10, 1, 'Teste2', '2024-06-14', '2024-06-30', '[0, 3, 4]', '00:00:04', 'inativo', '18:00'),
-(27, 10, 1, 'Teste3', '2024-06-14', '2024-06-30', '[0, 3, 4]', '00:00:04', 'inativo', '18:00'),
-(28, 11, 5, 'Testando cadastro de feriado2', '2024-05-23', '2024-06-30', '[1, 4, 5]', '00:00:04', 'inativo', '9:00'),
-(29, 10, 7, 'testandoSalas', '2024-06-13', '2024-06-30', '[1, 3, 5]', '00:00:04', 'ativo', '9:00');
+(25, 13, 11, 'Sesi bgi mec', '2024-06-25', '2024-06-30', '[1, 2]', '00:00:08', 'inativo', '14:00'),
+(26, 13, 11, 'Sesi bgi mec 2', '2024-07-02', '2024-06-30', '[1, 2]', '00:00:08', 'inativo', '14:00');
 
 -- --------------------------------------------------------
 
@@ -248,16 +211,9 @@ INSERT INTO `usuario` (`id_usuario`, `nome`, `cpf`, `email`, `senha`, `cargo`, `
 (16, 'Lucas2', '70700068023', 'lucas.silva885@aluno.senai.br', '60e1391ffadd54cee0ca1c9a0cefa00e55de063e601a7cdc961308d8d2f5eb74', 'Professor', '2024-06-25', '5356774627695', 'inativo'),
 (17, 'Lucas85', '43885077094', 'safwasf@aesfd', '8ace19251e635d4b57e5d77830132d30674da1431ae9cde53e8e7fccea00bfc5', '', '2024-06-20', '3303640797536', 'ativo'),
 (18, 'Lucas', '81988303087', 'safwasf@aesfd2', 'a9921687b5ebf32ea7d40c2f8fc8d2b1b1a6b97fbba89b3d811c15560bac01fd', 'Professor', '2024-06-07', '7707048496894', 'inativo'),
-(19, 'Ederson Sales', '442.100.830-38', 'tatu.arnesto@gmail.com', 'a69653f91822d5dbbb3df38b119409d0da2ea335b32d53c3c81cb4014245dbb0', 'Aluno', '1994-04-12', '6796234856374', 'inativo'),
-(20, 'Ederson Sales', '442.100.830-38', 'tatu.arnesto@gmail.com', '4bc7f91c90a4d200ac5ad98659e70377c3dfc3da29a72b1afc25b5eb0d61ce38', 'Aluno', '1994-04-12', '5714931269194', 'inativo'),
-(21, 'Igao', '921.505.420-05', 'teste@test3ando.com', 'b769fbbe7da54d689aed1c5c180fa207d5d7e4b3aae02a177bbc694d9d484c37', 'Professor', '2024-06-12', '705291392875', 'inativo'),
-(22, 'Igao', '921.505.420-05', 'teste@test3ando.com', 'e0434f526d115adc25abec20f3ed3655df0031111dca20fae4097bfd57c6fb74', 'Professor', '2024-06-12', '2332335976022', 'inativo'),
-(23, 'Igasso', '933.343.330-94', 'teste@tererstando.com', '20dbd35c36681a5abb613eb81575c3eb501794d49c6587a1a76404c4506f54d2', 'Aluno', '2024-05-30', '2631997827628', 'inativo'),
-(24, 'Igasso', '933.343.330-94', 'teste@tererstando.com', '3a6df70a8ceb49e8e10c87326cfb14a668d31837b973ef1060933f5c4d281313', 'Aluno', '2024-05-30', '4726701165638', 'inativo'),
-(25, 'Igo', '187.903.090-06', 'teste@testdegvdfxgdando.com', 'd970566a2695251aa79aa9da17fd3907d7964a027ef1c7ddf94c018e4ee76c8a', 'Professor', '2024-05-21', '3175181655565', 'inativo'),
-(26, 'Igo', '187.903.090-06', 'teste@testdegvdfxgdando.com', 'e6c1750bfe50e4bf66d610fe4f0475282998047943fe1816013b0ea13f3273f1', 'Professor', '2024-05-21', '4480671966174', 'inativo'),
-(27, 'srfsdsd', '969.688.030-89', 'murilomarquesdecaqwqwqwastro@gmail.com', '4e81950a7e48cf9ea6d5b129ac4cab3d93ea95eb9039b922847b9a750165b9d2', 'Coordenador', '1205-02-12', '2923991810341', 'inativo'),
-(28, 'final', '403.744.510-79', 'teste@testansdfdo.com', '874527a9cb17367486d4762bd04816fe9681cd0fc9cbe10a0e265eb76118f7ee', 'Professor', '2024-06-02', '7247279000348', 'inativo');
+(19, 'Eder Paganini 2', '265.335.610-49', 'eder@senai.br', '8dcadc640ce2b90fd3b1d565c13ec5af5669b3c866809eb06302c72e4325eb27', 'Professor', '2000-01-09', '749855460946', 'ativo'),
+(20, 'Bruno', '771.716.140-00', 'bruno@senai.br', 'e384cf8576234da856ff86f17c936a45cafea9180afdf778b72a0179bd5f82b5', 'Aluno', '2007-04-06', '6518023365022', 'ativo'),
+(21, 'Adam', '302.987.800-70', 'basqueroto.felipe125@gmail.com', '56a196255b21581e83df6435d43d2ecf3cd90092d289190d769884661017d325', 'Professor', '2024-06-06', '9719192205889', 'ativo');
 
 --
 -- Índices para tabelas despejadas
@@ -275,12 +231,6 @@ ALTER TABLE `aulas`
 --
 ALTER TABLE `curso`
   ADD PRIMARY KEY (`id_curso`);
-
---
--- Índices de tabela `feriados`
---
-ALTER TABLE `feriados`
-  ADD PRIMARY KEY (`id_feriado`);
 
 --
 -- Índices de tabela `participantes`
@@ -318,19 +268,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `aulas`
 --
 ALTER TABLE `aulas`
-  MODIFY `id_dataAula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_dataAula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT de tabela `feriados`
---
-ALTER TABLE `feriados`
-  MODIFY `id_feriado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `participantes`
@@ -342,19 +286,19 @@ ALTER TABLE `participantes`
 -- AUTO_INCREMENT de tabela `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_sala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `turma`
 --
 ALTER TABLE `turma`
-  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restrições para tabelas despejadas
