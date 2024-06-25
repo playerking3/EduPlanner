@@ -59,11 +59,11 @@ export default function Calendario(props) {
                     console.log(error);
                 });
         }
-
         if (props.listaEventos.length > 0) {
             calendarEvents()
-            feriadoEvents()
+
         }
+        feriadoEvents()
     }, [props.listaEventos]);
 
     function listarEventos(lista, itens, setItens) {

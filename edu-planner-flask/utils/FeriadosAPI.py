@@ -58,8 +58,12 @@ class Feriados():
         client = BrasilAPI()
         anoAtual = datetime.now().year
         feriados = client.get_feriados(anoAtual)
+        customFeriados = custom().listFeriados()
 
         listaFeriados = []
         for i in feriados:
             listaFeriados.append(i.date)
+
+        for i in customFeriados:
+            listaFeriados.append(i[2])
         return listaFeriados
