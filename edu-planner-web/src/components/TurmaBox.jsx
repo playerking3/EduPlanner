@@ -74,7 +74,7 @@ function TurmaBox (props){
             'nome': nome,
             'inicio': inicio,
             'lista_dias': periodicidade,
-            'horas_dia': duracaoAula.replaceAll('horas',''),
+            'horas_dia': duracaoAula.replaceAll('h','').replaceAll('o','').replaceAll('r','').replaceAll('a','').replaceAll('a','').replaceAll('s',''),
             'horario': horario,
             'id_curso': props.id,
             'id_sala': salas,
