@@ -8,14 +8,6 @@ from utils.HoraDeAula import  *
 
 class SalaAlunoProfessorController:
     def retornarInfos(self):
-        # print('dentro')
-        #         salas = Sala().getList()
-        #         professores = User().getProfessores()
-        #         alunos = User().getAlunos()
-        #
-        #         print(salas)
-        #         print(professores)
-        #         print(alunos)
         print('aqui')
         nome = request.json.get('nome')
         inicio = request.json.get('inicio')
@@ -26,27 +18,43 @@ class SalaAlunoProfessorController:
 
         duracao = Curso().getDuracao(id_curso)
         allSalas = Sala().getNomes()
-        auxTudo = []
+        auxSalas = []
+        auxProf = []
         listaFeriados = []
         tempoCurso = FimDeCurso(lista_dias, listaFeriados, inicio, duracao[0], horas_dia).listData
         salasUsadas = Aulas().listarAulasESalas(tempoCurso)
+        profsUsados = Aulas().listarAulasEProfs(tempoCurso)
         duracaoAula = HoraDeAula(horario, horas_dia).ListarHora()
 
         for i in allSalas:
-            auxTudo.append(i[0])
+            auxSalas.append(i[0])
 
         for aula in salasUsadas:
             listaHoras = HoraDeAula(aula[1], int(aula[2])).ListarHora()
             if any(item in duracaoAula for item in listaHoras):
                 try :
-                    auxTudo.remove((aula[0]))
+                    auxSalas.remove((aula[0]))
                     print('deu certo!')
                 except:
                     print('falhou')
                     pass
-        professores = User().getProfessores()
-        alunos = User().getAlunos()
 
-        if  auxTudo == False and professores == False and alunos == False:
+        allProfessores = User().getNomeProfessores()
+        allAlunos = User().getNomeAlunos()
+
+        for i in allProfessores:
+            auxProf.append(i[0])
+
+        for aula in profsUsados:
+            listaHoras = HoraDeAula(aula[1], int(aula[2])).ListarHora()
+            if any(item in duracaoAula for item in listaHoras):
+                try :
+                    auxProf.remove((aula[0]))
+                    print('deu certo!')
+                except:
+                    print('falhou')
+                    pass
+
+        if  auxSalas == False and auxProf == False and auxProf == False:
             return jsonify({'status': 'error', 'info': 'erro na busca no banco'})
-        return jsonify({'status': 'success', 'infos': {'professores': professores, 'salas': auxTudo, 'alunos': alunos}})
+        return jsonify({'status': 'success', 'infos': {'professores': auxProf, 'salas': auxSalas, 'alunos': allAlunos}})

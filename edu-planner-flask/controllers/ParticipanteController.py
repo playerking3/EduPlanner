@@ -6,7 +6,7 @@ class ParticipanteController:
         professores = request.json.get('professores')
         alunos = request.json.get('alunos')
         listaCompleta = professores + alunos
-        print(professores + alunos, 'alunos e prof')
+        print( 'alunos e prof', professores, 'alunos e prof')
 
         obj = Participante()
 

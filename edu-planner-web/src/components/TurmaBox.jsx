@@ -83,7 +83,7 @@ function TurmaBox (props){
             'token': JSON.parse(localStorage.getItem('token'))
         }
 
-        console.log(data)
+        console.log(data, 'dados enviados')
 
         await fetch(props.api + '/cadastrarTurma', {
             method: 'POST',
@@ -96,7 +96,7 @@ function TurmaBox (props){
             .then((resp) => resp.json())
             .then(function (data) {
                 let acert = data // saberemos se deu certo
-                console.log(acert)
+                console.log(acert, 'cadastroTurma')
                 if (acert.status == 'success') {
                     navigate('/dashboard')
                 } else {

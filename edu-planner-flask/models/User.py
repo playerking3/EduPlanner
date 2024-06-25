@@ -64,4 +64,17 @@ class User:
         query = f"UPDATE usuario SET nome = '{nome}', cpf = '{self.cpf}', email = '{email}', senha = '{self.password}', cargo = '{cargo}', data_nascimento = '{data_nascimento}', salt = '{salt}' WHERE id_usuario = {id};"
         conexao = Conection()
         response = conexao.add_query(query)
-        return response 
+        return response
+
+    def getNomeAlunos(self):
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'aluno' and status = 'ativo';"
+        conexao = Conection()
+        exis = conexao.get_list(query)
+        print(exis)
+        return exis
+
+    def getNomeProfessores(self):
+        query = f"SELECT nome, id_usuario FROM `usuario` WHERE cargo = 'professor' and status = 'ativo';"
+        conexao = Conection()
+        exis = conexao.get_list(query)
+        return exis

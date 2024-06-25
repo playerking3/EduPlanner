@@ -8,7 +8,6 @@ class Aulas:
         return response
 
     def listarAulasESalas(self, dias):
-        diasString = ",".join(str(element) for element in dias)
         query = f"select sala.nome, turma.hora_inicio, TIME_FORMAT(turma.horas_dia, '%S') as horas_dia from aulas \
         left join turma on turma.id_turma = aulas.id_turma \
         left join sala on sala.id_sala = turma.id_sala \
@@ -16,8 +15,18 @@ class Aulas:
 
         # query = "select sala.nome, turma.hora_inicio from aulas left join turma on turma.id_turma = aulas.id_turma left join sala on sala.id_sala = turma.id_sala where aulas.data_aula IN ('2024-06-16', '2024-06-19', '2024-06-20');"
 
-        print("query dias", query)
         conexao = Conection()
+        exis = conexao.get_list(query)
+        return exis
+
+    def listarAulasEProfs(self, dias):
+        query = f"select  usuario.nome, turma.hora_inicio, TIME_FORMAT(turma.horas_dia, '%S') as horas_dia from aulas \
+        left join turma on turma.id_turma = aulas.id_turma \
+        left join participantes on participantes.id_turma = turma.id_turma \
+        LEFT JOIN usuario on participantes.id_usuario = usuario.id_usuario \
+        where aulas.data_aula IN ({', '.join([f"'{str(data)}'" for data in dias])})"
+        conexao = Conection()
+        print("query dias", query)
         exis = conexao.get_list(query)
         return exis
 
