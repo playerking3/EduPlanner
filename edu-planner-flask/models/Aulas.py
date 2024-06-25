@@ -24,7 +24,7 @@ class Aulas:
         left join turma on turma.id_turma = aulas.id_turma \
         left join participantes on participantes.id_turma = turma.id_turma \
         LEFT JOIN usuario on participantes.id_usuario = usuario.id_usuario \
-        where aulas.data_aula IN ({', '.join([f"'{str(data)}'" for data in dias])})"
+        where aulas.data_aula IN ({', '.join([f'{str(data)}' for data in dias])})"
         conexao = Conection()
         print("query dias", query)
         exis = conexao.get_list(query)

@@ -42,3 +42,9 @@ class Sala:
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis
+
+    def editaSala(self, nome, capacidade, numero_sala, descricao, id):
+        query = f'UPDATE sala SET nome = "{nome}", capacidade = {capacidade}, numero_sala = {numero_sala}, descricao = "{descricao}" WHERE id_sala = {id};'
+        conexao = Conection()
+        response = conexao.add_query(query)
+        return response

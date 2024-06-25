@@ -80,9 +80,9 @@ class SalaController:
         if sala.get(nome, numero_sala) == True:
             return jsonify({'status': 'error', 'info': 'curso de mesmo nome cadastrado'})
 
-        img = Imagem().cadastrarImagem(base64_string, id, 'curso')
+        img = Imagem().cadastrarImagem(base64_string, id, 'sala')
 
-        response = curso.editaCurso(nome, cargaH, faixaE, categorias, descricao, id)
+        response = sala.editaSala(nome, capacidade, numero_sala, descricao,id)
         if response:
             return jsonify({'status': 'success'})
         return jsonify({'status': 'error', 'info': 'usuario não cadastrado'})
