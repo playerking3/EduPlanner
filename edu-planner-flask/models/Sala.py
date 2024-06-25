@@ -2,7 +2,7 @@ from configs.Conection import *
 
 class Sala:
     def create(self, nome, capacidade, numero_sala, descricao):
-        query = f'INSERT INTO sala (nome, capacidade, numero_sala, descricao) VALUES ("{nome}", {capacidade}, {numero_sala}, "{descricao}");'
+        query = f'INSERT INTO sala (nome, capacidade, numero_sala, descricao, status) VALUES ("{nome}", {capacidade}, {numero_sala}, "{descricao}", "ativo");'
         conexao = Conection()
         response = conexao.add_query(query)
         return response

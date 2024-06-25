@@ -15,6 +15,7 @@ function Edicao({api}) {
     const [nascimento, setNascimento] = useState('')
     const [senha, setSenha] = useState('')
     const [email, setEmail] = useState('')
+    const navigate = useNavigate();
     useEffect(() => {
         rotaSegurity(api, localStorage.getItem('token'), navigate)
         getDados()
@@ -77,13 +78,15 @@ function Edicao({api}) {
             .then(function(data) {
                 let acert = data // saberemos se deu certo
                 console.log(acert)
+                if (acert.status == 'success') {
+                    navigate('/dashboard')
+                }
             })
             .catch(function(error) {
                 console.log(error);
             })
     }
 
-    const navigate = useNavigate();
 
     useEffect(() => {
         rotaSegurity(api, localStorage.getItem('token'), navigate)

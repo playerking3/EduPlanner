@@ -52,7 +52,7 @@ function Cadastro(props) {
             .then(function(data) {
                 let acert = data; // saberemos se deu certo
                 if (acert.status === 'success') {
-                    //navigate('/dashboard');
+                    navigate('/dashboard');
                 } else {
                     erro();
                 }
