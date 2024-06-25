@@ -8,7 +8,9 @@ function CadastroInput({ name, type, placeholder, setar, valor, mask }) {
         if (name === 'duracaoAula') {
             value += ' horas';
         }
-        setar(value);
+        var duracao = value.split(" ")
+        setar(duracao[0]);
+
     };
 
     const maxDate = type === 'date' && name === 'nascimento' ? new Date().toISOString().split('T')[0] : null;
