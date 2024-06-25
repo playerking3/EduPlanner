@@ -20,11 +20,12 @@ class Aulas:
         return exis
 
     def listarAulasEProfs(self, dias):
-        query = f"select  usuario.nome, turma.hora_inicio, TIME_FORMAT(turma.horas_dia, '%S') as horas_dia from aulas \
-        left join turma on turma.id_turma = aulas.id_turma \
-        left join participantes on participantes.id_turma = turma.id_turma \
-        LEFT JOIN usuario on participantes.id_usuario = usuario.id_usuario \
-        where aulas.data_aula IN ({', '.join([f'{str(data)}' for data in dias])})"
+        query = f"SELECT usuario.nome, turma.hora_inicio, TIME_FORMAT(turma.horas_dia, '%s') as horas_dia \
+            FROM aulas \
+            LEFT JOIN turma ON turma.id_turma = aulas.id_turma \
+            LEFT JOIN participantes ON participantes.id_turma = turma.id_turma \
+            LEFT JOIN usuario ON participantes.id_usuario = usuario.id_usuario \
+            WHERE aulas.data_aula IN ({', '.join([f'"{str(data)}"' for data in dias])})"
         conexao = Conection()
         print("query dias", query)
         exis = conexao.get_list(query)

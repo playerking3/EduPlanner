@@ -14,7 +14,7 @@ class Participante:
         return response
 
     def get(self, id_turma, id_usuario):
-        query = f"SELECT id_participante FROM `participantes` WHERE id_turma = {id_turma} AND id_usuario = {id_usuario};"
+        query = f"SELECT id_participante FROM `participantes` WHERE id_turma = {id_turma} AND nome = {id_usuario};"
         conexao = Conection()
         exis = conexao.get_query(query)
         return exis

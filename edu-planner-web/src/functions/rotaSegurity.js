@@ -24,13 +24,13 @@ export async function rotaSegurity (api,token, navigate, tipo = 'interno') {
                 }
             }else{
                 localStorage.removeItem('token')
-                //navigate('/login')
+                navigate('/login')
             }
             return false
         })
         .catch(function(error) {
             console.log(error);
-            //navigate('/login')
+            navigate('/login')
         })
 
 }

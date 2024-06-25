@@ -26,6 +26,7 @@ class SalaAlunoProfessorController:
         profsUsados = Aulas().listarAulasEProfs(tempoCurso)
         duracaoAula = HoraDeAula(horario, horas_dia).ListarHora()
 
+        print(profsUsados, 'professores usados e abusados')
         for i in allSalas:
             auxSalas.append(i[0])
 
@@ -46,6 +47,7 @@ class SalaAlunoProfessorController:
             auxProf.append(i[0])
 
         for aula in profsUsados:
+            print(aula, '')
             listaHoras = HoraDeAula(aula[1], int(aula[2])).ListarHora()
             if any(item in duracaoAula for item in listaHoras):
                 try :

@@ -78,3 +78,9 @@ class User:
         conexao = Conection()
         exis = conexao.get_list(query)
         return exis
+
+    def getUserId(self, nome):
+        query = f"SELECT id_usuario FROM usuario WHERE status = 'ativo' AND nome = '{nome}'"
+        conexao = Conection()
+        exis = conexao.get_query(query)
+        return exis

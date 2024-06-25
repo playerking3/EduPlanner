@@ -5,7 +5,7 @@ function ComboBoxMultiplo({opcoes, label, name, list, setList}){
     const [numCats, setNumCats] = useState(0)
 
     useEffect(() => {
-        console.log(opcoes)
+        console.log(opcoes, 'opcoesTotal')
     }, []);
 
     function addInput(){
@@ -15,7 +15,7 @@ function ComboBoxMultiplo({opcoes, label, name, list, setList}){
     function alterar(index,e){
         let obj = [...list]
         obj[index] = e.target.value
-        console.log(obj)
+        console.log(obj, 'alterado')
         setList(obj)
     }
     return (
