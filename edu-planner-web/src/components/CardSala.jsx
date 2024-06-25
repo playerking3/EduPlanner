@@ -65,7 +65,6 @@ function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas, api 
             </div>
             <div className={styles.escritas}>
                 <h4 className={styles.titulo}>{placeholder}</h4>
-                <p className={styles.p}>Sala {descricao}</p>
                 <div className={styles.turmas}>
                     {listaTurmas.map((e) => (
                         (e[1] === id) && <div className={styles.fichaTurma}><p className={styles.p2}>{e[3]}</p></div>
@@ -73,9 +72,6 @@ function CardSala({ placeholder, img, descricao, id, onDelete, listaTurmas, api 
                 </div>
 
                 <div className={styles.botoes}>
-                    <Link to={`/cadastro-turma/${id}`} className={styles.link}>
-                        <div className={styles.botao3}><p>Cadastrar turma</p></div>
-                    </Link>
                     <Link to={`/editar-sala/${id}`} className={styles.link}>
                         <div className={styles.botao2}><p>Editar</p></div>
                     </Link>

@@ -4,13 +4,8 @@ import React from 'react';
 
 function CadastroInput({ name, type, placeholder, setar, valor, mask }) {
     const handleChange = (event) => {
-        let value = event.target.value;
-        if (name === 'duracaoAula') {
-            value += ' horas';
-        }
-        var duracao = value.split(" ")
-        setar(duracao[0]);
-
+        const value = event.target.value;
+        setar(value);
     };
 
     const maxDate = type === 'date' && name === 'nascimento' ? new Date().toISOString().split('T')[0] : null;
